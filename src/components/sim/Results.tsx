@@ -91,7 +91,7 @@ export function Results({ hours, daily, costLakh }: Props) {
                   <td className="py-3 text-right num">{fmt(f, m.digits)}</td>
                   <td className={cn("py-3 text-right font-semibold num", ch < -0.005 ? "text-[#1d7a4e]" : ch > 0.005 ? "text-[#b3242f]" : "text-ink-2")}>
                     {ch > 0 ? "+" : ch < 0 ? "−" : ""}
-                    {fmt(Math.abs(ch) * 100, 0)}%
+                    {fmt(Math.abs(ch) * 100, Math.abs(ch) < 0.01 ? 1 : 0)}%
                   </td>
                 </tr>
               );

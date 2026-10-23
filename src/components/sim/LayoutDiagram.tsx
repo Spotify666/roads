@@ -10,23 +10,23 @@ interface Layout {
 
 export function LayoutDiagram({ length, layouts, places }: { length: number; layouts: Layout[]; places: { s: number; name: string }[] }) {
   const W = 1000;
-  const rowH = 46;
-  const top = 26;
+  const rowH = 58;
+  const top = 30;
   const H = top + layouts.length * rowH + 6;
   const x = (s: number) => ((length - s) / length) * W;
   return (
     <figure>
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img" aria-label="Positions of median U-turn openings in each layout along the 2.7 km corridor">
         {places.map((p) => (
-          <text key={p.name} x={Math.min(W - 4, Math.max(4, x(p.s)))} y={12} fontSize="12.5" fill="#4a5157" textAnchor={p.s < 60 ? "end" : p.s > length - 60 ? "start" : "middle"}>
+          <text key={p.name} x={Math.min(W - 4, Math.max(4, x(p.s)))} y={16} fontSize="17" fill="#4a5157" textAnchor={p.s < 60 ? "end" : p.s > length - 60 ? "start" : "middle"}>
             {p.name}
           </text>
         ))}
         {layouts.map((l, i) => {
-          const y = top + i * rowH + 26;
+          const y = top + i * rowH + 34;
           return (
             <g key={l.label}>
-              <text x={0} y={y - 12} fontSize="13" fontWeight={l.highlight ? 600 : 500} fill="#14171a">
+              <text x={0} y={y - 14} fontSize="17" fontWeight={l.highlight ? 600 : 500} fill="#14171a">
                 {l.label}
                 {l.note ? <tspan fill="#4a5157" fontWeight={400}>{`  ${l.note}`}</tspan> : null}
               </text>

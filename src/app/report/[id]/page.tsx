@@ -29,7 +29,7 @@ export default async function Report({ params }: { params: Promise<{ id: string 
   if (!a) notFound();
   const today = new Date().toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric", timeZone: "Asia/Kolkata" });
   return (
-    <main className="mx-auto max-w-[800px] bg-white px-8 py-10 text-ink print:max-w-none print:px-0 print:py-0">
+    <main className="mx-auto max-w-[800px] bg-white px-4 py-10 text-ink sm:px-8 print:max-w-none print:px-0 print:py-0">
       <div className="no-print mb-8 flex items-center justify-between">
         <Link href={`/area/${a.id}`} className="text-[14px] text-ink-2 hover:text-ink">
           ← Back to {a.name}
@@ -70,7 +70,8 @@ export default async function Report({ params }: { params: Promise<{ id: string 
       </table>
 
       <h2 className="mt-8 text-[19px] font-semibold">When it jams (TomTom, typical weekday)</h2>
-      <table className="mt-3 w-full text-left text-[14.5px]">
+      <div className="overflow-x-auto">
+      <table className="mt-3 w-full min-w-[560px] text-left text-[14.5px]">
         <thead>
           <tr className="text-[12.5px] text-ink-2">
             <th className="pb-1 font-medium">Direction</th>
@@ -98,6 +99,7 @@ export default async function Report({ params }: { params: Promise<{ id: string 
           ))}
         </tbody>
       </table>
+      </div>
 
       <h2 className="mt-8 text-[19px] font-semibold">Why it jams</h2>
       <ul className="mt-2 list-disc space-y-1.5 pl-5 text-[14.5px] leading-relaxed">

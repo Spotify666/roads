@@ -1,7 +1,8 @@
 import { sbSelect } from "@/lib/supabase";
 import type { LiveIncident, LiveReading } from "@/lib/types";
 
-export const revalidate = 60;
+// fresh on every request; Vercel's CDN caches the response for a minute (see Cache-Control)
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const [readings, snaps] = await Promise.all([

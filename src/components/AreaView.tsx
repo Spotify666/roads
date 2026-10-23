@@ -43,7 +43,7 @@ export function AreaWhen({ area }: { area: AreaDetail }) {
 
   return (
     <div className="grid gap-10 lg:grid-cols-[1fr_minmax(360px,0.9fr)]">
-      <div>
+      <div className="min-w-0">
         {area.dirs.length > 1 && (
           <div className="mb-6 inline-flex rounded-lg bg-paper-2 p-1 text-sm" role="tablist" aria-label="Direction of travel">
             <AnimatedBackground
@@ -69,7 +69,7 @@ export function AreaWhen({ area }: { area: AreaDetail }) {
         </p>
 
         <div className="mt-8 overflow-x-auto pb-2">
-          <table className="w-full min-w-[620px] border-separate border-spacing-[3px] text-[12.5px]">
+          <table className="w-full min-w-[620px] table-fixed border-separate border-spacing-[3px] text-[12.5px]">
             <caption className="sr-only">Slowdown of each stretch by hour on a typical weekday</caption>
             <thead>
               <tr>

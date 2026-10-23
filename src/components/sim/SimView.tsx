@@ -59,8 +59,10 @@ function counters(sim: Simulation, hour: number): Counters {
       n++;
     }
   }
-  const done = sim.trips.length;
-  const avgTrip = done ? sim.trips.reduce((a, t) => a + t.time, 0) / done : 0;
+  // end-to-end trips only: the measure the calibration matches against TomTom
+  const through = sim.trips.filter((t) => t.through);
+  const done = through.length;
+  const avgTrip = done ? through.reduce((a, t) => a + t.time, 0) / done : 0;
   const secs = hour * 3600 + Math.floor(sim.t);
   const hh = Math.floor(secs / 3600) % 24;
   const mm = Math.floor((secs % 3600) / 60);
@@ -258,8 +260,8 @@ export function SimView({ calibration, openings }: Props) {
                     <dd className={cn(st.wrong ? "text-[#ff7a7a]" : "text-chalk")}>{st.wrong}</dd>
                   </div>
                   <div className="flex gap-1.5">
-                    <dt>Average trip so far</dt>
-                    <dd className="text-chalk">{st.done ? `${(st.avgTrip / 60).toFixed(1)} min` : "–"}</dd>
+                    <dt>End-to-end trip</dt>
+                    <dd className="text-chalk">{st.done >= 15 ? `${(st.avgTrip / 60).toFixed(1)} min` : "measuring…"}</dd>
                   </div>
                 </dl>
               )}

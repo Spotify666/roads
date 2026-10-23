@@ -56,7 +56,12 @@ const GOAL_LABELS: Record<string, string> = {
   distance: "Least travel distance",
   fuel: "Least fuel",
 };
-const pct = (a: number, b: number) => `${a > b ? "+" : "−"}${Math.abs(Math.round(((a - b) / b) * 100))}%`;
+const pct = (a: number, b: number) => {
+  const c = ((a - b) / b) * 100;
+  const v = Math.abs(c) < 1 ? Math.abs(c).toFixed(1) : Math.abs(Math.round(c)).toString();
+  return `${c > 0 ? "+" : "−"}${v}%`;
+};
+const fewerMore = (saved: number) => (Math.abs(saved) < 0.5 ? "no change" : `${Math.abs(Math.round(saved))} veh-h ${saved > 0 ? "fewer" : "more"}`);
 
 export default function PilotPage() {
   const r = data.results;
@@ -88,8 +93,8 @@ export default function PilotPage() {
       {r && (
         <section className="mx-auto max-w-[1180px] px-4 py-20 sm:px-6">
           <h2 className="text-[30px] font-semibold tracking-[-0.02em]">What changes</h2>
-          <div className="mt-8 grid gap-12 lg:grid-cols-[1fr_1fr]">
-            <ul className="space-y-6 text-[16.5px] leading-relaxed">
+          <div className="mt-8">
+            <ul className="max-w-[70ch] space-y-6 text-[16.5px] leading-relaxed">
               <li>
                 <strong className="font-semibold">U-turn openings re-spaced, each with a waiting pocket.</strong> Today&apos;s five openings, as mapped in
                 OpenStreetMap, sit at {r.quick.today.openings.join(", ")} m from Mehdipatnam, leaving a {Math.max(...gaps(r.quick.today.openings, data.length))} m gap
@@ -111,7 +116,7 @@ export default function PilotPage() {
                 would be a guess.
               </li>
             </ul>
-            <div>
+            <div className="mt-12">
               <LayoutDiagram
                 length={data.length}
                 places={PLACES}
@@ -154,8 +159,8 @@ export default function PilotPage() {
             <thead>
               <tr className="text-[13px] text-ink-2">
                 <th className="pb-2 font-medium">Change on its own</th>
-                <th className="pb-2 text-right font-medium">Vehicle-hours saved in the hour</th>
-                <th className="pb-2 text-right font-medium">Crawling time saved</th>
+                <th className="pb-2 text-right font-medium">Time on the corridor in that hour</th>
+                <th className="pb-2 text-right font-medium">Time crawling under 10 km/h</th>
               </tr>
             </thead>
             <tbody>
@@ -175,8 +180,8 @@ export default function PilotPage() {
                     <th scope="row" className="py-2.5 font-normal">
                       {label}
                     </th>
-                    <td className="py-2.5 text-right num">{Math.round(t.vehHours - p.vehHours * s)}</td>
-                    <td className="py-2.5 text-right num">{Math.round(t.slowHours - p.slowHours * s)} veh-h</td>
+                    <td className="py-2.5 text-right num">{fewerMore(t.vehHours - p.vehHours * s)}</td>
+                    <td className="py-2.5 text-right num">{fewerMore(t.slowHours - p.slowHours * s)}</td>
                   </tr>
                 );
               })}
@@ -303,7 +308,7 @@ export default function PilotPage() {
           at noon and in the evening. Towards Mehdipatnam, the evening queue sits on the 800 m into Nanal Nagar, and the last 150 m into Mehdipatnam junction is
           slow all day.
         </p>
-        <div className="mt-10 grid gap-12">
+        <div className="mt-10 grid gap-12 [&>*]:min-w-0">
           <StretchGrid stretches={data.stretches.west} title="Towards Tolichowki (westbound)" />
           <StretchGrid stretches={data.stretches.east} title="Towards Mehdipatnam (eastbound)" />
         </div>
@@ -316,7 +321,7 @@ export default function PilotPage() {
             For each hour, the traffic fed into the &quot;today&quot; run was tuned until its end-to-end travel time matched TomTom&apos;s typical time for that
             hour, in each direction. Where TomTom shows free flow, the highest traffic that still flows freely was used.
           </p>
-          <div className="mt-10 grid gap-12 lg:grid-cols-2">
+          <div className="mt-10 grid gap-12 lg:grid-cols-2 [&>*]:min-w-0">
             <CalibrationChart rows={calRows(0)} title="Towards Tolichowki" />
             <CalibrationChart rows={calRows(1)} title="Towards Mehdipatnam" />
           </div>

@@ -32,7 +32,7 @@ interface Props {
 const LANE_PX = 13;
 const MEDIAN_PX = 8;
 const OVERVIEW_H = 34;
-const GAP = 26;
+const GAP = 46;
 
 export const SimCanvas = forwardRef<SimCanvasHandle, Props>(function SimCanvas({ sim, window: win, labels, title, onPickWindow }, ref) {
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -258,7 +258,7 @@ export const SimCanvas = forwardRef<SimCanvasHandle, Props>(function SimCanvas({
     <canvas
       ref={canvas}
       onClick={onClick}
-      className="block h-[200px] w-full cursor-pointer sm:h-[208px]"
+      className="block h-[228px] w-full cursor-pointer"
       aria-label={`${title}: live simulation of the corridor. Use the overview strip to move the street view.`}
       role="img"
     />

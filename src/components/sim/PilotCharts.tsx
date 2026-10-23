@@ -23,10 +23,10 @@ export function StretchGrid({ stretches, title }: { stretches: Stretch[]; title:
   const [sel, setSel] = useState<{ i: number; h: number } | null>(null);
   const cur = sel ? stretches[sel.i].hours[sel.h] : null;
   return (
-    <figure>
+    <figure className="min-w-0">
       <figcaption className="mb-3 text-[16px] font-semibold">{title}</figcaption>
       <div className="overflow-x-auto pb-1">
-        <table className="w-full min-w-[640px] border-separate border-spacing-[3px] text-[12.5px]">
+        <table className="w-full min-w-[640px] table-fixed border-separate border-spacing-[3px] text-[12.5px]">
           <thead>
             <tr>
               <th scope="col" className="w-[190px] text-left font-medium text-ink-2">
@@ -91,7 +91,7 @@ export function CalibrationChart({ rows, title }: { rows: CalRow[]; title: strin
   const ticks = [1, 1.5, 2, 2.5].filter((t) => t <= maxY);
   const h = hover != null ? rows[hover] : null;
   return (
-    <figure>
+    <figure className="min-w-0">
       <figcaption className="mb-1 text-[16px] font-semibold">{title}</figcaption>
       <div className="mb-2 flex gap-5 text-[13px] text-ink-2">
         <span className="flex items-center gap-1.5">
@@ -128,7 +128,7 @@ export function CalibrationChart({ rows, title }: { rows: CalRow[]; title: strin
           </g>
         ))}
         {[0, 6, 12, 18, 23].map((t) => (
-          <text key={t} x={x(t)} y={H - 8} textAnchor="middle" fontSize="11" fill="#4a5157">
+          <text key={t} x={x(t)} y={H - 8} textAnchor={t === 23 ? "end" : t === 0 ? "start" : "middle"} fontSize="11" fill="#4a5157">
             {hourLabel(t)}
           </text>
         ))}

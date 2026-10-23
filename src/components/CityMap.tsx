@@ -77,7 +77,7 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
     map.on("load", () => {
       restyleBase(map);
       map.addSource("tt-flow", { type: "raster", tiles: ["/api/tiles/{z}/{x}/{y}"], tileSize: 256, minzoom: 9, maxzoom: 18 });
-      map.addLayer({ id: "tt-flow", type: "raster", source: "tt-flow", paint: { "raster-opacity": 0.9, "raster-fade-duration": 200 } });
+      map.addLayer({ id: "tt-flow", type: "raster", source: "tt-flow", paint: { "raster-opacity": 0.8, "raster-fade-duration": 200 } });
 
       map.addSource("stretches", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
       map.addLayer({
