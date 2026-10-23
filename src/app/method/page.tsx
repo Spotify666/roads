@@ -34,8 +34,8 @@ export default function MethodPage() {
         <p>
           <strong className="font-semibold">Typical:</strong> for each spot, RoadFix asks TomTom&apos;s routing service for the historical travel time along a
           corridor about 1.6 km long through the spot, departing at 17 hours of a typical weekday. The corridor is split by waypoints into stretches of about
-          300 m, so the profile shows where the queue sits at each hour, not just that it exists. Corridors that detour are rejected. A Sunday profile is built
-          the same way.
+          300 m, so the profile shows where the queue sits at each hour, not just that it exists. Corridors that detour are rejected. Weekend profiles come
+          next; until then, weekend patterns come only from RoadFix&apos;s own readings.
         </p>
         <p>
           <strong className="font-semibold">Measured by RoadFix:</strong> the 30-minute readings build each spot&apos;s own hour-by-hour pattern, which will

@@ -35,6 +35,8 @@ function restyleBase(map: MLMap) {
   for (const id of ["highway_major_inner", "highway_motorway_inner", "highway_major_subtle", "highway_motorway_subtle"]) set(id, "line-color", "#2e353a");
   for (const id of ["highway_major_casing", "highway_motorway_casing"]) set(id, "line-color", "#1b2024");
   set("highway_minor", "line-color", "#23292d");
+  for (const id of ["aeroway-runway", "aeroway-taxiway", "aeroway-runway-casing"]) set(id, "line-color", "#1e2428");
+  set("aeroway-area", "fill-color", "#161a1d");
   for (const layer of map.getStyle().layers ?? []) {
     if (layer.type === "symbol" && /name|place/.test(layer.id)) {
       set(layer.id, "text-color", "#8b948f");

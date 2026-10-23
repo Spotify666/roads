@@ -226,6 +226,7 @@ def main():
         "stretches": {tag: pstretches(tag) for tag in ("west", "east")},
         "calibration": cal,
         "results": results,
+        "sumo": json.load(open(os.path.join(ROOT, "data", "sumo_validation.json"))) if os.path.exists(os.path.join(ROOT, "data", "sumo_validation.json")) else None,
         "source": corridor["source"],
     }
     json.dump(pilot, open(os.path.join(ROOT, "src", "data", "pilot.json"), "w"), separators=(",", ":"))

@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SimView } from "@/components/sim/SimView";
@@ -21,6 +22,7 @@ interface PilotData {
   stretches: Record<"west" | "east", { from: number; to: number; ff: number; hours: [number, number, number][] }[]>;
   tomtom: Record<"west" | "east", { hour: number; free: number; typical: number; ratio: number }[]>;
   calibration: { base: number[]; hours: Record<string, { qW: number; qE: number; target: number[]; got: number[] }> };
+  sumo: null | { base: number[]; hours: { hour: number; tomtom: number[]; roadfix: number[]; sumo: number[] }[] };
   results: null | {
     quick: {
       today: { openings: number[]; breakdown: Breakdown };
@@ -325,6 +327,48 @@ export default function PilotPage() {
             <CalibrationChart rows={calRows(0)} title="Towards Tolichowki" />
             <CalibrationChart rows={calRows(1)} title="Towards Mehdipatnam" />
           </div>
+          {data.sumo && data.sumo.hours.length > 0 && (
+            <>
+              <h3 className="mt-16 text-[22px] font-semibold tracking-[-0.015em]">Checked in SUMO</h3>
+              <p className="mt-3 max-w-[66ch] text-[16.5px] leading-relaxed">
+                The same corridor, built from the same OpenStreetMap data, and the same traffic were run in SUMO, the open-source simulator used by
+                transport researchers, with two-wheelers free to filter between lanes. The table shows each one&apos;s end-to-end slowdown against its own
+                empty-road time.
+              </p>
+              <div className="mt-6 overflow-x-auto">
+                <table className="w-full min-w-[620px] text-left text-[15px]">
+                  <thead>
+                    <tr className="text-[13px] text-ink-2">
+                      <th className="pb-2 font-medium">Hour</th>
+                      <th className="pb-2 text-right font-medium">Towards Tolichowki: TomTom</th>
+                      <th className="pb-2 text-right font-medium">RoadFix model</th>
+                      <th className="pb-2 text-right font-medium">SUMO</th>
+                      <th className="pb-2 text-right font-medium">Towards Mehdipatnam: TomTom</th>
+                      <th className="pb-2 text-right font-medium">RoadFix model</th>
+                      <th className="pb-2 text-right font-medium">SUMO</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.sumo.hours.map((h) => (
+                      <tr key={h.hour}>
+                        <th scope="row" className="py-1.5 font-normal">
+                          {hourLabel(h.hour)}
+                        </th>
+                        {[0, 1].map((d) => (
+                          <Fragment key={d}>
+                            <td className="py-1.5 text-right num">{h.tomtom[d].toFixed(2)}×</td>
+                            <td className="py-1.5 text-right num">{h.roadfix[d].toFixed(2)}×</td>
+                            <td className="py-1.5 text-right num">{h.sumo[d].toFixed(2)}×</td>
+                          </Fragment>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-3 max-w-[70ch] text-[13.5px] leading-relaxed text-ink-2">{sumoVerdict(data.sumo.hours)}</p>
+            </>
+          )}
           <h3 className="mt-16 text-[22px] font-semibold tracking-[-0.015em]">Before this goes to GHMC and the Traffic Police</h3>
           <ul className="mt-5 max-w-[68ch] space-y-3 text-[16.5px] leading-relaxed">
             <li>Check every median opening against street imagery and a site walk; OpenStreetMap is the only source for today&apos;s layout.</li>
@@ -341,6 +385,14 @@ export default function PilotPage() {
       </section>
     </main>
   );
+}
+
+/** One honest sentence on how closely SUMO follows TomTom, computed from the table. */
+function sumoVerdict(rows: { hour: number; tomtom: number[]; sumo: number[] }[]) {
+  const errs = rows.flatMap((r) => [0, 1].map((d) => Math.abs(r.sumo[d] - r.tomtom[d]) / r.tomtom[d]));
+  const mean = (errs.reduce((a, b) => a + b, 0) / errs.length) * 100;
+  const peak = rows.reduce((a, b) => (b.tomtom[1] > a.tomtom[1] ? b : a));
+  return `Across these hours SUMO's slowdown differs from TomTom's by ${mean.toFixed(0)}% on average. At the worst hour (${hourLabel(peak.hour)}, towards Mehdipatnam) TomTom shows ${peak.tomtom[1].toFixed(2)}× and SUMO ${peak.sumo[1].toFixed(2)}×. SUMO is not calibrated here; it is an independent check of the layout and demand.`;
 }
 
 function gaps(openings: number[], length: number) {
