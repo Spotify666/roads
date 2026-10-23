@@ -124,6 +124,42 @@ export default function MethodPage() {
         <li>Accident risk is reported as wrong-side trips, not as a crash forecast.</li>
       </ul>
 
+      <h2 className="mt-14 text-[24px] font-semibold tracking-[-0.015em]">Ideas shared with Street Logic</h2>
+      <p className="mt-4 text-[17px] leading-relaxed">
+        Street Logic, the Instagram page of Gurgaon urban-planning enthusiast Prince Kushwah, argues for the same kind of fixes, as described in{" "}
+        <a
+          href="https://swarajyamag.com/infrastructure/why-indias-chaotic-streets-fail-us-and-the-teen-trying-to-fix-them"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline"
+        >
+          Swarajya&apos;s profile of the page
+        </a>
+        . Where his principles apply in Hyderabad:
+      </p>
+      <ul className="mt-5 space-y-4 text-[17px] leading-relaxed">
+        <li>
+          <strong className="font-semibold">Keep the lane count steady through a junction.</strong> Roads that go from two lanes to three and back
+          create bottlenecks. Here: the drop from three lanes to two at Nanal Nagar, where the pilot&apos;s evening queue builds, and the Raidurg funnel.
+        </li>
+        <li>
+          <strong className="font-semibold">Separate who uses the road.</strong> Footpaths for walking, bays for buses, the rest for traffic. Here: the bus
+          and auto bays at Mehdipatnam, Dilsukhnagar and KPHB, and footpath clearance at Tolichowki.
+        </li>
+        <li>
+          <strong className="font-semibold">Pull entries and exits apart.</strong> Ramps and slip roads placed too close together cause weaving. Here: the
+          NMDC entry to the PVNR Expressway, the Biodiversity flyover landings and the Shilpa Layout flyover approach to IKEA.
+        </li>
+        <li>
+          <strong className="font-semibold">Count before you redesign.</strong> He redesigned Gurgaon&apos;s Rajiv Chowk after counting each approach on
+          site, which is the same first step RoadFix asks for at every junction.
+        </li>
+        <li>
+          <strong className="font-semibold">Widening is not the default answer.</strong> More road space attracts more traffic, which is why RoadFix
+          favours bays, pockets, markings and timings over new lanes.
+        </li>
+      </ul>
+
       <h2 className="mt-14 text-[24px] font-semibold tracking-[-0.015em]">Sources</h2>
       <ul className="mt-4 space-y-3 text-[15.5px] leading-relaxed">
         {src.map(([k, s]) => (

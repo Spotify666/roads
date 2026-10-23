@@ -21,7 +21,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ z: stri
   }
   const key = process.env.TOMTOM_API_KEY;
   if (!key) return new Response("not configured", { status: 503 });
-  const url = `https://api.tomtom.com/traffic/map/4/tile/flow/relative/${z}/${x}/${y}.png?key=${key}&tileSize=256`;
+  const url = `https://api.tomtom.com/traffic/map/4/tile/flow/relative0-dark/${z}/${x}/${y}.png?key=${key}&tileSize=256`;
   const r = await fetch(url);
   if (!r.ok) return new Response(null, { status: r.status === 403 ? 503 : 204 });
   return new Response(r.body, {
