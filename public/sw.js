@@ -1,7 +1,7 @@
 // RoadFix offline support: pages and data are served fresh when online and from
 // cache when not; built assets are cached forever (their names change on deploy).
 // Live readings and traffic tiles are never cached here, so stale traffic is never shown as live.
-const CACHE = "roadfix-v1";
+const CACHE = "roadfix-v2";
 const PRECACHE = ["/", "/pilot", "/method"];
 
 self.addEventListener("install", (e) => {

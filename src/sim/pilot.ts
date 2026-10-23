@@ -82,6 +82,20 @@ export const BLOCKED: [number, number][] = [
   ...features.filter((f) => f.kind === "bus_stop").map((f) => [f.chainage - 30, f.chainage + 30] as [number, number]),
 ];
 
+/** The same zones with the reason, for the Lab's corridor editor. */
+export const BLOCKED_ZONES: { from: number; to: number; why: string }[] = [
+  { from: 0, to: 120, why: "Mehdipatnam junction" },
+  { from: 840, to: 1010, why: "Rethibowli junction" },
+  { from: 1330, to: 1420, why: "Nanal Nagar signal and lane drop" },
+  { from: 2240, to: 2400, why: "Tolichowki flyover ramps" },
+  { from: L - 60, to: L + 1, why: "Tolichowki junction" },
+  ...features.filter((f) => f.kind === "bus_stop").map((f) => ({ from: f.chainage - 30, to: f.chainage + 30, why: "Bus stop" })),
+];
+
+export function blockedReason(s: number) {
+  return BLOCKED_ZONES.find((z) => s >= z.from && s <= z.to)?.why ?? null;
+}
+
 export function buildable(s: number) {
   return !BLOCKED.some(([a, b]) => s >= a && s <= b);
 }
@@ -122,4 +136,8 @@ export const COSTS = {
   busBay: 12,
   autoBays: 4,
   kerbClearance: 3,
+  busLane: 10, // markings, signs and bollards on both kerb lanes
+  oneWay: 5, // signs and barricades at both ends
+  enforcement: 8, // median railings at gaps and two cameras
+  signalRetime: 0.5, // turning count and retiming, per signal
 };

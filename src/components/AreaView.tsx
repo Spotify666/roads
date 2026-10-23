@@ -61,12 +61,23 @@ export function AreaWhen({ area }: { area: AreaDetail }) {
           </div>
         )}
 
-        <p className="max-w-[60ch] text-[17px] leading-relaxed">
-          <span className="capitalize">{dir.heading}</span>, this {(dir.lengthM / 1000).toFixed(1)} km takes {minutes(dir.freeFlowS)} min on an empty road.
-          On a typical weekday it is worst at <strong className="font-semibold">{hourLabel(dir.peak.hour)}</strong>, when it takes{" "}
-          <strong className="font-semibold">{minutes(dir.freeFlowS + dir.peak.delay)} min</strong> ({dir.peak.ratio.toFixed(1)}×). The morning peak is
-          at {hourLabel(dir.am.hour)} ({dir.am.ratio.toFixed(1)}×).
-        </p>
+        <ul className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          {[
+            { k: "Empty road", v: `${minutes(dir.freeFlowS)} min`, s: `${(dir.lengthM / 1000).toFixed(1)} km`, c: undefined },
+            { k: "Worst hour", v: hourLabel(dir.peak.hour), s: `${minutes(dir.freeFlowS + dir.peak.delay)} min`, c: dir.peak.ratio },
+            { k: "Slowdown", v: `${dir.peak.ratio.toFixed(1)}×`, s: flowLabel(dir.peak.ratio), c: dir.peak.ratio },
+            { k: "Morning peak", v: hourLabel(dir.am.hour), s: `${dir.am.ratio.toFixed(1)}×`, c: dir.am.ratio },
+          ].map((t) => (
+            <li key={t.k} className="rounded-2xl bg-paper-2 p-3.5">
+              <div className="text-[12.5px] text-ink-2">{t.k}</div>
+              <div className="mt-1 flex items-center gap-2 text-[22px] leading-none font-semibold tracking-[-0.02em] num">
+                {t.c != null && <span className="size-2.5 rounded-full" style={{ background: flowColor(t.c) }} />}
+                {t.v}
+              </div>
+              <div className="mt-1.5 text-[12.5px] text-ink-2 num">{t.s}</div>
+            </li>
+          ))}
+        </ul>
 
         <div className="mt-8 overflow-x-auto pb-2">
           <table className="w-full min-w-[560px] table-fixed border-separate border-spacing-[3px] text-[12.5px]">
@@ -114,21 +125,22 @@ export function AreaWhen({ area }: { area: AreaDetail }) {
             </tbody>
           </table>
         </div>
-        <p className="mt-3 text-[13.5px] text-ink-2">
-          Rows run in the direction of travel. A dot marks the stretch losing the most time at that hour. Select any cell to see that hour on the map.
+        <p className="mt-2 flex items-center gap-1.5 text-[12.5px] text-ink-2">
+          <span className="size-1.5 rounded-full bg-ink/80" /> worst stretch at that hour · rows in travel order · tap a cell
         </p>
 
-        <div className="mt-8 rounded-lg bg-paper-2 px-5 py-4" aria-live="polite">
-          <p className="text-[15.5px] leading-relaxed">
-            At <strong className="font-semibold">{hourLabel(row.hour)}</strong> the whole {(dir.lengthM / 1000).toFixed(1)} km runs at{" "}
-            {row.ratio.toFixed(2)}× free flow ({flowLabel(row.ratio).toLowerCase()}), {row.delay > 0 ? `${Math.round(row.delay)} s lost` : "no delay"}.{" "}
-            {row.delay > 5 && (
-              <>
-                The bottleneck is the stretch at {(starts[worstLeg] / 1000).toFixed(1)}–{((starts[worstLeg] + dir.legs[worstLeg].len) / 1000).toFixed(1)} km, which
-                accounts for {Math.round((100 * row.legDelay[worstLeg]) / Math.max(1, row.delay))}% of the delay.
-              </>
-            )}
-          </p>
+        <div className="mt-6 flex flex-wrap gap-2 text-[13.5px] num" aria-live="polite">
+          <span className="flex items-center gap-2 rounded-full bg-paper-2 px-3 py-1.5 font-semibold">
+            <span className="size-2.5 rounded-full" style={{ background: flowColor(row.ratio) }} />
+            {hourLabel(row.hour)} · {row.ratio.toFixed(2)}× · {flowLabel(row.ratio)}
+          </span>
+          <span className="rounded-full bg-paper-2 px-3 py-1.5">{row.delay > 0 ? `${Math.round(row.delay)} s lost` : "No delay"}</span>
+          {row.delay > 5 && (
+            <span className="rounded-full bg-ink px-3 py-1.5 font-medium text-chalk">
+              Bottleneck {(starts[worstLeg] / 1000).toFixed(1)}–{((starts[worstLeg] + dir.legs[worstLeg].len) / 1000).toFixed(1)} km ·{" "}
+              {Math.round((100 * row.legDelay[worstLeg]) / Math.max(1, row.delay))}% of delay
+            </span>
+          )}
         </div>
       </div>
 
@@ -147,19 +159,22 @@ export function LiveNow({ id }: { id: string }) {
       .then((j) => setR((j.readings as LiveReading[]).find((x) => x.hotspot_id === id) ?? null))
       .catch(() => setR(null));
   }, [id]);
-  if (r === undefined) return <p className="text-chalk-2">Reading live traffic…</p>;
-  if (r === null) return <p className="text-chalk-2">No live reading yet for this spot.</p>;
+  if (r === undefined) return <div className="h-10 w-56 animate-pulse rounded-full bg-asphalt-3" />;
+  if (r === null) return <span className="inline-flex h-10 items-center rounded-full bg-asphalt-3 px-4 text-[14px] text-chalk-2">No live reading yet</span>;
   const ratio = r.current_travel_time / r.free_flow_travel_time;
   const t = new Date(r.observed_at).toLocaleTimeString("en-IN", { hour: "numeric", minute: "2-digit", timeZone: "Asia/Kolkata" });
   return (
-    <div className="flex flex-wrap items-baseline gap-x-6 gap-y-1">
-      <p className="flex items-center gap-2 text-[22px] font-semibold num">
-        <span className="size-3 rounded-full" style={{ background: flowColor(ratio) }} />
+    <div className="flex flex-wrap items-center gap-2 num">
+      <span className="flex h-10 items-center gap-2 rounded-full bg-asphalt-3 px-4 text-[17px] font-semibold">
+        <span className="size-2.5 rounded-full" style={{ background: flowColor(ratio) }} />
         {flowLabel(ratio)} · {ratio.toFixed(1)}×
-      </p>
-      <p className="text-chalk-2 num">
-        {Math.round(r.current_speed)} km/h now against {Math.round(r.free_flow_speed)} km/h free flow · TomTom, {t} IST
-      </p>
+      </span>
+      <span className="flex h-10 items-center rounded-full bg-asphalt-3 px-4 text-[14px]">
+        {Math.round(r.current_speed)} <span className="ml-1 text-chalk-2">km/h · free {Math.round(r.free_flow_speed)}</span>
+      </span>
+      <span className="flex h-10 items-center gap-1.5 rounded-full px-2 text-[13px] text-chalk-2">
+        <span className="size-1.5 rounded-full bg-flow-0" /> Live · {t}
+      </span>
     </div>
   );
 }
@@ -188,16 +203,17 @@ export function Measured({ id, typical }: { id: string; typical: { hour: number;
   const now = istHour();
   return (
     <div>
-      <p className="max-w-[62ch] text-[16px] leading-relaxed text-ink-2">
-        RoadFix reads this spot from TomTom every 30 minutes (hourly overnight).{" "}
+      <p className="flex flex-wrap gap-2 text-[13px] text-ink-2 num">
+        <span className="rounded-full bg-paper-2 px-3 py-1">Every 30 min</span>
         {total ? (
           <>
-            {total} readings since{" "}
-            {new Date(first).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric", timeZone: "Asia/Kolkata" })}. Each hour fills in as
-            the days go by, and will replace the typical profile once there are a few weeks of data.
+            <span className="rounded-full bg-paper-2 px-3 py-1">{total} readings</span>
+            <span className="rounded-full bg-paper-2 px-3 py-1">
+              since {new Date(first).toLocaleDateString("en-IN", { day: "numeric", month: "short", timeZone: "Asia/Kolkata" })}
+            </span>
           </>
         ) : (
-          "The first readings will appear here within the hour."
+          <span className="rounded-full bg-paper-2 px-3 py-1">First readings within the hour</span>
         )}
       </p>
       {total > 0 && (

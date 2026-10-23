@@ -22,6 +22,11 @@ export interface Layout {
   autoBays: boolean; // shared autos pick up off the carriageway
   clearKerb: boolean; // parking and vending removed from the Tolichowki kerb
   signalGreen: number; // main-road green share at both signals
+  signalGreens?: Record<string, number>; // per-signal override, by signal name
+  busLane?: boolean; // kerb lane reserved for buses and autos
+  oneWay?: 0 | 1 | null; // every lane runs one way; the other direction is diverted off the corridor
+  fullLanes?: boolean; // no lane drop: the widest lane count runs the whole length
+  enforcement?: boolean; // barricades and cameras against wrong-side riding
 }
 
 export interface CorridorModel {
@@ -125,6 +130,8 @@ export interface TripRecord {
 
 export interface Stats {
   trips: number;
+  diverted: number; // trips that could not use the corridor (one-way)
+  busTimes: number[]; // end-to-end bus trip times
   vehHours: number;
   vehKm: number;
   fuel: number;
@@ -161,6 +168,19 @@ function firstAtOrBehind(arr: Vehicle[], x: number) {
   return lo;
 }
 
+/** Stable sort, leader first. Lanes arrive almost in order every step, so insertion sort is close to linear. */
+function sortByXDesc(arr: Vehicle[]) {
+  for (let i = 1; i < arr.length; i++) {
+    const cur = arr[i];
+    let j = i - 1;
+    while (j >= 0 && arr[j].x < cur.x) {
+      arr[j + 1] = arr[j];
+      j--;
+    }
+    arr[j + 1] = cur;
+  }
+}
+
 function insertSorted(lanes: Map<number, Vehicle[]>, v: Vehicle) {
   const k = v.cw * 10 + v.lane;
   const arr = lanes.get(k);
@@ -184,6 +204,8 @@ export class Simulation {
   readonly openingsByCw: [number[], number[]];
   uturns = 0;
   wrongsideCount = 0;
+  diverted = 0;
+  private maxLanes: [number, number];
   get queued() {
     return this.backlog[0].length + this.backlog[1].length;
   }
@@ -203,6 +225,19 @@ export class Simulation {
     const op = [...layout.openings].sort((a, b) => a.s - b.s).map((o) => o.s);
     // positions of openings in each carriageway's own travel coordinate
     this.openingsByCw = [op.map((s) => s), op.map((s) => this.L - s).sort((a, b) => a - b)];
+    this.maxLanes = [Math.max(...model.lanes.map((l) => l.w)), Math.max(...model.lanes.map((l) => l.e))];
+  }
+
+  private get wrongMax() {
+    return this.layout.enforcement ? this.A.wrongSideMax * 0.2 : this.A.wrongSideMax;
+  }
+
+  private busish(v: { type: VType }) {
+    return v.type === "bus" || v.type === "auto";
+  }
+
+  private countDiverted() {
+    if (this.t > this.warmup) this.diverted++;
   }
 
   // chainage <-> carriageway coordinate
@@ -213,11 +248,23 @@ export class Simulation {
     return cw === 0 ? s : this.L - s;
   }
 
+  /** Lanes physically built on a carriageway at chainage s, whichever way they run. */
+  roadLanes(side: 0 | 1, s: number) {
+    if (this.layout.fullLanes) return this.maxLanes[side];
+    let seg = this.model.lanes[this.model.lanes.length - 1];
+    for (const l of this.model.lanes)
+      if (s >= l.from && s < l.to) {
+        seg = l;
+        break;
+      }
+    return side === 0 ? seg.w : seg.e;
+  }
+
   lanesAt(cw: 0 | 1, x: number) {
     const s = this.sOf(cw, x);
-    for (const l of this.model.lanes) if (s >= l.from && s < l.to) return cw === 0 ? l.w : l.e;
-    const last = this.model.lanes[this.model.lanes.length - 1];
-    return cw === 0 ? last.w : last.e;
+    const ow = this.layout.oneWay;
+    if (ow === 0 || ow === 1) return cw === ow ? this.roadLanes(0, s) + this.roadLanes(1, s) : 0;
+    return this.roadLanes(cw, s);
   }
 
   private pickType(): VType {
@@ -284,8 +331,9 @@ export class Simulation {
     const isBus = v.type === "bus";
     const isAuto = v.type === "auto" && this.rand() < this.A.autoStopShare;
     if (!isBus && !isAuto) return;
+    const ow = this.layout.oneWay;
     for (const st of this.model.busStops) {
-      if (st.cw !== v.cw) continue;
+      if (st.cw !== v.cw && ow !== v.cw) continue;
       const xs = this.xOf(v.cw, st.s);
       if (xs > v.x + 30) {
         if (isBus || st.major) {
@@ -301,17 +349,32 @@ export class Simulation {
     // through traffic at each end; arrivals that cannot enter wait upstream and keep their arrival time
     for (const cw of [0, 1] as const) {
       this.spawnAcc[cw] += (d.through[cw] / 3600) * dt;
+      const lanes = this.lanesAt(cw, 0);
       while (this.spawnAcc[cw] >= 1) {
         this.spawnAcc[cw] -= 1;
+        if (lanes === 0) {
+          this.countDiverted(); // this direction is closed: the trip goes another way
+          continue;
+        }
         const type = this.pickType();
-        this.backlog[cw].push({ t: this.t, type, lane: type === "bus" ? 0 : Math.floor(this.rand() * this.lanesAt(cw, 0)) });
+        const lane =
+          type === "bus"
+            ? 0
+            : this.layout.busLane && type !== "auto" && lanes > 1
+              ? 1 + Math.floor(this.rand() * (lanes - 1))
+              : Math.floor(this.rand() * lanes);
+        this.backlog[cw].push({ t: this.t, type, lane });
       }
-      const lanes = this.lanesAt(cw, 0);
       for (let tries = 0; tries < lanes * 2 && this.backlog[cw].length; tries++) {
         const arr = this.backlog[cw][0];
         let lane = arr.lane;
         if (!this.spaceFree(cw, lane, 0, 7, 0)) {
-          const alt = [...Array(lanes).keys()].find((l) => (arr.type !== "bus" || l === 0) && this.spaceFree(cw, l, 0, 7, 0));
+          const alt = [...Array(lanes).keys()].find(
+            (l) =>
+              (arr.type !== "bus" || l === 0) &&
+              !(this.layout.busLane && l === 0 && !this.busish(arr)) &&
+              this.spaceFree(cw, l, 0, 7, 0),
+          );
           if (alt === undefined) break;
           lane = alt;
         }
@@ -346,6 +409,11 @@ export class Simulation {
           road = rd;
           if (r <= 0) break;
         }
+        const ow = this.layout.oneWay;
+        if (ow === 0 || ow === 1) {
+          this.spawnOneWayJoiner(ow, road.s, cw !== ow);
+          continue;
+        }
         const x = this.xOf(cw, road.s);
         if (x > this.L - 40) continue;
         const picked = this.pickType();
@@ -359,9 +427,7 @@ export class Simulation {
           // with no opening left, the only legal way back is a U-turn at the junction past the corridor end
           const detour = 2 * ((at ?? this.L) - x);
           const canWrongSide = type === "2w" || type === "auto";
-          const pWrong = canWrongSide
-            ? this.A.wrongSideMax * Math.min(1, Math.max(0, (detour - this.A.wrongSideThreshold) / 800))
-            : 0;
+          const pWrong = canWrongSide ? this.wrongMax * Math.min(1, Math.max(0, (detour - this.A.wrongSideThreshold) / 800)) : 0;
           const destS = this.rand() < 0.75 ? (cw === 0 ? 0 : this.L) : this.model.sideRoads[Math.floor(this.rand() * roads.length)].s;
           if (this.rand() < pWrong) {
             plan = { kind: "wrongside", to: this.xOf(cw, destS) };
@@ -393,8 +459,41 @@ export class Simulation {
     }
   }
 
-  private signalRed(sig: { s: number; cycle: number; offset: number; green?: number }) {
-    const green = (sig.green ?? this.layout.signalGreen) * sig.cycle;
+  /** One-way mode: side-road traffic joins the open carriageway; trips for the closed direction go elsewhere. */
+  private spawnOneWayJoiner(open: 0 | 1, s: number, farSide: boolean) {
+    const x = this.xOf(open, s);
+    if (x > this.L - 40) return;
+    const picked = this.pickType();
+    const type: VType = picked === "bus" ? "car" : picked;
+    if (this.rand() < this.demand.reverseShare) {
+      // wants the closed direction: some two-wheelers and autos ride against the one-way, the rest divert
+      if ((type === "2w" || type === "auto") && this.rand() < this.wrongMax) {
+        const v = this.makeVehicle(open, x, 0, { kind: "wrongside", to: 0 }, type);
+        v.v = 4;
+        v.state = "wrongside";
+        this.wrongsideCount++;
+        this.vehicles.push(v);
+      } else this.countDiverted();
+      return;
+    }
+    const lanes = this.lanesAt(open, x);
+    const lane = farSide ? lanes - 1 : 0; // joiners from the far side enter the far edge
+    if (!this.spaceFree(open, lane, x, 6, 6)) return;
+    let plan: Plan = { kind: "through" };
+    if (this.rand() < 0.4) {
+      const exits = this.model.sideRoads.filter((rd) => this.xOf(open, rd.s) > x + 60);
+      const ex = exits[Math.floor(this.rand() * exits.length)];
+      if (ex) plan = { kind: "exit", at: this.xOf(open, ex.s) };
+    }
+    const v = this.makeVehicle(open, x, lane, plan, type);
+    v.v = 2;
+    this.assignStop(v);
+    this.vehicles.push(v);
+  }
+
+  private signalRed(sig: { s: number; cycle: number; offset: number; green?: number; name?: string }) {
+    const share = sig.green ?? (sig.name ? this.layout.signalGreens?.[sig.name] : undefined) ?? this.layout.signalGreen;
+    const green = share * sig.cycle;
     const ph = (((this.t + sig.offset) % sig.cycle) + sig.cycle) % sig.cycle;
     return ph >= green;
   }
@@ -429,7 +528,7 @@ export class Simulation {
       if (arr) arr.push(v);
       else lanesMap.set(k, [v]);
     }
-    for (const arr of lanesMap.values()) arr.sort((a, b) => b.x - a.x);
+    for (const arr of lanesMap.values()) sortByXDesc(arr);
 
     const leaderOf = (v: Vehicle, lane: number): Vehicle | null => {
       const arr = lanesMap.get(v.cw * 10 + lane);
@@ -459,8 +558,9 @@ export class Simulation {
       const sp = SPEC[v.type];
       const v0 = Math.min(v.v0, vmax);
       const sStar = sp.s0 + Math.max(0, v.v * sp.T + (v.v * dv) / (2 * Math.sqrt(sp.a * sp.b)));
-      const free = 1 - Math.pow(v.v / Math.max(v0, 0.1), 4);
-      return sp.a * (free - Math.pow(sStar / Math.max(gap, 0.1), 2));
+      const r = v.v / Math.max(v0, 0.1);
+      const q = sStar / Math.max(gap, 0.1);
+      return sp.a * (1 - r * r * r * r - q * q);
     };
 
     // obstacles ahead of v in its lane that are not vehicles: stop lines, own stop, lane end, wrong-side riders
@@ -570,11 +670,19 @@ export class Simulation {
           (v.plan.kind === "exit" && v.plan.at - v.x < 120) ||
           (v.reversed && v.plan.kind === "reverse" && v.plan.then - v.x < 120 && v.plan.then < this.L);
         const laneEnding = v.lane >= this.lanesAt(v.cw, v.x + 60);
+        const leaveBusLane = !!this.layout.busLane && v.lane === 0 && !this.busish(v) && !wantKerb && lanesHere > 1;
         if (wantMedian && v.lane < lanesHere - 1) target = v.lane + 1;
         else if ((wantKerb || laneEnding) && v.lane > 0) target = v.lane - 1;
+        else if (leaveBusLane) target = 1;
         else if (gap < 25 && (lead?.v ?? 0) < v.v0 * 0.6) {
           // discretionary: try the faster neighbour
-          const opts = [v.lane + 1, v.lane - 1].filter((l) => l >= 0 && l < lanesHere && !(l === 0 && v.type !== "bus" && this.rand() < 0.3));
+          const opts = [v.lane + 1, v.lane - 1].filter(
+            (l) =>
+              l >= 0 &&
+              l < lanesHere &&
+              !(this.layout.busLane && l === 0 && !this.busish(v)) &&
+              !(l === 0 && v.type !== "bus" && this.rand() < 0.3),
+          );
           let best = 0.4;
           for (const l of opts) {
             const ld = leaderOf(v, l);
@@ -592,7 +700,7 @@ export class Simulation {
           const gapF = ld ? ld.x - ld.len - v.x : Infinity;
           const gapB = fl ? v.x - v.len - fl.x : Infinity;
           // a stopped vehicle that must move over squeezes in (others let it in, zipper style)
-          const forced = (wantMedian || wantKerb || laneEnding) && v.v < 2;
+          const forced = (wantMedian || wantKerb || laneEnding || leaveBusLane) && v.v < 2;
           const need = forced ? 1.0 : v.type === "2w" ? 1.5 : 3;
           const behind = forced ? 1.0 : need + (fl ? Math.max(0, fl.v - v.v) * 1.2 : 0);
           if (gapF > need && gapB > behind) {
@@ -770,6 +878,8 @@ export class Simulation {
     const avg = (a: number[]) => (a.length ? a.reduce((x, y) => x + y, 0) / a.length : 0);
     return {
       trips: tr.length,
+      diverted: this.diverted,
+      busTimes: tr.filter((t) => t.type === "bus" && t.through).map((t) => t.time),
       vehHours,
       vehKm,
       fuel,

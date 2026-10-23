@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
   { href: "/", label: "City map", short: "Map", icon: MapIcon },
-  { href: "/pilot", label: "Mehdipatnam pilot", short: "Simulation", icon: SimIcon },
-  { href: "/method", label: "Method and data", short: "Method", icon: InfoIcon },
+  { href: "/pilot", label: "Simulation Lab", short: "Lab", icon: SimIcon },
+  { href: "/method", label: "Info", short: "Info", icon: InfoIcon },
 ];
 
 const isActive = (href: string, path: string | null) => (href === "/" ? path === "/" || path?.startsWith("/area") : path?.startsWith(href));
@@ -57,7 +58,8 @@ export function SiteNav() {
   const path = usePathname();
   if (path?.startsWith("/report")) return null;
   return (
-    <header className="dark-surface no-print sticky top-0 z-40 bg-asphalt pt-[env(safe-area-inset-top)] text-chalk">
+    // on phones the map page is full-screen, with its own search bar in place of the header
+    <header className={cn("dark-surface no-print sticky top-0 z-40 bg-asphalt pt-[env(safe-area-inset-top)] text-chalk", path === "/" && "hidden sm:block")}>
       <nav className="mx-auto flex h-14 max-w-[1600px] items-center gap-6 px-4 sm:px-6" aria-label="Main">
         <Link href="/" className="flex shrink-0 items-center gap-2 font-semibold tracking-tight">
           <Mark />
@@ -108,12 +110,15 @@ export function TabBar() {
                 href={l.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "flex h-full flex-col items-center justify-center gap-1 text-[11.5px] font-medium transition-colors duration-150 active:bg-asphalt-3",
+                  "flex h-full flex-col items-center justify-center gap-1 text-[11.5px] font-medium transition-colors duration-150",
                   active ? "text-chalk" : "text-chalk-2",
                 )}
               >
-                <span className={cn("transition-transform duration-150", active && "text-sign-bright")}>
-                  <Icon />
+                <span className={cn("relative flex h-8 w-14 items-center justify-center transition-transform duration-150 ease-[var(--ease-out-strong)] active:scale-90", active && "text-sign-bright")}>
+                  {active && <motion.span layoutId="tab-pill" className="absolute inset-0 rounded-full bg-sign/20" transition={{ type: "spring", duration: 0.35, bounce: 0.2 }} />}
+                  <span className="relative">
+                    <Icon />
+                  </span>
                 </span>
                 {l.short}
               </Link>

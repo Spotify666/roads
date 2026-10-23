@@ -15,10 +15,11 @@ before-and-after traffic simulation of the Mehdipatnam–Tolichowki corridor.
 | `scripts/corridor.py`, `scripts/pilot_profile.py` | The pilot corridor's layout from OSM, and its TomTom profile in both directions |
 | `src/sim/engine.ts` | Microscopic traffic simulation (IDM car-following, lane changes, bus stops, signals, U-turns, wrong-side riding) |
 | `src/sim/optimize.ts` | Exact dynamic programme for U-turn opening placement, per goal |
+| `src/sim/scenario.ts`, `src/sim/lab.worker.ts` | Simulation Lab: a visitor's road design (U-turns, one-way, bus lane, lane drop, signals, enforcement), its cost, and the in-browser test run |
 | `scripts/sim/*.ts` | Calibration to TomTom, optimiser, simulation-based layout selection |
 | `scripts/sumo/validate.py` | Independent cross-check of the pilot in SUMO |
 | `supabase/functions/poll-traffic` | Edge function that records live TomTom speeds and incidents every 30 minutes |
-| `src/app` | The Next.js site: city map, area pages, pilot simulation, method, printable reports |
+| `src/app` | The Next.js site: full-screen city map, area pages, Simulation Lab, info page, printable reports |
 
 ## Running it
 
@@ -39,6 +40,7 @@ npx tsx scripts/sim/optimise-pilot.ts
 npx tsx scripts/sim/select-layout.ts
 FORCE_OPENINGS=$(cat data/raw/chosen.txt) npx tsx scripts/sim/optimise-pilot.ts
 python3 scripts/build_site_data.py
+npx tsx scripts/sim/lab-baselines.ts   # today and plan reference runs for the Lab
 ```
 
 TomTom's free tier allows 2,500 calls a day; a full weekday profile build uses about 1,600.

@@ -1,8 +1,10 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ComponentType } from "react";
+import { motion } from "motion/react";
 import { hourLabel } from "@/lib/flow";
 import { cn } from "@/lib/utils";
+import { ClockIcon, CrawlIcon, FuelIcon, RouteIcon, WrongIcon } from "@/components/lab/icons";
 
 type Row = { vehHours: number; vehKm: number; fuel: number; slowHours: number; wrongside: number; uturns: number; trips: number; thrW: number; thrE: number };
 
@@ -12,12 +14,12 @@ interface Props {
   costLakh: number;
 }
 
-const METRICS: { key: keyof Row; goal: string; measure: string; unit: string; digits: number }[] = [
-  { key: "slowHours", goal: "Least traffic", measure: "Vehicle-hours stuck or crawling under 10 km/h", unit: "veh-h", digits: 0 },
-  { key: "vehHours", goal: "Least travel time", measure: "Vehicle-hours spent on the corridor", unit: "veh-h", digits: 0 },
-  { key: "vehKm", goal: "Least travel distance", measure: "Vehicle-km driven, U-turn detours included", unit: "veh-km", digits: 0 },
-  { key: "fuel", goal: "Least fuel", measure: "Litres burned, idling included", unit: "litres", digits: 0 },
-  { key: "wrongside", goal: "Safety rule", measure: "Trips ridden on the wrong side", unit: "trips", digits: 0 },
+const METRICS: { key: keyof Row; label: string; unit: string; icon: ComponentType<{ size?: number }> }[] = [
+  { key: "slowHours", label: "Crawling", unit: "veh-h", icon: CrawlIcon },
+  { key: "vehHours", label: "Travel time", unit: "veh-h", icon: ClockIcon },
+  { key: "vehKm", label: "Distance", unit: "veh-km", icon: RouteIcon },
+  { key: "fuel", label: "Fuel", unit: "litres", icon: FuelIcon },
+  { key: "wrongside", label: "Wrong-side", unit: "trips", icon: WrongIcon },
 ];
 
 const fmt = (v: number, d = 0) => v.toLocaleString("en-IN", { maximumFractionDigits: d, minimumFractionDigits: d });
@@ -40,116 +42,90 @@ export function Results({ hours, daily, costLakh }: Props) {
 
   return (
     <div>
-      <div className="flex flex-wrap gap-1 rounded-lg bg-paper-2 p-1 text-[13.5px]" role="radiogroup" aria-label="Period">
-        {(["day", ...hourKeys] as const).map((k) => (
-          <button
-            key={String(k)}
-            type="button"
-            role="radio"
-            aria-checked={scope === k}
-            onClick={() => setScope(k)}
-            className={cn("rounded-md px-2.5 py-1.5 font-medium num transition-colors duration-150", scope === k ? "bg-white text-ink shadow-[0_1px_3px_#0002]" : "text-ink-2 hover:text-ink")}
-          >
-            {k === "day" ? "Whole weekday" : hourLabel(k)}
-          </button>
-        ))}
+      <div className="-mx-4 overflow-x-auto px-4 [scrollbar-width:none] sm:mx-0 sm:px-0">
+        <div className="flex w-max gap-1 rounded-full bg-paper-2 p-1 text-[13px]" role="radiogroup" aria-label="Period">
+          {(["day", ...hourKeys] as const).map((k) => (
+            <button
+              key={String(k)}
+              type="button"
+              role="radio"
+              aria-checked={scope === k}
+              onClick={() => setScope(k)}
+              className={cn("h-8 rounded-full px-3 font-semibold num transition-colors duration-150", scope === k ? "bg-white text-ink shadow-[0_1px_3px_#0002]" : "text-ink-2 hover:text-ink")}
+            >
+              {k === "day" ? "Whole day" : hourLabel(k).replace(" ", "")}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <div className="mt-6 overflow-x-auto">
-        <table className="w-full min-w-[640px] text-left text-[15px]">
-          <thead>
-            <tr className="text-[13px] text-ink-2">
-              <th scope="col" className="pb-3 font-medium">
-                Goal
-              </th>
-              <th scope="col" className="pb-3 font-medium">
-                Measured as
-              </th>
-              <th scope="col" className="pb-3 text-right font-medium">
-                Today
-              </th>
-              <th scope="col" className="pb-3 text-right font-medium">
-                With RoadFix
-              </th>
-              <th scope="col" className="pb-3 text-right font-medium">
-                Change
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {METRICS.map((m) => {
-              const t = pair.today[m.key];
-              const f = fixVal(m.key);
-              const ch = t ? (f - t) / t : 0;
-              return (
-                <tr key={m.key} className="align-baseline">
-                  <th scope="row" className="py-3 pr-4 font-semibold whitespace-nowrap">
-                    {m.goal}
-                  </th>
-                  <td className="py-3 pr-4 text-ink-2">{m.measure}</td>
-                  <td className="py-3 text-right num">{fmt(t, m.digits)}</td>
-                  <td className="py-3 text-right num">{fmt(f, m.digits)}</td>
-                  <td className={cn("py-3 text-right font-semibold num", ch < -0.005 ? "text-[#1d7a4e]" : ch > 0.005 ? "text-[#b3242f]" : "text-ink-2")}>
-                    {ch > 0 ? "+" : ch < 0 ? "−" : ""}
-                    {fmt(Math.abs(ch) * 100, Math.abs(ch) < 0.01 ? 1 : 0)}%
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-      <p className="mt-3 max-w-[70ch] text-[13.5px] leading-relaxed text-ink-2">
-        Same traffic in both runs, averaged over two random seeds. The fixed road also lets{" "}
-        {fmt(Math.max(0, ((pair.fix.trips - pair.today.trips) / pair.today.trips) * 100), 1)}% more trips through, so its totals are scaled to the same number of
-        trips as today. {scope === "day" ? "Hours not simulated are interpolated between their neighbours." : ""}
+      <ul className="mt-5 grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-5">
+        {METRICS.map((m, i) => {
+          const t = pair.today[m.key];
+          const f = fixVal(m.key);
+          const ch = t ? (f - t) / t : 0;
+          const tone = ch < -0.005 ? "text-[#1d7a4e]" : ch > 0.005 ? "text-[#b3242f]" : "text-ink-2";
+          const Icon = m.icon;
+          return (
+            <motion.li
+              key={m.key}
+              layout
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.04, type: "spring", duration: 0.45, bounce: 0 }}
+              className="rounded-2xl bg-white p-4 shadow-[0_1px_2px_#0000000f]"
+            >
+              <div className="flex items-center gap-2 text-[13px] font-medium text-ink-2">
+                <Icon size={17} />
+                {m.label}
+              </div>
+              <div className={cn("mt-2 text-[30px] leading-none font-semibold tracking-[-0.03em] num", tone)}>
+                {ch > 0 ? "+" : ch < 0 ? "−" : ""}
+                {fmt(Math.abs(ch) * 100, Math.abs(ch) < 0.01 ? 1 : 0)}%
+              </div>
+              <div className="mt-2 text-[12px] text-ink-2 num">
+                {fmt(t)} → {fmt(f)} {m.unit}
+              </div>
+            </motion.li>
+          );
+        })}
+      </ul>
+      <p className="mt-3 text-[12.5px] text-ink-2 num">
+        Same traffic · 2 seeds · scaled to equal trips (+{fmt(Math.max(0, ((pair.fix.trips - pair.today.trips) / pair.today.trips) * 100), 1)}% more get through)
       </p>
 
-      <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_1fr]">
-        <div>
-          <h3 className="text-[19px] font-semibold">What a weekday saves</h3>
-          <p className="mt-3 text-[40px] leading-none font-semibold tracking-[-0.03em] num">₹{fmt(perDay / 1000, 0)}k</p>
-          <p className="mt-2 text-[15px] text-ink-2 num">
-            {fmt(dHours, 0)} vehicle-hours and {fmt(dFuel, 0)} litres a day, valued with the assumptions on the right.
-          </p>
-          <dl className="mt-6 grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-[15.5px]">
-            <dt className="text-ink-2">Cost of the package</dt>
-            <dd className="num">₹{fmt(costLakh, 1)} lakh (planning estimate)</dd>
-            <dt className="text-ink-2">Pays back in</dt>
-            <dd className="num">{payback ? `about ${fmt(payback, 0)} days` : "–"}</dd>
-          </dl>
-        </div>
-        <div>
-          <h3 className="text-[19px] font-semibold">Assumptions you can change</h3>
-          <div className="mt-4 grid gap-4">
-            <label className="grid gap-1.5">
-              <span className="text-[14px] text-ink-2">Fuel price, ₹ a litre (petrol and diesel mix)</span>
-              <input
-                type="number"
-                min={50}
-                max={200}
-                value={fuelPrice}
-                onChange={(e) => setFuelPrice(Number(e.target.value) || 0)}
-                className="h-11 w-40 rounded-md bg-white px-3 text-[16px] num shadow-[inset_0_0_0_1px_#0002] focus-visible:shadow-[inset_0_0_0_2px_#2d6cdf]"
-              />
-            </label>
-            <label className="grid gap-1.5">
-              <span className="text-[14px] text-ink-2">Value of time, ₹ per vehicle-hour (all vehicle types, occupants included)</span>
-              <input
-                type="number"
-                min={0}
-                max={1000}
-                value={vot}
-                onChange={(e) => setVot(Number(e.target.value) || 0)}
-                className="h-11 w-40 rounded-md bg-white px-3 text-[16px] num shadow-[inset_0_0_0_1px_#0002] focus-visible:shadow-[inset_0_0_0_2px_#2d6cdf]"
-              />
-            </label>
-            <p className="max-w-[56ch] text-[13.5px] leading-relaxed text-ink-2">
-              The vehicle mix (55% two-wheelers, 25% cars, 12% autos, 2.5% buses, 5.5% goods), fuel use per km and the 18% of side-road traffic that needs to
-              turn back are set out on the method page.
-            </p>
+      <div className="mt-8 grid gap-2.5 sm:grid-cols-3">
+        {[
+          { label: "Saved a weekday", value: `₹${fmt(perDay / 1000, 0)}k`, sub: `${fmt(dHours, 0)} veh-h · ${fmt(dFuel, 0)} L` },
+          { label: "Package cost", value: `₹${fmt(costLakh, 1)} L`, sub: "planning estimate" },
+          { label: "Pays back in", value: payback ? `${fmt(payback, 0)} days` : "–", sub: "at the values below" },
+        ].map((s) => (
+          <div key={s.label} className="rounded-2xl bg-ink p-4 text-chalk">
+            <div className="text-[13px] text-chalk-2">{s.label}</div>
+            <div className="mt-1.5 text-[30px] leading-none font-semibold tracking-[-0.03em] num">{s.value}</div>
+            <div className="mt-2 text-[12px] text-chalk-2 num">{s.sub}</div>
           </div>
-        </div>
+        ))}
+      </div>
+      <div className="mt-4 flex flex-wrap gap-3">
+        {[
+          { label: "Fuel ₹/litre", value: fuelPrice, set: setFuelPrice, min: 50, max: 200 },
+          { label: "Time ₹/veh-hour", value: vot, set: setVot, min: 0, max: 1000 },
+        ].map((f) => (
+          <label key={f.label} className="flex h-11 items-center gap-2 rounded-full bg-white pr-1.5 pl-4 text-[13px] text-ink-2 shadow-[0_1px_2px_#0000000f]">
+            {f.label}
+            <input
+              type="number"
+              inputMode="numeric"
+              min={f.min}
+              max={f.max}
+              value={f.value}
+              onChange={(e) => f.set(Number(e.target.value) || 0)}
+              className="h-8 w-20 rounded-full bg-paper px-3 text-[15px] font-semibold text-ink num outline-none focus-visible:shadow-[inset_0_0_0_2px_#2d6cdf]"
+            />
+          </label>
+        ))}
       </div>
     </div>
   );

@@ -51,8 +51,8 @@ export function StretchGrid({ stretches, title }: { stretches: Stretch[]; title:
                       type="button"
                       onMouseEnter={() => setSel({ i, h: hi })}
                       onFocus={() => setSel({ i, h: hi })}
-                      onMouseLeave={() => setSel(null)}
-                      className="block h-7 w-full rounded-[3px]"
+                      onClick={() => setSel({ i, h: hi })}
+                      className="block h-7 w-full rounded-[3px] transition-transform duration-150 active:scale-90"
                       style={{ background: flowColor(r) }}
                       aria-label={`${st.from} to ${st.to} m at ${hourLabel(h)}: ${r.toFixed(2)} times free flow, ${d} s lost`}
                     />
@@ -66,7 +66,7 @@ export function StretchGrid({ stretches, title }: { stretches: Stretch[]; title:
       <p className="mt-2 h-5 text-[13px] text-ink-2 num" aria-live="polite">
         {cur && sel
           ? `${stretches[sel.i].from}–${stretches[sel.i].to} m at ${hourLabel(cur[0])}: ${cur[1].toFixed(2)}× free flow, ${cur[2]} s lost on this stretch`
-          : "Hover a cell for the numbers. Chainage is metres from Mehdipatnam."}
+          : "Tap a cell for its numbers"}
       </p>
     </figure>
   );
@@ -108,8 +108,8 @@ export function CalibrationChart({ rows, title }: { rows: CalRow[]; title: strin
         className="w-full"
         role="img"
         aria-label={`${title}: simulated slowdown follows TomTom's typical slowdown through the day`}
-        onMouseLeave={() => setHover(null)}
-        onMouseMove={(e) => {
+        onPointerLeave={() => setHover(null)}
+        onPointerMove={(e) => {
           const r = e.currentTarget.getBoundingClientRect();
           const hx = (((e.clientX - r.left) / r.width) * W - pad.l) / (W - pad.l - pad.r) * 23;
           let best = 0;
@@ -143,7 +143,7 @@ export function CalibrationChart({ rows, title }: { rows: CalRow[]; title: strin
         )}
       </svg>
       <p className="mt-1 h-5 text-[13px] text-ink-2 num" aria-live="polite">
-        {h ? `${hourLabel(h.hour)}: TomTom ${h.tomtom.toFixed(2)}×, simulation ${h.sim.toFixed(2)}×` : "Hover the chart for each hour."}
+        {h ? `${hourLabel(h.hour)}: TomTom ${h.tomtom.toFixed(2)}×, simulation ${h.sim.toFixed(2)}×` : "Touch the chart for each hour"}
       </p>
     </figure>
   );
