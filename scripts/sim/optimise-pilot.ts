@@ -122,7 +122,17 @@ function micro(layout: Layout, h: number, seeds = [101, 202]): Row {
   return acc;
 }
 
-const fix = fixLayout(balanced!.openings);
+// The microsimulation has the final say: select-layout.ts scores every candidate in it and
+// passes the winner here. Without it, the quick model's balanced layout is used.
+const chosen = process.env.FORCE_OPENINGS ? process.env.FORCE_OPENINGS.split(",").map(Number) : balanced!.openings;
+const selection = (() => {
+  try {
+    return JSON.parse(readFileSync("data/pilot_selection.json", "utf8"));
+  } catch {
+    return null;
+  }
+})();
+const fix = fixLayout(chosen);
 const hours: Record<number, { today: Row; fix: Row }> = {};
 for (const h of calHours) {
   const t0 = Date.now();
@@ -135,7 +145,7 @@ for (const h of calHours) {
 // attribution at the evening peak
 const PEAK = 18;
 const parts = {
-  openings: fixLayout(balanced!.openings, { bays: false, autos: false, kerb: false }),
+  openings: fixLayout(chosen, { bays: false, autos: false, kerb: false }),
   bays: { ...TODAY, busBays: fix.busBays },
   autos: { ...TODAY, autoBays: true },
   kerb: { ...TODAY, clearKerb: true },
@@ -147,9 +157,9 @@ for (const [k, layout] of Object.entries(parts)) {
 }
 
 // costs
-const added = balanced!.openings.filter((s) => !TODAY_OPENINGS.some((t) => Math.abs(t - s) < 30));
-const kept = balanced!.openings.filter((s) => TODAY_OPENINGS.some((t) => Math.abs(t - s) < 30));
-const closed = TODAY_OPENINGS.filter((t) => !balanced!.openings.some((s) => Math.abs(t - s) < 30));
+const added = chosen.filter((s) => !TODAY_OPENINGS.some((t) => Math.abs(t - s) < 30));
+const kept = chosen.filter((s) => TODAY_OPENINGS.some((t) => Math.abs(t - s) < 30));
+const closed = TODAY_OPENINGS.filter((t) => !chosen.some((s) => Math.abs(t - s) < 30));
 const cost = {
   newOpenings: added.length * COSTS.newOpeningWithPocket,
   pockets: kept.length * COSTS.pocketOnExisting,
@@ -170,7 +180,8 @@ writeFileSync(
         goals: Object.fromEntries(GOALS.map((g) => [g.id, goalBest[g.id]])),
         balanced,
       },
-      layout: { openings: balanced!.openings, added, kept, closed, busBays: fix.busBays, autoBays: true, clearKerb: true },
+      layout: { openings: chosen, added, kept, closed, busBays: fix.busBays, autoBays: true, clearKerb: true },
+      selection,
       cost,
       hours,
       attribution: { hour: PEAK, today: hours[PEAK].today, parts: attribution },
