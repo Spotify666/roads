@@ -65,6 +65,9 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
       attributionControl: false,
       dragRotate: false,
       pitchWithRotate: false,
+      touchPitch: false,
+      // on touch screens one finger scrolls the page and two fingers move the map
+      cooperativeGestures: window.matchMedia("(pointer: coarse)").matches,
     });
     map.addControl(new NavigationControl({ showCompass: false }), "bottom-right");
     map.addControl(

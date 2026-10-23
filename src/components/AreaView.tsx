@@ -53,7 +53,7 @@ export function AreaWhen({ area }: { area: AreaDetail }) {
               onValueChange={(v) => v != null && setDirIdx(Number(v))}
             >
               {area.dirs.map((d, i) => (
-                <button key={d.tag} data-id={String(i)} type="button" role="tab" aria-selected={i === dirIdx} className="px-3.5 py-1.5 font-medium capitalize text-ink-2 data-[checked=true]:text-ink">
+                <button key={d.tag} data-id={String(i)} type="button" role="tab" aria-selected={i === dirIdx} className="px-3.5 py-2.5 font-medium capitalize text-ink-2 data-[checked=true]:text-ink sm:py-1.5">
                   {d.heading}
                 </button>
               ))}

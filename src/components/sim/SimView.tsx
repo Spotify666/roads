@@ -26,7 +26,8 @@ const LABELS = [
   { s: 1371, name: "Nanal Nagar" },
   { s: 2630, name: "Tolichowki" },
 ];
-const SPAN = 520;
+// metres of road in the street view: less on narrow screens so vehicles stay legible
+const spanFor = (width: number) => (width < 520 ? 230 : width < 900 ? 360 : 520);
 const SPEEDS = [1, 4, 10, 30];
 
 interface Counters {
@@ -109,6 +110,12 @@ export function SimView({ calibration, openings }: Props) {
   speedRef.current = speed;
   const visible = useRef(true);
   const host = useRef<HTMLDivElement>(null);
+  const [span, setSpan] = useState(520);
+  useEffect(() => {
+    const ro = new ResizeObserver(([e]) => setSpan(spanFor(e.contentRect.width)));
+    if (host.current) ro.observe(host.current);
+    return () => ro.disconnect();
+  }, []);
 
   useEffect(() => {
     const io = new IntersectionObserver(([e]) => (visible.current = e.isIntersecting));
@@ -149,8 +156,8 @@ export function SimView({ calibration, openings }: Props) {
     return () => cancelAnimationFrame(raf);
   }, [sims, hour]);
 
-  const win: [number, number] = [Math.max(0, center - SPAN / 2), Math.min(PILOT_MODEL.length, center + SPAN / 2)];
-  const pick = useCallback((s: number) => setCenter(Math.round(Math.min(PILOT_MODEL.length - SPAN / 2, Math.max(SPAN / 2, s)))), []);
+  const win: [number, number] = [Math.max(0, center - span / 2), Math.min(PILOT_MODEL.length, center + span / 2)];
+  const pick = useCallback((s: number) => setCenter(Math.round(Math.min(PILOT_MODEL.length - span / 2, Math.max(span / 2, s)))), [span]);
 
   const c = calibration[String(hour)];
 
@@ -164,14 +171,14 @@ export function SimView({ calibration, openings }: Props) {
           <div className="flex flex-wrap gap-1 rounded-lg bg-asphalt-2 p-1" role="radiogroup" aria-labelledby="hour-label">
             <AnimatedBackground defaultValue={String(hour)} className="rounded-md bg-asphalt-4" transition={{ type: "spring", bounce: 0.15, duration: 0.3 }} onValueChange={(v) => v && setHour(Number(v))}>
               {hours.map((h) => (
-                <button key={h} data-id={String(h)} type="button" role="radio" aria-checked={h === hour} className="px-2.5 py-1.5 text-[13.5px] font-medium text-chalk-2 num data-[checked=true]:text-chalk">
+                <button key={h} data-id={String(h)} type="button" role="radio" aria-checked={h === hour} className="px-2.5 py-2.5 text-[13.5px] font-medium text-chalk-2 num data-[checked=true]:text-chalk sm:py-1.5">
                   {hourLabel(h)}
                 </button>
               ))}
             </AnimatedBackground>
           </div>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
             onClick={() => setPlaying((p) => !p)}
@@ -193,7 +200,7 @@ export function SimView({ calibration, openings }: Props) {
           <button type="button" onClick={() => setEpoch((e) => e + 1)} className="h-10 rounded-md bg-asphalt-3 px-3 font-medium text-chalk transition-transform duration-150 active:scale-[0.97]">
             Restart
           </button>
-          <div className="ml-2 flex rounded-md bg-asphalt-2 p-1 text-[13.5px]" role="radiogroup" aria-label="Playback speed">
+          <div className="flex rounded-md bg-asphalt-2 p-1 text-[13.5px] sm:ml-2" role="radiogroup" aria-label="Playback speed">
             {SPEEDS.map((s) => (
               <button
                 key={s}
@@ -201,7 +208,7 @@ export function SimView({ calibration, openings }: Props) {
                 role="radio"
                 aria-checked={s === speed}
                 onClick={() => setSpeed(s)}
-                className={cn("rounded px-2.5 py-1.5 font-medium num transition-colors duration-150", s === speed ? "bg-asphalt-4 text-chalk" : "text-chalk-2 hover:text-chalk")}
+                className={cn("rounded px-3 py-2.5 font-medium num transition-colors duration-150 sm:py-1.5", s === speed ? "bg-asphalt-4 text-chalk" : "text-chalk-2 hover:text-chalk")}
               >
                 {s}×
               </button>
@@ -215,7 +222,7 @@ export function SimView({ calibration, openings }: Props) {
               key={s.name}
               type="button"
               onClick={() => pick(s.s)}
-              className={cn("rounded-md px-2.5 py-1.5 font-medium transition-colors duration-150", Math.abs(center - s.s) < 120 ? "bg-asphalt-4 text-chalk" : "bg-asphalt-2 text-chalk-2 hover:text-chalk")}
+              className={cn("rounded-md px-3 py-2.5 font-medium transition-colors duration-150 sm:py-1.5", Math.abs(center - s.s) < 120 ? "bg-asphalt-4 text-chalk" : "bg-asphalt-2 text-chalk-2 hover:text-chalk")}
             >
               {s.name}
             </button>

@@ -26,7 +26,7 @@ export function HourStrip({ values, hour, onChange, active, label }: Props) {
   };
   return (
     <div>
-      <div role="radiogroup" aria-label={label} className="grid grid-cols-24 gap-[3px]" style={{ gridTemplateColumns: "repeat(24, minmax(0, 1fr))" }} onKeyDown={onKey}>
+      <div role="radiogroup" aria-label={label} className="pointer-events-none grid gap-[3px] sm:pointer-events-auto" style={{ gridTemplateColumns: "repeat(24, minmax(0, 1fr))" }} onKeyDown={onKey}>
         {values.map((v, h) => {
           const selected = active && h === hour;
           return (
@@ -40,6 +40,7 @@ export function HourStrip({ values, hour, onChange, active, label }: Props) {
               aria-checked={selected}
               aria-label={`${hourLabel(h)}: typically ${flowLabel(v).toLowerCase()}, ${v.toFixed(2)} times free-flow time`}
               tabIndex={selected || (!active && h === hour) ? 0 : -1}
+              data-strip
               onClick={() => onChange(h)}
               className={cn(
                 "relative h-9 rounded-[3px] transition-[transform,opacity] duration-150 ease-[var(--ease-out-strong)] active:scale-[0.94]",
@@ -52,6 +53,17 @@ export function HourStrip({ values, hour, onChange, active, label }: Props) {
           );
         })}
       </div>
+      <input
+        type="range"
+        min={0}
+        max={23}
+        step={1}
+        value={hour}
+        onChange={(e) => onChange(Number(e.target.value))}
+        aria-label={`${label}: ${hourLabel(hour)}`}
+        aria-valuetext={`${hourLabel(hour)}, typically ${flowLabel(values[hour]).toLowerCase()}`}
+        className="hour-range mt-3 w-full sm:hidden"
+      />
       <div className="mt-3 flex justify-between text-xs text-chalk-2 num" aria-hidden="true">
         <span>12 am</span>
         <span>6 am</span>
