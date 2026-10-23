@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 };
 
 type Row = { vehHours: number; vehKm: number; fuel: number; slowHours: number; wrongside: number; uturns: number; trips: number; thrW: number; thrE: number };
+type Score = { slow: number; vehH: number; vehKm: number; fuel: number; wrong: number };
 type Breakdown = { vehKm: number; vehHours: number; stuckHours: number; litres: number; wrongSide: number };
 interface PilotData {
   length: number;
@@ -32,6 +33,13 @@ interface PilotData {
     daily: { today: Row; fix: Row };
     attribution: { hour: number; today: Row; parts: Record<string, Row> };
     reverseShare: number;
+    selection?: {
+      hours: number[];
+      today: Score;
+      candidates: Record<string, { openings: number[]; score: Score }>;
+      pick: string;
+      regret: number;
+    };
   };
 }
 
@@ -182,11 +190,18 @@ export default function PilotPage() {
           <div className="mx-auto max-w-[1180px] px-4 py-20 sm:px-6">
             <h2 className="text-[30px] font-semibold tracking-[-0.02em]">How the U-turn layout was chosen</h2>
             <p className="mt-4 max-w-[68ch] text-[16.5px] leading-relaxed">
-              The algorithm finds the best layout for each goal exactly, with a dynamic programme over every buildable site at 50 m spacing, then picks the one
-              layout that stays closest to all four. Here the goals pull apart: the least-traffic layout wants few openings, because each one is a conflict
-              point, while the least-distance layout wants many. The balanced layout lands within {Math.round(r.quick.balanced.regret * 100)}% of the best on
-              every goal, and every layout must cut wrong-side riding.
+              First, a quick model finds the best layout for each goal exactly, with a dynamic programme over every buildable site at 50 m spacing. In that
+              model the goals pull apart: the least-traffic layout wants few openings, because each one is a conflict point, while the least-distance layout
+              wants many, and the balanced layout is within {Math.round(r.quick.balanced.regret * 100)}% of the best on every goal.
             </p>
+            {r.selection && (
+              <p className="mt-4 max-w-[68ch] text-[16.5px] leading-relaxed">
+                Then every candidate runs through the full simulation, with queues, signals and bus stops, at{" "}
+                {r.selection.hours.map((h) => hourLabel(h)).join(", ")}. There the balanced layout comes out within{" "}
+                {Math.max(0.1, Math.round(r.selection.regret * 1000) / 10)}% of the best on all four goals, and it cuts wrong-side trips the most. It is the
+                one recommended.
+              </p>
+            )}
             <div className="mt-10">
               <LayoutDiagram
                 length={data.length}
@@ -197,6 +212,46 @@ export default function PilotPage() {
                 ]}
               />
             </div>
+            {r.selection && (
+              <div className="mt-10 overflow-x-auto">
+                <table className="w-full min-w-[640px] text-left text-[15px]">
+                  <caption className="mb-3 text-left text-[13.5px] text-ink-2">
+                    Full simulation with the whole package, per trip, against today, summed over {r.selection.hours.map((h) => hourLabel(h)).join(", ")}.
+                  </caption>
+                  <thead>
+                    <tr className="text-[13px] text-ink-2">
+                      <th className="pb-2 font-medium">U-turn layout</th>
+                      <th className="pb-2 text-right font-medium">Crawling time</th>
+                      <th className="pb-2 text-right font-medium">Travel time</th>
+                      <th className="pb-2 text-right font-medium">Distance</th>
+                      <th className="pb-2 text-right font-medium">Fuel</th>
+                      <th className="pb-2 text-right font-medium">Wrong-side trips</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Object.entries(r.selection.candidates).map(([name, c]) => {
+                      const t = r.selection!.today;
+                      const picked = name === r.selection!.pick;
+                      return (
+                        <tr key={name} className={picked ? "font-semibold" : ""}>
+                          <th scope="row" className="py-2 pr-4 font-[inherit]">
+                            {name.replace("(quick model)", "").replace("Quick-model balanced", "Balanced (recommended)").replace("congestion", "least traffic").replace("distance", "least distance").replace("time", "least time").replace("fuel", "least fuel")}
+                            <span className="ml-2 font-normal text-ink-2">{c.openings.length} openings</span>
+                          </th>
+                          <td className="py-2 text-right num">{pct(c.score.slow, t.slow)}</td>
+                          <td className="py-2 text-right num">{pct(c.score.vehH, t.vehH)}</td>
+                          <td className="py-2 text-right num">{pct(c.score.vehKm, t.vehKm)}</td>
+                          <td className="py-2 text-right num">{pct(c.score.fuel, t.fuel)}</td>
+                          <td className="py-2 text-right num">
+                            {Math.round(c.score.wrong)} <span className="font-normal text-ink-2">vs {Math.round(t.wrong)}</span>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            )}
             <div className="mt-8 overflow-x-auto">
               <table className="w-full min-w-[640px] text-left text-[15px]">
                 <caption className="mb-3 text-left text-[13.5px] text-ink-2">

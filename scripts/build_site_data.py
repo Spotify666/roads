@@ -181,6 +181,9 @@ def main():
 
     res_path = os.path.join(ROOT, "data", "pilot_results.json")
     results = json.load(open(res_path)) if os.path.exists(res_path) else None
+    sel_path = os.path.join(ROOT, "data", "pilot_selection.json")
+    if results and os.path.exists(sel_path):
+        results["selection"] = json.load(open(sel_path))
     if results:
         hrs = sorted(int(h) for h in results["hours"])
         keys = ["vehHours", "vehKm", "fuel", "slowHours", "wrongside", "uturns", "trips"]
