@@ -1,0 +1,1062 @@
+{
+ "mehdipatnam": {
+  "snapped": {
+   "lat": 17.395377671902907,
+   "lon": 78.44066110784931,
+   "offset_m": 0,
+   "on_bridge": false,
+   "road": "Golkonda Road",
+   "highway": "trunk"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 6,
+  "bus_stop_dist_m": [
+   1,
+   68,
+   69,
+   71,
+   77,
+   169
+  ],
+  "nearest_bus_stop_m": 1,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 3,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 0,
+  "osm_ways": 137
+ },
+ "nanal-nagar": {
+  "snapped": {
+   "lat": 17.395984487822822,
+   "lon": 78.43085300403574,
+   "offset_m": 63,
+   "on_bridge": false,
+   "road": "NH163",
+   "highway": "trunk"
+  },
+  "signals_250m": 2,
+  "signal_dist_m": [
+   38,
+   39
+  ],
+  "bus_stops_250m": 2,
+  "bus_stop_dist_m": [
+   12,
+   31
+  ],
+  "nearest_bus_stop_m": 12,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 3,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 0,
+  "osm_ways": 120
+ },
+ "tolichowki": {
+  "snapped": {
+   "lat": 17.398674779109044,
+   "lon": 78.41579028438836,
+   "offset_m": 9,
+   "on_bridge": false,
+   "road": "Tolichowki Road",
+   "highway": "primary"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 2,
+  "bus_stop_dist_m": [
+   50,
+   113
+  ],
+  "nearest_bus_stop_m": 50,
+  "crossings_250m": 1,
+  "lanes_min": 2,
+  "lanes_max": 2,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 1,
+  "osm_ways": 205
+ },
+ "shaikpet": {
+  "snapped": {
+   "lat": 17.41052929610925,
+   "lon": 78.39753442325497,
+   "offset_m": 7,
+   "on_bridge": false,
+   "road": "Old Bombay Highway",
+   "highway": "primary"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 2,
+  "bus_stop_dist_m": [
+   105,
+   129
+  ],
+  "nearest_bus_stop_m": 105,
+  "crossings_250m": 1,
+  "lanes_min": 2,
+  "lanes_max": 3,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 1,
+  "osm_ways": 169
+ },
+ "masab-tank": {
+  "snapped": {
+   "lat": 17.40327704202964,
+   "lon": 78.45272444553501,
+   "offset_m": 4,
+   "on_bridge": false,
+   "road": "Masab Tank Road",
+   "highway": "primary"
+  },
+  "signals_250m": 3,
+  "signal_dist_m": [
+   7,
+   33,
+   50
+  ],
+  "bus_stops_250m": 1,
+  "bus_stop_dist_m": [
+   112
+  ],
+  "nearest_bus_stop_m": 112,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 3,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 5,
+  "osm_ways": 173
+ },
+ "nmdc-pvnr": {
+  "snapped": {
+   "lat": 17.398808263594148,
+   "lon": 78.44943791360198,
+   "offset_m": 5,
+   "on_bridge": false,
+   "road": "Golkonda Road",
+   "highway": "trunk"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 2,
+  "bus_stop_dist_m": [
+   5,
+   21
+  ],
+  "nearest_bus_stop_m": 5,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 3,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 0,
+  "osm_ways": 181
+ },
+ "lakdikapul": {
+  "snapped": {
+   "lat": 17.404204051014542,
+   "lon": 78.46439635083694,
+   "offset_m": 1,
+   "on_bridge": false,
+   "road": "Lakdikapul Road",
+   "highway": "trunk"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 1,
+  "bus_stop_dist_m": [
+   124
+  ],
+  "nearest_bus_stop_m": 124,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 4,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 3,
+  "osm_ways": 199
+ },
+ "khairatabad": {
+  "snapped": {
+   "lat": 17.415775918893114,
+   "lon": 78.4616497755728,
+   "offset_m": 60,
+   "on_bridge": true,
+   "road": "Khairatabad Flyover",
+   "highway": "primary"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 0,
+  "bus_stop_dist_m": [],
+  "nearest_bus_stop_m": null,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 3,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 0,
+  "osm_ways": 194
+ },
+ "panjagutta": {
+  "snapped": {
+   "lat": 17.42547504785255,
+   "lon": 78.44882229449965,
+   "offset_m": 4,
+   "on_bridge": false,
+   "road": "Road Number 1",
+   "highway": "primary"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 0,
+  "bus_stop_dist_m": [],
+  "nearest_bus_stop_m": null,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 3,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 1,
+  "osm_ways": 168
+ },
+ "ameerpet": {
+  "snapped": {
+   "lat": 17.43537969419378,
+   "lon": 78.4446903447048,
+   "offset_m": 6,
+   "on_bridge": false,
+   "road": "Ameerpet Road - Panjagutta Main Road",
+   "highway": "trunk"
+  },
+  "signals_250m": 3,
+  "signal_dist_m": [
+   154,
+   159,
+   166
+  ],
+  "bus_stops_250m": 1,
+  "bus_stop_dist_m": [
+   142
+  ],
+  "nearest_bus_stop_m": 142,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 3,
+  "flyover": false,
+  "dual_carriageway": true,
+  "short_links": 2,
+  "osm_ways": 206
+ },
+ "begumpet": {
+  "snapped": {
+   "lat": 17.444172917988748,
+   "lon": 78.46957583282304,
+   "offset_m": 3,
+   "on_bridge": false,
+   "road": "Sardar Patel Road",
+   "highway": "primary"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 1,
+  "bus_stop_dist_m": [
+   193
+  ],
+  "nearest_bus_stop_m": 193,
+  "crossings_250m": 0,
+  "lanes_min": 4,
+  "lanes_max": 4,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 5,
+  "osm_ways": 207
+ },
+ "paradise": {
+  "snapped": {
+   "lat": 17.443005571706873,
+   "lon": 78.48742668072616,
+   "offset_m": 13,
+   "on_bridge": false,
+   "road": "Mahatma Gandhi Road",
+   "highway": "trunk"
+  },
+  "signals_250m": 7,
+  "signal_dist_m": [
+   8,
+   34,
+   47,
+   58,
+   61,
+   123
+  ],
+  "bus_stops_250m": 5,
+  "bus_stop_dist_m": [
+   30,
+   124,
+   165,
+   176,
+   238
+  ],
+  "nearest_bus_stop_m": 30,
+  "crossings_250m": 0,
+  "lanes_min": null,
+  "lanes_max": null,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 2,
+  "osm_ways": 146
+ },
+ "secunderabad": {
+  "snapped": {
+   "lat": 17.44076702003266,
+   "lon": 78.49883409315966,
+   "offset_m": 34,
+   "on_bridge": false,
+   "road": "Regimental Bazar Main Road",
+   "highway": "secondary"
+  },
+  "signals_250m": 2,
+  "signal_dist_m": [
+   228,
+   237
+  ],
+  "bus_stops_250m": 1,
+  "bus_stop_dist_m": [
+   176
+  ],
+  "nearest_bus_stop_m": 176,
+  "crossings_250m": 0,
+  "lanes_min": null,
+  "lanes_max": null,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 1,
+  "osm_ways": 236
+ },
+ "rtc-x-roads": {
+  "snapped": {
+   "lat": 17.407027325341442,
+   "lon": 78.4968054093426,
+   "offset_m": 1,
+   "on_bridge": false,
+   "road": "Golconda X Roads",
+   "highway": "primary"
+  },
+  "signals_250m": 1,
+  "signal_dist_m": [
+   26
+  ],
+  "bus_stops_250m": 0,
+  "bus_stop_dist_m": [],
+  "nearest_bus_stop_m": null,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 2,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 7,
+  "osm_ways": 154
+ },
+ "koti": {
+  "snapped": {
+   "lat": 17.384823678848242,
+   "lon": 78.4883833099688,
+   "offset_m": 23,
+   "on_bridge": false,
+   "road": "Main Road",
+   "highway": "primary"
+  },
+  "signals_250m": 3,
+  "signal_dist_m": [
+   69,
+   105,
+   113
+  ],
+  "bus_stops_250m": 1,
+  "bus_stop_dist_m": [
+   23
+  ],
+  "nearest_bus_stop_m": 23,
+  "crossings_250m": 0,
+  "lanes_min": null,
+  "lanes_max": null,
+  "flyover": false,
+  "dual_carriageway": true,
+  "short_links": 1,
+  "osm_ways": 143
+ },
+ "chaderghat": {
+  "snapped": {
+   "lat": 17.38008770529874,
+   "lon": 78.49278429381074,
+   "offset_m": 61,
+   "on_bridge": true,
+   "road": "Causeway Bridge",
+   "highway": "trunk"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 0,
+  "bus_stop_dist_m": [],
+  "nearest_bus_stop_m": null,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 2,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 0,
+  "osm_ways": 178
+ },
+ "chandrayangutta": {
+  "snapped": {
+   "lat": 17.3277823867026,
+   "lon": 78.4792629117667,
+   "offset_m": 8,
+   "on_bridge": false,
+   "road": "Inner Ring Road",
+   "highway": "primary"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 0,
+  "bus_stop_dist_m": [],
+  "nearest_bus_stop_m": null,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 2,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 1,
+  "osm_ways": 195
+ },
+ "aramghar": {
+  "snapped": {
+   "lat": 17.321669538954996,
+   "lon": 78.43193186593167,
+   "offset_m": 1,
+   "on_bridge": false,
+   "road": "Inner Ring Road Underpass",
+   "highway": "trunk"
+  },
+  "signals_250m": 4,
+  "signal_dist_m": [
+   34,
+   39,
+   47,
+   49
+  ],
+  "bus_stops_250m": 1,
+  "bus_stop_dist_m": [
+   129
+  ],
+  "nearest_bus_stop_m": 129,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 2,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 0,
+  "osm_ways": 152
+ },
+ "attapur": {
+  "snapped": {
+   "lat": 17.368080645573485,
+   "lon": 78.42907668021947,
+   "offset_m": 0,
+   "on_bridge": false,
+   "road": "Inner Ring Road",
+   "highway": "primary"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 0,
+  "bus_stop_dist_m": [],
+  "nearest_bus_stop_m": null,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 2,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 2,
+  "osm_ways": 171
+ },
+ "jubilee-checkpost": {
+  "snapped": {
+   "lat": 17.42655709291522,
+   "lon": 78.41555337838538,
+   "offset_m": 0,
+   "on_bridge": false,
+   "road": null,
+   "highway": "secondary"
+  },
+  "signals_250m": 4,
+  "signal_dist_m": [
+   0,
+   18,
+   20,
+   20
+  ],
+  "bus_stops_250m": 3,
+  "bus_stop_dist_m": [
+   42,
+   60,
+   111
+  ],
+  "nearest_bus_stop_m": 42,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 3,
+  "flyover": false,
+  "dual_carriageway": true,
+  "short_links": 0,
+  "osm_ways": 71
+ },
+ "agrasen": {
+  "snapped": {
+   "lat": 17.41636653521604,
+   "lon": 78.4260552479686,
+   "offset_m": 70,
+   "on_bridge": false,
+   "road": "Road No 10",
+   "highway": "secondary"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 0,
+  "bus_stop_dist_m": [],
+  "nearest_bus_stop_m": null,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 2,
+  "flyover": false,
+  "dual_carriageway": true,
+  "short_links": 1,
+  "osm_ways": 71
+ },
+ "road-no-12": {
+  "snapped": {
+   "lat": 17.40796913810841,
+   "lon": 78.45112226728779,
+   "offset_m": 41,
+   "on_bridge": false,
+   "road": "Road Number 1",
+   "highway": "primary"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 1,
+  "bus_stop_dist_m": [
+   31
+  ],
+  "nearest_bus_stop_m": 31,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 3,
+  "flyover": false,
+  "dual_carriageway": true,
+  "short_links": 1,
+  "osm_ways": 161
+ },
+ "hitec-city": {
+  "snapped": {
+   "lat": 17.451626218247508,
+   "lon": 78.38111729454589,
+   "offset_m": 3,
+   "on_bridge": false,
+   "road": null,
+   "highway": "primary"
+  },
+  "signals_250m": 8,
+  "signal_dist_m": [
+   35,
+   37,
+   39,
+   40,
+   42,
+   44
+  ],
+  "bus_stops_250m": 4,
+  "bus_stop_dist_m": [
+   60,
+   106,
+   147,
+   148
+  ],
+  "nearest_bus_stop_m": 60,
+  "crossings_250m": 12,
+  "lanes_min": 2,
+  "lanes_max": 4,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 2,
+  "osm_ways": 173
+ },
+ "raidurg": {
+  "snapped": {
+   "lat": 17.44217950218249,
+   "lon": 78.37713569626935,
+   "offset_m": 5,
+   "on_bridge": false,
+   "road": "HITEC City Road",
+   "highway": "primary"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 2,
+  "bus_stop_dist_m": [
+   57,
+   86
+  ],
+  "nearest_bus_stop_m": 57,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 4,
+  "flyover": false,
+  "dual_carriageway": true,
+  "short_links": 5,
+  "osm_ways": 209
+ },
+ "ikea": {
+  "snapped": {
+   "lat": 17.440579532316846,
+   "lon": 78.37549938057951,
+   "offset_m": 0,
+   "on_bridge": false,
+   "road": "Mindspace Junction Flyover",
+   "highway": "secondary"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 1,
+  "bus_stop_dist_m": [
+   183
+  ],
+  "nearest_bus_stop_m": 183,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 4,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 2,
+  "osm_ways": 180
+ },
+ "biodiversity": {
+  "snapped": {
+   "lat": 17.43078146902636,
+   "lon": 78.37302725713043,
+   "offset_m": 12,
+   "on_bridge": false,
+   "road": null,
+   "highway": "primary"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 2,
+  "bus_stop_dist_m": [
+   66,
+   213
+  ],
+  "nearest_bus_stop_m": 66,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 3,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 1,
+  "osm_ways": 152
+ },
+ "gachibowli": {
+  "snapped": {
+   "lat": 17.43884822261655,
+   "lon": 78.36364525251481,
+   "offset_m": 21,
+   "on_bridge": false,
+   "road": "Gachibowl Circle",
+   "highway": "motorway"
+  },
+  "signals_250m": 4,
+  "signal_dist_m": [
+   12,
+   31,
+   46,
+   58
+  ],
+  "bus_stops_250m": 4,
+  "bus_stop_dist_m": [
+   74,
+   74,
+   77,
+   118
+  ],
+  "nearest_bus_stop_m": 74,
+  "crossings_250m": 0,
+  "lanes_min": 1,
+  "lanes_max": 6,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 2,
+  "osm_ways": 223
+ },
+ "kothaguda": {
+  "snapped": {
+   "lat": 17.458919986401966,
+   "lon": 78.36598043002942,
+   "offset_m": 0,
+   "on_bridge": false,
+   "road": "Gachibowli - Miyapur Highway",
+   "highway": "primary"
+  },
+  "signals_250m": 1,
+  "signal_dist_m": [
+   0
+  ],
+  "bus_stops_250m": 3,
+  "bus_stop_dist_m": [
+   55,
+   139,
+   156
+  ],
+  "nearest_bus_stop_m": 55,
+  "crossings_250m": 8,
+  "lanes_min": 2,
+  "lanes_max": 5,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 1,
+  "osm_ways": 192
+ },
+ "medicover": {
+  "snapped": {
+   "lat": 17.4553567620545,
+   "lon": 78.37777505466983,
+   "offset_m": 28,
+   "on_bridge": false,
+   "road": "HITEC City\u2013Kondapur Main Road",
+   "highway": "primary"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 2,
+  "bus_stop_dist_m": [
+   50,
+   89
+  ],
+  "nearest_bus_stop_m": 50,
+  "crossings_250m": 0,
+  "lanes_min": 3,
+  "lanes_max": 3,
+  "flyover": false,
+  "dual_carriageway": true,
+  "short_links": 3,
+  "osm_ways": 83
+ },
+ "jntu": {
+  "snapped": {
+   "lat": 17.49872471318137,
+   "lon": 78.3888795487585,
+   "offset_m": 7,
+   "on_bridge": false,
+   "road": "Nizampet - Miyapur Road Mumbai Highway",
+   "highway": "trunk"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 2,
+  "bus_stop_dist_m": [
+   102,
+   217
+  ],
+  "nearest_bus_stop_m": 102,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 3,
+  "flyover": false,
+  "dual_carriageway": true,
+  "short_links": 0,
+  "osm_ways": 221
+ },
+ "kphb": {
+  "snapped": {
+   "lat": 17.49372258034231,
+   "lon": 78.40174074265899,
+   "offset_m": 7,
+   "on_bridge": false,
+   "road": "Nizampet - JNTU Road Mumbai Highway",
+   "highway": "trunk"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 1,
+  "bus_stop_dist_m": [
+   108
+  ],
+  "nearest_bus_stop_m": 108,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 2,
+  "flyover": false,
+  "dual_carriageway": true,
+  "short_links": 1,
+  "osm_ways": 157
+ },
+ "kukatpally-y": {
+  "snapped": {
+   "lat": 17.4738879250255,
+   "lon": 78.4270389322619,
+   "offset_m": 0,
+   "on_bridge": false,
+   "road": "Moosapet Y Junction - Balanagar Road",
+   "highway": "primary"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 0,
+  "bus_stop_dist_m": [],
+  "nearest_bus_stop_m": null,
+  "crossings_250m": 0,
+  "lanes_min": 3,
+  "lanes_max": 3,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 2,
+  "osm_ways": 154
+ },
+ "miyapur": {
+  "snapped": {
+   "lat": 17.496469316191998,
+   "lon": 78.37275073405058,
+   "offset_m": 10,
+   "on_bridge": false,
+   "road": "Nizampet - Miyapur Road Mumbai Highway",
+   "highway": "trunk"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 1,
+  "bus_stop_dist_m": [
+   204
+  ],
+  "nearest_bus_stop_m": 204,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 2,
+  "flyover": false,
+  "dual_carriageway": true,
+  "short_links": 0,
+  "osm_ways": 63
+ },
+ "financial-district": {
+  "snapped": {
+   "lat": 17.426067988802316,
+   "lon": 78.33785933808073,
+   "offset_m": 0,
+   "on_bridge": false,
+   "road": "Gopanpally - Wipro Road",
+   "highway": "secondary"
+  },
+  "signals_250m": 2,
+  "signal_dist_m": [
+   228,
+   241
+  ],
+  "bus_stops_250m": 0,
+  "bus_stop_dist_m": [],
+  "nearest_bus_stop_m": null,
+  "crossings_250m": 4,
+  "lanes_min": null,
+  "lanes_max": null,
+  "flyover": false,
+  "dual_carriageway": true,
+  "short_links": 0,
+  "osm_ways": 145
+ },
+ "suchitra": {
+  "snapped": {
+   "lat": 17.50225867746798,
+   "lon": 78.48377072678535,
+   "offset_m": 0,
+   "on_bridge": false,
+   "road": "Suchitra Road",
+   "highway": "secondary"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 0,
+  "bus_stop_dist_m": [],
+  "nearest_bus_stop_m": null,
+  "crossings_250m": 0,
+  "lanes_min": null,
+  "lanes_max": null,
+  "flyover": false,
+  "dual_carriageway": true,
+  "short_links": 1,
+  "osm_ways": 43
+ },
+ "lb-nagar": {
+  "snapped": {
+   "lat": 17.349867051416716,
+   "lon": 78.54796137811255,
+   "offset_m": 7,
+   "on_bridge": false,
+   "road": "Vijaywada Highway",
+   "highway": "primary"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 2,
+  "bus_stop_dist_m": [
+   46,
+   177
+  ],
+  "nearest_bus_stop_m": 46,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 2,
+  "flyover": false,
+  "dual_carriageway": true,
+  "short_links": 2,
+  "osm_ways": 185
+ },
+ "dilsukhnagar": {
+  "snapped": {
+   "lat": 17.368515115681667,
+   "lon": 78.52343246973089,
+   "offset_m": 9,
+   "on_bridge": false,
+   "road": "Vijaywada Highway",
+   "highway": "trunk"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 5,
+  "bus_stop_dist_m": [
+   9,
+   61,
+   76,
+   77,
+   120
+  ],
+  "nearest_bus_stop_m": 9,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 2,
+  "flyover": false,
+  "dual_carriageway": true,
+  "short_links": 1,
+  "osm_ways": 146
+ },
+ "chaitanyapuri": {
+  "snapped": {
+   "lat": 17.3683615556635,
+   "lon": 78.53594183176031,
+   "offset_m": 8,
+   "on_bridge": false,
+   "road": "Vijaywada Highway",
+   "highway": "trunk"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 1,
+  "bus_stop_dist_m": [
+   131
+  ],
+  "nearest_bus_stop_m": 131,
+  "crossings_250m": 0,
+  "lanes_min": 2,
+  "lanes_max": 2,
+  "flyover": false,
+  "dual_carriageway": true,
+  "short_links": 0,
+  "osm_ways": 149
+ },
+ "uppal": {
+  "snapped": {
+   "lat": 17.402459555268422,
+   "lon": 78.5594379604683,
+   "offset_m": 7,
+   "on_bridge": false,
+   "road": "Inner Ring Road",
+   "highway": "trunk"
+  },
+  "signals_250m": 4,
+  "signal_dist_m": [
+   80,
+   99,
+   160,
+   179
+  ],
+  "bus_stops_250m": 7,
+  "bus_stop_dist_m": [
+   6,
+   58,
+   97,
+   116,
+   129,
+   160
+  ],
+  "nearest_bus_stop_m": 6,
+  "crossings_250m": 7,
+  "lanes_min": 1,
+  "lanes_max": 3,
+  "flyover": false,
+  "dual_carriageway": true,
+  "short_links": 1,
+  "osm_ways": 151
+ },
+ "habsiguda": {
+  "snapped": {
+   "lat": 17.419147359308507,
+   "lon": 78.54146717946068,
+   "offset_m": 5,
+   "on_bridge": false,
+   "road": "Habsiguda Main Road",
+   "highway": "primary"
+  },
+  "signals_250m": 1,
+  "signal_dist_m": [
+   16
+  ],
+  "bus_stops_250m": 0,
+  "bus_stop_dist_m": [],
+  "nearest_bus_stop_m": null,
+  "crossings_250m": 0,
+  "lanes_min": 3,
+  "lanes_max": 3,
+  "flyover": false,
+  "dual_carriageway": true,
+  "short_links": 0,
+  "osm_ways": 106
+ },
+ "tarnaka": {
+  "snapped": {
+   "lat": 17.428369153702672,
+   "lon": 78.52847550318934,
+   "offset_m": 9,
+   "on_bridge": false,
+   "road": "Krishna Deva Raya Road",
+   "highway": "primary"
+  },
+  "signals_250m": 0,
+  "signal_dist_m": [],
+  "bus_stops_250m": 1,
+  "bus_stop_dist_m": [
+   106
+  ],
+  "nearest_bus_stop_m": 106,
+  "crossings_250m": 0,
+  "lanes_min": null,
+  "lanes_max": null,
+  "flyover": true,
+  "dual_carriageway": true,
+  "short_links": 0,
+  "osm_ways": 138
+ }
+}

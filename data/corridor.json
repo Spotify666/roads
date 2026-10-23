@@ -1,0 +1,1339 @@
+{
+ "name": "Mehdipatnam \u2013 Tolichowki",
+ "length_m": 2696,
+ "length_east_m": 2639,
+ "west": [
+  [
+   17.394893,
+   78.440249,
+   0
+  ],
+  [
+   17.39481,
+   78.440076,
+   21
+  ],
+  [
+   17.394768,
+   78.439954,
+   34
+  ],
+  [
+   17.394718,
+   78.439817,
+   50
+  ],
+  [
+   17.394697,
+   78.439684,
+   64
+  ],
+  [
+   17.394695,
+   78.439536,
+   80
+  ],
+  [
+   17.394692,
+   78.439421,
+   92
+  ],
+  [
+   17.394686,
+   78.439247,
+   111
+  ],
+  [
+   17.394712,
+   78.438932,
+   144
+  ],
+  [
+   17.394738,
+   78.438453,
+   195
+  ],
+  [
+   17.394762,
+   78.438171,
+   225
+  ],
+  [
+   17.394787,
+   78.437872,
+   257
+  ],
+  [
+   17.39481,
+   78.437595,
+   286
+  ],
+  [
+   17.394849,
+   78.437351,
+   313
+  ],
+  [
+   17.394889,
+   78.43697,
+   353
+  ],
+  [
+   17.394897,
+   78.436894,
+   361
+  ],
+  [
+   17.394914,
+   78.436714,
+   381
+  ],
+  [
+   17.39496,
+   78.436318,
+   423
+  ],
+  [
+   17.394973,
+   78.436124,
+   444
+  ],
+  [
+   17.395031,
+   78.435267,
+   535
+  ],
+  [
+   17.395051,
+   78.435015,
+   562
+  ],
+  [
+   17.395066,
+   78.434754,
+   589
+  ],
+  [
+   17.3951,
+   78.434346,
+   633
+  ],
+  [
+   17.395111,
+   78.434212,
+   647
+  ],
+  [
+   17.395139,
+   78.433931,
+   677
+  ],
+  [
+   17.395147,
+   78.433835,
+   687
+  ],
+  [
+   17.39517,
+   78.433582,
+   714
+  ],
+  [
+   17.395196,
+   78.433402,
+   734
+  ],
+  [
+   17.395245,
+   78.433239,
+   752
+  ],
+  [
+   17.395297,
+   78.433053,
+   772
+  ],
+  [
+   17.395505,
+   78.432668,
+   819
+  ],
+  [
+   17.395588,
+   78.432462,
+   843
+  ],
+  [
+   17.395601,
+   78.432431,
+   847
+  ],
+  [
+   17.395661,
+   78.43225,
+   867
+  ],
+  [
+   17.395719,
+   78.431987,
+   895
+  ],
+  [
+   17.395757,
+   78.431361,
+   962
+  ],
+  [
+   17.395761,
+   78.431133,
+   986
+  ],
+  [
+   17.395776,
+   78.4308,
+   1022
+  ],
+  [
+   17.395779,
+   78.430753,
+   1027
+  ],
+  [
+   17.395796,
+   78.430539,
+   1049
+  ],
+  [
+   17.395868,
+   78.429435,
+   1167
+  ],
+  [
+   17.395881,
+   78.429124,
+   1200
+  ],
+  [
+   17.395885,
+   78.429022,
+   1211
+  ],
+  [
+   17.395908,
+   78.428586,
+   1257
+  ],
+  [
+   17.395915,
+   78.428454,
+   1271
+  ],
+  [
+   17.395896,
+   78.428031,
+   1316
+  ],
+  [
+   17.395891,
+   78.427908,
+   1329
+  ],
+  [
+   17.395852,
+   78.427864,
+   1335
+  ],
+  [
+   17.395826,
+   78.427783,
+   1345
+  ],
+  [
+   17.395832,
+   78.427723,
+   1351
+  ],
+  [
+   17.395844,
+   78.427692,
+   1354
+  ],
+  [
+   17.395878,
+   78.427644,
+   1361
+  ],
+  [
+   17.395909,
+   78.427621,
+   1365
+  ],
+  [
+   17.395963,
+   78.4276,
+   1371
+  ],
+  [
+   17.396049,
+   78.42686,
+   1450
+  ],
+  [
+   17.396191,
+   78.42579,
+   1565
+  ],
+  [
+   17.396245,
+   78.425379,
+   1609
+  ],
+  [
+   17.396428,
+   78.424353,
+   1720
+  ],
+  [
+   17.396602,
+   78.423159,
+   1848
+  ],
+  [
+   17.396725,
+   78.422484,
+   1921
+  ],
+  [
+   17.39675,
+   78.422366,
+   1934
+  ],
+  [
+   17.396858,
+   78.4217,
+   2005
+  ],
+  [
+   17.396953,
+   78.421242,
+   2055
+  ],
+  [
+   17.397177,
+   78.420574,
+   2130
+  ],
+  [
+   17.397343,
+   78.42019,
+   2175
+  ],
+  [
+   17.397588,
+   78.419723,
+   2232
+  ],
+  [
+   17.397747,
+   78.419422,
+   2268
+  ],
+  [
+   17.397742,
+   78.419329,
+   2278
+  ],
+  [
+   17.397905,
+   78.41903,
+   2315
+  ],
+  [
+   17.398145,
+   78.418637,
+   2364
+  ],
+  [
+   17.398277,
+   78.418229,
+   2410
+  ],
+  [
+   17.398355,
+   78.417444,
+   2494
+  ],
+  [
+   17.398362,
+   78.416859,
+   2556
+  ],
+  [
+   17.398539,
+   78.416073,
+   2641
+  ],
+  [
+   17.398759,
+   78.415615,
+   2696
+  ]
+ ],
+ "east": [
+  [
+   17.398885,
+   78.416277
+  ],
+  [
+   17.398772,
+   78.416577
+  ],
+  [
+   17.398706,
+   78.416857
+  ],
+  [
+   17.398685,
+   78.416949
+  ],
+  [
+   17.398635,
+   78.417481
+  ],
+  [
+   17.398635,
+   78.41776
+  ],
+  [
+   17.398595,
+   78.418115
+  ],
+  [
+   17.398547,
+   78.418404
+  ],
+  [
+   17.398516,
+   78.418527
+  ],
+  [
+   17.398469,
+   78.418645
+  ],
+  [
+   17.398428,
+   78.418684
+  ],
+  [
+   17.398389,
+   78.418711
+  ],
+  [
+   17.398333,
+   78.418738
+  ],
+  [
+   17.398311,
+   78.418774
+  ],
+  [
+   17.398221,
+   78.418915
+  ],
+  [
+   17.397969,
+   78.419296
+  ],
+  [
+   17.397855,
+   78.41945
+  ],
+  [
+   17.397568,
+   78.419944
+  ],
+  [
+   17.397429,
+   78.420231
+  ],
+  [
+   17.397414,
+   78.420262
+  ],
+  [
+   17.397269,
+   78.420614
+  ],
+  [
+   17.397157,
+   78.420934
+  ],
+  [
+   17.396977,
+   78.421586
+  ],
+  [
+   17.396939,
+   78.421793
+  ],
+  [
+   17.396853,
+   78.42238
+  ],
+  [
+   17.39684,
+   78.422512
+  ],
+  [
+   17.396799,
+   78.422764
+  ],
+  [
+   17.396749,
+   78.423071
+  ],
+  [
+   17.396729,
+   78.423215
+  ],
+  [
+   17.396656,
+   78.423624
+  ],
+  [
+   17.396579,
+   78.424181
+  ],
+  [
+   17.396472,
+   78.424887
+  ],
+  [
+   17.39644,
+   78.425143
+  ],
+  [
+   17.396352,
+   78.425827
+  ],
+  [
+   17.396217,
+   78.426874
+  ],
+  [
+   17.396148,
+   78.427717
+  ],
+  [
+   17.396155,
+   78.427783
+  ],
+  [
+   17.396141,
+   78.427841
+  ],
+  [
+   17.396094,
+   78.428459
+  ],
+  [
+   17.396034,
+   78.429311
+  ],
+  [
+   17.395986,
+   78.430745
+  ],
+  [
+   17.395981,
+   78.431207
+  ],
+  [
+   17.395975,
+   78.431707
+  ],
+  [
+   17.395959,
+   78.432149
+  ],
+  [
+   17.395884,
+   78.432441
+  ],
+  [
+   17.3958,
+   78.432609
+  ],
+  [
+   17.395715,
+   78.432751
+  ],
+  [
+   17.395453,
+   78.433209
+  ],
+  [
+   17.395404,
+   78.433381
+  ],
+  [
+   17.395373,
+   78.433508
+  ],
+  [
+   17.395354,
+   78.433675
+  ],
+  [
+   17.395337,
+   78.43388
+  ],
+  [
+   17.395301,
+   78.434343
+  ],
+  [
+   17.3953,
+   78.434368
+  ],
+  [
+   17.395263,
+   78.435023
+  ],
+  [
+   17.395159,
+   78.436135
+  ],
+  [
+   17.395101,
+   78.436738
+  ],
+  [
+   17.395089,
+   78.436864
+  ],
+  [
+   17.395015,
+   78.43783
+  ],
+  [
+   17.394942,
+   78.439057
+  ],
+  [
+   17.39496,
+   78.439533
+  ],
+  [
+   17.395007,
+   78.439739
+  ],
+  [
+   17.395077,
+   78.439946
+  ],
+  [
+   17.395248,
+   78.440361
+  ]
+ ],
+ "features": [
+  {
+   "kind": "side_road",
+   "chainage": 64,
+   "highway": "secondary",
+   "name": "Asifnagar Road",
+   "side": "south",
+   "way": "1103796096",
+   "len": 283
+  },
+  {
+   "kind": "side_road",
+   "chainage": 80,
+   "highway": "secondary",
+   "name": "Asif Nagar road",
+   "side": "south",
+   "way": "1103796097",
+   "len": 369
+  },
+  {
+   "kind": "bus_stop",
+   "chainage": 111,
+   "name": "Mehdipatnam",
+   "offset": 9,
+   "carriageway": "west"
+  },
+  {
+   "kind": "side_road",
+   "chainage": 144,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "116439943",
+   "len": 206
+  },
+  {
+   "kind": "side_road",
+   "chainage": 144,
+   "highway": "service",
+   "name": null,
+   "side": "north",
+   "way": "116613139",
+   "len": 187
+  },
+  {
+   "kind": "side_road",
+   "chainage": 225,
+   "highway": "tertiary",
+   "name": null,
+   "side": "south",
+   "way": "827086280",
+   "len": 316
+  },
+  {
+   "kind": "bus_stop",
+   "chainage": 257,
+   "name": "Mehdipatnam",
+   "offset": 13,
+   "carriageway": "west"
+  },
+  {
+   "kind": "side_road",
+   "chainage": 257,
+   "highway": "service",
+   "name": null,
+   "side": "south",
+   "way": "1318370995",
+   "len": 10
+  },
+  {
+   "kind": "side_road",
+   "chainage": 286,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "282036715",
+   "len": 68
+  },
+  {
+   "kind": "side_road",
+   "chainage": 353,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "1193907387",
+   "len": 72
+  },
+  {
+   "kind": "side_road",
+   "chainage": 361,
+   "highway": "service",
+   "name": null,
+   "side": "south",
+   "way": "1190151935",
+   "len": 252
+  },
+  {
+   "kind": "median_opening",
+   "chainage": 381,
+   "highway": "trunk_link",
+   "name": null,
+   "side": "south",
+   "way": "656743648",
+   "len": 21
+  },
+  {
+   "kind": "side_road",
+   "chainage": 423,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "352236325",
+   "len": 191
+  },
+  {
+   "kind": "side_road",
+   "chainage": 444,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "1195561017",
+   "len": 60
+  },
+  {
+   "kind": "bus_stop",
+   "chainage": 535,
+   "name": "medipatnam bus stop",
+   "offset": 29,
+   "carriageway": "east"
+  },
+  {
+   "kind": "side_road",
+   "chainage": 535,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "334712712",
+   "len": 886
+  },
+  {
+   "kind": "side_road",
+   "chainage": 562,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "282036719",
+   "len": 76
+  },
+  {
+   "kind": "median_opening",
+   "chainage": 633,
+   "highway": "trunk_link",
+   "name": null,
+   "side": "south",
+   "way": "687393519",
+   "len": 22
+  },
+  {
+   "kind": "side_road",
+   "chainage": 677,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "282035722",
+   "len": 140
+  },
+  {
+   "kind": "side_road",
+   "chainage": 714,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "282035375",
+   "len": 96
+  },
+  {
+   "kind": "side_road",
+   "chainage": 772,
+   "highway": "tertiary",
+   "name": null,
+   "side": "south",
+   "way": "116607733",
+   "len": 364
+  },
+  {
+   "kind": "side_road",
+   "chainage": 843,
+   "highway": "residential",
+   "name": "Dilshad Nagar Colony road",
+   "side": "south",
+   "way": "334712541",
+   "len": 511
+  },
+  {
+   "kind": "side_road",
+   "chainage": 843,
+   "highway": "service",
+   "name": null,
+   "side": "north",
+   "way": "116614326",
+   "len": 1267
+  },
+  {
+   "kind": "side_road",
+   "chainage": 867,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "352235040",
+   "len": 68
+  },
+  {
+   "kind": "side_road",
+   "chainage": 867,
+   "highway": "primary",
+   "name": "Inner Ring Road",
+   "side": "south",
+   "way": "1109179959",
+   "len": 347
+  },
+  {
+   "kind": "side_road",
+   "chainage": 895,
+   "highway": "primary",
+   "name": "Inner Ring Road",
+   "side": "north",
+   "way": "207472304",
+   "len": 113
+  },
+  {
+   "kind": "side_road",
+   "chainage": 962,
+   "highway": "primary",
+   "name": "Inner Ring Road",
+   "side": "south",
+   "way": "207472304",
+   "len": 113
+  },
+  {
+   "kind": "signal",
+   "chainage": 986,
+   "name": null
+  },
+  {
+   "kind": "bus_stop",
+   "chainage": 1022,
+   "name": "Rethibowli",
+   "offset": 9,
+   "carriageway": "west"
+  },
+  {
+   "kind": "side_road",
+   "chainage": 1022,
+   "highway": "trunk_link",
+   "name": null,
+   "side": "south",
+   "way": "314670333",
+   "len": 69
+  },
+  {
+   "kind": "side_road",
+   "chainage": 1027,
+   "highway": "service",
+   "name": null,
+   "side": "south",
+   "way": "1465000466",
+   "len": 52
+  },
+  {
+   "kind": "side_road",
+   "chainage": 1049,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "281795926",
+   "len": 282
+  },
+  {
+   "kind": "side_road",
+   "chainage": 1211,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "416865792",
+   "len": 76
+  },
+  {
+   "kind": "side_road",
+   "chainage": 1257,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "416865755",
+   "len": 36
+  },
+  {
+   "kind": "median_opening",
+   "chainage": 1271,
+   "highway": "service",
+   "name": null,
+   "side": "south",
+   "way": "207472300",
+   "len": 20
+  },
+  {
+   "kind": "side_road",
+   "chainage": 1271,
+   "highway": "service",
+   "name": null,
+   "side": "north",
+   "way": "352235193",
+   "len": 35
+  },
+  {
+   "kind": "side_road",
+   "chainage": 1316,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "416865768",
+   "len": 29
+  },
+  {
+   "kind": "signal",
+   "chainage": 1371,
+   "name": null
+  },
+  {
+   "kind": "bus_stop",
+   "chainage": 1450,
+   "name": "Nanalnagar",
+   "offset": 21,
+   "carriageway": "west"
+  },
+  {
+   "kind": "side_road",
+   "chainage": 1450,
+   "highway": "service",
+   "name": null,
+   "side": "north",
+   "way": "116616290",
+   "len": 441
+  },
+  {
+   "kind": "median_opening",
+   "chainage": 1565,
+   "highway": "primary_link",
+   "name": null,
+   "side": "south",
+   "way": "1504823639",
+   "len": 18
+  },
+  {
+   "kind": "side_road",
+   "chainage": 1609,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "182703150",
+   "len": 147
+  },
+  {
+   "kind": "side_road",
+   "chainage": 1609,
+   "highway": "service",
+   "name": null,
+   "side": "north",
+   "way": "352234987",
+   "len": 48
+  },
+  {
+   "kind": "side_road",
+   "chainage": 1720,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "282035588",
+   "len": 151
+  },
+  {
+   "kind": "side_road",
+   "chainage": 1720,
+   "highway": "service",
+   "name": null,
+   "side": "north",
+   "way": "1238277232",
+   "len": 12
+  },
+  {
+   "kind": "side_road",
+   "chainage": 1720,
+   "highway": "service",
+   "name": null,
+   "side": "north",
+   "way": "1238277233",
+   "len": 15
+  },
+  {
+   "kind": "side_road",
+   "chainage": 1848,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "207472302",
+   "len": 552
+  },
+  {
+   "kind": "side_road",
+   "chainage": 1848,
+   "highway": "residential",
+   "name": null,
+   "side": "north",
+   "way": "281273502",
+   "len": 186
+  },
+  {
+   "kind": "side_road",
+   "chainage": 1921,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "282035334",
+   "len": 336
+  },
+  {
+   "kind": "side_road",
+   "chainage": 1921,
+   "highway": "residential",
+   "name": null,
+   "side": "north",
+   "way": "281273535",
+   "len": 80
+  },
+  {
+   "kind": "side_road",
+   "chainage": 1921,
+   "highway": "residential",
+   "name": null,
+   "side": "north",
+   "way": "281273528",
+   "len": 114
+  },
+  {
+   "kind": "bus_stop",
+   "chainage": 1934,
+   "name": "Salarjung Colony",
+   "offset": 20,
+   "carriageway": "east"
+  },
+  {
+   "kind": "side_road",
+   "chainage": 2005,
+   "highway": "residential",
+   "name": null,
+   "side": "north",
+   "way": "281273498",
+   "len": 366
+  },
+  {
+   "kind": "side_road",
+   "chainage": 2055,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "352235574",
+   "len": 494
+  },
+  {
+   "kind": "side_road",
+   "chainage": 2175,
+   "highway": "residential",
+   "name": null,
+   "side": "north",
+   "way": "362634290",
+   "len": 468
+  },
+  {
+   "kind": "side_road",
+   "chainage": 2268,
+   "highway": "primary",
+   "name": "Tolichowki Flyover",
+   "side": "south",
+   "way": "1311972348",
+   "len": 25
+  },
+  {
+   "kind": "side_road",
+   "chainage": 2278,
+   "highway": "residential",
+   "name": null,
+   "side": "north",
+   "way": "281273537",
+   "len": 356
+  },
+  {
+   "kind": "side_road",
+   "chainage": 2315,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "281485882",
+   "len": 141
+  },
+  {
+   "kind": "side_road",
+   "chainage": 2364,
+   "highway": "primary",
+   "name": "Tolichowki Flyover",
+   "side": "north",
+   "way": "1311972347",
+   "len": 18
+  },
+  {
+   "kind": "side_road",
+   "chainage": 2364,
+   "highway": "residential",
+   "name": null,
+   "side": "north",
+   "way": "352232882",
+   "len": 84
+  },
+  {
+   "kind": "side_road",
+   "chainage": 2494,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "352234169",
+   "len": 45
+  },
+  {
+   "kind": "side_road",
+   "chainage": 2494,
+   "highway": "residential",
+   "name": null,
+   "side": "north",
+   "way": "352234010",
+   "len": 135
+  },
+  {
+   "kind": "bus_stop",
+   "chainage": 2556,
+   "name": "Tolichowki",
+   "offset": 30,
+   "carriageway": "east"
+  },
+  {
+   "kind": "median_opening",
+   "chainage": 2556,
+   "highway": "tertiary",
+   "name": null,
+   "side": "south",
+   "way": "1038717701",
+   "len": 39
+  },
+  {
+   "kind": "side_road",
+   "chainage": 2556,
+   "highway": "tertiary",
+   "name": null,
+   "side": "south",
+   "way": "281276621",
+   "len": 416
+  },
+  {
+   "kind": "side_road",
+   "chainage": 2641,
+   "highway": "residential",
+   "name": null,
+   "side": "south",
+   "way": "352234991",
+   "len": 45
+  },
+  {
+   "kind": "side_road",
+   "chainage": 2696,
+   "highway": "tertiary",
+   "name": null,
+   "side": "south",
+   "way": "1208987932",
+   "len": 550
+  },
+  {
+   "kind": "side_road",
+   "chainage": 2696,
+   "highway": "tertiary",
+   "name": null,
+   "side": "south",
+   "way": "1214225826",
+   "len": 53
+  }
+ ],
+ "lanes": [
+  {
+   "from": 0,
+   "to": 867,
+   "lanes": "3",
+   "oneway": "yes",
+   "name": "Golkonda Road",
+   "maxspeed": "60"
+  },
+  {
+   "from": 867,
+   "to": 962,
+   "lanes": "3",
+   "oneway": "yes",
+   "name": "Golkonda Road",
+   "maxspeed": "60"
+  },
+  {
+   "from": 962,
+   "to": 986,
+   "lanes": "3",
+   "oneway": "yes",
+   "name": "Golkonda Road",
+   "maxspeed": "60"
+  },
+  {
+   "from": 986,
+   "to": 1022,
+   "lanes": null,
+   "oneway": "yes",
+   "name": "Golkonda Road",
+   "maxspeed": "60"
+  },
+  {
+   "from": 1022,
+   "to": 1329,
+   "lanes": "3",
+   "oneway": "yes",
+   "name": "Golkonda Road",
+   "maxspeed": "60"
+  },
+  {
+   "from": 1329,
+   "to": 1345,
+   "lanes": "4",
+   "oneway": null,
+   "name": "Golkonda Road",
+   "maxspeed": null
+  },
+  {
+   "from": 1329,
+   "to": 1329,
+   "lanes": "4",
+   "oneway": null,
+   "name": "Golkonda Road",
+   "maxspeed": null
+  },
+  {
+   "from": 1345,
+   "to": 1351,
+   "lanes": "2",
+   "oneway": "yes",
+   "name": null,
+   "maxspeed": "60"
+  },
+  {
+   "from": 1345,
+   "to": 1365,
+   "lanes": "4",
+   "oneway": null,
+   "name": "Golkonda Road",
+   "maxspeed": null
+  },
+  {
+   "from": 1351,
+   "to": 1365,
+   "lanes": "2",
+   "oneway": "yes",
+   "name": null,
+   "maxspeed": "60"
+  },
+  {
+   "from": 1365,
+   "to": 1371,
+   "lanes": "4",
+   "oneway": null,
+   "name": "Golkonda Road",
+   "maxspeed": null
+  },
+  {
+   "from": 1371,
+   "to": 2268,
+   "lanes": "2",
+   "oneway": "yes",
+   "name": "Old Bombay Highway",
+   "maxspeed": "60"
+  },
+  {
+   "from": 2268,
+   "to": 2696,
+   "lanes": null,
+   "oneway": "yes",
+   "name": "Tolichowki Road",
+   "maxspeed": null
+  }
+ ],
+ "source": "OpenStreetMap contributors (ODbL), extracted 2026-10-23"
+}

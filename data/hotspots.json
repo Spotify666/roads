@@ -1,0 +1,1413 @@
+[
+ {
+  "id": "mehdipatnam",
+  "name": "Mehdipatnam",
+  "place": "Bus stop and Rythu Bazar, Golconda Road",
+  "lat": 17.39538,
+  "lon": 78.44066,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "pilot": true,
+  "reported": [
+   {
+    "text": "The 3 km Mehdipatnam–Tolichowki–Shaikpet stretch carries 80,000 to 1,00,000 vehicles a day and jams at all hours.",
+    "src": "hi-mehdipatnam-2024"
+   },
+   {
+    "text": "The Mehdipatnam bus stop runs many buses and sharing autos; buses stop abruptly and autos crowd the carriageway.",
+    "src": "hi-tolichowki-2022"
+   },
+   {
+    "text": "Named a major congestion hotspot in coverage of the 2025 TomTom index.",
+    "src": "sp-tomtom-2026"
+   }
+  ],
+  "timeNotes": [
+   {
+    "text": "Commuters report the 10–15 minute stretch takes over half an hour at peak.",
+    "src": "hi-mehdipatnam-2024"
+   }
+  ],
+  "causes": [
+   "bus-stop-in-lane",
+   "shared-autos",
+   "u-turn-detour",
+   "works"
+  ],
+  "fix": {
+   "type": "bus-stops",
+   "title": "Bus bay plus a shared-auto bay set back from the junction",
+   "detail": "Cut a 60 m bus bay into the footpath side at the Rythu Bazar stop so buses stop out of the running lane, and move the shared-auto stand 80 m back into a marked bay. Pair it with the U-turn re-spacing tested in the simulation below.",
+   "agency": "GHMC + TGSRTC + Hyderabad City Traffic Police",
+   "costLakh": [
+    20,
+    45
+   ],
+   "weeks": 8
+  }
+ },
+ {
+  "id": "nanal-nagar",
+  "name": "Nanal Nagar X Roads",
+  "place": "Mehdipatnam–Tolichowki road",
+  "lat": 17.39655,
+  "lon": 78.43086,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [
+   {
+    "text": "Karwan MLA, GHMC and traffic police inspected Mehdipatnam–Nanal Nagar–Tolichowki over rising traffic chaos.",
+    "src": "hi-tolichowki-2022"
+   },
+   {
+    "text": "Commuters avoiding the main road cut through inner colonies, bringing them to a standstill.",
+    "src": "hi-tolichowki-2024"
+   }
+  ],
+  "timeNotes": [],
+  "causes": [
+   "rat-running",
+   "works",
+   "signal"
+  ],
+  "fix": {
+   "type": "junctions",
+   "title": "Signal retiming with a protected right-turn phase",
+   "detail": "Re-time the Nanal Nagar signal from counted turning flows, give the heavy right turn its own short phase and add box-junction markings so queues don't block the cross street.",
+   "agency": "Hyderabad City Traffic Police",
+   "costLakh": [
+    2,
+    6
+   ],
+   "weeks": 3
+  }
+ },
+ {
+  "id": "tolichowki",
+  "name": "Tolichowki",
+  "place": "Under and around the Tolichowki flyover",
+  "lat": 17.39875,
+  "lon": 78.41583,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [
+   {
+    "text": "Both sides of the road are clogged with parked vehicles, pedestrians and sellers; the 110 ft road-widening proposal is still pending.",
+    "src": "hi-tolichowki-2022"
+   },
+   {
+    "text": "Vehicles parked outside marriage halls and hotels, and shoppers' cars on road edges, narrow the carriageway.",
+    "src": "hi-tolichowki-2022"
+   },
+   {
+    "text": "GHMC officials said congestion in Tolichowki is mainly due to street vendors.",
+    "src": "hi-tolichowki-2022"
+   }
+  ],
+  "timeNotes": [
+   {
+    "text": "Evening jams worsen with marriage-hall and hotel traffic parking on the road.",
+    "src": "hi-tolichowki-2022"
+   }
+  ],
+  "causes": [
+   "parking",
+   "vendors",
+   "encroachment",
+   "works"
+  ],
+  "fix": {
+   "type": "parking",
+   "title": "No-stopping zone 100 m either side, plus an off-road vending zone",
+   "detail": "Mark a 100 m no-stopping zone on both approaches, move pushcarts to a vending zone on the service road, and require marriage halls to run valet parking off the carriageway on event nights.",
+   "agency": "GHMC + Hyderabad City Traffic Police",
+   "costLakh": [
+    3,
+    10
+   ],
+   "weeks": 4
+  }
+ },
+ {
+  "id": "shaikpet",
+  "name": "Shaikpet",
+  "place": "U-turn under the Shaikpet flyover",
+  "lat": 17.41058,
+  "lon": 78.39758,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [
+   {
+    "text": "The U-turn under the Shaikpet flyover forces a long detour; drivers often ride wrong-side instead.",
+    "src": "tt-uturns-2024"
+   },
+   {
+    "text": "Masab Tank–Tolichowki–Shaikpet towards Gachibowli was the worst-hit road in the 22 Sept 2026 evening rain.",
+    "src": "hi-rain-2026"
+   }
+  ],
+  "timeNotes": [
+   {
+    "text": "Evening rain coinciding with the office rush paralyses this road towards the IT corridor.",
+    "src": "hi-rain-2026"
+   }
+  ],
+  "causes": [
+   "u-turn-detour",
+   "wrong-side",
+   "rain-waterlogging"
+  ],
+  "fix": {
+   "type": "median-uturn",
+   "title": "U-turn waiting pocket under the flyover",
+   "detail": "Build a 40 m storage pocket in the median so U-turners queue out of the fast lane, and add a short signal phase at the turn during peaks.",
+   "agency": "GHMC + Hyderabad City Traffic Police",
+   "costLakh": [
+    10,
+    25
+   ],
+   "weeks": 6
+  }
+ },
+ {
+  "id": "masab-tank",
+  "name": "Masab Tank",
+  "place": "Masab Tank flyover and Ayodhya junction",
+  "lat": 17.40325,
+  "lon": 78.45275,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [
+   {
+    "text": "Traffic police flagged heavy peak-hour congestion at Ayodhya Junction and the Masab Tank flyover.",
+    "src": "htp-alert-2026"
+   }
+  ],
+  "timeNotes": [
+   {
+    "text": "Alerted as a peak-hour choke point.",
+    "src": "htp-alert-2026"
+   }
+  ],
+  "causes": [
+   "signal",
+   "merge"
+  ],
+  "fix": {
+   "type": "junctions",
+   "title": "Coordinate the Masab Tank and Ayodhya signals as a green wave",
+   "detail": "Link the two signals with an offset so platoons leaving the flyover arrive on green, and add box-junction markings at Ayodhya so the junction is never blocked.",
+   "agency": "Hyderabad City Traffic Police",
+   "costLakh": [
+    3,
+    8
+   ],
+   "weeks": 3
+  }
+ },
+ {
+  "id": "nmdc-pvnr",
+  "name": "NMDC → PVNR Expressway entry",
+  "place": "Golconda Road at NMDC",
+  "lat": 17.39876,
+  "lon": 78.44943,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [
+   {
+    "text": "Traffic police flagged heavy peak-hour congestion on the NMDC to PVNR Expressway entry.",
+    "src": "htp-alert-2026"
+   }
+  ],
+  "timeNotes": [
+   {
+    "text": "Alerted as a peak-hour choke point.",
+    "src": "htp-alert-2026"
+   }
+  ],
+  "causes": [
+   "merge",
+   "bus-stop-in-lane"
+  ],
+  "fix": {
+   "type": "bus-stops",
+   "title": "Move the NMDC bus stop clear of the expressway ramp",
+   "detail": "Shift the NMDC stop about 100 m away from the ramp merge into a bus bay, and keep the 100 m before the ramp free of stopping, so ramp traffic and buses stop competing for the same lane.",
+   "agency": "GHMC + TGSRTC",
+   "costLakh": [
+    15,
+    35
+   ],
+   "weeks": 6
+  }
+ },
+ {
+  "id": "lakdikapul",
+  "name": "Lakdikapul",
+  "place": "Lakdikapul Road",
+  "lat": 17.4042,
+  "lon": 78.4644,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [
+   {
+    "text": "Among the junctions jammed during the 22 Sept 2026 evening rain.",
+    "src": "hi-rain-2026"
+   }
+  ],
+  "timeNotes": [
+   {
+    "text": "Evening rain at office closing time brings the worst jams.",
+    "src": "hi-rain-2026"
+   }
+  ],
+  "causes": [
+   "signal",
+   "rain-waterlogging"
+  ],
+  "fix": {
+   "type": "junctions",
+   "title": "Box-junction markings and peak signal plans",
+   "detail": "Paint yellow box markings and run separate morning and evening signal plans from counted flows, so queues from the Khairatabad side don't block the junction.",
+   "agency": "Hyderabad City Traffic Police",
+   "costLakh": [
+    2,
+    5
+   ],
+   "weeks": 2
+  }
+ },
+ {
+  "id": "khairatabad",
+  "name": "Khairatabad",
+  "place": "Khairatabad flyover junction",
+  "lat": 17.41578,
+  "lon": 78.46165,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [
+   {
+    "text": "Named a major congestion hotspot in coverage of the 2025 TomTom index.",
+    "src": "sp-tomtom-2026"
+   },
+   {
+    "text": "Among the junctions jammed during the 22 Sept 2026 evening rain.",
+    "src": "hi-rain-2026"
+   }
+  ],
+  "timeNotes": [],
+  "causes": [
+   "signal",
+   "merge"
+  ],
+  "fix": {
+   "type": "junctions",
+   "title": "Free left turn with a channelising island",
+   "detail": "Add a kerbed island so left-turners bypass the signal queue, and mark lanes on the approaches.",
+   "agency": "GHMC + Hyderabad City Traffic Police",
+   "costLakh": [
+    10,
+    25
+   ],
+   "weeks": 6
+  }
+ },
+ {
+  "id": "panjagutta",
+  "name": "Panjagutta",
+  "place": "Panjagutta flyover junction",
+  "lat": 17.4255,
+  "lon": 78.44879,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [
+   {
+    "text": "Named a major congestion hotspot in coverage of the 2025 TomTom index.",
+    "src": "sp-tomtom-2026"
+   },
+   {
+    "text": "Among the junctions jammed during the 22 Sept 2026 evening rain.",
+    "src": "hi-rain-2026"
+   }
+  ],
+  "timeNotes": [],
+  "causes": [
+   "signal",
+   "bus-stop-in-lane"
+  ],
+  "fix": {
+   "type": "bus-stops",
+   "title": "Move bus stops 60–80 m away from the junction mouth",
+   "detail": "Stops right at a junction mouth make buses block the turning lane. Moving them downstream of the junction keeps the stop-line lanes clear on green.",
+   "agency": "GHMC + TGSRTC",
+   "costLakh": [
+    5,
+    15
+   ],
+   "weeks": 4
+  }
+ },
+ {
+  "id": "ameerpet",
+  "name": "Ameerpet",
+  "place": "Ameerpet metro interchange",
+  "lat": 17.43535,
+  "lon": 78.44464,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [
+   {
+    "text": "Named a major congestion hotspot in coverage of the 2025 TomTom index.",
+    "src": "sp-tomtom-2026"
+   },
+   {
+    "text": "Motorists say junctions here often have no traffic personnel at peak hours.",
+    "src": "tt-staffing-2025"
+   }
+  ],
+  "timeNotes": [],
+  "causes": [
+   "shared-autos",
+   "pedestrians",
+   "signal"
+  ],
+  "fix": {
+   "type": "pedestrians",
+   "title": "Metro drop-off bays and a pelican crossing",
+   "detail": "Mark auto and cab pick-up bays off the carriageway at the metro exits, and replace informal crossing with a timed pelican signal.",
+   "agency": "GHMC + HMRL + Hyderabad City Traffic Police",
+   "costLakh": [
+    8,
+    20
+   ],
+   "weeks": 6
+  }
+ },
+ {
+  "id": "begumpet",
+  "name": "Begumpet",
+  "place": "Begumpet U-turn under the flyover",
+  "lat": 17.4442,
+  "lon": 78.46958,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [
+   {
+    "text": "Barricades set up for the U-turn take over one entire lane at the Begumpet junction.",
+    "src": "tt-uturns-2024"
+   },
+   {
+    "text": "Named a major congestion hotspot in coverage of the 2025 TomTom index.",
+    "src": "sp-tomtom-2026"
+   }
+  ],
+  "timeNotes": [],
+  "causes": [
+   "u-turn-detour",
+   "barricades"
+  ],
+  "fix": {
+   "type": "median-uturn",
+   "title": "Replace lane-eating barricades with a proper median pocket",
+   "detail": "Cut a permanent U-turn pocket into the median so U-turners wait off the through lanes, and remove the barricades that take a full lane today.",
+   "agency": "GHMC + Hyderabad City Traffic Police",
+   "costLakh": [
+    10,
+    25
+   ],
+   "weeks": 6
+  }
+ },
+ {
+  "id": "paradise",
+  "name": "Paradise Junction",
+  "place": "Secunderabad, NH44",
+  "lat": 17.443,
+  "lon": 78.4873,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [
+   {
+    "text": "Diversions in place for building the Paradise–Dairy Farm Road elevated corridor (about 9 months from 30 Oct 2025).",
+    "src": "hcp-paradise-2025"
+   }
+  ],
+  "timeNotes": [],
+  "causes": [
+   "works",
+   "signal"
+  ],
+  "fix": {
+   "type": "lanes-markings",
+   "title": "Work-zone lane plan with marshals and clear signs",
+   "detail": "Mark the narrowed lanes clearly, post diversion signs 300 m ahead and put traffic wardens at the merge points for the rest of the construction.",
+   "agency": "HMDA + Hyderabad City Traffic Police",
+   "costLakh": [
+    3,
+    8
+   ],
+   "weeks": 2
+  }
+ },
+ {
+  "id": "secunderabad",
+  "name": "Secunderabad Clock Tower",
+  "place": "Station Road – Clock Tower",
+  "lat": 17.4409,
+  "lon": 78.49855,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [
+   {
+    "text": "Motorists say junctions in Secunderabad often have no traffic personnel at peak hours.",
+    "src": "tt-staffing-2025"
+   },
+   {
+    "text": "Water stagnated under the Clock Tower flyover during the 22 Sept 2026 rain and had to be pumped out.",
+    "src": "hi-rain-2026"
+   }
+  ],
+  "timeNotes": [],
+  "causes": [
+   "shared-autos",
+   "rain-waterlogging"
+  ],
+  "fix": {
+   "type": "parking",
+   "title": "Organised auto and cab rank away from the station mouth",
+   "detail": "Move the queuing autos and cabs into a marked rank inside the station area, with a single exit point.",
+   "agency": "GHMC + SCR + Hyderabad City Traffic Police",
+   "costLakh": [
+    5,
+    15
+   ],
+   "weeks": 4
+  }
+ },
+ {
+  "id": "rtc-x-roads",
+  "name": "RTC X Roads",
+  "place": "Chikkadpally",
+  "lat": 17.40703,
+  "lon": 78.4968,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [
+   {
+    "text": "Motorists say the RTC X Roads junction often has no personnel regulating traffic at peak hours.",
+    "src": "tt-staffing-2025"
+   }
+  ],
+  "timeNotes": [],
+  "causes": [
+   "signal",
+   "pedestrians"
+  ],
+  "fix": {
+   "type": "junctions",
+   "title": "Adaptive signal plan and box-junction markings",
+   "detail": "Replace the fixed plan with time-of-day plans built from counts, and paint box markings so the junction isn't blocked when unmanned.",
+   "agency": "Hyderabad City Traffic Police",
+   "costLakh": [
+    3,
+    8
+   ],
+   "weeks": 3
+  }
+ },
+ {
+  "id": "koti",
+  "name": "Koti",
+  "place": "Koti – Abids",
+  "lat": 17.38503,
+  "lon": 78.48842,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [],
+  "timeNotes": [],
+  "causes": [
+   "bus-stop-in-lane",
+   "pedestrians",
+   "parking"
+  ],
+  "fix": {
+   "type": "bus-stops",
+   "title": "Bus bays and kerbside loading windows",
+   "detail": "Buses and goods loading share the kerb lane through the market. Bus bays plus loading allowed only before 9 am free the kerb lane at peak.",
+   "agency": "GHMC + TGSRTC",
+   "costLakh": [
+    15,
+    40
+   ],
+   "weeks": 8
+  }
+ },
+ {
+  "id": "chaderghat",
+  "name": "Chaderghat – Malakpet",
+  "place": "Chaderghat bridge towards Malakpet",
+  "lat": 17.38009,
+  "lon": 78.49279,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [],
+  "timeNotes": [],
+  "causes": [
+   "merge",
+   "bus-stop-in-lane"
+  ],
+  "fix": {
+   "type": "lanes-markings",
+   "title": "Lane markings and no-stopping on the bridge approaches",
+   "detail": "Mark the bridge approaches as no-stopping and paint lane arrows so merging is orderly.",
+   "agency": "GHMC + Hyderabad City Traffic Police",
+   "costLakh": [
+    2,
+    5
+   ],
+   "weeks": 2
+  }
+ },
+ {
+  "id": "chandrayangutta",
+  "name": "Chandrayangutta",
+  "place": "Chandrayangutta flyover",
+  "lat": 17.32772,
+  "lon": 78.47929,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [],
+  "timeNotes": [],
+  "causes": [
+   "merge",
+   "shared-autos"
+  ],
+  "fix": {
+   "type": "bus-stops",
+   "title": "Shared-auto bay clear of the flyover landing",
+   "detail": "Autos waiting where the flyover lands block the merge. A marked bay 100 m downstream keeps the merge clear.",
+   "agency": "GHMC + Hyderabad City Traffic Police",
+   "costLakh": [
+    3,
+    10
+   ],
+   "weeks": 3
+  }
+ },
+ {
+  "id": "aramghar",
+  "name": "Aramghar X Roads",
+  "place": "Inner Ring Road underpass",
+  "lat": 17.32168,
+  "lon": 78.43194,
+  "corporation": "GHMC",
+  "police": "Traffic police (jurisdiction to confirm)",
+  "reported": [],
+  "timeNotes": [],
+  "causes": [
+   "merge",
+   "heavy-vehicles"
+  ],
+  "fix": {
+   "type": "junctions",
+   "title": "Heavy-vehicle lane discipline and slip-road markings",
+   "detail": "Mark a dedicated lane for trucks heading to the highway and clear the slip-road mouths of stopped vehicles.",
+   "agency": "GHMC + traffic police",
+   "costLakh": [
+    3,
+    8
+   ],
+   "weeks": 3
+  }
+ },
+ {
+  "id": "attapur",
+  "name": "Attapur",
+  "place": "Under the PVNR Expressway pillars",
+  "lat": 17.36808,
+  "lon": 78.42908,
+  "corporation": "GHMC",
+  "police": "Traffic police (jurisdiction to confirm)",
+  "reported": [],
+  "timeNotes": [],
+  "causes": [
+   "u-turn-detour",
+   "wrong-side"
+  ],
+  "fix": {
+   "type": "median-uturn",
+   "title": "Re-space U-turn gaps between pillars",
+   "detail": "Use the same spacing optimiser as the Mehdipatnam pilot to place U-turn gaps between expressway pillars, cutting detours that push riders to go wrong-side.",
+   "agency": "GHMC + HMDA",
+   "costLakh": [
+    15,
+    40
+   ],
+   "weeks": 8
+  }
+ },
+ {
+  "id": "jubilee-checkpost",
+  "name": "Jubilee Hills Check Post",
+  "place": "Road No. 36 / 45 junction",
+  "lat": 17.42656,
+  "lon": 78.41555,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [
+   {
+    "text": "Named among critical bottlenecks around KBR Park where severe congestion is frequently reported at peak hours.",
+    "src": "hi-kbr-2026"
+   }
+  ],
+  "timeNotes": [
+   {
+    "text": "Severe congestion during peak hours; a permanent one-way loop around KBR Park is under review.",
+    "src": "hi-kbr-2026"
+   }
+  ],
+  "causes": [
+   "signal",
+   "narrow-road"
+  ],
+  "fix": {
+   "type": "traffic-flow",
+   "title": "KBR one-way loop, with pelican crossings",
+   "detail": "Back the one-way loop already on trial around KBR Park, widen the narrow stretches officials identified, and add pelican signals at crossings.",
+   "agency": "GHMC + Hyderabad City Traffic Police",
+   "costLakh": [
+    20,
+    60
+   ],
+   "weeks": 10
+  }
+ },
+ {
+  "id": "agrasen",
+  "name": "Agrasen Junction",
+  "place": "KBR Park, Road No. 12",
+  "lat": 17.4167,
+  "lon": 78.4255,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [
+   {
+    "text": "Named among critical bottlenecks around KBR Park; officials found narrow stretches causing the jams.",
+    "src": "hi-kbr-2026"
+   }
+  ],
+  "timeNotes": [
+   {
+    "text": "Severe congestion during peak hours.",
+    "src": "hi-kbr-2026"
+   }
+  ],
+  "causes": [
+   "narrow-road",
+   "signal"
+  ],
+  "fix": {
+   "type": "traffic-flow",
+   "title": "Widen the pinch point and run it as part of the KBR one-way loop",
+   "detail": "Take up the road widening officials identified at the narrow stretch, then run the junction as part of the one-way loop.",
+   "agency": "GHMC",
+   "costLakh": [
+    20,
+    60
+   ],
+   "weeks": 10
+  }
+ },
+ {
+  "id": "road-no-12",
+  "name": "Banjara Hills Road No. 12",
+  "place": "Virinchi Hospital junction",
+  "lat": 17.40809,
+  "lon": 78.45149,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [
+   {
+    "text": "Among the junctions jammed during the 22 Sept 2026 evening rain.",
+    "src": "hi-rain-2026"
+   }
+  ],
+  "timeNotes": [],
+  "causes": [
+   "parking",
+   "signal"
+  ],
+  "fix": {
+   "type": "parking",
+   "title": "No-parking near the hospital junction",
+   "detail": "Ambulance and visitor parking on the road edge removes a lane. Move it to a marked drop-off bay and enforce no-parking 75 m from the junction.",
+   "agency": "GHMC + Hyderabad City Traffic Police",
+   "costLakh": [
+    2,
+    6
+   ],
+   "weeks": 2
+  }
+ },
+ {
+  "id": "hitec-city",
+  "name": "HITEC City (Cyber Towers)",
+  "place": "Cyber Towers junction",
+  "lat": 17.45161,
+  "lon": 78.3811,
+  "corporation": "Cyberabad Municipal Corporation",
+  "police": "Cyberabad Traffic Police",
+  "reported": [
+   {
+    "text": "More than a lakh vehicles cross the HITEC City signal in the morning.",
+    "src": "dc-hitec-2026"
+   },
+   {
+    "text": "Recorded among the most congested locations in the civic-body review.",
+    "src": "tt-civic-2026"
+   }
+  ],
+  "timeNotes": [
+   {
+    "text": "Peak hours run 9 am–noon and again 4 pm–nearly midnight as IT staff leave and students and workers head home.",
+    "src": "dc-hitec-2026"
+   }
+  ],
+  "causes": [
+   "signal",
+   "shared-autos",
+   "wrong-side"
+  ],
+  "fix": {
+   "type": "junctions",
+   "title": "Time-of-day signal plans and cab pick-up bays",
+   "detail": "Run separate signal plans for the 9 am–noon and 4 pm–midnight peaks, and move cab and bike-taxi pick-ups into marked bays off the junction.",
+   "agency": "Cyberabad Traffic Police + CMC",
+   "costLakh": [
+    5,
+    15
+   ],
+   "weeks": 4
+  }
+ },
+ {
+  "id": "raidurg",
+  "name": "Raidurg Metro",
+  "place": "HITEC City road at Raidurg station",
+  "lat": 17.44218,
+  "lon": 78.37718,
+  "corporation": "Cyberabad Municipal Corporation",
+  "police": "Cyberabad Traffic Police",
+  "reported": [
+   {
+    "text": "Broad multi-lane roads abruptly narrow into single-lane bottlenecks near Raidurg, a funnel effect causing bumper-to-bumper tailbacks.",
+    "src": "tt-jntu-raidurg-2026"
+   },
+   {
+    "text": "From Raidurg Metro (TGSPDCL substation) towards Dallas Center, drivers must go nearly 1 km to the HITEC flyover end to U-turn.",
+    "src": "tt-uturns-2024"
+   }
+  ],
+  "timeNotes": [
+   {
+    "text": "Worst in the IT peaks, 9 am–noon and 4 pm–midnight.",
+    "src": "dc-hitec-2026"
+   }
+  ],
+  "causes": [
+   "lane-drop",
+   "u-turn-detour",
+   "encroachment"
+  ],
+  "fix": {
+   "type": "median-uturn",
+   "title": "Remove the lane drop and add a U-turn pocket near the substation",
+   "detail": "Reclaim the encroached width so lane count stays constant through Raidurg, and open a U-turn pocket near the TGSPDCL substation to cut the 1 km detour.",
+   "agency": "CMC + Cyberabad Traffic Police",
+   "costLakh": [
+    15,
+    40
+   ],
+   "weeks": 8
+  }
+ },
+ {
+  "id": "ikea",
+  "name": "IKEA / Mindspace Junction",
+  "place": "HITEC City Main Road",
+  "lat": 17.44058,
+  "lon": 78.3755,
+  "corporation": "Cyberabad Municipal Corporation",
+  "police": "Cyberabad Traffic Police",
+  "reported": [
+   {
+    "text": "Interchanges near IKEA Junction face extreme peak-hour traffic accumulation.",
+    "src": "tt-civic-2026"
+   },
+   {
+    "text": "The U-turn near IKEA is cited as a long detour adding time and fuel.",
+    "src": "tt-uturns-2024"
+   }
+  ],
+  "timeNotes": [
+   {
+    "text": "Peak build-up 9 am–noon and 4 pm–nearly midnight.",
+    "src": "dc-hitec-2026"
+   }
+  ],
+  "causes": [
+   "u-turn-detour",
+   "merge"
+  ],
+  "fix": {
+   "type": "median-uturn",
+   "title": "U-turn pocket with a waiting lane",
+   "detail": "Give U-turners a storage lane so they don't stall the fast lane while waiting for a gap.",
+   "agency": "CMC + Cyberabad Traffic Police",
+   "costLakh": [
+    10,
+    25
+   ],
+   "weeks": 6
+  }
+ },
+ {
+  "id": "biodiversity",
+  "name": "Biodiversity Junction",
+  "place": "Biodiversity Park flyovers",
+  "lat": 17.4307,
+  "lon": 78.37295,
+  "corporation": "Cyberabad Municipal Corporation",
+  "police": "Cyberabad Traffic Police",
+  "reported": [
+   {
+    "text": "Recorded among the most congested locations in the civic-body review.",
+    "src": "tt-civic-2026"
+   }
+  ],
+  "timeNotes": [
+   {
+    "text": "Peak build-up 9 am–noon and 4 pm–nearly midnight.",
+    "src": "dc-hitec-2026"
+   }
+  ],
+  "causes": [
+   "merge",
+   "signal"
+  ],
+  "fix": {
+   "type": "lanes-markings",
+   "title": "Merge markings and a no-stopping zone at the flyover landings",
+   "detail": "Mark zip-merge lanes where the two flyover levels land, and clear pick-ups from the landing zone.",
+   "agency": "CMC + Cyberabad Traffic Police",
+   "costLakh": [
+    2,
+    6
+   ],
+   "weeks": 2
+  }
+ },
+ {
+  "id": "gachibowli",
+  "name": "Gachibowli X Roads",
+  "place": "Gachibowli–Miyapur road",
+  "lat": 17.43868,
+  "lon": 78.36373,
+  "corporation": "Cyberabad Municipal Corporation",
+  "police": "Cyberabad Traffic Police",
+  "reported": [
+   {
+    "text": "Motorists say the Gachibowli junction often has no traffic personnel at peak hours.",
+    "src": "tt-staffing-2025"
+   },
+   {
+    "text": "During flyover works, traffic was diverted via IKEA towards Cyber Towers, doubling the 15-minute Biodiversity–Cyber Towers trip.",
+    "src": "nm-gachibowli-2023"
+   }
+  ],
+  "timeNotes": [
+   {
+    "text": "Rush hours reported as 9 am–1 pm and 5 pm–9 pm.",
+    "src": "nm-gachibowli-2023"
+   }
+  ],
+  "causes": [
+   "signal",
+   "works"
+  ],
+  "fix": {
+   "type": "junctions",
+   "title": "Peak signal plans and a free left towards Kondapur",
+   "detail": "Add a channelised free left and separate peak signal plans.",
+   "agency": "CMC + Cyberabad Traffic Police",
+   "costLakh": [
+    10,
+    25
+   ],
+   "weeks": 6
+  }
+ },
+ {
+  "id": "kothaguda",
+  "name": "Kothaguda Junction",
+  "place": "Kothaguda T junction",
+  "lat": 17.45892,
+  "lon": 78.36598,
+  "corporation": "Cyberabad Municipal Corporation",
+  "police": "Cyberabad Traffic Police",
+  "reported": [],
+  "timeNotes": [
+   {
+    "text": "IT-corridor peaks 9 am–noon and 4 pm–nearly midnight.",
+    "src": "dc-hitec-2026"
+   }
+  ],
+  "causes": [
+   "signal",
+   "shared-autos"
+  ],
+  "fix": {
+   "type": "junctions",
+   "title": "Signal retiming from counted turning flows",
+   "detail": "Re-time the T junction for the dominant turning movement at each peak.",
+   "agency": "Cyberabad Traffic Police",
+   "costLakh": [
+    2,
+    5
+   ],
+   "weeks": 2
+  }
+ },
+ {
+  "id": "medicover",
+  "name": "Madhapur (Medicover stretch)",
+  "place": "HITEC City–Kondapur Main Road",
+  "lat": 17.45521,
+  "lon": 78.37756,
+  "corporation": "Cyberabad Municipal Corporation",
+  "police": "Cyberabad Traffic Police",
+  "reported": [
+   {
+    "text": "Recorded among the most congested locations (Madhapur) in the civic-body review.",
+    "src": "tt-civic-2026"
+   }
+  ],
+  "timeNotes": [
+   {
+    "text": "IT-corridor peaks 9 am–noon and 4 pm–nearly midnight.",
+    "src": "dc-hitec-2026"
+   }
+  ],
+  "causes": [
+   "parking",
+   "shared-autos"
+  ],
+  "fix": {
+   "type": "parking",
+   "title": "Hospital drop-off bay and no-parking",
+   "detail": "A marked drop-off bay at the hospital, with no-parking enforced 100 m either side.",
+   "agency": "CMC + Cyberabad Traffic Police",
+   "costLakh": [
+    3,
+    8
+   ],
+   "weeks": 3
+  }
+ },
+ {
+  "id": "jntu",
+  "name": "JNTU Junction",
+  "place": "Mumbai Highway at JNTU",
+  "lat": 17.49866,
+  "lon": 78.38887,
+  "corporation": "Cyberabad Municipal Corporation",
+  "police": "Cyberabad Traffic Police",
+  "reported": [
+   {
+    "text": "Recorded among the most congested locations in the civic-body review.",
+    "src": "tt-civic-2026"
+   },
+   {
+    "text": "Part of the 8.5 km JNTU–Miyapur–Raidurg corridor being studied for missing footpaths, encroachments and auto stands.",
+    "src": "tt-jntu-raidurg-2026"
+   }
+  ],
+  "timeNotes": [
+   {
+    "text": "School-zone congestion is being separated from traffic lanes in the corridor study.",
+    "src": "tt-jntu-raidurg-2026"
+   }
+  ],
+  "causes": [
+   "shared-autos",
+   "encroachment",
+   "school-zone"
+  ],
+  "fix": {
+   "type": "bus-stops",
+   "title": "Regulated auto stand and pick-up bays",
+   "detail": "Formalise the auto stand into marked bays, and give school and office pick-ups off-carriageway drop-off bays, as the corridor study proposes.",
+   "agency": "CMC + TGSRTC + Cyberabad Traffic Police",
+   "costLakh": [
+    8,
+    20
+   ],
+   "weeks": 6
+  }
+ },
+ {
+  "id": "kphb",
+  "name": "KPHB",
+  "place": "Kukatpally Housing Board metro",
+  "lat": 17.49378,
+  "lon": 78.40177,
+  "corporation": "Cyberabad Municipal Corporation",
+  "police": "Cyberabad Traffic Police",
+  "reported": [
+   {
+    "text": "The Miyapur–Kukatpally stretch recorded higher congestion in the civic-body review.",
+    "src": "tt-civic-2026"
+   },
+   {
+    "text": "Motorists say junctions in Kukatpally often have no traffic personnel at peak hours.",
+    "src": "tt-staffing-2025"
+   }
+  ],
+  "timeNotes": [],
+  "causes": [
+   "shared-autos",
+   "bus-stop-in-lane"
+  ],
+  "fix": {
+   "type": "bus-stops",
+   "title": "Bus bay and metro feeder bay",
+   "detail": "Pull buses and metro feeder autos into bays at the station.",
+   "agency": "CMC + TGSRTC",
+   "costLakh": [
+    15,
+    35
+   ],
+   "weeks": 8
+  }
+ },
+ {
+  "id": "kukatpally-y",
+  "name": "Kukatpally Y Junction",
+  "place": "Moosapet Y junction",
+  "lat": 17.47389,
+  "lon": 78.42704,
+  "corporation": "Cyberabad Municipal Corporation",
+  "police": "Cyberabad Traffic Police",
+  "reported": [],
+  "timeNotes": [],
+  "causes": [
+   "merge",
+   "heavy-vehicles"
+  ],
+  "fix": {
+   "type": "lanes-markings",
+   "title": "Channelised merge for the Balanagar arm",
+   "detail": "Kerbed lane separators so the two arms merge in a controlled zip instead of a free-for-all.",
+   "agency": "CMC + Cyberabad Traffic Police",
+   "costLakh": [
+    5,
+    15
+   ],
+   "weeks": 4
+  }
+ },
+ {
+  "id": "miyapur",
+  "name": "Miyapur",
+  "place": "Mumbai Highway at Miyapur metro",
+  "lat": 17.49638,
+  "lon": 78.37275,
+  "corporation": "Cyberabad Municipal Corporation",
+  "police": "Cyberabad Traffic Police",
+  "reported": [
+   {
+    "text": "The Miyapur–Kukatpally stretch recorded higher congestion in the civic-body review.",
+    "src": "tt-civic-2026"
+   }
+  ],
+  "timeNotes": [],
+  "causes": [
+   "bus-stop-in-lane",
+   "shared-autos"
+  ],
+  "fix": {
+   "type": "bus-stops",
+   "title": "Bus bays at the metro terminal",
+   "detail": "Buses and autos meeting the metro stop in the running lane. Bays at the terminal keep the highway lanes clear.",
+   "agency": "CMC + TGSRTC",
+   "costLakh": [
+    15,
+    35
+   ],
+   "weeks": 8
+  }
+ },
+ {
+  "id": "financial-district",
+  "name": "Financial District",
+  "place": "Wipro Circle, Nanakramguda",
+  "lat": 17.42607,
+  "lon": 78.33786,
+  "corporation": "Cyberabad Municipal Corporation",
+  "police": "Cyberabad Traffic Police",
+  "reported": [
+   {
+    "text": "Financial District and Kokapet recorded higher congestion; ORR interchanges face extreme peak-hour accumulation.",
+    "src": "tt-civic-2026"
+   }
+  ],
+  "timeNotes": [
+   {
+    "text": "IT-corridor peaks 9 am–noon and 4 pm–nearly midnight.",
+    "src": "dc-hitec-2026"
+   }
+  ],
+  "causes": [
+   "signal",
+   "merge"
+  ],
+  "fix": {
+   "type": "junctions",
+   "title": "Roundabout-to-signal conversion with time-of-day plans",
+   "detail": "Run the circle on peak-specific signal plans with lane markings for the ORR-bound flow.",
+   "agency": "CMC + Cyberabad Traffic Police",
+   "costLakh": [
+    10,
+    25
+   ],
+   "weeks": 6
+  }
+ },
+ {
+  "id": "suchitra",
+  "name": "Suchitra",
+  "place": "Suchitra circle, towards Bowenpally",
+  "lat": 17.50226,
+  "lon": 78.48377,
+  "corporation": "Cyberabad Municipal Corporation",
+  "police": "Cyberabad Traffic Police",
+  "reported": [
+   {
+    "text": "Residents say reaching Bowenpally from Suchitra needs a long U-turn detour.",
+    "src": "tt-uturns-2024"
+   }
+  ],
+  "timeNotes": [],
+  "causes": [
+   "u-turn-detour",
+   "wrong-side"
+  ],
+  "fix": {
+   "type": "median-uturn",
+   "title": "Closer U-turn gap with a waiting pocket",
+   "detail": "Open a U-turn gap with a storage pocket nearer the circle to cut the detour.",
+   "agency": "CMC + Cyberabad Traffic Police",
+   "costLakh": [
+    10,
+    25
+   ],
+   "weeks": 6
+  }
+ },
+ {
+  "id": "lb-nagar",
+  "name": "LB Nagar",
+  "place": "Vijayawada Highway at LB Nagar",
+  "lat": 17.34983,
+  "lon": 78.54791,
+  "corporation": "Malkajgiri Municipal Corporation",
+  "police": "Malkajgiri (ex-Rachakonda) Traffic Police",
+  "reported": [
+   {
+    "text": "Private buses pick up passengers at LB Nagar and halt mid-road; 5,605 private-bus challans were issued in 2025 up to 24 Oct.",
+    "src": "dc-private-bus-2025"
+   },
+   {
+    "text": "Motorists say LB Nagar junctions often have no personnel at peak hours.",
+    "src": "tt-staffing-2025"
+   }
+  ],
+  "timeNotes": [
+   {
+    "text": "Private buses entering and leaving the city crowd the stretch in the morning and evening peaks.",
+    "src": "dc-private-bus-2025"
+   }
+  ],
+  "causes": [
+   "private-buses",
+   "metro-pillars",
+   "bus-stop-in-lane"
+  ],
+  "fix": {
+   "type": "bus-stops",
+   "title": "Off-road private-bus boarding point",
+   "detail": "Designate an off-carriageway boarding lot for Vijayawada-bound private buses, and enforce no-stopping between the metro pillars.",
+   "agency": "MMC + Malkajgiri Traffic Police + Transport Dept",
+   "costLakh": [
+    15,
+    50
+   ],
+   "weeks": 8
+  }
+ },
+ {
+  "id": "dilsukhnagar",
+  "name": "Dilsukhnagar",
+  "place": "Vijayawada Highway at Dilsukhnagar",
+  "lat": 17.36843,
+  "lon": 78.52343,
+  "corporation": "Malkajgiri Municipal Corporation",
+  "police": "Malkajgiri (ex-Rachakonda) Traffic Police",
+  "reported": [
+   {
+    "text": "The Dilsukhnagar–LB Nagar stretch, already narrowed by metro pillars, is the most problematic: buses halt in the middle of the road to pick up passengers.",
+    "src": "dc-private-bus-2025"
+   }
+  ],
+  "timeNotes": [
+   {
+    "text": "Private buses obstruct traffic while entering and leaving the city in the morning and evening peaks.",
+    "src": "dc-private-bus-2025"
+   }
+  ],
+  "causes": [
+   "private-buses",
+   "metro-pillars",
+   "bus-stop-in-lane"
+  ],
+  "fix": {
+   "type": "bus-stops",
+   "title": "Bus bays between pillars plus a private-bus boarding lot",
+   "detail": "Build bus bays in the gaps between metro pillars, and move private-bus boarding off the highway to a designated lot.",
+   "agency": "MMC + TGSRTC + Malkajgiri Traffic Police",
+   "costLakh": [
+    20,
+    60
+   ],
+   "weeks": 10
+  }
+ },
+ {
+  "id": "chaitanyapuri",
+  "name": "Chaitanyapuri",
+  "place": "Vijayawada Highway at Chaitanyapuri metro",
+  "lat": 17.36829,
+  "lon": 78.53594,
+  "corporation": "Malkajgiri Municipal Corporation",
+  "police": "Malkajgiri (ex-Rachakonda) Traffic Police",
+  "reported": [
+   {
+    "text": "Lies on the Dilsukhnagar–LB Nagar stretch named the most problematic for buses halting mid-road.",
+    "src": "dc-private-bus-2025"
+   }
+  ],
+  "timeNotes": [],
+  "causes": [
+   "metro-pillars",
+   "bus-stop-in-lane"
+  ],
+  "fix": {
+   "type": "bus-stops",
+   "title": "Bus bay between metro pillars",
+   "detail": "A bus bay in the pillar gap at the station keeps buses out of the narrowed lanes.",
+   "agency": "MMC + TGSRTC",
+   "costLakh": [
+    15,
+    35
+   ],
+   "weeks": 8
+  }
+ },
+ {
+  "id": "uppal",
+  "name": "Uppal X Roads",
+  "place": "Inner Ring Road × Warangal Highway",
+  "lat": 17.40251,
+  "lon": 78.55947,
+  "corporation": "Malkajgiri Municipal Corporation",
+  "police": "Malkajgiri (ex-Rachakonda) Traffic Police",
+  "reported": [
+   {
+    "text": "Malkajgiri Municipal Corporation plans a free-left turn at Uppal X Roads among 24 locations, and traffic police assessed movement at Uppal Junction.",
+    "src": "tt-civic-2026"
+   }
+  ],
+  "timeNotes": [],
+  "causes": [
+   "signal",
+   "merge"
+  ],
+  "fix": {
+   "type": "junctions",
+   "title": "Free left turn (already planned by MMC)",
+   "detail": "Build the free-left already planned, with a kerbed island and clear lane markings.",
+   "agency": "MMC + Malkajgiri Traffic Police",
+   "costLakh": [
+    10,
+    25
+   ],
+   "weeks": 6
+  }
+ },
+ {
+  "id": "habsiguda",
+  "name": "Habsiguda X Roads",
+  "place": "Habsiguda Main Road",
+  "lat": 17.41918,
+  "lon": 78.5415,
+  "corporation": "Malkajgiri Municipal Corporation",
+  "police": "Malkajgiri (ex-Rachakonda) Traffic Police",
+  "reported": [
+   {
+    "text": "Malkajgiri Municipal Corporation plans a free-left turn at Habsiguda X Roads; traffic police assessed movement at Habsiguda Junction.",
+    "src": "tt-civic-2026"
+   }
+  ],
+  "timeNotes": [],
+  "causes": [
+   "signal"
+  ],
+  "fix": {
+   "type": "junctions",
+   "title": "Free left turn plus signal modernisation",
+   "detail": "Build the planned free-left, and bring the junction's signal onto the modernised network MMC is planning.",
+   "agency": "MMC + Malkajgiri Traffic Police",
+   "costLakh": [
+    10,
+    25
+   ],
+   "weeks": 6
+  }
+ },
+ {
+  "id": "tarnaka",
+  "name": "Tarnaka",
+  "place": "Tarnaka junction",
+  "lat": 17.4283,
+  "lon": 78.52844,
+  "corporation": "GHMC",
+  "police": "Hyderabad City Traffic Police",
+  "reported": [],
+  "timeNotes": [],
+  "causes": [
+   "signal",
+   "u-turn-detour"
+  ],
+  "fix": {
+   "type": "junctions",
+   "title": "Signal retiming from counted flows",
+   "detail": "Re-time the junction from counted turning flows, with box markings.",
+   "agency": "Hyderabad City Traffic Police",
+   "costLakh": [
+    2,
+    5
+   ],
+   "weeks": 2
+  }
+ }
+]
