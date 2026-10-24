@@ -159,7 +159,8 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
         paint: {
           "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, ["case", ["get", "sel"], 14, 8.5], 15, ["case", ["get", "sel"], 24, 14]],
           "circle-color": "#101316",
-          "circle-opacity": 0.85,
+          // markers start hidden and fade in once the first data lands
+          "circle-opacity": 0,
         },
       });
       map.addLayer({
@@ -171,8 +172,15 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
           "circle-color": flowStepExpression("cur"),
           "circle-stroke-color": ["case", ["get", "sel"], "#eceee9", "#101316"],
           "circle-stroke-width": ["case", ["get", "sel"], 3, 1.5],
+          "circle-opacity": 0,
+          "circle-stroke-opacity": 0,
         },
       });
+      // the -transition keys are valid MapLibre style but missing from its types
+      const fade = (layer: string, prop: string, delay = 0) => map.setPaintProperty(layer, `${prop}-transition` as never, { duration: 700, delay } as never);
+      fade("hotspot-halo", "circle-opacity");
+      fade("hotspots", "circle-opacity", 120);
+      fade("hotspots", "circle-stroke-opacity", 120);
       map.addLayer({
         id: "hotspot-labels",
         type: "symbol",
@@ -252,6 +260,11 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
         };
       });
       (map.getSource("hotspots") as GeoJSONSource | undefined)?.setData({ type: "FeatureCollection", features: hotspots });
+      if (map.getPaintProperty("hotspots", "circle-opacity") === 0) {
+        map.setPaintProperty("hotspot-halo", "circle-opacity", 0.85);
+        map.setPaintProperty("hotspots", "circle-opacity", 1);
+        map.setPaintProperty("hotspots", "circle-stroke-opacity", 1);
+      }
 
       const stretches: GeoJSON.Feature[] =
         typical && layers.stretches

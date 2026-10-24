@@ -4,6 +4,7 @@ import { useMemo, useState, type ComponentType } from "react";
 import { motion } from "motion/react";
 import { hourLabel } from "@/lib/flow";
 import { cn } from "@/lib/utils";
+import { CountUp } from "@/components/ui/Reveal";
 import { ClockIcon, CrawlIcon, FuelIcon, RouteIcon, WrongIcon } from "@/components/lab/icons";
 
 type Row = { vehHours: number; vehKm: number; fuel: number; slowHours: number; wrongside: number; uturns: number; trips: number; thrW: number; thrE: number };
@@ -74,15 +75,14 @@ export function Results({ hours, daily, costLakh }: Props) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.04, type: "spring", duration: 0.45, bounce: 0 }}
-              className="rounded-2xl bg-white p-4 shadow-[0_1px_2px_#0000000f]"
+              className="rounded-2xl bg-white p-4 shadow-[0_1px_2px_#0000000f] transition-[transform,box-shadow] duration-300 ease-[var(--ease-out-strong)] hover:-translate-y-0.5 hover:shadow-[0_10px_30px_#0000001a]"
             >
               <div className="flex items-center gap-2 text-[13px] font-medium text-ink-2">
                 <Icon size={17} />
                 {m.label}
               </div>
-              <div className={cn("mt-2 text-[30px] leading-none font-semibold tracking-[-0.03em] num", tone)}>
-                {ch > 0 ? "+" : ch < 0 ? "−" : ""}
-                {fmt(Math.abs(ch) * 100, Math.abs(ch) < 0.01 ? 1 : 0)}%
+              <div className={cn("mt-2 text-[32px] leading-none font-medium tracking-[-0.04em]", tone)}>
+                <CountUp value={Math.abs(ch) * 100} decimals={Math.abs(ch) < 0.01 ? 1 : 0} prefix={ch > 0 ? "+" : ch < 0 ? "−" : ""} suffix="%" />
               </div>
               <div className="mt-2 text-[12px] text-ink-2 num">
                 {fmt(t)} → {fmt(f)} {m.unit}
@@ -97,13 +97,13 @@ export function Results({ hours, daily, costLakh }: Props) {
 
       <div className="mt-8 grid gap-2.5 sm:grid-cols-3">
         {[
-          { label: "Saved a weekday", value: `₹${fmt(perDay / 1000, 0)}k`, sub: `${fmt(dHours, 0)} veh-h · ${fmt(dFuel, 0)} L` },
-          { label: "Package cost", value: `₹${fmt(costLakh, 1)} L`, sub: "planning estimate" },
-          { label: "Pays back in", value: payback ? `${fmt(payback, 0)} days` : "–", sub: "at the values below" },
+          { label: "Saved a weekday", value: <CountUp value={perDay / 1000} prefix="₹" suffix="k" />, sub: `${fmt(dHours, 0)} veh-h · ${fmt(dFuel, 0)} L` },
+          { label: "Package cost", value: <CountUp value={costLakh} decimals={1} prefix="₹" suffix=" L" />, sub: "planning estimate" },
+          { label: "Pays back in", value: payback ? <CountUp value={payback} suffix=" days" /> : "–", sub: "at the values below" },
         ].map((s) => (
-          <div key={s.label} className="rounded-2xl bg-ink p-4 text-chalk">
+          <div key={s.label} className="rounded-2xl bg-ink p-4 text-chalk transition-transform duration-300 ease-[var(--ease-out-strong)] hover:-translate-y-0.5">
             <div className="text-[13px] text-chalk-2">{s.label}</div>
-            <div className="mt-1.5 text-[30px] leading-none font-semibold tracking-[-0.03em] num">{s.value}</div>
+            <div className="mt-1.5 text-[32px] leading-none font-medium tracking-[-0.04em]">{s.value}</div>
             <div className="mt-2 text-[12px] text-chalk-2 num">{s.sub}</div>
           </div>
         ))}

@@ -67,7 +67,7 @@ const SECTIONS = [
 ] as const;
 
 const H2 = ({ id, children }: { id: string; children: React.ReactNode }) => (
-  <h2 id={id} className="mt-16 scroll-mt-28 text-[26px] font-semibold tracking-[-0.02em]">
+  <h2 id={id} className="display mt-20 scroll-mt-28 text-[30px] sm:text-[36px]">
     {children}
   </h2>
 );
@@ -78,7 +78,7 @@ export default function InfoPage() {
   const src = Object.entries(sources as Record<string, { title: string; publisher: string; date: string; url: string }>).sort((a, b) => b[1].date.localeCompare(a[1].date));
   return (
     <main className="mx-auto max-w-[860px] px-4 pt-10 pb-20 sm:px-6">
-      <h1 className="text-[34px] leading-tight font-semibold tracking-[-0.025em] sm:text-[42px]">How RoadFix works</h1>
+      <h1 className="display text-[40px] sm:text-[56px]">How RoadFix works</h1>
       <p className="mt-3 text-[18px] leading-relaxed text-ink-2">What is measured, what is reported, what is estimated, and where each number comes from.</p>
 
       <nav aria-label="On this page" className="sticky top-[calc(env(safe-area-inset-top)+8px)] z-10 -mx-4 mt-6 overflow-x-auto bg-paper/95 px-4 py-2 backdrop-blur-sm [scrollbar-width:none] sm:top-[64px]">

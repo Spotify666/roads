@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, type ComponentType } from "react";
+import { useEffect, useMemo, useRef, useState, type ComponentType } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { AnimatedBackground } from "@/components/ui/animated-background";
 import { flowColor, hourLabel } from "@/lib/flow";
@@ -103,6 +103,7 @@ export function Lab({ cal, tomtom, baseline }: Props) {
   const [design, setDesign] = useState<Design>(TODAY_DESIGN);
   const [mode, setMode] = useState<EditMode>("uturn");
   const { state, run } = useLabRunner();
+  const resultsRef = useRef<HTMLElement>(null);
 
   const set = <K extends keyof Design>(k: K, v: Design[K]) => setDesign((d) => ({ ...d, [k]: v }));
   const cost = designCost(design);
@@ -112,6 +113,11 @@ export function Lab({ cal, tomtom, baseline }: Props) {
   const key = JSON.stringify(design);
   const fresh = state.designKey === key && state.hour === hour;
   const i = Math.min(state.today.length, state.design.length) - 1;
+  // on a phone the results sit below the tools: glide to them as the first numbers arrive
+  const first = state.status === "running" && i === 0;
+  useEffect(() => {
+    if (first && window.innerWidth < 1024) resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [first]);
   const base = baseline.hours[String(hour)];
   const showPlan = state.hour != null && design.traffic === 1 ? baseline.hours[String(state.hour)]?.plan[i] : null;
 
@@ -334,12 +340,13 @@ export function Lab({ cal, tomtom, baseline }: Props) {
         <AnimatePresence initial={false}>
           {state.status !== "idle" && i >= 0 && (
             <motion.section
+              ref={resultsRef}
               key="results"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ type: "spring", duration: 0.45, bounce: 0 }}
-              className="mt-4 rounded-2xl bg-asphalt-2 p-4 sm:p-5"
+              className="mt-4 scroll-mt-20 rounded-2xl bg-asphalt-2 p-4 sm:p-5"
               aria-live="polite"
             >
               <div className="mb-3 flex items-center justify-between gap-2">

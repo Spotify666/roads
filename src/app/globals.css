@@ -41,6 +41,20 @@
 html {
   background: var(--color-asphalt);
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+/* large headings: light weight, tight tracking */
+.display {
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+}
+
+/* a quiet field of plus marks behind dark headers */
+.plus-grid {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cpath d='M28 23v10M23 28h10' stroke='%23ffffff' stroke-opacity='.07' stroke-width='1'/%3E%3C/svg%3E");
+  background-position: center top;
 }
 
 body {
@@ -170,6 +184,9 @@ label {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {

@@ -457,7 +457,13 @@ export function MapHome({ data }: { data: Data }) {
       {ranked.map((a, i) => {
         const v = valueOf(a);
         return (
-          <motion.li key={a.id} layout="position" transition={SPRING}>
+          <motion.li
+            key={a.id}
+            layout="position"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...SPRING, delay: Math.min(i, 14) * 0.025 }}
+          >
             <button type="button" onClick={() => select(a.id)} className="flex w-full items-center gap-3 rounded-xl px-2.5 py-2.5 text-left transition-colors duration-150 hover:bg-asphalt-3 active:bg-asphalt-3">
               <span className="w-5 shrink-0 text-right text-[12px] font-semibold text-chalk-2 num">{i + 1}</span>
               <span className="min-w-0 flex-1">

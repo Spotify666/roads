@@ -59,7 +59,12 @@ export function SiteNav() {
   if (path?.startsWith("/report")) return null;
   return (
     // on phones the map page is full-screen, with its own search bar in place of the header
-    <header className={cn("dark-surface no-print sticky top-0 z-40 bg-asphalt pt-[env(safe-area-inset-top)] text-chalk", path === "/" && "hidden sm:block")}>
+    <header
+      className={cn(
+        "dark-surface no-print sticky top-0 z-40 border-b border-white/[0.06] bg-asphalt/75 pt-[env(safe-area-inset-top)] text-chalk backdrop-blur-xl backdrop-saturate-150",
+        path === "/" && "hidden sm:block",
+      )}
+    >
       <nav className="mx-auto flex h-14 max-w-[1600px] items-center gap-6 px-4 sm:px-6" aria-label="Main">
         <Link href="/" className="flex shrink-0 items-center gap-2 font-semibold tracking-tight">
           <Mark />
@@ -75,17 +80,23 @@ export function SiteNav() {
                 <Link
                   href={l.href}
                   aria-current={active ? "page" : undefined}
-                  className={cn(
-                    "block whitespace-nowrap rounded-md px-2.5 py-1.5 transition-colors duration-150",
-                    active ? "bg-asphalt-3 text-chalk" : "text-chalk-2 hover:text-chalk",
-                  )}
+                  className={cn("relative block whitespace-nowrap rounded-full px-3.5 py-1.5 transition-colors duration-200", active ? "text-chalk" : "text-chalk-2 hover:text-chalk")}
                 >
-                  {l.label}
+                  {active && <motion.span layoutId="nav-pill" className="absolute inset-0 rounded-full bg-white/[0.08] ring-1 ring-white/[0.08]" transition={{ type: "spring", duration: 0.4, bounce: 0.18 }} />}
+                  <span className="relative">{l.label}</span>
                 </Link>
               </li>
             );
           })}
         </ul>
+        <Link
+          href="/pilot"
+          aria-hidden={path?.startsWith("/pilot") || undefined}
+          tabIndex={path?.startsWith("/pilot") ? -1 : undefined}
+          className={cn(path?.startsWith("/pilot") && "invisible", "ml-auto hidden h-9 items-center rounded-full bg-chalk px-4 text-[14px] font-semibold text-asphalt transition-[transform,box-shadow] duration-200 ease-[var(--ease-out-strong)] hover:-translate-y-px hover:shadow-[0_6px_20px_#eceee933] active:scale-[0.97] sm:flex")}
+        >
+          Try a fix
+        </Link>
       </nav>
     </header>
   );
@@ -98,7 +109,7 @@ export function TabBar() {
   return (
     <nav
       aria-label="Main"
-      className="dark-surface no-print fixed inset-x-0 bottom-0 z-40 bg-asphalt/95 pb-[env(safe-area-inset-bottom)] text-chalk backdrop-blur-sm sm:hidden"
+      className="dark-surface no-print fixed inset-x-0 bottom-0 z-40 border-t border-white/[0.06] bg-asphalt/80 pb-[env(safe-area-inset-bottom)] text-chalk backdrop-blur-xl backdrop-saturate-150 sm:hidden"
     >
       <ul className="grid h-16 grid-cols-3">
         {LINKS.map((l) => {

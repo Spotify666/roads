@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { AreaWhen, LiveNow, Measured } from "@/components/AreaView";
+import { Reveal } from "@/components/ui/Reveal";
 import { CAUSE_LABELS, FIX_TYPE_LABELS, hourLabel } from "@/lib/flow";
 import type { AreaDetail } from "@/lib/types";
 import areasData from "@/data/areas.json";
@@ -68,12 +69,12 @@ export default async function AreaPage({ params }: { params: Promise<{ id: strin
 
   return (
     <main>
-      <section className="dark-surface bg-asphalt text-chalk">
+      <section className="dark-surface plus-grid bg-asphalt text-chalk">
         <div className="mx-auto max-w-[1180px] px-4 pt-6 pb-8 sm:px-6">
           <Link href="/" className="inline-flex h-9 items-center gap-1.5 rounded-full bg-asphalt-3 px-3.5 text-[13.5px] font-medium text-chalk transition-transform duration-150 active:scale-[0.96]">
             <span aria-hidden="true">←</span> Map
           </Link>
-          <h1 className="mt-5 text-[32px] leading-[1.05] font-semibold tracking-[-0.025em] text-balance sm:text-[44px]">{a.name}</h1>
+          <h1 className="display mt-5 text-[38px] text-balance sm:text-[56px]">{a.name}</h1>
           <ul className="mt-3 flex flex-wrap gap-1.5 text-[12.5px] text-chalk-2">
             {[a.place, a.snapped.road, a.corporation, a.police].filter(Boolean).map((t) => (
               <li key={t} className="rounded-full bg-asphalt-3 px-2.5 py-1">
@@ -88,15 +89,19 @@ export default async function AreaPage({ params }: { params: Promise<{ id: strin
       </section>
 
       <section className="mx-auto max-w-[1180px] px-4 py-12 sm:px-6 sm:py-16">
-        <h2 className="text-[24px] font-semibold tracking-[-0.02em]">When it jams</h2>
-        <p className="mt-1 mb-6 text-[13.5px] text-ink-2">Typical weekday · TomTom · ~300 m stretches</p>
-        <AreaWhen area={a} />
+        <Reveal>
+          <h2 className="display text-[30px] sm:text-[36px]">When it jams</h2>
+          <p className="mt-2 mb-6 text-[13.5px] text-ink-2">Typical weekday · TomTom · ~300 m stretches</p>
+        </Reveal>
+        <Reveal delay={0.05}>
+          <AreaWhen area={a} />
+        </Reveal>
       </section>
 
       <section className="bg-paper-2">
         <div className="mx-auto grid max-w-[1180px] gap-12 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-2 lg:gap-16">
           <div>
-            <h2 className="text-[24px] font-semibold tracking-[-0.02em]">Why</h2>
+            <h2 className="display text-[30px] sm:text-[36px]">Why</h2>
             <ul className="mt-5 flex flex-wrap gap-2">
               {a.causes.map((c) => (
                 <li key={c} className="rounded-full bg-ink px-3.5 py-1.5 text-[14px] font-medium text-chalk">
@@ -145,7 +150,7 @@ export default async function AreaPage({ params }: { params: Promise<{ id: strin
           </div>
 
           <div>
-            <h2 className="text-[24px] font-semibold tracking-[-0.02em]">The fix</h2>
+            <h2 className="display text-[30px] sm:text-[36px]">The fix</h2>
             <div className="mt-5 rounded-3xl bg-ink p-5 text-chalk sm:p-6">
               <div className="text-[12px] font-semibold tracking-wide text-sign-bright">{(FIX_TYPE_LABELS[a.fix.type] ?? a.fix.type).toUpperCase()}</div>
               <p className="mt-2 text-[21px] leading-snug font-semibold tracking-[-0.01em] text-balance">{a.fix.title}</p>
@@ -187,7 +192,7 @@ export default async function AreaPage({ params }: { params: Promise<{ id: strin
       </section>
 
       <section className="mx-auto max-w-[1180px] px-4 py-12 sm:px-6 sm:py-16">
-        <h2 className="text-[24px] font-semibold tracking-[-0.02em]">Measured by RoadFix</h2>
+        <h2 className="display text-[30px] sm:text-[36px]">Measured by RoadFix</h2>
         <div className="mt-4">
           <Measured id={a.id} typical={(worst?.hours ?? []).map((h) => ({ hour: h.hour, ratio: h.ratio }))} />
         </div>
