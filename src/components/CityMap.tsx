@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { AttributionControl, Map as MLMap, NavigationControl, Popup, type GeoJSONSource, type MapMouseEvent, type PaddingOptions } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { atHour, flowStepExpression } from "@/lib/flow";
+import { FLOW_COLORS, atHour, flowStepExpression } from "@/lib/flow";
 import type { AreaSummary, LiveIncident } from "@/lib/types";
 
 type Stretch = { g: [number, number][]; r: number[] };
@@ -62,6 +62,43 @@ function restyleBase(map: MLMap) {
 }
 
 const empty: GeoJSON.FeatureCollection = { type: "FeatureCollection", features: [] };
+const PILL_COLORS: [string, string][] = [["pill-none", "#3a434a"], ...FLOW_COLORS.map((c, i) => [`pill-${i}`, c] as [string, string])];
+
+/** A stretchable rounded pill per congestion colour, for the ratio labels on the map. */
+function addPills(map: MLMap) {
+  const r = 2; // drawn at 2x for sharp edges
+  const w = 22 * r,
+    h = 18 * r;
+  for (const [name, color] of PILL_COLORS) {
+    if (map.hasImage(name)) continue;
+    const c = document.createElement("canvas");
+    c.width = w;
+    c.height = h;
+    const g = c.getContext("2d")!;
+    // drawn by hand rather than with roundRect, which older iPhones lack
+    const pill = (x: number, y: number, pw: number, ph: number) => {
+      const rr = ph / 2;
+      g.beginPath();
+      g.moveTo(x + rr, y);
+      g.lineTo(x + pw - rr, y);
+      g.arc(x + pw - rr, y + rr, rr, -Math.PI / 2, Math.PI / 2);
+      g.lineTo(x + rr, y + ph);
+      g.arc(x + rr, y + rr, rr, Math.PI / 2, (3 * Math.PI) / 2);
+      g.closePath();
+      g.fill();
+    };
+    g.fillStyle = "#101316";
+    pill(0, 0, w, h);
+    g.fillStyle = color;
+    pill(1.5 * r, 1.5 * r, w - 3 * r, h - 3 * r);
+    map.addImage(name, g.getImageData(0, 0, w, h), {
+      pixelRatio: r,
+      stretchX: [[9 * r, 13 * r]],
+      stretchY: [[8 * r, 10 * r]],
+      content: [6 * r, 2 * r, 16 * r, 16 * r],
+    });
+  }
+}
 
 export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents, selectedId, onSelect, padding, layers, user, locateTick }: Props) {
   const el = useRef<HTMLDivElement>(null);
@@ -128,6 +165,23 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
         paint: { "line-color": flowStepExpression("cur"), "line-width": ["interpolate", ["linear"], ["zoom"], 10, 2.2, 15, 8] },
       });
 
+      // the measured road through the selected spot, drawn like a route
+      map.addSource("route", { type: "geojson", data: empty });
+      map.addLayer({
+        id: "route-casing",
+        type: "line",
+        source: "route",
+        layout: { "line-cap": "round", "line-join": "round" },
+        paint: { "line-color": "#eceee9", "line-width": ["interpolate", ["linear"], ["zoom"], 10, 6, 15, 16], "line-opacity": 0.9 },
+      });
+      map.addLayer({
+        id: "route",
+        type: "line",
+        source: "route",
+        layout: { "line-cap": "round", "line-join": "round" },
+        paint: { "line-color": ["case", ["get", "typical"], flowStepExpression("cur"), "#2d6cdf"], "line-width": ["interpolate", ["linear"], ["zoom"], 10, 3, 15, 10] },
+      });
+
       map.addSource("incidents", { type: "geojson", data: empty });
       map.addLayer({
         id: "incidents",
@@ -176,11 +230,39 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
           "circle-stroke-opacity": 0,
         },
       });
+      addPills(map);
+      map.addLayer({
+        id: "hotspot-pills",
+        type: "symbol",
+        source: "hotspots",
+        filter: [">", ["get", "cur"], 0],
+        layout: {
+          "text-field": ["concat", ["number-format", ["get", "cur"], { "min-fraction-digits": 1, "max-fraction-digits": 1 }], "×"],
+          "text-font": ["Noto Sans Bold"],
+          "text-size": ["case", ["get", "sel"], 14, 12],
+          "icon-image": ["step", ["get", "cur"], "pill-none", 0.01, "pill-0", 1.15, "pill-1", 1.5, "pill-2", 2, "pill-3", 3, "pill-4"],
+          "icon-text-fit": "both",
+          "icon-text-fit-padding": [2, 7, 2, 7],
+          // when pills collide the worst spot, then the selected one, keeps its pill
+          "symbol-sort-key": ["case", ["get", "sel"], -100, ["-", 0, ["get", "cur"]]],
+          "symbol-z-order": "source",
+          "icon-allow-overlap": false,
+          "text-allow-overlap": false,
+          "icon-padding": 1,
+        },
+        paint: {
+          "text-color": ["step", ["get", "cur"], "#101316", 2, "#ffffff"],
+          "icon-opacity": 0,
+          "text-opacity": 0,
+        },
+      });
       // the -transition keys are valid MapLibre style but missing from its types
       const fade = (layer: string, prop: string, delay = 0) => map.setPaintProperty(layer, `${prop}-transition` as never, { duration: 700, delay } as never);
       fade("hotspot-halo", "circle-opacity");
       fade("hotspots", "circle-opacity", 120);
       fade("hotspots", "circle-stroke-opacity", 120);
+      fade("hotspot-pills", "icon-opacity", 260);
+      fade("hotspot-pills", "text-opacity", 260);
       map.addLayer({
         id: "hotspot-labels",
         type: "symbol",
@@ -189,7 +271,7 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
           "text-field": ["get", "name"],
           "text-font": ["Noto Sans Regular"],
           "text-size": ["case", ["get", "sel"], 14, 12.5],
-          "text-offset": [0, 1.25],
+          "text-offset": [0, 1.4],
           "text-anchor": "top",
           "text-optional": true,
           "symbol-sort-key": ["case", ["get", "sel"], 0, ["-", 10, ["get", "cur"]]],
@@ -264,7 +346,19 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
         map.setPaintProperty("hotspot-halo", "circle-opacity", 0.85);
         map.setPaintProperty("hotspots", "circle-opacity", 1);
         map.setPaintProperty("hotspots", "circle-stroke-opacity", 1);
+        map.setPaintProperty("hotspot-pills", "icon-opacity", 1);
+        map.setPaintProperty("hotspot-pills", "text-opacity", 1);
       }
+
+      const sel = areas.find((a) => a.id === selectedId);
+      const route: GeoJSON.Feature[] = sel
+        ? sel.stretches.map((s) => ({
+            type: "Feature" as const,
+            geometry: { type: "LineString" as const, coordinates: s.g },
+            properties: { typical, cur: atHour(profileHours.map((h, i) => [h, s.r[i]]), hour) ?? 0 },
+          }))
+        : [];
+      (map.getSource("route") as GeoJSONSource | undefined)?.setData({ type: "FeatureCollection", features: route });
 
       const stretches: GeoJSON.Feature[] =
         typical && layers.stretches
@@ -337,7 +431,7 @@ function pick(map: MLMap, e: MapMouseEvent, areas: AreaWithStretches[]) {
   ];
   let id: string | undefined;
   let bd = Infinity;
-  for (const f of map.queryRenderedFeatures(box(TAP_PX), { layers: ["hotspots"] })) {
+  for (const f of map.queryRenderedFeatures(box(TAP_PX), { layers: ["hotspots", "hotspot-pills"] })) {
     const p = map.project((f.geometry as GeoJSON.Point).coordinates as [number, number]);
     const d = (p.x - x) ** 2 + (p.y - y) ** 2;
     if (d < bd) {

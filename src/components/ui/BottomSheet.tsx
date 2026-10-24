@@ -11,8 +11,8 @@ const SPRING = { type: "spring" as const, stiffness: 420, damping: 42, mass: 0.9
 interface Props {
   snap: Snap;
   onSnap: (s: Snap) => void;
-  /** visible height when collapsed, in px */
-  peek: number;
+  /** visible height when collapsed, in px; by default exactly the header, so no row is cut in half */
+  peek?: number;
   header: ReactNode;
   children: ReactNode;
   /** visible height once the sheet settles, so the map can keep its centre clear */
@@ -41,7 +41,8 @@ export function BottomSheet({ snap, onSnap, peek, header, children, onSettle, la
     return () => ro.disconnect();
   }, []);
 
-  const points: Record<Snap, number> = { full: top, half: Math.round(H * 0.5), peek: Math.max(0, H - peek) };
+  const peekPx = peek ?? headH;
+  const points: Record<Snap, number> = { full: top, half: Math.round(H * 0.5), peek: Math.max(0, H - peekPx) };
   const contentH = useTransform(y, (v) => Math.max(0, H - v - headH));
 
   const settle = (s: Snap) => {
@@ -53,7 +54,7 @@ export function BottomSheet({ snap, onSnap, peek, header, children, onSettle, la
   useEffect(() => {
     if (H) settle(snap);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [snap, H, peek]);
+  }, [snap, H, peekPx]);
 
   const onDragEnd = (_: unknown, info: { velocity: { y: number } }) => {
     // project the release a little way along its velocity, then pick the nearest height

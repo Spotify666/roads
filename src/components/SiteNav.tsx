@@ -61,7 +61,7 @@ export function SiteNav() {
     // on phones the map page is full-screen, with its own search bar in place of the header
     <header
       className={cn(
-        "dark-surface no-print sticky top-0 z-40 border-b border-white/[0.06] bg-asphalt/75 pt-[env(safe-area-inset-top)] text-chalk backdrop-blur-xl backdrop-saturate-150",
+        "dark-surface no-print sticky top-0 z-40 border-b border-white/[0.06] bg-asphalt/[0.94] pt-[env(safe-area-inset-top)] text-chalk backdrop-blur-xl backdrop-saturate-150",
         path === "/" && "hidden sm:block",
       )}
     >
@@ -109,7 +109,7 @@ export function TabBar() {
   return (
     <nav
       aria-label="Main"
-      className="dark-surface no-print fixed inset-x-0 bottom-0 z-40 border-t border-white/[0.06] bg-asphalt/80 pb-[env(safe-area-inset-bottom)] text-chalk backdrop-blur-xl backdrop-saturate-150 sm:hidden"
+      className="dark-surface no-print fixed inset-x-0 bottom-0 z-40 border-t border-white/[0.06] bg-asphalt/[0.94] pb-[env(safe-area-inset-bottom)] text-chalk backdrop-blur-xl backdrop-saturate-150 sm:hidden"
     >
       <ul className="grid h-16 grid-cols-3">
         {LINKS.map((l) => {

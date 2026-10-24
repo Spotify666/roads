@@ -235,100 +235,131 @@ function RoundButton({ label, onClick, active, children }: { label: string; onCl
 
 /* ---------- the spot preview ---------- */
 
-function Preview({ a, value, valueLabel, markHour, live, onClose }: { a: AreaWithStretches; value: number | null; valueLabel: string; markHour: number; live: LiveReading | undefined; onClose: () => void }) {
+/** Name, place and slowdown: the part of a spot's card that stays visible when the sheet is collapsed. */
+function PlaceHeader({ a, value, onClose }: { a: AreaWithStretches; value: number | null; onClose: () => void }) {
+  return (
+    <div className="flex items-start gap-3 px-4 pb-3">
+      <div className="min-w-0 flex-1">
+        <h2 className="text-[21px] leading-tight font-semibold tracking-[-0.015em] text-balance">{a.name}</h2>
+        <p className="mt-1 flex items-center gap-2 text-[13px] text-chalk-2">
+          <Ratio v={value} />
+          <span className="truncate">{a.place}</span>
+        </p>
+      </div>
+      <button
+        type="button"
+        data-no-drag
+        onClick={onClose}
+        aria-label="Close"
+        className="flex size-10 shrink-0 items-center justify-center rounded-full bg-asphalt-3 text-chalk-2 transition-transform duration-150 active:scale-90"
+      >
+        <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="m4 4 8 8M12 4l-8 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        </svg>
+      </button>
+    </div>
+  );
+}
+
+function Preview({
+  a,
+  value,
+  valueLabel,
+  markHour,
+  live,
+  onClose,
+  withHeader,
+}: {
+  a: AreaWithStretches;
+  value: number | null;
+  valueLabel: string;
+  markHour: number;
+  live: LiveReading | undefined;
+  onClose: () => void;
+  withHeader: boolean;
+}) {
   const p = a.profile;
   return (
-    <div className="px-4 pb-6">
-      <div className="flex items-start gap-3">
-        <div className="min-w-0 flex-1">
-          <h2 className="text-[21px] leading-tight font-semibold tracking-[-0.015em] text-balance">{a.name}</h2>
-          <p className="mt-0.5 truncate text-[13px] text-chalk-2">
-            {a.place} · {a.police}
-          </p>
-        </div>
-        <button type="button" onClick={onClose} aria-label="Close" className="flex size-9 shrink-0 items-center justify-center rounded-full bg-asphalt-3 text-chalk-2 active:scale-95">
-          <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true">
-            <path d="m4 4 8 8M12 4l-8 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-          </svg>
-        </button>
-      </div>
-
-      <div className="mt-4 grid grid-cols-3 gap-2">
-        <div className="rounded-xl bg-asphalt-3 p-2.5">
-          <div className="text-[11.5px] text-chalk-2">{valueLabel}</div>
-          <div className="mt-1 flex items-baseline gap-1.5">
-            <span className="text-[20px] font-semibold num" style={{ color: flowColor(value, "#a9b1ab") }}>
-              {value == null ? "–" : `${value.toFixed(1)}×`}
-            </span>
+    <div className="pb-6">
+      {withHeader && <PlaceHeader a={a} value={value} onClose={onClose} />}
+      <div className="px-4">
+        <div className="mt-1 grid grid-cols-3 gap-2">
+          <div className="rounded-xl bg-asphalt-3 p-2.5">
+            <div className="text-[11.5px] text-chalk-2">{valueLabel}</div>
+            <div className="mt-1 flex items-baseline gap-1.5">
+              <span className="text-[20px] font-semibold num" style={{ color: flowColor(value, "#a9b1ab") }}>
+                {value == null ? "–" : `${value.toFixed(1)}×`}
+              </span>
+            </div>
+            <div className="text-[11.5px] text-chalk-2">{flowLabel(value)}</div>
           </div>
-          <div className="text-[11.5px] text-chalk-2">{flowLabel(value)}</div>
-        </div>
-        <div className="rounded-xl bg-asphalt-3 p-2.5">
-          <div className="text-[11.5px] text-chalk-2">Weekday peak</div>
-          <div className="mt-1 text-[20px] font-semibold num" style={{ color: flowColor(p?.peak.ratio) }}>
-            {p ? `${p.peak.ratio.toFixed(1)}×` : "–"}
+          <div className="rounded-xl bg-asphalt-3 p-2.5">
+            <div className="text-[11.5px] text-chalk-2">Weekday peak</div>
+            <div className="mt-1 text-[20px] font-semibold num" style={{ color: flowColor(p?.peak.ratio) }}>
+              {p ? `${p.peak.ratio.toFixed(1)}×` : "–"}
+            </div>
+            <div className="text-[11.5px] text-chalk-2 num">{p ? hourLabel(p.peak.hour) : ""}</div>
           </div>
-          <div className="text-[11.5px] text-chalk-2 num">{p ? hourLabel(p.peak.hour) : ""}</div>
-        </div>
-        <div className="rounded-xl bg-asphalt-3 p-2.5">
-          <div className="text-[11.5px] text-chalk-2">{live ? "Speed now" : "Lost at peak"}</div>
-          <div className="mt-1 text-[20px] font-semibold num">{live ? Math.round(live.current_speed) : p ? Math.round(p.peakDelayPerKm) : "–"}</div>
-          <div className="text-[11.5px] text-chalk-2 num">{live ? `km/h · free ${Math.round(live.free_flow_speed)}` : "s per km"}</div>
-        </div>
-      </div>
-
-      {p && (
-        <div className="mt-5">
-          <DayStrip hours={p.hours} hour={markHour} peak={p.peak.hour} tall />
-          <div className="mt-1.5 flex justify-between text-[11px] text-chalk-2 num" aria-hidden="true">
-            <span>12a</span>
-            <span>6a</span>
-            <span>12p</span>
-            <span>6p</span>
-            <span>11p</span>
+          <div className="rounded-xl bg-asphalt-3 p-2.5">
+            <div className="text-[11.5px] text-chalk-2">{live ? "Speed now" : "Lost at peak"}</div>
+            <div className="mt-1 text-[20px] font-semibold num">{live ? Math.round(live.current_speed) : p ? Math.round(p.peakDelayPerKm) : "–"}</div>
+            <div className="text-[11.5px] text-chalk-2 num">{live ? `km/h · free ${Math.round(live.free_flow_speed)}` : "s per km"}</div>
           </div>
         </div>
-      )}
 
-      <div className="mt-5 text-[12px] font-semibold tracking-wide text-chalk-2">WHY</div>
-      <ul className="mt-2 flex flex-wrap gap-1.5">
-        {a.causes.map((c) => (
-          <li key={c} className="rounded-full bg-asphalt-3 px-2.5 py-1 text-[12.5px] text-chalk">
-            {CAUSE_LABELS[c] ?? c}
-          </li>
-        ))}
-      </ul>
-
-      <div className="mt-5 rounded-2xl bg-[#14233f] p-3.5 ring-1 ring-sign/30">
-        <div className="flex items-center gap-2 text-[12px] font-semibold text-sign-bright">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 8-8-1.3-1.3a4 4 0 0 0-5-5L13 2l-2 2 3.7 2.3Z" />
-            <path d="m3 21 6-6" />
-          </svg>
-          FIX · {FIX_TYPE_LABELS[a.fix.type] ?? a.fix.type}
-        </div>
-        <p className="mt-1.5 text-[15px] leading-snug font-medium">{a.fix.title}</p>
-        <div className="mt-2.5 flex flex-wrap gap-1.5 text-[12px] num">
-          <span className="rounded-full bg-black/25 px-2.5 py-1">
-            ₹{a.fix.costLakh[0]}–{a.fix.costLakh[1]} lakh
-          </span>
-          <span className="rounded-full bg-black/25 px-2.5 py-1">~{a.fix.weeks} weeks</span>
-          <span className="rounded-full bg-black/25 px-2.5 py-1">{a.fix.agency}</span>
-        </div>
-      </div>
-
-      <div className="mt-4 flex gap-2">
-        <Link
-          href={`/area/${a.id}`}
-          className="flex h-11 flex-1 items-center justify-center gap-1.5 rounded-full bg-sign text-[14.5px] font-semibold text-white transition-transform duration-150 active:scale-[0.97]"
-        >
-          Details <span aria-hidden="true">→</span>
-        </Link>
-        {a.pilot && (
-          <Link href="/pilot" className="flex h-11 flex-1 items-center justify-center rounded-full bg-asphalt-3 text-[14.5px] font-semibold text-chalk transition-transform duration-150 active:scale-[0.97]">
-            Simulate
-          </Link>
+        {p && (
+          <div className="mt-5">
+            <DayStrip hours={p.hours} hour={markHour} peak={p.peak.hour} tall />
+            <div className="mt-1.5 flex justify-between text-[11px] text-chalk-2 num" aria-hidden="true">
+              <span>12a</span>
+              <span>6a</span>
+              <span>12p</span>
+              <span>6p</span>
+              <span>11p</span>
+            </div>
+          </div>
         )}
+
+        <div className="mt-5 text-[12px] font-semibold tracking-wide text-chalk-2">WHY</div>
+        <ul className="mt-2 flex flex-wrap gap-1.5">
+          {a.causes.map((c) => (
+            <li key={c} className="rounded-full bg-asphalt-3 px-2.5 py-1 text-[12.5px] text-chalk">
+              {CAUSE_LABELS[c] ?? c}
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-5 rounded-2xl bg-[#14233f] p-3.5 ring-1 ring-sign/30">
+          <div className="flex items-center gap-2 text-[12px] font-semibold text-sign-bright">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 8-8-1.3-1.3a4 4 0 0 0-5-5L13 2l-2 2 3.7 2.3Z" />
+              <path d="m3 21 6-6" />
+            </svg>
+            FIX · {FIX_TYPE_LABELS[a.fix.type] ?? a.fix.type}
+          </div>
+          <p className="mt-1.5 text-[15px] leading-snug font-medium">{a.fix.title}</p>
+          <div className="mt-2.5 flex flex-wrap gap-1.5 text-[12px] num">
+            <span className="rounded-full bg-black/25 px-2.5 py-1">
+              ₹{a.fix.costLakh[0]}–{a.fix.costLakh[1]} lakh
+            </span>
+            <span className="rounded-full bg-black/25 px-2.5 py-1">~{a.fix.weeks} weeks</span>
+            <span className="rounded-full bg-black/25 px-2.5 py-1">{a.fix.agency}</span>
+          </div>
+        </div>
+
+        <div className="mt-4 flex gap-2">
+          <Link
+            href={`/area/${a.id}`}
+            className="flex h-11 flex-1 items-center justify-center gap-1.5 rounded-full bg-sign text-[14.5px] font-semibold text-white transition-transform duration-150 active:scale-[0.97]"
+          >
+            Details <span aria-hidden="true">→</span>
+          </Link>
+          {a.pilot && (
+            <Link href="/pilot" className="flex h-11 flex-1 items-center justify-center rounded-full bg-asphalt-3 text-[14.5px] font-semibold text-chalk transition-transform duration-150 active:scale-[0.97]">
+              Simulate
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -494,6 +525,7 @@ export function MapHome({ data }: { data: Data }) {
             markHour={mode === "live" ? istHour() : hour}
             live={live?.readings.find((r) => r.hotspot_id === sel.id)}
             onClose={() => setSelected(null)}
+            withHeader={!!wide}
           />
         </motion.div>
       ) : (
@@ -626,8 +658,15 @@ export function MapHome({ data }: { data: Data }) {
           <BottomSheet
             snap={snap}
             onSnap={setSnap}
-            peek={mode === "typical" ? 196 : 124}
-            header={sel ? <div className="h-1" /> : summary}
+            header={
+              sel ? (
+                <motion.div key={sel.id} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}>
+                  <PlaceHeader a={sel} value={valueOf(sel)} onClose={() => setSelected(null)} />
+                </motion.div>
+              ) : (
+                summary
+              )
+            }
             onSettle={setSheetH}
             label="Spots ranked by congestion"
             top={70}

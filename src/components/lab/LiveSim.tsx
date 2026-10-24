@@ -6,6 +6,7 @@ import { PILOT_MODEL } from "@/sim/pilot";
 import { TODAY_DESIGN, makeSim, type Calibration, type Design } from "@/sim/scenario";
 import { MARK, SimCanvas, VEHICLE_COLORS, type SimCanvasHandle } from "@/components/sim/SimCanvas";
 import { SlidingNumber } from "@/components/ui/sliding-number";
+import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { ClockIcon, PauseIcon, PlayIcon, ResetIcon, UturnIcon, WrongIcon } from "./icons";
 
@@ -77,6 +78,8 @@ export function LiveSim({ design, hour, cal, reverseShare, baseOpenings }: { des
   const [speed, setSpeed] = useState(4);
   const [center, setCenter] = useState(1450);
   const [epoch, setEpoch] = useState(0);
+  // phones show one road at a time; wide screens show both
+  const [view, setView] = useState<"today" | "design">("design");
   const todaySim = useMemo(() => prefilled(TODAY_DESIGN, hour, cal, reverseShare), [hour, cal, reverseShare, epoch]); // eslint-disable-line react-hooks/exhaustive-deps
   // rebuild the design run a moment after the last edit, not on every tap
   const [settled, setSettled] = useState(design);
@@ -84,6 +87,8 @@ export function LiveSim({ design, hour, cal, reverseShare, baseOpenings }: { des
     const t = setTimeout(() => setSettled(design), 220);
     return () => clearTimeout(t);
   }, [design]);
+  // an edit to the design brings its road into view on phones
+  useEffect(() => setView("design"), [settled]);
   const designSim = useMemo(() => prefilled(settled, hour, cal, reverseShare), [settled, hour, cal, reverseShare, epoch]); // eslint-disable-line react-hooks/exhaustive-deps
   const sims = useRef({ today: todaySim, design: designSim });
   sims.current = { today: todaySim, design: designSim };
@@ -175,7 +180,7 @@ export function LiveSim({ design, hour, cal, reverseShare, baseOpenings }: { des
               role="radio"
               aria-checked={s === speed}
               onClick={() => setSpeed(s)}
-              className={cn("h-8 rounded-full px-3 font-semibold num transition-colors duration-150", s === speed ? "bg-asphalt-4 text-chalk" : "text-chalk-2 hover:text-chalk")}
+              className={cn("h-10 rounded-full px-3 font-semibold num transition-colors duration-150 sm:h-8", s === speed ? "bg-asphalt-4 text-chalk" : "text-chalk-2 hover:text-chalk")}
             >
               {s}×
             </button>
@@ -188,7 +193,7 @@ export function LiveSim({ design, hour, cal, reverseShare, baseOpenings }: { des
               type="button"
               onClick={() => pick(s.s)}
               className={cn(
-                "h-8 shrink-0 rounded-full px-3 font-medium transition-colors duration-150",
+                "h-10 shrink-0 rounded-full px-3.5 font-medium transition-colors duration-150 sm:h-8",
                 Math.abs(center - s.s) < 120 ? "bg-asphalt-4 text-chalk" : "bg-asphalt-2 text-chalk-2 hover:text-chalk",
               )}
             >
@@ -198,12 +203,30 @@ export function LiveSim({ design, hour, cal, reverseShare, baseOpenings }: { des
         </div>
       </div>
 
+      <div className="mt-5 grid grid-cols-2 gap-1 rounded-2xl bg-asphalt-2 p-1 lg:hidden" role="tablist" aria-label="Which road to watch">
+        {(["today", "design"] as const).map((k) => (
+          <button
+            key={k}
+            type="button"
+            role="tab"
+            aria-selected={view === k}
+            onClick={() => setView(k)}
+            className={cn("relative flex h-12 items-center justify-center gap-2 rounded-xl text-[14px] font-semibold transition-colors duration-200", view === k ? "text-chalk" : "text-chalk-2")}
+          >
+            {view === k && <motion.span layoutId="road-tab" className="absolute inset-0 rounded-xl bg-asphalt-4" transition={{ type: "spring", duration: 0.35, bounce: 0.15 }} />}
+            <span className={cn("relative size-2 rounded-full", k === "today" ? "bg-[#5d6870]" : "bg-sign-bright")} />
+            <span className="relative">{k === "today" ? "Today" : "Your design"}</span>
+            {stats && <span className="relative text-[12.5px] font-medium text-chalk-2 num">{Math.round(stats[k].speed)} km/h</span>}
+          </button>
+        ))}
+      </div>
+
       {(["today", "design"] as const).map((k) => {
         const st = stats?.[k];
         return (
-          <div key={k} className="mt-5">
+          <div key={k} className={cn("mt-3 lg:mt-5", k !== view && "max-lg:hidden")}>
             <div className="mb-2 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
-              <h3 className="flex items-center gap-2 text-[15px] font-semibold">
+              <h3 className="hidden items-center gap-2 text-[15px] font-semibold lg:flex">
                 <span className={cn("size-2 rounded-full", k === "today" ? "bg-[#5d6870]" : "bg-sign-bright")} />
                 {k === "today" ? "Today" : "Your design"}
               </h3>

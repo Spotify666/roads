@@ -52,7 +52,7 @@ export function Results({ hours, daily, costLakh }: Props) {
               role="radio"
               aria-checked={scope === k}
               onClick={() => setScope(k)}
-              className={cn("h-8 rounded-full px-3 font-semibold num transition-colors duration-150", scope === k ? "bg-white text-ink shadow-[0_1px_3px_#0002]" : "text-ink-2 hover:text-ink")}
+              className={cn("h-10 rounded-full px-3 font-semibold num transition-colors duration-150 sm:h-8", scope === k ? "bg-white text-ink shadow-[0_1px_3px_#0002]" : "text-ink-2 hover:text-ink")}
             >
               {k === "day" ? "Whole day" : hourLabel(k).replace(" ", "")}
             </button>
