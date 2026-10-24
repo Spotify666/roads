@@ -1,14 +1,15 @@
 import { sbSelect } from "@/lib/supabase";
 import type { LiveIncident, LiveReading } from "@/lib/types";
 
-// fresh on every request; Vercel's CDN caches the response for a minute (see Cache-Control)
+// read from the database on every request; Vercel's CDN may share one response for up to a minute
 export const dynamic = "force-dynamic";
 
 export async function GET() {
   const [readings, snaps] = await Promise.all([
-    sbSelect<LiveReading[]>("latest_readings?select=*"),
+    sbSelect<LiveReading[]>("latest_readings?select=*", 0),
     sbSelect<{ observed_at: string; incident_count: number; jam_count: number; data: LiveIncident[] }[]>(
       "incident_snapshots?select=observed_at,incident_count,jam_count,data&order=observed_at.desc&limit=1",
+      0,
     ),
   ]);
   const snap = snaps?.[0];
@@ -19,6 +20,6 @@ export async function GET() {
       readings: readings ?? [],
       incidents: { observedAt: snap?.observed_at ?? null, total: snap?.incident_count ?? 0, jams: snap?.jam_count ?? 0, items: incidents },
     },
-    { headers: { "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300" } },
+    { headers: { "Cache-Control": "public, s-maxage=60" } },
   );
 }

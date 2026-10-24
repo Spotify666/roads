@@ -138,42 +138,6 @@ a {
   border-bottom-color: var(--color-asphalt-3) !important;
 }
 
-/* hour slider: a big, easy thumb for touch screens */
-.hour-range {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 36px;
-  background: transparent;
-  touch-action: pan-y;
-}
-.hour-range::-webkit-slider-runnable-track {
-  height: 6px;
-  border-radius: 3px;
-  background: var(--color-asphalt-4);
-}
-.hour-range::-moz-range-track {
-  height: 6px;
-  border-radius: 3px;
-  background: var(--color-asphalt-4);
-}
-.hour-range::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 28px;
-  height: 28px;
-  margin-top: -11px;
-  border-radius: 50%;
-  background: var(--color-chalk);
-  box-shadow: 0 2px 8px #0008;
-}
-.hour-range::-moz-range-thumb {
-  width: 28px;
-  height: 28px;
-  border: 0;
-  border-radius: 50%;
-  background: var(--color-chalk);
-  box-shadow: 0 2px 8px #0008;
-}
-
 /* no grey flash on tap, no double-tap zoom delay on controls */
 a,
 button,

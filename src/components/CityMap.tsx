@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { AttributionControl, Map as MLMap, NavigationControl, Popup, type GeoJSONSource, type MapMouseEvent, type PaddingOptions } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { FLOW_COLORS, atHour, flowStepExpression } from "@/lib/flow";
+import { KINDS, KIND_PATH, kindsOf } from "@/lib/causes";
 import type { AreaSummary, LiveIncident } from "@/lib/types";
 
 type Stretch = { g: [number, number][]; r: number[] };
@@ -29,6 +30,8 @@ interface Props {
   user: [number, number] | null;
   /** bumped to re-centre on the user */
   locateTick: number;
+  /** live spots running clearly worse ("up") or better ("down") than usual for this hour */
+  trend: Record<string, "up" | "down">;
 }
 
 const STYLE = "https://tiles.openfreemap.org/styles/dark";
@@ -63,6 +66,54 @@ function restyleBase(map: MLMap) {
 
 const empty: GeoJSON.FeatureCollection = { type: "FeatureCollection", features: [] };
 const PILL_COLORS: [string, string][] = [["pill-none", "#3a434a"], ...FLOW_COLORS.map((c, i) => [`pill-${i}`, c] as [string, string])];
+
+/** Cause icons and trend arrows, in a dark and a light ink, to sit inline in the pill labels. */
+function addGlyphs(map: MLMap) {
+  const r = 2;
+  const px = 13 * r;
+  const draw = (name: string, paint: (g: CanvasRenderingContext2D) => void) => {
+    if (map.hasImage(name)) return;
+    const c = document.createElement("canvas");
+    c.width = px;
+    c.height = px;
+    const g = c.getContext("2d")!;
+    paint(g);
+    map.addImage(name, g.getImageData(0, 0, px, px), { pixelRatio: r });
+  };
+  for (const [suffix, ink] of [
+    ["d", "#101316"],
+    ["l", "#ffffff"],
+  ] as const) {
+    for (const k of KINDS) {
+      draw(`c-${k}-${suffix}`, (g) => {
+        g.scale(px / 24, px / 24);
+        g.strokeStyle = ink;
+        g.lineWidth = 2.4;
+        g.lineCap = "round";
+        g.lineJoin = "round";
+        g.stroke(new Path2D(KIND_PATH[k]));
+      });
+    }
+    for (const dir of ["up", "down"] as const) {
+      draw(`t-${dir}-${suffix}`, (g) => {
+        g.scale(px / 24, px / 24);
+        g.fillStyle = ink;
+        g.beginPath();
+        if (dir === "up") {
+          g.moveTo(12, 5);
+          g.lineTo(20, 17);
+          g.lineTo(4, 17);
+        } else {
+          g.moveTo(12, 19);
+          g.lineTo(20, 7);
+          g.lineTo(4, 7);
+        }
+        g.closePath();
+        g.fill();
+      });
+    }
+  }
+}
 
 /** A stretchable rounded pill per congestion colour, for the ratio labels on the map. */
 function addPills(map: MLMap) {
@@ -100,7 +151,7 @@ function addPills(map: MLMap) {
   }
 }
 
-export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents, selectedId, onSelect, padding, layers, user, locateTick }: Props) {
+export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents, selectedId, onSelect, padding, layers, user, locateTick, trend }: Props) {
   const el = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MLMap | null>(null);
   const ready = useRef(false);
@@ -231,13 +282,24 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
         },
       });
       addPills(map);
+      addGlyphs(map);
+      // pill text: cause icon, slowdown, and an arrow when a live reading is off its usual level
+      const ink = ["case", [">=", ["get", "cur"], 2], "l", "d"];
+      const ratio = ["concat", " ", ["number-format", ["get", "cur"], { "min-fraction-digits": 1, "max-fraction-digits": 1 }], "×"];
+      const pillText = [
+        "case",
+        ["==", ["get", "trend"], ""],
+        ["format", ["image", ["concat", "c-", ["get", "cause"], "-", ink]], {}, ratio, {}],
+        ["format", ["image", ["concat", "c-", ["get", "cause"], "-", ink]], {}, ratio, {}, " ", {}, ["image", ["concat", "t-", ["get", "trend"], "-", ink]], {}],
+      ];
       map.addLayer({
         id: "hotspot-pills",
         type: "symbol",
         source: "hotspots",
-        filter: [">", ["get", "cur"], 0],
+        // flowing spots stay plain dots until the map is zoomed in, so the ones that matter stand out
+        filter: ["all", [">", ["get", "cur"], 0], ["any", ["get", "sel"], ["get", "notable"]]],
         layout: {
-          "text-field": ["concat", ["number-format", ["get", "cur"], { "min-fraction-digits": 1, "max-fraction-digits": 1 }], "×"],
+          "text-field": pillText as never,
           "text-font": ["Noto Sans Bold"],
           "text-size": ["case", ["get", "sel"], 14, 12],
           "icon-image": ["step", ["get", "cur"], "pill-none", 0.01, "pill-0", 1.15, "pill-1", 1.5, "pill-2", 2, "pill-3", 3, "pill-4"],
@@ -256,6 +318,19 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
           "text-opacity": 0,
         },
       });
+      const pillDef = map.getLayer("hotspot-pills")!;
+      map.addLayer(
+        {
+          id: "hotspot-pills-near",
+          type: "symbol",
+          source: "hotspots",
+          minzoom: 12.5,
+          filter: ["all", [">", ["get", "cur"], 0], ["!", ["get", "sel"]], ["!", ["get", "notable"]]],
+          layout: Object.fromEntries(Object.keys(pillDef.layout ?? {}).map((k) => [k, map.getLayoutProperty("hotspot-pills", k)])) as never,
+          paint: { "text-color": "#101316", "icon-opacity": 1, "text-opacity": 1 },
+        },
+        "hotspot-pills",
+      );
       // the -transition keys are valid MapLibre style but missing from its types
       const fade = (layer: string, prop: string, delay = 0) => map.setPaintProperty(layer, `${prop}-transition` as never, { duration: 700, delay } as never);
       fade("hotspot-halo", "circle-opacity");
@@ -338,7 +413,15 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
         return {
           type: "Feature",
           geometry: { type: "Point", coordinates: [a.lon, a.lat] },
-          properties: { id: a.id, name: a.name, cur: cur ?? 0, sel: a.id === selectedId },
+          properties: {
+            id: a.id,
+            name: a.name,
+            cur: cur ?? 0,
+            sel: a.id === selectedId,
+            cause: kindsOf(a.causes)[0] ?? "signal",
+            trend: typical ? "" : (trend[a.id] ?? ""),
+            notable: (cur ?? 0) >= 1.15 || (!typical && !!trend[a.id]),
+          },
         };
       });
       (map.getSource("hotspots") as GeoJSONSource | undefined)?.setData({ type: "FeatureCollection", features: hotspots });
@@ -381,7 +464,7 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
       (map.getSource("incidents") as GeoJSONSource | undefined)?.setData({ type: "FeatureCollection", features: inc });
       map.setLayoutProperty("tt-flow", "visibility", !typical && layers.flow ? "visible" : "none");
     });
-  }, [areas, profileHours, mode, hour, liveRatio, incidents, selectedId, layers]);
+  }, [areas, profileHours, mode, hour, liveRatio, incidents, selectedId, layers, trend]);
 
   // fly to the selected spot, keeping it clear of the sheet or side panel
   useEffect(() => {
@@ -431,7 +514,7 @@ function pick(map: MLMap, e: MapMouseEvent, areas: AreaWithStretches[]) {
   ];
   let id: string | undefined;
   let bd = Infinity;
-  for (const f of map.queryRenderedFeatures(box(TAP_PX), { layers: ["hotspots", "hotspot-pills"] })) {
+  for (const f of map.queryRenderedFeatures(box(TAP_PX), { layers: ["hotspots", "hotspot-pills", "hotspot-pills-near"] })) {
     const p = map.project((f.geometry as GeoJSON.Point).coordinates as [number, number]);
     const d = (p.x - x) ** 2 + (p.y - y) ** 2;
     if (d < bd) {

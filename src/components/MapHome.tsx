@@ -5,7 +5,9 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "motion/react";
 import { BottomSheet, type Snap } from "@/components/ui/BottomSheet";
-import { HourStrip } from "@/components/HourStrip";
+import { CityPulse } from "@/components/CityPulse";
+import { CauseIcon } from "@/components/ui/CauseIcon";
+import { KIND_LABEL, kindsOf } from "@/lib/causes";
 import { CAUSE_LABELS, FIX_TYPE_LABELS, FLOW_COLORS, FLOW_LABELS, atHour, flowColor, flowLabel, flowLevel, hourLabel } from "@/lib/flow";
 import type { LiveIncident, LiveReading } from "@/lib/types";
 import type { AreaWithStretches, MapLayers } from "@/components/CityMap";
@@ -235,6 +237,34 @@ function RoundButton({ label, onClick, active, children }: { label: string; onCl
 
 /* ---------- the spot preview ---------- */
 
+type Trend = "up" | "down" | "same";
+
+/** A live reading against the usual for this hour: clearly worse, clearly better, or about the same. */
+function trendOf(live: number, usual: number): Trend {
+  if (live >= usual * 1.1 && live >= 1.15) return "up";
+  if (live <= usual / 1.1 && usual >= 1.15) return "down";
+  return "same";
+}
+
+function TrendTag({ trend, compact }: { trend: Trend | null; compact?: boolean }) {
+  if (!trend) return null;
+  const t = {
+    up: { text: compact ? "worse" : "Worse than usual", cls: "text-[#ff9a9a]", arrow: "M6 2 11 10H1Z" },
+    down: { text: compact ? "better" : "Better than usual", cls: "text-[#7fe0ae]", arrow: "M6 10 11 2H1Z" },
+    same: { text: compact ? "usual" : "As usual", cls: "text-chalk-2", arrow: "" },
+  }[trend];
+  return (
+    <span className={cn("flex items-center gap-1 text-[11.5px] font-medium", t.cls)}>
+      {t.arrow && (
+        <svg width="9" height="9" viewBox="0 0 12 12" aria-hidden="true">
+          <path d={t.arrow} fill="currentColor" />
+        </svg>
+      )}
+      {t.text}
+    </span>
+  );
+}
+
 /** Name, place and slowdown: the part of a spot's card that stays visible when the sheet is collapsed. */
 function PlaceHeader({ a, value, onClose }: { a: AreaWithStretches; value: number | null; onClose: () => void }) {
   return (
@@ -269,6 +299,7 @@ function Preview({
   live,
   onClose,
   withHeader,
+  usual,
 }: {
   a: AreaWithStretches;
   value: number | null;
@@ -277,8 +308,11 @@ function Preview({
   live: LiveReading | undefined;
   onClose: () => void;
   withHeader: boolean;
+  /** typical slowdown at this hour, to judge the live reading against */
+  usual: number | null;
 }) {
   const p = a.profile;
+  const trend = live && value != null && usual != null ? trendOf(value, usual) : null;
   return (
     <div className="pb-6">
       {withHeader && <PlaceHeader a={a} value={value} onClose={onClose} />}
@@ -291,19 +325,29 @@ function Preview({
                 {value == null ? "–" : `${value.toFixed(1)}×`}
               </span>
             </div>
-            <div className="text-[11.5px] text-chalk-2">{flowLabel(value)}</div>
+            <div className="text-[11.5px] text-chalk-2 num">{live ? `${Math.round(live.current_speed)} km/h` : flowLabel(value)}</div>
           </div>
+          {live ? (
+            <div className="rounded-xl bg-asphalt-3 p-2.5">
+              <div className="text-[11.5px] text-chalk-2">Usual now</div>
+              <div className="mt-1 flex items-center gap-1 text-[20px] font-semibold num" style={{ color: flowColor(usual) }}>
+                {usual == null ? "–" : `${usual.toFixed(1)}×`}
+              </div>
+              <TrendTag trend={trend} />
+            </div>
+          ) : (
+            <div className="rounded-xl bg-asphalt-3 p-2.5">
+              <div className="text-[11.5px] text-chalk-2">Lost at peak</div>
+              <div className="mt-1 text-[20px] font-semibold num">{p ? Math.round(p.peakDelayPerKm) : "–"}</div>
+              <div className="text-[11.5px] text-chalk-2 num">s per km</div>
+            </div>
+          )}
           <div className="rounded-xl bg-asphalt-3 p-2.5">
             <div className="text-[11.5px] text-chalk-2">Weekday peak</div>
             <div className="mt-1 text-[20px] font-semibold num" style={{ color: flowColor(p?.peak.ratio) }}>
               {p ? `${p.peak.ratio.toFixed(1)}×` : "–"}
             </div>
             <div className="text-[11.5px] text-chalk-2 num">{p ? hourLabel(p.peak.hour) : ""}</div>
-          </div>
-          <div className="rounded-xl bg-asphalt-3 p-2.5">
-            <div className="text-[11.5px] text-chalk-2">{live ? "Speed now" : "Lost at peak"}</div>
-            <div className="mt-1 text-[20px] font-semibold num">{live ? Math.round(live.current_speed) : p ? Math.round(p.peakDelayPerKm) : "–"}</div>
-            <div className="text-[11.5px] text-chalk-2 num">{live ? `km/h · free ${Math.round(live.free_flow_speed)}` : "s per km"}</div>
           </div>
         </div>
 
@@ -322,11 +366,19 @@ function Preview({
 
         <div className="mt-5 text-[12px] font-semibold tracking-wide text-chalk-2">WHY</div>
         <ul className="mt-2 flex flex-wrap gap-1.5">
-          {a.causes.map((c) => (
-            <li key={c} className="rounded-full bg-asphalt-3 px-2.5 py-1 text-[12.5px] text-chalk">
-              {CAUSE_LABELS[c] ?? c}
-            </li>
-          ))}
+          {a.causes.map((c) => {
+            const k = kindsOf([c])[0];
+            return (
+              <li key={c} className="flex items-center gap-1.5 rounded-full bg-asphalt-3 py-1 pr-2.5 pl-2 text-[12.5px] text-chalk">
+                {k && (
+                  <span className="text-chalk-2">
+                    <CauseIcon kind={k} size={14} />
+                  </span>
+                )}
+                {CAUSE_LABELS[c] ?? c}
+              </li>
+            );
+          })}
         </ul>
 
         <div className="mt-5 rounded-2xl bg-[#14233f] p-3.5 ring-1 ring-sign/30">
@@ -381,6 +433,8 @@ export function MapHome({ data }: { data: Data }) {
   const [user, setUser] = useState<[number, number] | null>(null);
   const [locateTick, setLocateTick] = useState(0);
   const [toast, setToast] = useState<string | null>(null);
+  const [now, setNow] = useState(() => Date.now());
+  const [filter, setFilter] = useState<"all" | "up" | "down" | "jam">("all");
 
   useEffect(() => {
     setHour(istHour());
@@ -402,9 +456,19 @@ export function MapHome({ data }: { data: Data }) {
     };
     load();
     const t = setInterval(load, 120_000);
+    // coming back to the tab or the app reloads at once rather than showing old readings
+    const onShow = () => {
+      if (document.visibilityState === "visible") load();
+    };
+    document.addEventListener("visibilitychange", onShow);
+    window.addEventListener("focus", onShow);
+    const clock = setInterval(() => setNow(Date.now()), 30_000);
     return () => {
       alive = false;
       clearInterval(t);
+      clearInterval(clock);
+      document.removeEventListener("visibilitychange", onShow);
+      window.removeEventListener("focus", onShow);
     };
   }, []);
 
@@ -429,19 +493,48 @@ export function MapHome({ data }: { data: Data }) {
   }, [live]);
   const liveOk = !liveError && (live === null || live.readings.length > 0);
 
-  const cityByHour = useMemo(
-    () =>
-      Array.from({ length: 24 }, (_, h) => {
-        const vals = data.areas.map((a) => atHour(a.profile?.hours ?? [], h)).filter((v): v is number => v != null);
-        return vals.reduce((x, y) => x + y, 0) / Math.max(1, vals.length);
-      }),
-    [data.areas],
-  );
 
   const valueOf = useCallback((a: AreaWithStretches) => (mode === "live" ? (liveRatio[a.id] ?? null) : atHour(a.profile?.hours ?? [], hour)), [mode, liveRatio, hour]);
   const ranked = useMemo(() => [...data.areas].sort((a, b) => (valueOf(b) ?? 0) - (valueOf(a) ?? 0)), [data.areas, valueOf]);
   const sel = data.areas.find((a) => a.id === selected) ?? null;
-  const observed = live?.readings[0]?.observed_at;
+  // the newest reading, not the first in the list: one spot's feed can lag the rest
+  const observed = live?.readings.reduce<string | null>((m, r) => (!m || r.observed_at > m ? r.observed_at : m), null) ?? null;
+  const ageMin = observed ? Math.max(0, Math.round((now - new Date(observed).getTime()) / 60000)) : null;
+  const nowHour = new Date(now + 5.5 * 3600e3).getUTCHours();
+  const usualOf = useCallback((a: AreaWithStretches) => atHour(a.profile?.hours ?? [], nowHour), [nowHour]);
+  const trends = useMemo(() => {
+    const m: Record<string, Trend> = {};
+    for (const a of data.areas) {
+      const v = liveRatio[a.id];
+      const u = usualOf(a);
+      if (v != null && u != null) m[a.id] = trendOf(v, u);
+    }
+    return m;
+  }, [data.areas, liveRatio, usualOf]);
+  const mapTrend = useMemo(() => {
+    const m: Record<string, "up" | "down"> = {};
+    for (const [id, t] of Object.entries(trends)) if (t !== "same") m[id] = t;
+    return m;
+  }, [trends]);
+  // stacked counts per hour for the day chart: slow, heavy, jammed, standstill
+  const levels = useMemo(
+    () =>
+      Array.from({ length: 24 }, (_, h) => {
+        const c: [number, number, number, number] = [0, 0, 0, 0];
+        for (const a of data.areas) {
+          const l = flowLevel(atHour(a.profile?.hours ?? [], h));
+          if (l >= 1) c[l - 1]++;
+        }
+        return c;
+      }),
+    [data.areas],
+  );
+  const liveCount = Object.values(liveRatio).filter((v) => v >= 1.15).length;
+  const counts = {
+    up: Object.values(trends).filter((t) => t === "up").length,
+    down: Object.values(trends).filter((t) => t === "down").length,
+    jam: Object.values(liveRatio).filter((v) => v >= 1.5).length,
+  };
 
   const select = (id: string | null) => {
     setSelected(id);
@@ -465,8 +558,26 @@ export function MapHome({ data }: { data: Data }) {
 
   const padding = wide ? { top: 24, bottom: 24, left: 440, right: 80 } : { top: 120, bottom: Math.min(sheetH, 420), left: 0, right: 0 };
 
+  const stale = ageMin != null && ageMin > 50;
   const statusLine =
-    mode === "live" ? (observed ? `Live · TomTom ${istTime(observed)}` : liveError ? "Live unavailable" : "Loading live…") : `Typical weekday · ${hourLabel(hour)}`;
+    mode === "live" ? (
+      observed ? (
+        <span className="flex items-center gap-2">
+          <span className="relative flex size-2">
+            {!stale && <span className="absolute inset-0 animate-ping rounded-full bg-flow-0 opacity-60" />}
+            <span className={cn("relative size-2 rounded-full", stale ? "bg-flow-2" : "bg-flow-0")} />
+          </span>
+          Live · {istTime(observed)}
+          <span className={cn("font-medium", stale ? "text-flow-2" : "text-chalk-2")}>· {ageMin! < 2 ? "just now" : ageMin! < 60 ? `${ageMin} min ago` : `${Math.floor(ageMin! / 60)} h ${ageMin! % 60} min ago`}</span>
+        </span>
+      ) : liveError ? (
+        "Live unavailable"
+      ) : (
+        "Loading live…"
+      )
+    ) : (
+      `Typical weekday · ${hourLabel(hour)}`
+    );
 
   const summary = (
     <div className="px-4 pb-3">
@@ -475,18 +586,58 @@ export function MapHome({ data }: { data: Data }) {
         <span className="text-[12.5px] text-chalk-2 num">{data.areas.length} spots</span>
       </div>
       <Distribution values={data.areas.map(valueOf)} />
-      {mode === "typical" && (
-        <div className="mt-3">
-          <HourStrip values={cityByHour} hour={hour} active label="Hour of a typical weekday" onChange={setHour} />
+      <div className="mt-4">
+        <CityPulse
+          levels={levels}
+          nowHour={nowHour}
+          hour={mode === "typical" ? hour : null}
+          liveCount={mode === "live" && observed ? liveCount : null}
+          onPick={(h) => {
+            setHour(h);
+            setMode("typical");
+            setFilter("all");
+          }}
+        />
+      </div>
+      {mode === "live" && observed && (
+        <div data-no-drag className="-mx-4 mt-3 flex gap-1.5 overflow-x-auto px-4 [scrollbar-width:none]" role="radiogroup" aria-label="Show">
+          {(
+            [
+              ["all", `All ${data.areas.length}`, ""],
+              ["jam", `Heavy now ${counts.jam}`, "bg-flow-2"],
+              ["up", `Worse than usual ${counts.up}`, "bg-flow-3"],
+              ["down", `Better than usual ${counts.down}`, "bg-flow-0"],
+            ] as const
+          ).map(([k, l, dot]) => (
+            <button
+              key={k}
+              type="button"
+              role="radio"
+              aria-checked={filter === k}
+              onClick={() => setFilter(k)}
+              className={cn(
+                "flex h-8 shrink-0 items-center gap-1.5 rounded-full px-3 text-[12.5px] font-semibold whitespace-nowrap num transition-[background-color,color,transform] duration-150 active:scale-[0.96]",
+                filter === k ? "bg-chalk text-asphalt" : "bg-asphalt-3 text-chalk-2",
+              )}
+            >
+              {dot && <span className={cn("size-2 rounded-full", dot)} />}
+              {l}
+            </button>
+          ))}
         </div>
       )}
     </div>
   );
 
+  const shown = mode === "live" && filter !== "all" ? ranked.filter((a) => (filter === "jam" ? (liveRatio[a.id] ?? 0) >= 1.5 : trends[a.id] === filter)) : ranked;
   const list = (
     <ol className="px-2 pb-4" aria-label="Spots ranked by congestion">
-      {ranked.map((a, i) => {
+      {shown.length === 0 && <li className="px-3 py-6 text-center text-[13.5px] text-chalk-2">None right now</li>}
+      {shown.map((a, i) => {
         const v = valueOf(a);
+        const kinds = kindsOf(a.causes).slice(0, 3);
+        const t = mode === "live" ? trends[a.id] : undefined;
+        const u = usualOf(a);
         return (
           <motion.li
             key={a.id}
@@ -499,14 +650,25 @@ export function MapHome({ data }: { data: Data }) {
               <span className="w-5 shrink-0 text-right text-[12px] font-semibold text-chalk-2 num">{i + 1}</span>
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-[15px] font-medium">{a.name}</span>
-                <span className="mt-0.5 block truncate text-[12px] text-chalk-2">{a.place}</span>
+                <span className="mt-1 flex items-center gap-2 text-chalk-2">
+                  {kinds.map((k) => (
+                    <span key={k} title={KIND_LABEL[k]} className="flex">
+                      <CauseIcon kind={k} size={14} />
+                    </span>
+                  ))}
+                  <span className="truncate text-[12px]">{a.place}</span>
+                </span>
                 {a.profile && (
                   <span className="mt-1.5 block">
-                    <DayStrip hours={a.profile.hours} hour={mode === "typical" ? hour : null} />
+                    <DayStrip hours={a.profile.hours} hour={mode === "typical" ? hour : nowHour} />
                   </span>
                 )}
               </span>
-              <Ratio v={v} />
+              <span className="flex shrink-0 flex-col items-end gap-1">
+                <Ratio v={v} />
+                {t && t !== "same" && <TrendTag trend={t} compact />}
+                {t === "same" && u != null && <span className="text-[11px] text-chalk-2 num">usual {u.toFixed(1)}×</span>}
+              </span>
             </button>
           </motion.li>
         );
@@ -522,7 +684,8 @@ export function MapHome({ data }: { data: Data }) {
             a={sel}
             value={valueOf(sel)}
             valueLabel={mode === "live" ? "Now" : hourLabel(hour)}
-            markHour={mode === "live" ? istHour() : hour}
+            markHour={mode === "live" ? nowHour : hour}
+            usual={usualOf(sel)}
             live={live?.readings.find((r) => r.hotspot_id === sel.id)}
             onClose={() => setSelected(null)}
             withHeader={!!wide}
@@ -611,6 +774,7 @@ export function MapHome({ data }: { data: Data }) {
         layers={layers}
         user={user}
         locateTick={locateTick}
+        trend={mode === "live" ? mapTrend : {}}
       />
 
       <AnimatePresence>
