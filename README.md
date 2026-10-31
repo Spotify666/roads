@@ -11,6 +11,7 @@ before-and-after traffic simulation of the Mehdipatnam–Tolichowki corridor.
 | --- | --- |
 | `data/hotspots.json`, `data/sources.json` | 41 hotspots with cited causes and a recommended low-cost fix each |
 | `scripts/osm_features.py` | Snaps each hotspot to its main road in OpenStreetMap and derives layout signals (bus stops, signals, lane changes) |
+| `scripts/road_cues.py` | City-wide traffic signals, U-turn openings and bus stops from OpenStreetMap, for the map's road symbols |
 | `scripts/tomtom_profiles.py` | Hour-by-hour TomTom historical travel times per ~300 m stretch for every hotspot |
 | `scripts/corridor.py`, `scripts/pilot_profile.py` | The pilot corridor's layout from OSM, and its TomTom profile in both directions |
 | `src/sim/engine.ts` | Microscopic traffic simulation (IDM car-following, lane changes, bus stops, signals, U-turns, wrong-side riding) |
@@ -39,6 +40,7 @@ npx tsx scripts/sim/calibrate.ts && npx tsx scripts/sim/calibrate-night.ts
 npx tsx scripts/sim/optimise-pilot.ts
 npx tsx scripts/sim/select-layout.ts
 FORCE_OPENINGS=$(cat data/raw/chosen.txt) npx tsx scripts/sim/optimise-pilot.ts
+python3 scripts/road_cues.py
 python3 scripts/build_site_data.py
 npx tsx scripts/sim/lab-baselines.ts   # today and plan reference runs for the Lab
 ```

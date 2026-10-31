@@ -105,9 +105,20 @@ export default function InfoPage() {
         ))}
       </dl>
       <P>
-        Spots that are jammed (2× or more) pulse on the map. Tap a spot for its card: the slowdown now or at the chosen hour, its weekday peak, a 24-hour strip
-        (each cell an hour, the dot marking the worst one), the reported causes and the fix. The bottom sheet lists every spot, worst first; drag it up for the
-        full list. In Typical mode, the strip in the sheet picks the hour.
+        Each spot&apos;s label shows the icon of its main cause and its slowdown. In Live mode an arrow marks a spot running clearly worse (▲) or better (▼)
+        than it usually does at this hour; flowing spots shrink to dots until you zoom in. Spots that are jammed (2× or more) pulse. Tap a spot for its card:
+        the slowdown now, the usual level for this hour, its weekday peak, a 24-hour strip, what is on the road around it, the reported causes and the fix.
+      </P>
+      <P>
+        The chart in the sheet stacks, for every hour of a typical weekday, how many spots are slow, heavy, jammed or at a standstill; the ring marks the live
+        count now. Tap or drag it to see the city at any hour.
+      </P>
+      <H3>Road symbols</H3>
+      <P>
+        As you zoom in, the map marks traffic signals (white), U-turn openings in the median (blue), bus stops (grey) and the direction of one-way roads
+        (arrows). They come from OpenStreetMap. A U-turn opening is a short link of under 70 m that joins the two carriageways of a divided road and touches
+        nothing else; gaps at signalled junctions are left to the signal&apos;s symbol. OpenStreetMap is incomplete in Hyderabad, with only about 140 signalled
+        junctions mapped, so a missing symbol does not mean the road has none. The Layers button holds the key and turns each set on or off.
       </P>
       <P>
         Speeds and travel times are measured by TomTom, and RoadFix records them every 30 minutes. Causes come from traffic police alerts, civic-body reviews

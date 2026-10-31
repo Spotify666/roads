@@ -5,6 +5,7 @@ import { AttributionControl, Map as MLMap, NavigationControl, Popup, type GeoJSO
 import "maplibre-gl/dist/maplibre-gl.css";
 import { FLOW_COLORS, atHour, flowStepExpression } from "@/lib/flow";
 import { KINDS, KIND_PATH, kindsOf } from "@/lib/causes";
+import { CUES } from "@/lib/roadCues";
 import type { AreaSummary, LiveIncident } from "@/lib/types";
 
 type Stretch = { g: [number, number][]; r: number[] };
@@ -14,6 +15,10 @@ export interface MapLayers {
   flow: boolean; // TomTom live traffic tiles
   incidents: boolean;
   stretches: boolean; // typical-weekday stretches
+  signal: boolean;
+  uturn: boolean;
+  oneway: boolean;
+  bus: boolean;
 }
 
 interface Props {
@@ -32,6 +37,9 @@ interface Props {
   locateTick: number;
   /** live spots running clearly worse ("up") or better ("down") than usual for this hour */
   trend: Record<string, "up" | "down">;
+  onZoom?: (z: number) => void;
+  /** bumped to zoom in to street level around the centre */
+  zoomInTick?: number;
 }
 
 const STYLE = "https://tiles.openfreemap.org/styles/dark";
@@ -115,6 +123,47 @@ function addGlyphs(map: MLMap) {
   }
 }
 
+/** Badges for signals, U-turns and bus stops, and the chevron for one-way roads. */
+function addCueIcons(map: MLMap) {
+  const r = 2;
+  for (const c of CUES) {
+    const name = `cue-${c.kind}`;
+    if (map.hasImage(name)) continue;
+    const size = (c.kind === "oneway" ? 14 : 20) * r;
+    const cv = document.createElement("canvas");
+    cv.width = size;
+    cv.height = size;
+    const g = cv.getContext("2d")!;
+    if (c.kind !== "oneway") {
+      // dark rim keeps the badge readable over traffic colours
+      g.fillStyle = "#101316";
+      g.beginPath();
+      if (c.round) g.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+      else g.rect(0, 0, size, size);
+      g.fill();
+      g.fillStyle = c.bg;
+      g.beginPath();
+      if (c.round) g.arc(size / 2, size / 2, size / 2 - 1.5 * r, 0, Math.PI * 2);
+      else g.rect(1.5 * r, 1.5 * r, size - 3 * r, size - 3 * r);
+      g.fill();
+    }
+    const inset = c.kind === "oneway" ? 0 : 4 * r;
+    g.translate(inset, inset);
+    g.scale((size - 2 * inset) / 24, (size - 2 * inset) / 24);
+    g.lineCap = "round";
+    g.lineJoin = "round";
+    if (c.kind === "oneway") {
+      g.strokeStyle = "#101316";
+      g.lineWidth = 6;
+      g.stroke(new Path2D(c.path));
+    }
+    g.strokeStyle = c.ink;
+    g.lineWidth = c.kind === "oneway" ? 3 : 2.4;
+    g.stroke(new Path2D(c.path));
+    map.addImage(name, g.getImageData(0, 0, size, size), { pixelRatio: r });
+  }
+}
+
 /** A stretchable rounded pill per congestion colour, for the ratio labels on the map. */
 function addPills(map: MLMap) {
   const r = 2; // drawn at 2x for sharp edges
@@ -151,7 +200,7 @@ function addPills(map: MLMap) {
   }
 }
 
-export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents, selectedId, onSelect, padding, layers, user, locateTick, trend }: Props) {
+export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents, selectedId, onSelect, padding, layers, user, locateTick, trend, onZoom, zoomInTick }: Props) {
   const el = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MLMap | null>(null);
   const ready = useRef(false);
@@ -163,6 +212,8 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
   const areasRef = useRef(areas);
   areasRef.current = areas;
   const pulseRaf = useRef(0);
+  const onZoomRef = useRef(onZoom);
+  onZoomRef.current = onZoom;
 
   const whenReady = (fn: () => void) => {
     if (ready.current) fn();
@@ -199,6 +250,33 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
       restyleBase(map);
       map.addSource("tt-flow", { type: "raster", tiles: ["/api/tiles/{z}/{x}/{y}"], tileSize: 256, minzoom: 9, maxzoom: 18 });
       map.addLayer({ id: "tt-flow", type: "raster", source: "tt-flow", paint: { "raster-opacity": 0.95, "raster-fade-duration": 200 } });
+
+      // one-way arrows from the basemap's own road data, brighter and from further out than its faint defaults
+      addCueIcons(map);
+      for (const id of ["road_oneway", "road_oneway_opposite"]) if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", "none");
+      for (const [id, dir] of [
+        ["cue-oneway", 1],
+        ["cue-oneway-rev", -1],
+      ] as const) {
+        map.addLayer({
+          id,
+          type: "symbol",
+          source: "openmaptiles",
+          "source-layer": "transportation",
+          minzoom: CUES.find((c) => c.kind === "oneway")!.minzoom,
+          filter: ["all", ["==", ["get", "oneway"], dir], ["match", ["get", "class"], ["motorway", "trunk", "primary", "secondary", "tertiary", "minor"], true, false]],
+          layout: {
+            "icon-image": "cue-oneway",
+            "icon-rotate": dir === 1 ? 0 : 180,
+            "icon-rotation-alignment": "map",
+            "symbol-placement": "line",
+            "symbol-spacing": ["interpolate", ["linear"], ["zoom"], 14, 90, 17, 140],
+            "icon-size": ["interpolate", ["linear"], ["zoom"], 14, 1, 17, 1.45],
+            "icon-padding": 1,
+          },
+          paint: { "icon-opacity": 0.95 },
+        });
+      }
 
       map.addSource("stretches", { type: "geojson", data: empty });
       map.addLayer({
@@ -247,6 +325,30 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
           "line-dasharray": [1, 1.4],
         },
       });
+
+      // signals, U-turn openings and bus stops across the city (OpenStreetMap)
+      map.addSource("cues", { type: "geojson", data: "/data/road-cues.json" });
+      for (const c of CUES) {
+        if (c.kind === "oneway") continue;
+        map.addLayer({
+          id: `cue-${c.kind}`,
+          type: "symbol",
+          source: "cues",
+          minzoom: c.minzoom,
+          filter: ["==", ["get", "k"], c.kind],
+          layout: {
+            "icon-image": `cue-${c.kind}`,
+            "icon-size": ["interpolate", ["linear"], ["zoom"], c.minzoom, 0.7, 16, 1],
+            "icon-padding": 2,
+            // signals and U-turns are sparse and matter most beside a spot, so they always draw; bus stops give way
+            "icon-allow-overlap": c.kind !== "bus",
+            "icon-ignore-placement": c.kind !== "bus",
+            // signals win a clash with U-turns, which win over bus stops
+            "symbol-sort-key": c.kind === "signal" ? 0 : c.kind === "uturn" ? 1 : 2,
+          },
+          paint: { "icon-opacity": ["interpolate", ["linear"], ["zoom"], c.minzoom, 0, c.minzoom + 0.4, 1] },
+        });
+      }
 
       map.addSource("hotspots", { type: "geojson", data: empty });
       // a soft ring that breathes around jammed spots
@@ -373,7 +475,29 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
         if (!a) return void popup.remove();
         popup.setLngLat([a.lon, a.lat]).setHTML(`<strong style="font-weight:600">${a.name}</strong>`).addTo(map);
       });
-      map.on("click", (e) => onSelectRef.current(pick(map, e, areasRef.current)?.id ?? null));
+      const cuePopup = new Popup({ closeButton: false, offset: 14, maxWidth: "220px" });
+      map.on("click", (e) => {
+        const a = pick(map, e, areasRef.current);
+        if (a) return onSelectRef.current(a.id);
+        // a tap on a road symbol names it
+        const { x, y } = e.point;
+        const cue = map.queryRenderedFeatures(
+          [
+            [x - 14, y - 14],
+            [x + 14, y + 14],
+          ],
+          { layers: CUES.map((c) => `cue-${c.kind}`).concat("cue-oneway-rev") },
+        )[0];
+        if (cue) {
+          const kind = cue.layer.id === "cue-oneway-rev" ? "oneway" : cue.layer.id.replace("cue-", "");
+          const c = CUES.find((k) => k.kind === kind)!;
+          const at = cue.geometry.type === "Point" ? ((cue.geometry as GeoJSON.Point).coordinates as [number, number]) : e.lngLat;
+          cuePopup.setLngLat(at).setHTML(`<strong style="font-weight:600">${c.label}</strong>`).addTo(map);
+          return;
+        }
+        cuePopup.remove();
+        onSelectRef.current(null);
+      });
 
       // pulse: one shared ring for every jammed spot, driven by the frame clock
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -391,6 +515,10 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
         };
         pulseRaf.current = requestAnimationFrame(tick);
       }
+
+      const report = () => onZoomRef.current?.(map.getZoom());
+      map.on("zoomend", report);
+      report();
 
       ready.current = true;
       for (const fn of queue.current) fn();
@@ -463,23 +591,34 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
               .map((i) => ({ type: "Feature" as const, geometry: i.g as GeoJSON.LineString, properties: { mag: i.p.magnitudeOfDelay } }));
       (map.getSource("incidents") as GeoJSONSource | undefined)?.setData({ type: "FeatureCollection", features: inc });
       map.setLayoutProperty("tt-flow", "visibility", !typical && layers.flow ? "visible" : "none");
+      for (const c of CUES) {
+        const v = layers[c.kind] ? "visible" : "none";
+        for (const id of c.kind === "oneway" ? ["cue-oneway", "cue-oneway-rev"] : [`cue-${c.kind}`]) if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", v);
+      }
     });
   }, [areas, profileHours, mode, hour, liveRatio, incidents, selectedId, layers, trend]);
 
   // fly to the selected spot, keeping it clear of the sheet or side panel
+  const target = useRef<{ center: [number, number]; zoom: number } | null>(null);
   useEffect(() => {
     const a = areas.find((x) => x.id === selectedId);
-    if (!a) return;
+    if (!a) {
+      target.current = null;
+      return;
+    }
     whenReady(() => {
       const map = mapRef.current!;
-      map.flyTo({ center: [a.lon, a.lat], zoom: Math.max(map.getZoom(), 13.4), padding: paddingRef.current, duration: 700, curve: 1.3, essential: true });
+      // close enough that its signals, U-turns and one-way arrows show
+      target.current = { center: [a.lon, a.lat], zoom: Math.max(map.getZoom(), 14.6) };
+      map.flyTo({ ...target.current, padding: paddingRef.current, duration: 800, curve: 1.3, essential: true });
     });
   }, [selectedId, areas]);
 
   // when the sheet moves, slide the map's centre with it
   const padKey = `${padding.top}|${padding.bottom}|${padding.left}|${padding.right}`;
   useEffect(() => {
-    whenReady(() => mapRef.current!.easeTo({ padding: paddingRef.current, duration: 300 }));
+    // the sheet often rises while the map is still flying to a spot: carry on to it rather than stop short
+    whenReady(() => mapRef.current!.easeTo({ ...(target.current ?? {}), padding: paddingRef.current, duration: target.current ? 650 : 300 }));
   }, [padKey]);
 
   useEffect(() => {
@@ -490,6 +629,12 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
       );
     });
   }, [user]);
+
+  useEffect(() => {
+    if (!zoomInTick) return;
+    whenReady(() => mapRef.current!.easeTo({ zoom: Math.max(mapRef.current!.getZoom(), 14.6), padding: paddingRef.current, duration: 700 }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [zoomInTick]);
 
   useEffect(() => {
     if (!user || !locateTick) return;

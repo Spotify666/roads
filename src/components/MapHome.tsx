@@ -8,6 +8,7 @@ import { BottomSheet, type Snap } from "@/components/ui/BottomSheet";
 import { CityPulse } from "@/components/CityPulse";
 import { CauseIcon } from "@/components/ui/CauseIcon";
 import { KIND_LABEL, kindsOf } from "@/lib/causes";
+import { CUES, CUE_ZOOM, type CueKind } from "@/lib/roadCues";
 import { CAUSE_LABELS, FIX_TYPE_LABELS, FLOW_COLORS, FLOW_LABELS, atHour, flowColor, flowLabel, flowLevel, hourLabel } from "@/lib/flow";
 import type { LiveIncident, LiveReading } from "@/lib/types";
 import type { AreaWithStretches, MapLayers } from "@/components/CityMap";
@@ -237,6 +238,22 @@ function RoundButton({ label, onClick, active, children }: { label: string; onCl
 
 /* ---------- the spot preview ---------- */
 
+/** The same badge the map draws for a road feature, for the key and the spot card. */
+function CueBadge({ kind, size = 20 }: { kind: CueKind; size?: number }) {
+  const c = CUES.find((x) => x.kind === kind)!;
+  return (
+    <span
+      className={cn("inline-flex shrink-0 items-center justify-center ring-[1.5px] ring-[#101316]", c.round ? "rounded-full" : "rounded-[3px]")}
+      style={{ width: size, height: size, background: c.bg, color: c.ink }}
+      aria-hidden="true"
+    >
+      <svg width={size * 0.62} height={size * 0.62} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={kind === "oneway" ? 3 : 2.4} strokeLinecap="round" strokeLinejoin="round">
+        <path d={c.path} />
+      </svg>
+    </span>
+  );
+}
+
 type Trend = "up" | "down" | "same";
 
 /** A live reading against the usual for this hour: clearly worse, clearly better, or about the same. */
@@ -364,6 +381,34 @@ function Preview({
           </div>
         )}
 
+        {a.road && (
+          <>
+            <div className="mt-5 text-[12px] font-semibold tracking-wide text-chalk-2">ON THE ROAD · 300 M</div>
+            <ul className="mt-2 flex flex-wrap gap-1.5 text-[12.5px] num">
+              {(
+                [
+                  ["signal", a.road.signals, "signal", "signals"],
+                  ["uturn", a.road.uturns, "U-turn", "U-turns"],
+                  ["bus", a.road.bus, "bus stop", "bus stops"],
+                ] as const
+              ).map(([k, n, one, many]) =>
+                n ? (
+                  <li key={k} className="flex items-center gap-1.5 rounded-full bg-asphalt-3 py-1 pr-2.5 pl-1">
+                    <CueBadge kind={k} size={18} />
+                    {n} {n === 1 ? one : many}
+                  </li>
+                ) : null,
+              )}
+              {a.road.flyover && <li className="rounded-full bg-asphalt-3 px-2.5 py-1">Flyover</li>}
+              {a.road.lanes[0] != null && a.road.lanes[1] != null && a.road.lanes[1] > a.road.lanes[0] && (
+                <li className="rounded-full bg-asphalt-3 px-2.5 py-1">
+                  Lanes vary {a.road.lanes[0]}–{a.road.lanes[1]}
+                </li>
+              )}
+            </ul>
+          </>
+        )}
+
         <div className="mt-5 text-[12px] font-semibold tracking-wide text-chalk-2">WHY</div>
         <ul className="mt-2 flex flex-wrap gap-1.5">
           {a.causes.map((c) => {
@@ -428,7 +473,9 @@ export function MapHome({ data }: { data: Data }) {
   const [liveError, setLiveError] = useState(false);
   const [snap, setSnap] = useState<Snap>("peek");
   const [sheetH, setSheetH] = useState(180);
-  const [layers, setLayers] = useState<MapLayers>({ flow: true, incidents: true, stretches: true });
+  const [layers, setLayers] = useState<MapLayers>({ flow: true, incidents: true, stretches: true, signal: true, uturn: true, oneway: true, bus: true });
+  const [zoom, setZoom] = useState(11);
+  const [zoomInTick, setZoomInTick] = useState(0);
   const [layersOpen, setLayersOpen] = useState(false);
   const [user, setUser] = useState<[number, number] | null>(null);
   const [locateTick, setLocateTick] = useState(0);
@@ -699,6 +746,11 @@ export function MapHome({ data }: { data: Data }) {
     </AnimatePresence>
   );
 
+  const Switch = ({ on }: { on: boolean }) => (
+    <span className={cn("relative h-6 w-10 shrink-0 rounded-full transition-colors duration-200", on ? "bg-sign" : "bg-asphalt-4")}>
+      <motion.span layout transition={SPRING} className={cn("absolute top-0.5 size-5 rounded-full bg-white shadow", on ? "right-0.5" : "left-0.5")} />
+    </span>
+  );
   const layersCard = (
     <AnimatePresence>
       {layersOpen && (
@@ -707,10 +759,28 @@ export function MapHome({ data }: { data: Data }) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.97 }}
           transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
-          className="absolute right-0 bottom-[60px] w-[230px] origin-bottom-right rounded-2xl bg-asphalt-2 p-2 shadow-[0_10px_30px_#000a] ring-1 ring-white/[0.06]"
+          // on a phone the key fits between the top bar and its button, never past the screen edge
+          style={{ maxHeight: wide ? 560 : `calc(100dvh - ${Math.min(sheetH, 420) + 12 + 60 + 190}px)` }}
+          className="absolute right-0 bottom-[60px] w-[264px] origin-bottom-right overflow-y-auto overscroll-contain rounded-2xl bg-asphalt-2 p-2 shadow-[0_10px_30px_#000a] ring-1 ring-white/[0.06]"
           role="group"
-          aria-label="Map layers"
+          aria-label="Map key and layers"
         >
+          <div className="px-3 pt-1.5 pb-1 text-[11.5px] font-semibold tracking-wide text-chalk-2">ON THE ROAD</div>
+          {CUES.map((c) => (
+            <button
+              key={c.kind}
+              type="button"
+              role="switch"
+              aria-checked={layers[c.kind]}
+              onClick={() => setLayers((x) => ({ ...x, [c.kind]: !x[c.kind] }))}
+              className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-[14px] font-medium active:bg-asphalt-3"
+            >
+              <CueBadge kind={c.kind} />
+              <span className="flex-1">{c.label}</span>
+              <Switch on={layers[c.kind]} />
+            </button>
+          ))}
+          <div className="px-3 pt-3 pb-1 text-[11.5px] font-semibold tracking-wide text-chalk-2">TRAFFIC</div>
           {(
             [
               ["flow", "Live traffic", "live"],
@@ -724,16 +794,73 @@ export function MapHome({ data }: { data: Data }) {
               role="switch"
               aria-checked={layers[k]}
               onClick={() => setLayers((x) => ({ ...x, [k]: !x[k] }))}
-              className="flex w-full items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left text-[14px] font-medium active:bg-asphalt-3"
+              className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-[14px] font-medium active:bg-asphalt-3"
             >
-              <span>
+              <span className="flex h-5 w-5 shrink-0 items-center" aria-hidden="true">
+                {k === "incidents" ? (
+                  <span className="h-[3px] w-5 rounded-full bg-[repeating-linear-gradient(90deg,#cf2f3d_0_4px,transparent_4px_7px)]" />
+                ) : (
+                  <span className="flex h-[4px] w-5 overflow-hidden rounded-full">
+                    {[0, 1, 3].map((i) => (
+                      <span key={i} className="flex-1" style={{ background: FLOW_COLORS[i] }} />
+                    ))}
+                  </span>
+                )}
+              </span>
+              <span className="flex-1">
                 {l}
                 <span className="block text-[11.5px] font-normal text-chalk-2">{m === "live" ? "Live view" : "Typical view"}</span>
               </span>
-              <span className={cn("relative h-6 w-10 rounded-full transition-colors duration-200", layers[k] ? "bg-sign" : "bg-asphalt-4")}>
-                <motion.span layout transition={SPRING} className={cn("absolute top-0.5 size-5 rounded-full bg-white shadow", layers[k] ? "right-0.5" : "left-0.5")} />
-              </span>
+              <Switch on={layers[k]} />
             </button>
+          ))}
+          <p className="px-3 pt-2 pb-1.5 text-[11px] leading-snug text-chalk-2">Signals, U-turns and bus stops from OpenStreetMap, where mapped</p>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+
+  // the key at a glance: a hint to zoom in, then what each symbol on the road means
+  const keyStrip = (
+    <AnimatePresence mode="wait" initial={false}>
+      {zoom < CUE_ZOOM ? (
+        <motion.button
+          key="hint"
+          type="button"
+          onClick={() => setZoomInTick((t) => t + 1)}
+          initial={{ opacity: 0, y: -4 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -4 }}
+          transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+          className="pointer-events-auto flex h-9 items-center gap-2 rounded-full bg-asphalt-2/95 pr-3.5 pl-1.5 text-[12.5px] font-medium text-chalk shadow-[0_2px_10px_#0006] ring-1 ring-white/[0.06] backdrop-blur-sm active:scale-[0.97]"
+        >
+          <span className="flex -space-x-1.5">
+            {CUES.map((c) => (
+              <CueBadge key={c.kind} kind={c.kind} size={20} />
+            ))}
+          </span>
+          Zoom in for signals, U-turns, one-ways
+        </motion.button>
+      ) : (
+        <motion.div
+          key="key"
+          initial={{ opacity: 0, y: -4 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -4 }}
+          transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+          className="pointer-events-auto flex max-w-full gap-1.5 overflow-x-auto [scrollbar-width:none]"
+          role="list"
+          aria-label="Map key"
+        >
+          {CUES.filter((c) => layers[c.kind] && zoom >= c.minzoom).map((c) => (
+            <span
+              key={c.kind}
+              role="listitem"
+              className="flex h-8 shrink-0 items-center gap-1.5 rounded-full bg-asphalt-2/95 pr-3 pl-1.5 text-[12px] font-medium whitespace-nowrap text-chalk shadow-[0_2px_10px_#0006] ring-1 ring-white/[0.06] backdrop-blur-sm"
+            >
+              <CueBadge kind={c.kind} size={20} />
+              {c.label}
+            </span>
           ))}
         </motion.div>
       )}
@@ -743,7 +870,15 @@ export function MapHome({ data }: { data: Data }) {
   const fabs = (
     <div className="relative flex flex-col gap-2.5">
       {layersCard}
-      <RoundButton label="Map layers" onClick={() => setLayersOpen((o) => !o)} active={layersOpen}>
+      <RoundButton
+        label="Map key and layers"
+        onClick={() => {
+          // make room for the key on a phone by lowering the sheet
+          if (!layersOpen && !wide) setSnap("peek");
+          setLayersOpen((o) => !o);
+        }}
+        active={layersOpen}
+      >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" aria-hidden="true">
           <path d="m12 3 9 5-9 5-9-5 9-5Z" />
           <path d="m3 13 9 5 9-5" />
@@ -774,6 +909,8 @@ export function MapHome({ data }: { data: Data }) {
         layers={layers}
         user={user}
         locateTick={locateTick}
+        onZoom={setZoom}
+        zoomInTick={zoomInTick}
         trend={mode === "live" ? mapTrend : {}}
       />
 
@@ -802,6 +939,7 @@ export function MapHome({ data }: { data: Data }) {
             {!sel && summary}
             <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain border-t border-white/[0.06] pt-2">{body}</div>
           </aside>
+          <div className="pointer-events-none absolute top-4 right-16 left-[436px] z-20 flex">{keyStrip}</div>
           <div className="absolute right-4 bottom-8 z-30">{fabs}</div>
         </>
       ) : wide === false ? (
@@ -810,6 +948,7 @@ export function MapHome({ data }: { data: Data }) {
             <SearchBox areas={data.areas} onPick={(id) => select(id)} />
             <motion.div animate={{ opacity: snap === "full" ? 0 : 1, y: snap === "full" ? -8 : 0 }} transition={SPRING} className={cn(snap === "full" && "pointer-events-none")}>
               <ModeChips mode={mode} setMode={setMode} hour={hour} liveOk={liveOk} onHour={() => setSnap((s) => (s === "peek" ? "half" : s))} />
+              <div className="mt-2.5">{keyStrip}</div>
             </motion.div>
           </div>
           <motion.div

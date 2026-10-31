@@ -1,0 +1,207 @@
+{
+ "mehdipatnam": {
+  "signals": 0,
+  "uturns": 1,
+  "bus": 5
+ },
+ "nanal-nagar": {
+  "signals": 1,
+  "uturns": 0,
+  "bus": 2
+ },
+ "tolichowki": {
+  "signals": 0,
+  "uturns": 1,
+  "bus": 2
+ },
+ "shaikpet": {
+  "signals": 0,
+  "uturns": 0,
+  "bus": 2
+ },
+ "masab-tank": {
+  "signals": 2,
+  "uturns": 2,
+  "bus": 1
+ },
+ "nmdc-pvnr": {
+  "signals": 0,
+  "uturns": 0,
+  "bus": 2
+ },
+ "lakdikapul": {
+  "signals": 0,
+  "uturns": 1,
+  "bus": 1
+ },
+ "khairatabad": {
+  "signals": 1,
+  "uturns": 0,
+  "bus": 1
+ },
+ "panjagutta": {
+  "signals": 0,
+  "uturns": 1,
+  "bus": 1
+ },
+ "ameerpet": {
+  "signals": 1,
+  "uturns": 1,
+  "bus": 3
+ },
+ "begumpet": {
+  "signals": 0,
+  "uturns": 3,
+  "bus": 2
+ },
+ "paradise": {
+  "signals": 3,
+  "uturns": 3,
+  "bus": 6
+ },
+ "secunderabad": {
+  "signals": 2,
+  "uturns": 1,
+  "bus": 2
+ },
+ "rtc-x-roads": {
+  "signals": 1,
+  "uturns": 4,
+  "bus": 0
+ },
+ "koti": {
+  "signals": 2,
+  "uturns": 0,
+  "bus": 1
+ },
+ "chaderghat": {
+  "signals": 0,
+  "uturns": 0,
+  "bus": 0
+ },
+ "chandrayangutta": {
+  "signals": 1,
+  "uturns": 1,
+  "bus": 0
+ },
+ "aramghar": {
+  "signals": 3,
+  "uturns": 0,
+  "bus": 1
+ },
+ "attapur": {
+  "signals": 0,
+  "uturns": 1,
+  "bus": 0
+ },
+ "jubilee-checkpost": {
+  "signals": 1,
+  "uturns": 0,
+  "bus": 3
+ },
+ "agrasen": {
+  "signals": 0,
+  "uturns": 0,
+  "bus": 0
+ },
+ "road-no-12": {
+  "signals": 0,
+  "uturns": 0,
+  "bus": 1
+ },
+ "hitec-city": {
+  "signals": 4,
+  "uturns": 1,
+  "bus": 4
+ },
+ "raidurg": {
+  "signals": 0,
+  "uturns": 3,
+  "bus": 2
+ },
+ "ikea": {
+  "signals": 0,
+  "uturns": 3,
+  "bus": 1
+ },
+ "biodiversity": {
+  "signals": 1,
+  "uturns": 1,
+  "bus": 2
+ },
+ "gachibowli": {
+  "signals": 3,
+  "uturns": 2,
+  "bus": 5
+ },
+ "kothaguda": {
+  "signals": 1,
+  "uturns": 0,
+  "bus": 3
+ },
+ "medicover": {
+  "signals": 0,
+  "uturns": 2,
+  "bus": 2
+ },
+ "jntu": {
+  "signals": 0,
+  "uturns": 0,
+  "bus": 2
+ },
+ "kphb": {
+  "signals": 0,
+  "uturns": 0,
+  "bus": 1
+ },
+ "kukatpally-y": {
+  "signals": 0,
+  "uturns": 2,
+  "bus": 0
+ },
+ "miyapur": {
+  "signals": 0,
+  "uturns": 1,
+  "bus": 1
+ },
+ "financial-district": {
+  "signals": 2,
+  "uturns": 0,
+  "bus": 0
+ },
+ "suchitra": {
+  "signals": 0,
+  "uturns": 1,
+  "bus": 0
+ },
+ "lb-nagar": {
+  "signals": 0,
+  "uturns": 1,
+  "bus": 2
+ },
+ "dilsukhnagar": {
+  "signals": 0,
+  "uturns": 1,
+  "bus": 5
+ },
+ "chaitanyapuri": {
+  "signals": 0,
+  "uturns": 0,
+  "bus": 1
+ },
+ "uppal": {
+  "signals": 4,
+  "uturns": 1,
+  "bus": 8
+ },
+ "habsiguda": {
+  "signals": 1,
+  "uturns": 0,
+  "bus": 0
+ },
+ "tarnaka": {
+  "signals": 0,
+  "uturns": 1,
+  "bus": 1
+ }
+}

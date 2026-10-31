@@ -116,6 +116,8 @@ def main():
     hs = load("hotspots.json")
     sources = load("sources.json")
     feats = load("osm_features.json")
+    cue_path = os.path.join(ROOT, "data", "road_cues_counts.json")
+    cues = json.load(open(cue_path)) if os.path.exists(cue_path) else {}
     prof = load("profiles.json")
     os.makedirs(os.path.join(ROOT, "public", "data", "areas"), exist_ok=True)
     os.makedirs(os.path.join(ROOT, "src", "data"), exist_ok=True)
@@ -146,6 +148,12 @@ def main():
             "corporation": h["corporation"], "police": h["police"], "pilot": h.get("pilot", False),
             "causes": h["causes"], "fix": {k: h["fix"][k] for k in ("type", "title", "costLakh", "weeks", "agency")},
             "reportedCount": len(h["reported"]),
+            # what is on the road within 300 m, for the map card
+            "road": {
+                **cues.get(h["id"], {}),
+                "flyover": bool(f.get("flyover")),
+                "lanes": [f.get("lanes_min"), f.get("lanes_max")],
+            },
             "profile": None if not worst else {
                 "heading": worst["heading"],
                 "peak": worst["peak"], "am": worst["am"], "pm": worst["pm"],

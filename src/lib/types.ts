@@ -10,6 +10,8 @@ export interface AreaSummary {
   causes: string[];
   fix: { type: string; title: string; costLakh: [number, number]; weeks: number; agency: string };
   reportedCount: number;
+  /** within 300 m, from OpenStreetMap */
+  road?: { signals?: number; uturns?: number; bus?: number; flyover: boolean; lanes: [number | null, number | null] };
   profile: null | {
     heading: string;
     peak: { hour: number; ratio: number; delay: number };
