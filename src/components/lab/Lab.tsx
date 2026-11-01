@@ -42,6 +42,21 @@ const TOGGLES: Toggle[] = [
   { key: "enforcement", label: "Stop wrong-side", icon: ShieldIcon },
 ];
 
+/** How far the simulated today is from TomTom at an hour, in the worse direction. */
+const misfit = (c: Corridor, h: number) => {
+  const v = c.cal[String(h)];
+  if (!v) return Infinity;
+  return Math.max(...([0, 1] as const).map((d) => (v.target[d] == null || v.got[d] == null ? 0 : Math.abs(v.got[d]! - v.target[d]!))));
+};
+/** Only hours where the model matches TomTom to within this are offered: elsewhere its "today" would mislead. */
+const FIT = 0.3;
+
+/** Open on 6 pm where it fits, else the hour TomTom finds worst among those that do. */
+function defaultHour(c: Corridor, hours: number[]) {
+  if (hours.includes(18)) return 18;
+  return hours.reduce((a, b) => (Math.max(...c.cal[String(b)].target.map((t) => t ?? 0)) > Math.max(...c.cal[String(a)].target.map((t) => t ?? 0)) ? b : a), hours[0]);
+}
+
 function countChanges(d: Design, today: number[]) {
   let n = 0;
   const near = (s: number, l: number[]) => l.some((x) => Math.abs(x - s) < 15);
@@ -97,12 +112,14 @@ function Slider({
 
 export function Lab({ corridor: c, roads }: Props) {
   const router = useRouter();
-  const hours = useMemo(() => Object.keys(c.baseline).map(Number).sort((a, b) => a - b), [c]);
+  const allHours = useMemo(() => Object.keys(c.baseline).map(Number).sort((a, b) => a - b), [c]);
+  const hours = useMemo(() => allHours.filter((h) => misfit(c, h) <= FIT), [c, allHours]);
+  const hidden = allHours.length - hours.length;
   const today = useMemo(() => todayDesign(c), [c]);
   const plan = c.plan;
   // the worse direction's TomTom slowdown at each hour colours the hour chips
   const tomtom = useMemo(() => Object.fromEntries(Object.entries(c.cal).map(([h, v]) => [h, Math.max(v.target[0], v.target[1] ?? 0)])), [c]);
-  const [hour, setHour] = useState(() => (c.baseline["18"] ? 18 : hours[hours.length - 1]));
+  const [hour, setHour] = useState(() => defaultHour(c, hours));
   const [design, setDesign] = useState<Design>(today);
   const [mode, setMode] = useState<EditMode>("uturn");
   const { state, run, reset } = useLabRunner();
@@ -110,7 +127,9 @@ export function Lab({ corridor: c, roads }: Props) {
   // a new road starts from its own today, with no results carried over
   useEffect(() => {
     setDesign(todayDesign(c));
+    setHour(defaultHour(c, hours));
     reset();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [c, reset]);
 
   const set = <K extends keyof Design>(k: K, v: Design[K]) => setDesign((d) => ({ ...d, [k]: v }));
@@ -181,6 +200,11 @@ export function Lab({ corridor: c, roads }: Props) {
             </AnimatedBackground>
           </div>
         </div>
+        {hidden > 0 && (
+          <p className="mt-2 text-[12px] text-[#f5c97a]">
+            {hidden} of {allHours.length} hours hidden: the model can&apos;t match TomTom there yet
+          </p>
+        )}
         {c.cal[String(hour)] && (
           // how close the simulated today is to TomTom at this hour, in each direction
           <p className="mt-2.5 flex flex-wrap gap-x-3 gap-y-1 text-[12px] text-chalk-2 num">

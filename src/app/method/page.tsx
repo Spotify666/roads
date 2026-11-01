@@ -346,7 +346,9 @@ export default function InfoPage() {
         lead. Where OpenStreetMap has no signal at the spot, the junction is modelled as signal-controlled and labelled &quot;assumed&quot;; on stretches
         without a median, vehicles turn back at side roads. Each corridor&apos;s traffic is then tuned, hour by hour, until its simulated today matches
         TomTom&apos;s typical slowdown in each direction. Short roads near capacity are hard to match exactly, so the Lab shows, under the hour, TomTom&apos;s
-        slowdown beside the model&apos;s. Each spot&apos;s suggested fix is translated into the changes the model can test, where it can.
+        slowdown beside the model&apos;s, and offers only the hours where the two are within 0.3× of each other. Across the 40 roads, 79% of
+        road-hours match within 0.1× and 90% within 0.2×; about one in ten hours is hidden, most of them at HITEC City, Ameerpet and Panjagutta, where
+        the queue that TomTom sees reaches beyond the stretch simulated. Each spot&apos;s suggested fix is translated into the changes the model can test, where it can.
       </P>
       <P>
         Every test runs your design and today&apos;s layout through the same simulation with the same traffic and the same random seed, in your browser. Each
