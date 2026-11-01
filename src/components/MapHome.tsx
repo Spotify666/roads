@@ -34,6 +34,8 @@ const istHour = () => new Date(Date.now() + 5.5 * 3600e3).getUTCHours();
 const istTime = (iso: string) => new Date(iso).toLocaleTimeString("en-IN", { hour: "numeric", minute: "2-digit", timeZone: "Asia/Kolkata" });
 const HYD = { w: 77.9, e: 78.95, s: 17.05, n: 17.8 };
 const SPRING = { type: "spring" as const, duration: 0.35, bounce: 0.12 };
+// the selected stretch is blue in Live mode and coloured by slowdown in Typical mode
+const routeSwatch = "bg-[linear-gradient(90deg,#29a36a_0_33%,#f39228_33%_66%,#cf2f3d_66%)]";
 
 function useWide() {
   const [wide, setWide] = useState<boolean | null>(null);
@@ -761,12 +763,33 @@ export function MapHome({ data }: { data: Data }) {
           exit={{ opacity: 0, scale: 0.97 }}
           transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
           // on a phone the key fits between the top bar and its button, never past the screen edge
-          style={{ maxHeight: wide ? 560 : `calc(100dvh - ${Math.min(sheetH, 420) + 12 + 60 + 190}px)` }}
+          style={{ maxHeight: wide ? 560 : `calc(100dvh - ${Math.min(sheetH, 420) + 12 + 60 + 240}px)` }}
           className="absolute right-0 bottom-[60px] w-[264px] origin-bottom-right overflow-y-auto overscroll-contain rounded-2xl bg-asphalt-2 p-2 shadow-[0_10px_30px_#000a] ring-1 ring-white/[0.06]"
           role="group"
           aria-label="Map key and layers"
         >
-          <div className="px-3 pt-1.5 pb-1 text-[11.5px] font-semibold tracking-wide text-chalk-2">ON THE ROAD</div>
+          <div className="px-3 pt-1.5 pb-1 text-[11.5px] font-semibold tracking-wide text-chalk-2">JAM SPOTS</div>
+          <ul className="space-y-2.5 px-3 pt-1 pb-2 text-[13.5px]">
+            <li className="flex items-center gap-3">
+              <span className="flex h-5 w-8 shrink-0 items-center justify-center rounded-full bg-flow-2 text-[10px] font-bold text-asphalt" aria-hidden="true">
+                1.6×
+              </span>
+              <span>Spot and its slowdown</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="flex w-8 shrink-0 justify-center" aria-hidden="true">
+                <span className="size-3 rounded-full bg-chalk ring-[2.5px] ring-asphalt" />
+              </span>
+              <span>The junction itself</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="flex w-8 shrink-0 justify-center" aria-hidden="true">
+                <span className={cn("h-[6px] w-7 rounded-full ring-2 ring-chalk", mode === "typical" ? routeSwatch : "bg-sign")} />
+              </span>
+              <span>Stretch TomTom measures through it, when selected</span>
+            </li>
+          </ul>
+          <div className="px-3 pt-2 pb-1 text-[11.5px] font-semibold tracking-wide text-chalk-2">ON THE ROAD</div>
           {CUES.map((c) => (
             <button
               key={c.kind}
@@ -853,6 +876,24 @@ export function MapHome({ data }: { data: Data }) {
           role="list"
           aria-label="Map key"
         >
+          {sel && (
+            <>
+              <span
+                role="listitem"
+                className="flex h-8 shrink-0 items-center gap-1.5 rounded-full bg-asphalt-2/95 pr-3 pl-2 text-[12px] font-medium whitespace-nowrap text-chalk shadow-[0_2px_10px_#0006] ring-1 ring-white/[0.06] backdrop-blur-sm"
+              >
+                <span className="size-3 rounded-full bg-chalk ring-[2.5px] ring-asphalt" aria-hidden="true" />
+                {sel.name}: junction
+              </span>
+              <span
+                role="listitem"
+                className="flex h-8 shrink-0 items-center gap-1.5 rounded-full bg-asphalt-2/95 pr-3 pl-2 text-[12px] font-medium whitespace-nowrap text-chalk shadow-[0_2px_10px_#0006] ring-1 ring-white/[0.06] backdrop-blur-sm"
+              >
+                <span className={cn("h-[6px] w-5 rounded-full ring-2 ring-chalk", mode === "typical" ? routeSwatch : "bg-sign")} aria-hidden="true" />
+                Stretch TomTom measures
+              </span>
+            </>
+          )}
           {CUES.filter((c) => layers[c.kind] && zoom >= c.minzoom).map((c) => (
             <span
               key={c.kind}

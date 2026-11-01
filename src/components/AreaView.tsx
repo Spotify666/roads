@@ -165,7 +165,7 @@ export function AreaWhen({ area }: { area: AreaDetail }) {
       </div>
 
       <div className="h-[360px] overflow-hidden rounded-lg bg-asphalt lg:sticky lg:top-20 lg:h-[520px]">
-        <AreaMap center={[area.snapped.lon, area.snapped.lat]} dirs={area.dirs} active={dirIdx} hourIndex={hourIdx} highlightLeg={hl} />
+        <AreaMap center={[area.snapped.lon, area.snapped.lat]} name={area.name} dirs={area.dirs} active={dirIdx} hourIndex={hourIdx} highlightLeg={hl} />
       </div>
     </div>
   );
