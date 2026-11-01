@@ -10,6 +10,7 @@ import { CauseIcon } from "@/components/ui/CauseIcon";
 import { KIND_LABEL, kindsOf } from "@/lib/causes";
 import { CUES, CUE_ZOOM, type CueKind } from "@/lib/roadCues";
 import { CAUSE_LABELS, FIX_TYPE_LABELS, FLOW_COLORS, FLOW_LABELS, atHour, flowColor, flowLabel, flowLevel, hourLabel } from "@/lib/flow";
+import { labHref } from "@/lib/lab";
 import type { LiveIncident, LiveReading } from "@/lib/types";
 import type { AreaWithStretches, MapLayers } from "@/components/CityMap";
 import { cn } from "@/lib/utils";
@@ -454,7 +455,7 @@ function Preview({
             Details <span aria-hidden="true">→</span>
           </Link>
           <Link
-          href={`/pilot?spot=${a.id}`}
+          href={labHref(a.id)}
           className="flex h-11 flex-1 items-center justify-center rounded-full bg-asphalt-3 text-[14.5px] font-semibold text-chalk transition-transform duration-150 active:scale-[0.97]"
         >
           Test a fix

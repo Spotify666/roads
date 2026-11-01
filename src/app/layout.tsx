@@ -39,7 +39,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-IN" className={plex.variable}>
+    <html lang="en-IN" className={plex.variable} data-scroll-behavior="smooth">
       <body className="font-sans antialiased">
         <SiteNav />
         <div className="pb-[calc(64px+env(safe-area-inset-bottom))] sm:pb-0">{children}</div>

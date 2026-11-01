@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { AreaWhen, LiveNow, Measured } from "@/components/AreaView";
 import { Reveal } from "@/components/ui/Reveal";
 import { CAUSE_LABELS, FIX_TYPE_LABELS, hourLabel } from "@/lib/flow";
+import { labHref } from "@/lib/lab";
 import type { AreaDetail } from "@/lib/types";
 import areasData from "@/data/areas.json";
 
@@ -169,7 +170,7 @@ export default async function AreaPage({ params }: { params: Promise<{ id: strin
               </ul>
               <div className="mt-5 flex flex-wrap gap-2">
                 <Link
-                  href={`/pilot?spot=${a.id}`}
+                  href={labHref(a.id)}
                   className="flex h-11 items-center rounded-full bg-sign px-5 text-[14.5px] font-semibold text-white transition-transform duration-150 active:scale-[0.97]"
                 >
                   Test it in the Lab

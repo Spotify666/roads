@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { AttributionControl, Map as MLMap, NavigationControl, Popup, type GeoJSONSource, type MapMouseEvent, type PaddingOptions } from "maplibre-gl";
+import { AttributionControl, Map as MLMap, Marker, NavigationControl, Popup, type GeoJSONSource, type MapMouseEvent, type PaddingOptions } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { FLOW_COLORS, atHour, flowStepExpression } from "@/lib/flow";
+import { FLOW_COLORS, atHour, flowColor, flowStepExpression } from "@/lib/flow";
 import { KINDS, KIND_PATH, kindsOf } from "@/lib/causes";
 import { CUES } from "@/lib/roadCues";
 import type { AreaSummary, LiveIncident } from "@/lib/types";
@@ -200,6 +200,33 @@ function addPills(map: MLMap) {
   }
 }
 
+/** Keep one CSS-animated ring on every jammed spot (2× or worse), coloured by its level. */
+function syncPulses(map: MLMap, pulses: Map<string, Marker>, spots: GeoJSON.Feature[]) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const keep = new Set<string>();
+  for (const f of spots) {
+    const { id, cur } = f.properties as { id: string; cur: number };
+    if (cur < 2) continue;
+    keep.add(id);
+    let m = pulses.get(id);
+    if (!m) {
+      const el = document.createElement("div");
+      el.className = "map-pulse";
+      el.setAttribute("aria-hidden", "true");
+      // every ring shares one clock, so they breathe together
+      el.style.setProperty("--d", `-${Math.round(performance.now() % 1800)}ms`);
+      m = new Marker({ element: el }).setLngLat((f.geometry as GeoJSON.Point).coordinates as [number, number]).addTo(map);
+      pulses.set(id, m);
+    }
+    m.getElement().style.setProperty("--c", flowColor(cur));
+  }
+  for (const [id, m] of pulses) {
+    if (keep.has(id)) continue;
+    m.remove();
+    pulses.delete(id);
+  }
+}
+
 export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents, selectedId, onSelect, padding, layers, user, locateTick, trend, onZoom, zoomInTick }: Props) {
   const el = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MLMap | null>(null);
@@ -211,7 +238,8 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
   paddingRef.current = padding;
   const areasRef = useRef(areas);
   areasRef.current = areas;
-  const pulseRaf = useRef(0);
+  // breathing rings round jammed spots: DOM markers animated by CSS, so the map itself never has to redraw for them
+  const pulses = useRef(new Map<string, Marker>());
   const onZoomRef = useRef(onZoom);
   onZoomRef.current = onZoom;
 
@@ -222,6 +250,7 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
 
   useEffect(() => {
     if (!el.current) return;
+    const rings = pulses.current;
     const coarse = window.matchMedia("(pointer: coarse)").matches;
     const map = new MLMap({
       container: el.current,
@@ -351,14 +380,6 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
       }
 
       map.addSource("hotspots", { type: "geojson", data: empty });
-      // a soft ring that breathes around jammed spots
-      map.addLayer({
-        id: "hotspot-pulse",
-        type: "circle",
-        source: "hotspots",
-        filter: [">=", ["get", "cur"], 2],
-        paint: { "circle-radius": 10, "circle-color": flowStepExpression("cur"), "circle-opacity": 0, "circle-blur": 0.35 },
-      });
       map.addLayer({
         id: "hotspot-halo",
         type: "circle",
@@ -499,23 +520,6 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
         onSelectRef.current(null);
       });
 
-      // pulse: one shared ring for every jammed spot, driven by the frame clock
-      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (!reduce) {
-        let last = 0;
-        const tick = (t: number) => {
-          // about 30 frames a second is smooth enough for a ring and kinder to batteries
-          if (t - last > 33 && map.getLayer("hotspot-pulse")) {
-            last = t;
-            const p = (t % 1800) / 1800;
-            map.setPaintProperty("hotspot-pulse", "circle-radius", 7 + (1 - Math.pow(1 - p, 3)) * 16);
-            map.setPaintProperty("hotspot-pulse", "circle-opacity", 0.55 * (1 - p));
-          }
-          pulseRaf.current = requestAnimationFrame(tick);
-        };
-        pulseRaf.current = requestAnimationFrame(tick);
-      }
-
       const report = () => onZoomRef.current?.(map.getZoom());
       map.on("zoomend", report);
       report();
@@ -526,8 +530,9 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
     });
     return () => {
       ready.current = false;
-      cancelAnimationFrame(pulseRaf.current);
-      map.remove();
+      rings.clear();
+      // tearing down WebGL takes a while on phones: do it just after the next page's first frame, not before it
+      requestAnimationFrame(() => setTimeout(() => map.remove(), 0));
     };
   }, []);
 
@@ -553,6 +558,7 @@ export function CityMap({ areas, profileHours, mode, hour, liveRatio, incidents,
         };
       });
       (map.getSource("hotspots") as GeoJSONSource | undefined)?.setData({ type: "FeatureCollection", features: hotspots });
+      syncPulses(map, pulses.current, hotspots);
       if (map.getPaintProperty("hotspots", "circle-opacity") === 0) {
         map.setPaintProperty("hotspot-halo", "circle-opacity", 0.85);
         map.setPaintProperty("hotspots", "circle-opacity", 1);

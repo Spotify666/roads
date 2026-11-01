@@ -2,6 +2,7 @@
 // OpenStreetMap, its calibration and the precomputed today and RoadFix-plan runs.
 import pilotData from "@/data/pilot.json";
 import labBaseline from "@/data/lab_baseline.json";
+import { PILOT_ID } from "@/lib/lab";
 import { BAY_STOPS, BLOCKED_ZONES, PILOT_MODEL, TODAY_OPENINGS } from "./pilot";
 import { todayDesign, type Corridor, type Metrics } from "./scenario";
 
@@ -9,7 +10,7 @@ const cal = (pilotData as unknown as { calibration: { hours: Corridor["cal"] } }
 const base = labBaseline as unknown as { hours: Record<string, { today: Metrics[]; plan: Metrics[] }>; planOpenings: number[]; reverseShare: number };
 const L = PILOT_MODEL.length;
 
-export const PILOT_ID = "mehdipatnam";
+export { PILOT_ID };
 
 export const PILOT_CORRIDOR: Corridor = {
   id: PILOT_ID,

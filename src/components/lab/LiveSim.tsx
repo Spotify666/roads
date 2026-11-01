@@ -43,12 +43,24 @@ function counters(sim: Simulation): Counters {
   return { speed: n ? (sum / n) * 3.6 : 0, waiting, wrong, done, avgTrip: done ? through.reduce((a, t) => a + t.time, 0) / done : 0 };
 }
 
-function prefilled(d: Design, hour: number, c: Corridor) {
+// simulated seconds of traffic run before the view counts trips, so it starts mid-flow
+const FILL = 200;
+// the fill runs in slices of at most this many milliseconds a frame, so opening the Lab never freezes the page
+const FILL_BUDGET = 8;
+
+function fresh(d: Design, hour: number, c: Corridor) {
   const sim = makeSim(d, hour, c);
   sim.warmup = 0;
-  sim.run(200, 0.5); // fill the road so the view starts mid-flow
-  sim.trips = [];
   return sim;
+}
+
+/** Advance a run towards FILL until the deadline; true once it is full. */
+function fill(sim: Simulation, deadline: number) {
+  if (sim.t >= FILL) return true;
+  while (sim.t < FILL && performance.now() < deadline) sim.step(0.5);
+  if (sim.t < FILL) return false;
+  sim.trips = [];
+  return true;
 }
 
 function Stat({ icon, value, unit, tone }: { icon: React.ReactNode; value: React.ReactNode; unit?: string; tone?: "bad" }) {
@@ -72,7 +84,7 @@ export function LiveSim({ design, hour, corridor: c }: { design: Design; hour: n
   const [epoch, setEpoch] = useState(0);
   // phones show one road at a time; wide screens show both
   const [view, setView] = useState<"today" | "design">("design");
-  const todaySim = useMemo(() => prefilled(todayDesign(c), hour, c), [hour, c, epoch]); // eslint-disable-line react-hooks/exhaustive-deps
+  const todaySim = useMemo(() => fresh(todayDesign(c), hour, c), [hour, c, epoch]); // eslint-disable-line react-hooks/exhaustive-deps
   // rebuild the design run a moment after the last edit, not on every tap
   const [settled, setSettled] = useState(design);
   useEffect(() => {
@@ -81,7 +93,7 @@ export function LiveSim({ design, hour, corridor: c }: { design: Design; hour: n
   }, [design]);
   // an edit to the design brings its road into view on phones
   useEffect(() => setView("design"), [settled]);
-  const designSim = useMemo(() => prefilled(settled, hour, c), [settled, hour, c, epoch]); // eslint-disable-line react-hooks/exhaustive-deps
+  const designSim = useMemo(() => fresh(settled, hour, c), [settled, hour, c, epoch]); // eslint-disable-line react-hooks/exhaustive-deps
   const sims = useRef({ today: todaySim, design: designSim });
   sims.current = { today: todaySim, design: designSim };
 
@@ -93,6 +105,10 @@ export function LiveSim({ design, hour, corridor: c }: { design: Design; hour: n
   playRef.current = playing;
   speedRef.current = speed;
   const visible = useRef(true);
+  // phones show one road at a time: only that one is drawn each frame (the other redraws when its tab opens)
+  const viewRef = useRef(view);
+  viewRef.current = view;
+  const wide = useRef(false);
   const host = useRef<HTMLDivElement>(null);
   const [span, setSpan] = useState(520);
 
@@ -102,9 +118,14 @@ export function LiveSim({ design, hour, corridor: c }: { design: Design; hour: n
     const io = new IntersectionObserver(([e]) => (visible.current = e.isIntersecting));
     if (host.current) io.observe(host.current);
     if (globalThis.matchMedia?.("(prefers-reduced-motion: reduce)").matches) setPlaying(false);
+    const mq = matchMedia("(min-width: 1024px)");
+    const onWide = () => (wide.current = mq.matches);
+    onWide();
+    mq.addEventListener("change", onWide);
     return () => {
       ro.disconnect();
       io.disconnect();
+      mq.removeEventListener("change", onWide);
     };
   }, []);
 
@@ -117,18 +138,26 @@ export function LiveSim({ design, hour, corridor: c }: { design: Design; hour: n
       const dtReal = Math.min(0.1, (now - last) / 1000);
       last = now;
       const { today, design: dsim } = sims.current;
-      if (playRef.current && visible.current && !document.hidden) {
+      // a new run fills its road a slice a frame first, playing or not; a full one plays on meanwhile
+      const filling = today.t < FILL || dsim.t < FILL;
+      const deadline = performance.now() + FILL_BUDGET;
+      const fullT = fill(today, deadline);
+      const fullD = fill(dsim, deadline);
+      const play = playRef.current && visible.current && !document.hidden;
+      if (play) {
         acc += dtReal * speedRef.current;
         let steps = 0;
         while (acc >= 0.25 && steps < 120) {
-          today.step(0.25);
-          dsim.step(0.25);
+          if (fullT) today.step(0.25);
+          if (fullD) dsim.step(0.25);
           acc -= 0.25;
           steps++;
         }
         if (steps >= 120) acc = 0;
-        todayRef.current?.draw();
-        designRef.current?.draw();
+      }
+      if (play || filling) {
+        if (wide.current || viewRef.current === "today") todayRef.current?.draw();
+        if (wide.current || viewRef.current === "design") designRef.current?.draw();
       }
       if (now - lastStats > 500) {
         lastStats = now;

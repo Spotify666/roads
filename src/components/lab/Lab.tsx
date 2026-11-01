@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { AnimatedBackground } from "@/components/ui/animated-background";
 import { flowColor, hourLabel } from "@/lib/flow";
+import { labHref } from "@/lib/lab";
 import { cn } from "@/lib/utils";
 import { DEFAULT_GREEN, bestNewOpening, designCost, editableSignals, greenOf, sameDesign, todayDesign, type Corridor, type Design } from "@/sim/scenario";
 import { CorridorEditor, type EditMode } from "./CorridorEditor";
@@ -174,7 +175,7 @@ export function Lab({ corridor: c, roads }: Props) {
           <span className="text-[12.5px] font-medium text-chalk-2">Road</span>
           <select
             value={c.id}
-            onChange={(e) => router.push(`/pilot?spot=${e.target.value}`)}
+            onChange={(e) => router.push(labHref(e.target.value))}
             className="h-full min-w-0 flex-1 cursor-pointer appearance-none bg-transparent text-[15.5px] font-semibold text-chalk outline-none"
             aria-label="Road to simulate"
           >
