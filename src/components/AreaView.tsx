@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { AnimatedBackground } from "@/components/ui/animated-background";
-import { flowColor, flowLabel, hourLabel, minutes } from "@/lib/flow";
+import { flowColor, flowLabel, hourLabel, minutes, towards } from "@/lib/flow";
 import type { AreaDetail, LiveReading } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -45,7 +45,7 @@ export function AreaWhen({ area }: { area: AreaDetail }) {
     <div className="grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(320px,0.7fr)]">
       <div className="min-w-0">
         {area.dirs.length > 1 && (
-          <div className="mb-6 inline-flex rounded-lg bg-paper-2 p-1 text-sm" role="tablist" aria-label="Direction of travel">
+          <div className="mb-6 inline-flex max-w-full overflow-x-auto rounded-xl bg-paper-2 p-1 text-sm [scrollbar-width:none]" role="tablist" aria-label="Direction of travel">
             <AnimatedBackground
               defaultValue={String(dirIdx)}
               className="rounded-md bg-white shadow-[0_1px_3px_#0002]"
@@ -53,14 +53,34 @@ export function AreaWhen({ area }: { area: AreaDetail }) {
               onValueChange={(v) => v != null && setDirIdx(Number(v))}
             >
               {area.dirs.map((d, i) => (
-                <button key={d.tag} data-id={String(i)} type="button" role="tab" aria-selected={i === dirIdx} className="px-3.5 py-2.5 font-medium capitalize text-ink-2 data-[checked=true]:text-ink sm:py-1.5">
-                  {d.heading}
+                <button key={d.tag} data-id={String(i)} type="button" role="tab" aria-selected={i === dirIdx} className="shrink-0 px-3.5 py-2 text-left text-ink-2 data-[checked=true]:text-ink">
+                  <span className="flex flex-col">
+                    <span className="font-semibold whitespace-nowrap">{towards(d)}</span>
+                    {d.toward && (
+                      <span className="text-[12px] whitespace-nowrap text-ink-2">
+                        {d.via ? `via ${d.via} · ` : ""}
+                        {d.heading}
+                      </span>
+                    )}
+                  </span>
                 </button>
               ))}
             </AnimatedBackground>
           </div>
         )}
 
+        {area.dirs.length === 1 && (
+          <p className="mb-4 text-[15px]">
+            <span className="font-semibold">{towards(dir)}</span>
+            {dir.toward && (
+              <span className="text-ink-2">
+                {" "}
+                · {dir.via ? `via ${dir.via} · ` : ""}
+                {dir.heading}
+              </span>
+            )}
+          </p>
+        )}
         <ul className="grid grid-cols-2 gap-2 sm:grid-cols-4">
           {[
             { k: "Empty road", v: `${minutes(dir.freeFlowS)} min`, s: `${(dir.lengthM / 1000).toFixed(1)} km`, c: undefined },

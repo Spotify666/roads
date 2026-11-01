@@ -1,0 +1,299 @@
+{
+ "id": "tolichowki",
+ "name": "Tolichowki",
+ "place": "Under and around the Tolichowki flyover",
+ "length": 809,
+ "spotS": 395,
+ "toward": [
+  "Shaikpet",
+  "back from Shaikpet"
+ ],
+ "heading": [
+  "north-westbound",
+  null
+ ],
+ "model": {
+  "length": 809,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 810,
+    "w": 2,
+    "e": 3
+   }
+  ],
+  "busStops": [
+   {
+    "s": 282,
+    "cw": 1,
+    "name": "Tolichowki",
+    "major": true
+   },
+   {
+    "s": 442,
+    "cw": 0,
+    "name": "Tolichowki",
+    "major": true
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 32,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 82,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 186,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 217,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 279,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 279,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 283,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 362,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 415,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 415,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 479,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 488,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 496,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 502,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 542,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 596,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 618,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 630,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 639,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 674,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 682,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 711,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 792,
+    "cw": 0,
+    "weight": 1
+   }
+  ],
+  "signals": [
+   {
+    "s": 395,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Tolichowki (assumed)"
+   }
+  ],
+  "kerbFriction": [
+   {
+    "from": 215,
+    "to": 575,
+    "cw": 0,
+    "speed": 18,
+    "cause": "parking"
+   },
+   {
+    "from": 215,
+    "to": 575,
+    "cw": 1,
+    "speed": 18,
+    "cause": "parking"
+   }
+  ]
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 810
+  }
+ ],
+ "openings": [
+  492
+ ],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 749,
+   "to": 810,
+   "why": "Corridor end"
+  },
+  {
+   "from": 335,
+   "to": 455,
+   "why": "Tolichowki (assumed)"
+  },
+  {
+   "from": 252,
+   "to": 312,
+   "why": "Bus stop"
+  },
+  {
+   "from": 412,
+   "to": 472,
+   "why": "Bus stop"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   null
+  ],
+  "3": [
+   1.0,
+   null
+  ],
+  "6": [
+   1.017,
+   null
+  ],
+  "7": [
+   1.033,
+   null
+  ],
+  "8": [
+   1.083,
+   null
+  ],
+  "9": [
+   1.15,
+   null
+  ],
+  "10": [
+   1.167,
+   null
+  ],
+  "11": [
+   1.183,
+   null
+  ],
+  "12": [
+   1.2,
+   null
+  ],
+  "14": [
+   1.133,
+   null
+  ],
+  "16": [
+   1.167,
+   null
+  ],
+  "17": [
+   1.183,
+   null
+  ],
+  "18": [
+   1.167,
+   null
+  ],
+  "19": [
+   1.15,
+   null
+  ],
+  "20": [
+   1.133,
+   null
+  ],
+  "21": [
+   1.1,
+   null
+  ],
+  "22": [
+   1.0,
+   null
+  ]
+ },
+ "fix": {
+  "type": "parking",
+  "title": "No-stopping zone 100 m either side, plus an off-road vending zone"
+ },
+ "causes": [
+  "parking",
+  "vendors",
+  "encroachment",
+  "works"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

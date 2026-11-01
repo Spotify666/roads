@@ -41,6 +41,11 @@ export function flowStepExpression(prop: string) {
   ] as unknown as string;
 }
 
+/** "Towards Koti" with the compass heading kept beside it: "southbound". */
+export function towards(d: { heading: string; toward?: string | null }) {
+  return d.toward ? `Towards ${d.toward}` : d.heading.charAt(0).toUpperCase() + d.heading.slice(1);
+}
+
 export function hourLabel(h: number) {
   const suffix = h < 12 ? "am" : "pm";
   const hh = h % 12 === 0 ? 12 : h % 12;

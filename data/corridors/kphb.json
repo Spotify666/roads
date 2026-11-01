@@ -1,0 +1,291 @@
+{
+ "id": "kphb",
+ "name": "KPHB",
+ "place": "Kukatpally Housing Board metro",
+ "length": 891,
+ "spotS": 77,
+ "toward": [
+  "Miyapur",
+  "Balanagar"
+ ],
+ "heading": [
+  "westbound",
+  "south-eastbound"
+ ],
+ "model": {
+  "length": 891,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 892,
+    "w": 2,
+    "e": 2
+   }
+  ],
+  "busStops": [
+   {
+    "s": 799,
+    "cw": 1,
+    "name": "JNTU bus stop",
+    "major": false
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 89,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 110,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 158,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 164,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 195,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 264,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 297,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 323,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 324,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 340,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 411,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 413,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 513,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 517,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 535,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 540,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 592,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 604,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 690,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 699,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 740,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 823,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 861,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 870,
+    "cw": 1,
+    "weight": 5
+   }
+  ],
+  "signals": [
+   {
+    "s": 77,
+    "cycle": 120,
+    "offset": 0,
+    "name": "KPHB (assumed)"
+   }
+  ],
+  "kerbFriction": [
+   {
+    "from": 0,
+    "to": 197,
+    "cw": 0,
+    "speed": 14,
+    "cause": "autos"
+   },
+   {
+    "from": 0,
+    "to": 197,
+    "cw": 1,
+    "speed": 14,
+    "cause": "autos"
+   }
+  ]
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 892
+  }
+ ],
+ "openings": [
+  518
+ ],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 831,
+   "to": 892,
+   "why": "Corridor end"
+  },
+  {
+   "from": 17,
+   "to": 137,
+   "why": "KPHB (assumed)"
+  },
+  {
+   "from": 769,
+   "to": 829,
+   "why": "Bus stop"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.089,
+   1.014
+  ],
+  "7": [
+   1.116,
+   1.055
+  ],
+  "8": [
+   1.223,
+   1.212
+  ],
+  "9": [
+   1.259,
+   1.235
+  ],
+  "10": [
+   1.223,
+   1.207
+  ],
+  "11": [
+   1.232,
+   1.221
+  ],
+  "12": [
+   1.241,
+   1.212
+  ],
+  "14": [
+   1.232,
+   1.106
+  ],
+  "16": [
+   1.295,
+   1.143
+  ],
+  "17": [
+   1.438,
+   1.23
+  ],
+  "18": [
+   1.652,
+   1.327
+  ],
+  "19": [
+   1.688,
+   1.332
+  ],
+  "20": [
+   1.438,
+   1.226
+  ],
+  "21": [
+   1.188,
+   1.092
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "bus-stops",
+  "title": "Bus bay and metro feeder bay"
+ },
+ "causes": [
+  "shared-autos",
+  "bus-stop-in-lane"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

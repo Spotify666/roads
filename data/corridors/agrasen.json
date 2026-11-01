@@ -1,0 +1,225 @@
+{
+ "id": "agrasen",
+ "name": "Agrasen Junction",
+ "place": "KBR Park, Road No. 12",
+ "length": 575,
+ "spotS": 192,
+ "toward": [
+  "Panjagutta",
+  "Tolichowki"
+ ],
+ "heading": [
+  "north-eastbound",
+  "south-westbound"
+ ],
+ "model": {
+  "length": 575,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 576,
+    "w": 2,
+    "e": 2
+   }
+  ],
+  "busStops": [],
+  "sideRoads": [
+   {
+    "s": 111,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 111,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 126,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 126,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 147,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 147,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 432,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 432,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 437,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 437,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 542,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 542,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 548,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 548,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 548,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 548,
+    "cw": 1,
+    "weight": 5
+   }
+  ],
+  "signals": [
+   {
+    "s": 192,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Agrasen Junction (assumed)"
+   }
+  ],
+  "kerbFriction": []
+ },
+ "medians": [],
+ "openings": [],
+ "fixedOpenings": [
+  126,
+  432
+ ],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 515,
+   "to": 576,
+   "why": "Corridor end"
+  },
+  {
+   "from": 132,
+   "to": 252,
+   "why": "Agrasen Junction (assumed)"
+  },
+  {
+   "from": 0,
+   "to": 576,
+   "why": "No median here: U-turns at side roads"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.031,
+   1.013
+  ],
+  "7": [
+   1.092,
+   1.065
+  ],
+  "8": [
+   1.338,
+   1.247
+  ],
+  "9": [
+   1.477,
+   1.325
+  ],
+  "10": [
+   1.523,
+   1.325
+  ],
+  "11": [
+   1.662,
+   1.377
+  ],
+  "12": [
+   1.769,
+   1.403
+  ],
+  "14": [
+   1.738,
+   1.299
+  ],
+  "16": [
+   1.985,
+   1.416
+  ],
+  "17": [
+   2.277,
+   1.61
+  ],
+  "18": [
+   2.615,
+   1.857
+  ],
+  "19": [
+   2.523,
+   1.831
+  ],
+  "20": [
+   1.846,
+   1.468
+  ],
+  "21": [
+   1.323,
+   1.156
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "traffic-flow",
+  "title": "Widen the pinch point and run it as part of the KBR one-way loop"
+ },
+ "causes": [
+  "narrow-road",
+  "signal"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

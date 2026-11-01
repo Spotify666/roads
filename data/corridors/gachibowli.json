@@ -1,0 +1,265 @@
+{
+ "id": "gachibowli",
+ "name": "Gachibowli X Roads",
+ "place": "Gachibowli\u2013Miyapur road",
+ "length": 459,
+ "spotS": 428,
+ "toward": [
+  "Kondapur",
+  "back from Kondapur"
+ ],
+ "heading": [
+  "north-eastbound",
+  null
+ ],
+ "model": {
+  "length": 459,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 460,
+    "w": 3,
+    "e": 3
+   }
+  ],
+  "busStops": [],
+  "sideRoads": [
+   {
+    "s": 48,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 48,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 300,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 300,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 362,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 362,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 362,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 362,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 388,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 388,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 388,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 388,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 394,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 394,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 401,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 401,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 431,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 431,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 437,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 437,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 438,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 438,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 442,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 442,
+    "cw": 1,
+    "weight": 1
+   }
+  ],
+  "signals": [
+   {
+    "s": 377,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Gachibowli X Roads"
+   }
+  ],
+  "kerbFriction": []
+ },
+ "medians": [],
+ "openings": [],
+ "fixedOpenings": [
+  300,
+  362
+ ],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 399,
+   "to": 460,
+   "why": "Corridor end"
+  },
+  {
+   "from": 317,
+   "to": 437,
+   "why": "Gachibowli X Roads"
+  },
+  {
+   "from": 0,
+   "to": 460,
+   "why": "No median here: U-turns at side roads"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   null
+  ],
+  "3": [
+   1.0,
+   null
+  ],
+  "6": [
+   1.216,
+   null
+  ],
+  "7": [
+   1.333,
+   null
+  ],
+  "8": [
+   1.49,
+   null
+  ],
+  "9": [
+   1.51,
+   null
+  ],
+  "10": [
+   1.569,
+   null
+  ],
+  "11": [
+   1.627,
+   null
+  ],
+  "12": [
+   1.549,
+   null
+  ],
+  "14": [
+   1.314,
+   null
+  ],
+  "16": [
+   1.353,
+   null
+  ],
+  "17": [
+   1.412,
+   null
+  ],
+  "18": [
+   1.412,
+   null
+  ],
+  "19": [
+   1.373,
+   null
+  ],
+  "20": [
+   1.255,
+   null
+  ],
+  "21": [
+   1.137,
+   null
+  ],
+  "22": [
+   1.0,
+   null
+  ]
+ },
+ "fix": {
+  "type": "junctions",
+  "title": "Peak signal plans and a free left towards Kondapur"
+ },
+ "causes": [
+  "signal",
+  "works"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

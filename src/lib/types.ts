@@ -14,6 +14,8 @@ export interface AreaSummary {
   road?: { signals?: number; uturns?: number; bus?: number; flyover: boolean; lanes: [number | null, number | null] };
   profile: null | {
     heading: string;
+    /** the place the worst direction leads to */
+    toward?: string | null;
     peak: { hour: number; ratio: number; delay: number };
     am: { hour: number; ratio: number; delay: number };
     pm: { hour: number; ratio: number; delay: number };
@@ -33,6 +35,9 @@ export interface Source {
 export interface AreaDirection {
   tag: string;
   heading: string;
+  /** a well-known destination the direction leads to, and the next locality on the way */
+  toward?: string | null;
+  via?: string | null;
   lengthM: number;
   freeFlowS: number;
   legs: { len: number; ff: number; geom: [number, number][] }[];

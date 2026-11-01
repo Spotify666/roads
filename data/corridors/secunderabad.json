@@ -1,0 +1,517 @@
+{
+ "id": "secunderabad",
+ "name": "Secunderabad Clock Tower",
+ "place": "Station Road \u2013 Clock Tower",
+ "length": 1596,
+ "spotS": 753,
+ "toward": [
+  "Ramanthapur",
+  "Bowenpally"
+ ],
+ "heading": [
+  "south-eastbound",
+  "north-westbound"
+ ],
+ "model": {
+  "length": 1596,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 150,
+    "w": 3,
+    "e": 2
+   },
+   {
+    "from": 150,
+    "to": 1597,
+    "w": 2,
+    "e": 2
+   }
+  ],
+  "busStops": [],
+  "sideRoads": [
+   {
+    "s": 76,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 76,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 76,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 82,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 82,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 82,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 88,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 88,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 96,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 96,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 298,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 353,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 436,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 467,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 468,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 474,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 474,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 476,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 491,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 491,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 493,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 493,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 510,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 510,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 512,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 512,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 537,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 563,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 564,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 654,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 654,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 711,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 730,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 792,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 792,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 793,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 793,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 817,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 868,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 870,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 945,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 965,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 997,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1015,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1035,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1037,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1037,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1076,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1077,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1088,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1116,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1169,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1174,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1223,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1226,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1319,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1346,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1346,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1346,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1381,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1419,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1423,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1441,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1441,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1545,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1545,
+    "cw": 1,
+    "weight": 4
+   }
+  ],
+  "signals": [
+   {
+    "s": 109,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Wellington Road junction"
+   },
+   {
+    "s": 474,
+    "cycle": 120,
+    "offset": 37,
+    "name": "Sardar Patel Flyover junction"
+   },
+   {
+    "s": 753,
+    "cycle": 120,
+    "offset": 74,
+    "name": "Secunderabad Clock Tower (assumed)"
+   }
+  ],
+  "kerbFriction": [
+   {
+    "from": 633,
+    "to": 873,
+    "cw": 0,
+    "speed": 14,
+    "cause": "autos"
+   },
+   {
+    "from": 633,
+    "to": 873,
+    "cw": 1,
+    "speed": 14,
+    "cause": "autos"
+   }
+  ]
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 1597
+  }
+ ],
+ "openings": [
+  1077
+ ],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1536,
+   "to": 1597,
+   "why": "Corridor end"
+  },
+  {
+   "from": 49,
+   "to": 169,
+   "why": "Wellington Road junction"
+  },
+  {
+   "from": 414,
+   "to": 534,
+   "why": "Sardar Patel Flyover junction"
+  },
+  {
+   "from": 693,
+   "to": 813,
+   "why": "Secunderabad Clock Tower (assumed)"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.064,
+   1.051
+  ],
+  "7": [
+   1.154,
+   1.101
+  ],
+  "8": [
+   1.234,
+   1.164
+  ],
+  "9": [
+   1.264,
+   1.172
+  ],
+  "10": [
+   1.298,
+   1.183
+  ],
+  "11": [
+   1.348,
+   1.216
+  ],
+  "12": [
+   1.361,
+   1.242
+  ],
+  "14": [
+   1.304,
+   1.238
+  ],
+  "16": [
+   1.338,
+   1.273
+  ],
+  "17": [
+   1.371,
+   1.306
+  ],
+  "18": [
+   1.375,
+   1.312
+  ],
+  "19": [
+   1.328,
+   1.269
+  ],
+  "20": [
+   1.234,
+   1.193
+  ],
+  "21": [
+   1.127,
+   1.097
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "parking",
+  "title": "Organised auto and cab rank away from the station mouth"
+ },
+ "causes": [
+  "shared-autos",
+  "rain-waterlogging"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

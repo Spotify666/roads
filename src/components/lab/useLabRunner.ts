@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { CHECKPOINTS, type Calibration, type Design, type Metrics } from "@/sim/scenario";
+import { CHECKPOINTS, type Corridor, type Design, type Metrics } from "@/sim/scenario";
 import type { LabJob, LabMessage } from "@/sim/lab.worker";
 
 export interface RunState {
@@ -26,7 +26,7 @@ export function useLabRunner() {
   };
   useEffect(() => kill, []);
 
-  const run = useCallback((design: Design, hour: number, cal: Calibration, reverseShare: number, baseline: Metrics[] | null) => {
+  const run = useCallback((design: Design, hour: number, c: Corridor, baseline: Metrics[] | null) => {
     kill();
     const w = new Worker(new URL("../../sim/lab.worker.ts", import.meta.url));
     worker.current = w;
@@ -51,7 +51,9 @@ export function useLabRunner() {
         kill();
       }
     };
-    const payload: LabJob = { id, design, hour, cal, reverseShare, withToday };
+    // only what a run needs crosses to the worker, not the corridor's precomputed results
+    const corridor = { model: c.model, fixedOpenings: c.fixedOpenings, bayStops: c.bayStops, reverseShare: c.reverseShare, cal: { [String(hour)]: c.cal[String(hour)] }, openings: c.openings };
+    const payload: LabJob = { id, design, hour, corridor, withToday };
     w.postMessage(payload);
   }, []);
 

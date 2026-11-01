@@ -1,0 +1,211 @@
+{
+ "id": "suchitra",
+ "name": "Suchitra",
+ "place": "Suchitra circle, towards Bowenpally",
+ "length": 1596,
+ "spotS": 798,
+ "toward": [
+  "Moosapet",
+  "back from Moosapet"
+ ],
+ "heading": [
+  "south-westbound",
+  null
+ ],
+ "model": {
+  "length": 1596,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 1597,
+    "w": 2,
+    "e": 2
+   }
+  ],
+  "busStops": [],
+  "sideRoads": [
+   {
+    "s": 172,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 173,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 279,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 385,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 386,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 713,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 875,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 875,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1048,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1080,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1113,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1501,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1572,
+    "cw": 1,
+    "weight": 4
+   }
+  ],
+  "signals": [
+   {
+    "s": 798,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Suchitra (assumed)"
+   }
+  ],
+  "kerbFriction": []
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 1597
+  }
+ ],
+ "openings": [
+  173,
+  386,
+  875
+ ],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1536,
+   "to": 1597,
+   "why": "Corridor end"
+  },
+  {
+   "from": 738,
+   "to": 858,
+   "why": "Suchitra (assumed)"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   null
+  ],
+  "3": [
+   1.0,
+   null
+  ],
+  "6": [
+   1.015,
+   null
+  ],
+  "7": [
+   1.015,
+   null
+  ],
+  "8": [
+   1.038,
+   null
+  ],
+  "9": [
+   1.053,
+   null
+  ],
+  "10": [
+   1.045,
+   null
+  ],
+  "11": [
+   1.053,
+   null
+  ],
+  "12": [
+   1.045,
+   null
+  ],
+  "14": [
+   1.045,
+   null
+  ],
+  "16": [
+   1.053,
+   null
+  ],
+  "17": [
+   1.053,
+   null
+  ],
+  "18": [
+   1.075,
+   null
+  ],
+  "19": [
+   1.083,
+   null
+  ],
+  "20": [
+   1.083,
+   null
+  ],
+  "21": [
+   1.045,
+   null
+  ],
+  "22": [
+   1.0,
+   null
+  ]
+ },
+ "fix": {
+  "type": "median-uturn",
+  "title": "Closer U-turn gap with a waiting pocket"
+ },
+ "causes": [
+  "u-turn-detour",
+  "wrong-side"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

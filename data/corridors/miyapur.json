@@ -1,0 +1,322 @@
+{
+ "id": "miyapur",
+ "name": "Miyapur",
+ "place": "Mumbai Highway at Miyapur metro",
+ "length": 1599,
+ "spotS": 802,
+ "toward": [
+  "Chandanagar",
+  "Kukatpally"
+ ],
+ "heading": [
+  "westbound",
+  "eastbound"
+ ],
+ "model": {
+  "length": 1599,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 925,
+    "w": 2,
+    "e": 2
+   },
+   {
+    "from": 925,
+    "to": 1075,
+    "w": 3,
+    "e": 2
+   },
+   {
+    "from": 1075,
+    "to": 1600,
+    "w": 2,
+    "e": 2
+   }
+  ],
+  "busStops": [
+   {
+    "s": 1005,
+    "cw": 0,
+    "name": "Bus stop",
+    "major": true
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 206,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 206,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 341,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 341,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 498,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 498,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 588,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 588,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 686,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 698,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 728,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 739,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 812,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1112,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1124,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1160,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1160,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1178,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1204,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1355,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1497,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1533,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1563,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 1564,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1580,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 1580,
+    "cw": 1,
+    "weight": 2
+   }
+  ],
+  "signals": [
+   {
+    "s": 802,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Miyapur (assumed)"
+   }
+  ],
+  "kerbFriction": [
+   {
+    "from": 682,
+    "to": 922,
+    "cw": 0,
+    "speed": 14,
+    "cause": "autos"
+   },
+   {
+    "from": 682,
+    "to": 922,
+    "cw": 1,
+    "speed": 14,
+    "cause": "autos"
+   }
+  ]
+ },
+ "medians": [
+  {
+   "from": 675,
+   "to": 1600
+  }
+ ],
+ "openings": [
+  1563
+ ],
+ "fixedOpenings": [
+  206,
+  498,
+  588
+ ],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1539,
+   "to": 1600,
+   "why": "Corridor end"
+  },
+  {
+   "from": 742,
+   "to": 862,
+   "why": "Miyapur (assumed)"
+  },
+  {
+   "from": 975,
+   "to": 1035,
+   "why": "Bus stop"
+  },
+  {
+   "from": 0,
+   "to": 675,
+   "why": "No median here: U-turns at side roads"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.038,
+   1.014
+  ],
+  "7": [
+   1.146,
+   1.034
+  ],
+  "8": [
+   1.262,
+   1.076
+  ],
+  "9": [
+   1.208,
+   1.097
+  ],
+  "10": [
+   1.185,
+   1.09
+  ],
+  "11": [
+   1.2,
+   1.097
+  ],
+  "12": [
+   1.208,
+   1.103
+  ],
+  "14": [
+   1.138,
+   1.083
+  ],
+  "16": [
+   1.169,
+   1.138
+  ],
+  "17": [
+   1.254,
+   1.207
+  ],
+  "18": [
+   1.354,
+   1.317
+  ],
+  "19": [
+   1.385,
+   1.345
+  ],
+  "20": [
+   1.285,
+   1.228
+  ],
+  "21": [
+   1.138,
+   1.103
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "bus-stops",
+  "title": "Bus bays at the metro terminal"
+ },
+ "causes": [
+  "bus-stop-in-lane",
+  "shared-autos"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

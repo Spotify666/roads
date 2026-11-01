@@ -364,7 +364,7 @@ function Preview({
             <div className="mt-1 text-[20px] font-semibold num" style={{ color: flowColor(p?.peak.ratio) }}>
               {p ? `${p.peak.ratio.toFixed(1)}×` : "–"}
             </div>
-            <div className="text-[11.5px] text-chalk-2 num">{p ? hourLabel(p.peak.hour) : ""}</div>
+            <div className="truncate text-[11.5px] text-chalk-2 num">{p ? `${hourLabel(p.peak.hour)}${p.toward ? ` · → ${p.toward}` : ""}` : ""}</div>
           </div>
         </div>
 
@@ -451,11 +451,12 @@ function Preview({
           >
             Details <span aria-hidden="true">→</span>
           </Link>
-          {a.pilot && (
-            <Link href="/pilot" className="flex h-11 flex-1 items-center justify-center rounded-full bg-asphalt-3 text-[14.5px] font-semibold text-chalk transition-transform duration-150 active:scale-[0.97]">
-              Simulate
-            </Link>
-          )}
+          <Link
+          href={`/pilot?spot=${a.id}`}
+          className="flex h-11 flex-1 items-center justify-center rounded-full bg-asphalt-3 text-[14.5px] font-semibold text-chalk transition-transform duration-150 active:scale-[0.97]"
+        >
+          Test a fix
+        </Link>
         </div>
       </div>
     </div>

@@ -1,0 +1,244 @@
+{
+ "id": "tarnaka",
+ "name": "Tarnaka",
+ "place": "Tarnaka junction",
+ "length": 950,
+ "spotS": 811,
+ "toward": [
+  "Habsiguda",
+  "Secunderabad"
+ ],
+ "heading": [
+  "south-eastbound",
+  "north-westbound"
+ ],
+ "model": {
+  "length": 950,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 475,
+    "w": 3,
+    "e": 3
+   },
+   {
+    "from": 475,
+    "to": 625,
+    "w": 3,
+    "e": 2
+   },
+   {
+    "from": 625,
+    "to": 951,
+    "w": 3,
+    "e": 3
+   }
+  ],
+  "busStops": [
+   {
+    "s": 916,
+    "cw": 1,
+    "name": "Bus stop",
+    "major": true
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 47,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 235,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 338,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 338,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 544,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 545,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 581,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 584,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 650,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 679,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 701,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 737,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 756,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 772,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 899,
+    "cw": 0,
+    "weight": 0.5
+   }
+  ],
+  "signals": [
+   {
+    "s": 811,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Tarnaka (assumed)"
+   }
+  ],
+  "kerbFriction": []
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 951
+  }
+ ],
+ "openings": [
+  338,
+  545
+ ],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 890,
+   "to": 951,
+   "why": "Corridor end"
+  },
+  {
+   "from": 751,
+   "to": 871,
+   "why": "Tarnaka (assumed)"
+  },
+  {
+   "from": 886,
+   "to": 946,
+   "why": "Bus stop"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.024,
+   1.0
+  ],
+  "7": [
+   1.047,
+   1.037
+  ],
+  "8": [
+   1.176,
+   1.148
+  ],
+  "9": [
+   1.224,
+   1.198
+  ],
+  "10": [
+   1.153,
+   1.148
+  ],
+  "11": [
+   1.141,
+   1.173
+  ],
+  "12": [
+   1.153,
+   1.198
+  ],
+  "14": [
+   1.165,
+   1.198
+  ],
+  "16": [
+   1.329,
+   1.321
+  ],
+  "17": [
+   1.612,
+   1.556
+  ],
+  "18": [
+   2.247,
+   1.914
+  ],
+  "19": [
+   2.212,
+   1.951
+  ],
+  "20": [
+   1.529,
+   1.506
+  ],
+  "21": [
+   1.153,
+   1.16
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "junctions",
+  "title": "Signal retiming from counted flows"
+ },
+ "causes": [
+  "signal",
+  "u-turn-detour"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

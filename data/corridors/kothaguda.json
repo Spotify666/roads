@@ -1,0 +1,463 @@
+{
+ "id": "kothaguda",
+ "name": "Kothaguda Junction",
+ "place": "Kothaguda T junction",
+ "length": 1598,
+ "spotS": 788,
+ "toward": [
+  "Miyapur",
+  "Gachibowli"
+ ],
+ "heading": [
+  "northbound",
+  "south-westbound"
+ ],
+ "model": {
+  "length": 1598,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 475,
+    "w": 4,
+    "e": 4
+   },
+   {
+    "from": 475,
+    "to": 625,
+    "w": 5,
+    "e": 5
+   },
+   {
+    "from": 625,
+    "to": 1350,
+    "w": 3,
+    "e": 2
+   },
+   {
+    "from": 1350,
+    "to": 1599,
+    "w": 3,
+    "e": 3
+   }
+  ],
+  "busStops": [
+   {
+    "s": 839,
+    "cw": 0,
+    "name": "Kothaguda",
+    "major": true
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 37,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 75,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 80,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 84,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 123,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 124,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 124,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 136,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 234,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 264,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 317,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 329,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 331,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 331,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 336,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 344,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 413,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 431,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 441,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 443,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 469,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 481,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 495,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 516,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 582,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 644,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 721,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 745,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 762,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 793,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 797,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 797,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 800,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 807,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 807,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 807,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 850,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 893,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 957,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1014,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1066,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1082,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1095,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1113,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1124,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1190,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1368,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1371,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 1371,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1371,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1477,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1484,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 1484,
+    "cw": 1,
+    "weight": 3
+   }
+  ],
+  "signals": [
+   {
+    "s": 788,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Kothaguda Junction"
+   },
+   {
+    "s": 1359,
+    "cycle": 120,
+    "offset": 37,
+    "name": "1st Cross junction"
+   }
+  ],
+  "kerbFriction": [
+   {
+    "from": 668,
+    "to": 908,
+    "cw": 0,
+    "speed": 14,
+    "cause": "autos"
+   },
+   {
+    "from": 668,
+    "to": 908,
+    "cw": 1,
+    "speed": 14,
+    "cause": "autos"
+   }
+  ]
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 1599
+  }
+ ],
+ "openings": [],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1538,
+   "to": 1599,
+   "why": "Corridor end"
+  },
+  {
+   "from": 728,
+   "to": 848,
+   "why": "Kothaguda Junction"
+  },
+  {
+   "from": 1299,
+   "to": 1419,
+   "why": "1st Cross junction"
+  },
+  {
+   "from": 809,
+   "to": 869,
+   "why": "Bus stop"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.023,
+   1.019
+  ],
+  "7": [
+   1.062,
+   1.038
+  ],
+  "8": [
+   1.177,
+   1.113
+  ],
+  "9": [
+   1.323,
+   1.208
+  ],
+  "10": [
+   1.431,
+   1.321
+  ],
+  "11": [
+   1.5,
+   1.396
+  ],
+  "12": [
+   1.415,
+   1.415
+  ],
+  "14": [
+   1.208,
+   1.34
+  ],
+  "16": [
+   1.2,
+   1.34
+  ],
+  "17": [
+   1.215,
+   1.321
+  ],
+  "18": [
+   1.238,
+   1.283
+  ],
+  "19": [
+   1.2,
+   1.226
+  ],
+  "20": [
+   1.115,
+   1.132
+  ],
+  "21": [
+   1.062,
+   1.094
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "junctions",
+  "title": "Signal retiming from counted turning flows"
+ },
+ "causes": [
+  "signal",
+  "shared-autos"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

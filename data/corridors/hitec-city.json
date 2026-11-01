@@ -1,0 +1,349 @@
+{
+ "id": "hitec-city",
+ "name": "HITEC City (Cyber Towers)",
+ "place": "Cyber Towers junction",
+ "length": 1012,
+ "spotS": 212,
+ "toward": [
+  "Kukatpally",
+  "Financial District"
+ ],
+ "heading": [
+  "north-eastbound",
+  "south-westbound"
+ ],
+ "model": {
+  "length": 1012,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 425,
+    "w": 2,
+    "e": 4
+   },
+   {
+    "from": 425,
+    "to": 1013,
+    "w": 2,
+    "e": 2
+   }
+  ],
+  "busStops": [
+   {
+    "s": 66,
+    "cw": 1,
+    "name": "Cyber Towers",
+    "major": true
+   },
+   {
+    "s": 272,
+    "cw": 0,
+    "name": "Hitech City 'X' Roads",
+    "major": true
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 20,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 25,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 122,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 127,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 129,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 172,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 197,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 197,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 199,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 199,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 211,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 211,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 212,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 212,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 239,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 269,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 338,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 379,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 396,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 396,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 405,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 423,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 423,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 450,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 460,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 579,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 689,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 749,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 750,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 776,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 779,
+    "cw": 1,
+    "weight": 5
+   }
+  ],
+  "signals": [
+   {
+    "s": 239,
+    "cycle": 120,
+    "offset": 0,
+    "name": "HITEC City (Cyber Towers)"
+   }
+  ],
+  "kerbFriction": [
+   {
+    "from": 92,
+    "to": 332,
+    "cw": 0,
+    "speed": 14,
+    "cause": "autos"
+   },
+   {
+    "from": 92,
+    "to": 332,
+    "cw": 1,
+    "speed": 14,
+    "cause": "autos"
+   }
+  ]
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 800
+  }
+ ],
+ "openings": [
+  134
+ ],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 952,
+   "to": 1013,
+   "why": "Corridor end"
+  },
+  {
+   "from": 179,
+   "to": 299,
+   "why": "HITEC City (Cyber Towers)"
+  },
+  {
+   "from": 36,
+   "to": 96,
+   "why": "Bus stop"
+  },
+  {
+   "from": 242,
+   "to": 302,
+   "why": "Bus stop"
+  },
+  {
+   "from": 800,
+   "to": 1013,
+   "why": "No median here: U-turns at side roads"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.0,
+   1.039
+  ],
+  "7": [
+   1.034,
+   1.15
+  ],
+  "8": [
+   1.159,
+   1.488
+  ],
+  "9": [
+   1.17,
+   1.803
+  ],
+  "10": [
+   1.125,
+   2.118
+  ],
+  "11": [
+   1.125,
+   2.575
+  ],
+  "12": [
+   1.159,
+   2.937
+  ],
+  "14": [
+   1.182,
+   2.85
+  ],
+  "16": [
+   1.466,
+   2.795
+  ],
+  "17": [
+   1.875,
+   2.496
+  ],
+  "18": [
+   2.568,
+   2.087
+  ],
+  "19": [
+   2.818,
+   1.717
+  ],
+  "20": [
+   1.932,
+   1.441
+  ],
+  "21": [
+   1.261,
+   1.244
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "junctions",
+  "title": "Time-of-day signal plans and cab pick-up bays"
+ },
+ "causes": [
+  "signal",
+  "shared-autos",
+  "wrong-side"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

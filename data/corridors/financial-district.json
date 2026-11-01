@@ -1,0 +1,350 @@
+{
+ "id": "financial-district",
+ "name": "Financial District",
+ "place": "Wipro Circle, Nanakramguda",
+ "length": 1595,
+ "spotS": 771,
+ "toward": [
+  "Nanakramguda",
+  "Manikonda"
+ ],
+ "heading": [
+  "westbound",
+  "eastbound"
+ ],
+ "model": {
+  "length": 1595,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 1596,
+    "w": 2,
+    "e": 2
+   }
+  ],
+  "busStops": [],
+  "sideRoads": [
+   {
+    "s": 75,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 110,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 316,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 316,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 317,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 463,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 463,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 472,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 472,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 486,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 486,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 499,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 499,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 578,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 616,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 695,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 702,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 816,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 888,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 921,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 969,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 984,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1012,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1022,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1063,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1139,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1189,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1189,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1190,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1203,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1271,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1358,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1462,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1513,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1521,
+    "cw": 0,
+    "weight": 3
+   }
+  ],
+  "signals": [
+   {
+    "s": 506,
+    "cycle": 120,
+    "offset": 0,
+    "name": "ISB Road junction"
+   },
+   {
+    "s": 771,
+    "cycle": 120,
+    "offset": 37,
+    "name": "Financial District (assumed)"
+   },
+   {
+    "s": 1026,
+    "cycle": 120,
+    "offset": 74,
+    "name": "Signal at 1026 m"
+   },
+   {
+    "s": 1211,
+    "cycle": 120,
+    "offset": 111,
+    "name": "My Home Vihanga Road junction"
+   }
+  ],
+  "kerbFriction": []
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 1596
+  }
+ ],
+ "openings": [],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1535,
+   "to": 1596,
+   "why": "Corridor end"
+  },
+  {
+   "from": 446,
+   "to": 566,
+   "why": "ISB Road junction"
+  },
+  {
+   "from": 711,
+   "to": 831,
+   "why": "Financial District (assumed)"
+  },
+  {
+   "from": 966,
+   "to": 1086,
+   "why": "Signal at 1026 m"
+  },
+  {
+   "from": 1151,
+   "to": 1271,
+   "why": "My Home Vihanga Road junction"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.02,
+   1.025
+  ],
+  "7": [
+   1.096,
+   1.084
+  ],
+  "8": [
+   1.299,
+   1.274
+  ],
+  "9": [
+   1.396,
+   1.405
+  ],
+  "10": [
+   1.462,
+   1.483
+  ],
+  "11": [
+   1.543,
+   1.551
+  ],
+  "12": [
+   1.543,
+   1.539
+  ],
+  "14": [
+   1.299,
+   1.355
+  ],
+  "16": [
+   1.452,
+   1.421
+  ],
+  "17": [
+   1.655,
+   1.514
+  ],
+  "18": [
+   1.853,
+   1.579
+  ],
+  "19": [
+   1.832,
+   1.514
+  ],
+  "20": [
+   1.477,
+   1.343
+  ],
+  "21": [
+   1.168,
+   1.153
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "junctions",
+  "title": "Roundabout-to-signal conversion with time-of-day plans"
+ },
+ "causes": [
+  "signal",
+  "merge"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

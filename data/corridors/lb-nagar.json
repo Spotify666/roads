@@ -1,0 +1,484 @@
+{
+ "id": "lb-nagar",
+ "name": "LB Nagar",
+ "place": "Vijayawada Highway at LB Nagar",
+ "length": 882,
+ "spotS": 784,
+ "toward": [
+  "Vanasthalipuram",
+  "Saroornagar"
+ ],
+ "heading": [
+  "south-eastbound",
+  "north-westbound"
+ ],
+ "model": {
+  "length": 882,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 225,
+    "w": 1,
+    "e": 1
+   },
+   {
+    "from": 225,
+    "to": 883,
+    "w": 2,
+    "e": 1
+   }
+  ],
+  "busStops": [
+   {
+    "s": 79,
+    "cw": 1,
+    "name": "Doctors Colony Bus Stop",
+    "major": false
+   },
+   {
+    "s": 173,
+    "cw": 0,
+    "name": "NTR Nagar Bus Stop",
+    "major": false
+   },
+   {
+    "s": 746,
+    "cw": 1,
+    "name": "LB Nagar",
+    "major": true
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 15,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 15,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 15,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 15,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 48,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 48,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 60,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 60,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 61,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 61,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 85,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 85,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 90,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 90,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 132,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 132,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 161,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 161,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 209,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 209,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 209,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 209,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 242,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 242,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 242,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 242,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 254,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 254,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 267,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 267,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 289,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 289,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 345,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 345,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 352,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 352,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 352,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 352,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 444,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 444,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 501,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 501,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 576,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 576,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 632,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 632,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 645,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 645,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 743,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 743,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 835,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 835,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 861,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 861,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 861,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 861,
+    "cw": 1,
+    "weight": 1
+   }
+  ],
+  "signals": [
+   {
+    "s": 784,
+    "cycle": 120,
+    "offset": 0,
+    "name": "LB Nagar (assumed)"
+   }
+  ],
+  "kerbFriction": [
+   {
+    "from": 664,
+    "to": 882,
+    "cw": 0,
+    "speed": 14,
+    "cause": "autos"
+   },
+   {
+    "from": 664,
+    "to": 882,
+    "cw": 1,
+    "speed": 14,
+    "cause": "autos"
+   }
+  ]
+ },
+ "medians": [],
+ "openings": [],
+ "fixedOpenings": [
+  242,
+  345,
+  444,
+  632,
+  743
+ ],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 822,
+   "to": 883,
+   "why": "Corridor end"
+  },
+  {
+   "from": 724,
+   "to": 844,
+   "why": "LB Nagar (assumed)"
+  },
+  {
+   "from": 49,
+   "to": 109,
+   "why": "Bus stop"
+  },
+  {
+   "from": 143,
+   "to": 203,
+   "why": "Bus stop"
+  },
+  {
+   "from": 716,
+   "to": 776,
+   "why": "Bus stop"
+  },
+  {
+   "from": 0,
+   "to": 883,
+   "why": "No median here: U-turns at side roads"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.022,
+   1.056
+  ],
+  "7": [
+   1.078,
+   1.09
+  ],
+  "8": [
+   1.267,
+   1.18
+  ],
+  "9": [
+   1.333,
+   1.245
+  ],
+  "10": [
+   1.311,
+   1.27
+  ],
+  "11": [
+   1.344,
+   1.305
+  ],
+  "12": [
+   1.378,
+   1.309
+  ],
+  "14": [
+   1.322,
+   1.219
+  ],
+  "16": [
+   1.467,
+   1.249
+  ],
+  "17": [
+   1.789,
+   1.296
+  ],
+  "18": [
+   2.267,
+   1.33
+  ],
+  "19": [
+   2.4,
+   1.326
+  ],
+  "20": [
+   1.789,
+   1.249
+  ],
+  "21": [
+   1.278,
+   1.124
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "bus-stops",
+  "title": "Off-road private-bus boarding point"
+ },
+ "causes": [
+  "private-buses",
+  "metro-pillars",
+  "bus-stop-in-lane"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

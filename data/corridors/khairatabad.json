@@ -1,0 +1,206 @@
+{
+ "id": "khairatabad",
+ "name": "Khairatabad",
+ "place": "Khairatabad flyover junction",
+ "length": 1180,
+ "spotS": 792,
+ "toward": [
+  "Masab Tank",
+  "Himayatnagar"
+ ],
+ "heading": [
+  "westbound",
+  "eastbound"
+ ],
+ "model": {
+  "length": 1180,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 450,
+    "w": 3,
+    "e": 3
+   },
+   {
+    "from": 450,
+    "to": 1181,
+    "w": 2,
+    "e": 2
+   }
+  ],
+  "busStops": [
+   {
+    "s": 1071,
+    "cw": 0,
+    "name": "khairatabad",
+    "major": false
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 1120,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1123,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 1150,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 1150,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 1161,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 1161,
+    "cw": 1,
+    "weight": 5
+   }
+  ],
+  "signals": [
+   {
+    "s": 792,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Khairatabad (assumed)"
+   },
+   {
+    "s": 1136,
+    "cycle": 120,
+    "offset": 37,
+    "name": "Lakdikapool Road junction"
+   }
+  ],
+  "kerbFriction": []
+ },
+ "medians": [
+  {
+   "from": 350,
+   "to": 1181
+  }
+ ],
+ "openings": [],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1120,
+   "to": 1181,
+   "why": "Corridor end"
+  },
+  {
+   "from": 732,
+   "to": 852,
+   "why": "Khairatabad (assumed)"
+  },
+  {
+   "from": 1076,
+   "to": 1196,
+   "why": "Lakdikapool Road junction"
+  },
+  {
+   "from": 1041,
+   "to": 1101,
+   "why": "Bus stop"
+  },
+  {
+   "from": 0,
+   "to": 350,
+   "why": "No median here: U-turns at side roads"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.027,
+   1.016
+  ],
+  "7": [
+   1.062,
+   1.016
+  ],
+  "8": [
+   1.158,
+   1.032
+  ],
+  "9": [
+   1.301,
+   1.056
+  ],
+  "10": [
+   1.507,
+   1.048
+  ],
+  "11": [
+   1.699,
+   1.056
+  ],
+  "12": [
+   1.815,
+   1.056
+  ],
+  "14": [
+   1.733,
+   1.048
+  ],
+  "16": [
+   1.671,
+   1.056
+  ],
+  "17": [
+   1.637,
+   1.089
+  ],
+  "18": [
+   1.575,
+   1.145
+  ],
+  "19": [
+   1.452,
+   1.177
+  ],
+  "20": [
+   1.329,
+   1.161
+  ],
+  "21": [
+   1.178,
+   1.081
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "junctions",
+  "title": "Free left turn with a channelising island"
+ },
+ "causes": [
+  "signal",
+  "merge"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

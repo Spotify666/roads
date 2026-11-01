@@ -1,0 +1,455 @@
+{
+ "id": "biodiversity",
+ "name": "Biodiversity Junction",
+ "place": "Biodiversity Park flyovers",
+ "length": 1597,
+ "spotS": 796,
+ "toward": [
+  "Raidurg",
+  "back from Raidurg"
+ ],
+ "heading": [
+  "south-eastbound",
+  null
+ ],
+ "model": {
+  "length": 1597,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 1598,
+    "w": 3,
+    "e": 3
+   }
+  ],
+  "busStops": [
+   {
+    "s": 36,
+    "cw": 1,
+    "name": "Telecom Nagar",
+    "major": false
+   },
+   {
+    "s": 82,
+    "cw": 0,
+    "name": "Telecom Nagar",
+    "major": false
+   },
+   {
+    "s": 198,
+    "cw": 0,
+    "name": "Bus stop",
+    "major": false
+   },
+   {
+    "s": 446,
+    "cw": 1,
+    "name": "Cyberabad Police Commissionerate",
+    "major": false
+   },
+   {
+    "s": 584,
+    "cw": 0,
+    "name": "Cyberabad Police Commissionerate",
+    "major": true
+   },
+   {
+    "s": 743,
+    "cw": 1,
+    "name": "Bus stop",
+    "major": true
+   },
+   {
+    "s": 1172,
+    "cw": 1,
+    "name": "Roda Mistry College",
+    "major": false
+   },
+   {
+    "s": 1184,
+    "cw": 0,
+    "name": "Roda Mistry College",
+    "major": false
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 105,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 105,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 126,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 133,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 171,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 178,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 244,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 294,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 319,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 354,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 398,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 412,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 458,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 472,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 488,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 576,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 577,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 603,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 691,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 767,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 786,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 821,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 878,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 916,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 935,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 936,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 976,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1003,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1049,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 1058,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 1065,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1093,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 1098,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1098,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1113,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1185,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1199,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1283,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1299,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1468,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 1470,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1541,
+    "cw": 1,
+    "weight": 0.5
+   }
+  ],
+  "signals": [
+   {
+    "s": 796,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Biodiversity Junction (assumed)"
+   },
+   {
+    "s": 1053,
+    "cycle": 120,
+    "offset": 37,
+    "name": "Bio-Diversity Park Level 2 Flyover junction"
+   }
+  ],
+  "kerbFriction": []
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 1598
+  }
+ ],
+ "openings": [
+  936,
+  1469
+ ],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1537,
+   "to": 1598,
+   "why": "Corridor end"
+  },
+  {
+   "from": 736,
+   "to": 856,
+   "why": "Biodiversity Junction (assumed)"
+  },
+  {
+   "from": 993,
+   "to": 1113,
+   "why": "Bio-Diversity Park Level 2 Flyover junction"
+  },
+  {
+   "from": 6,
+   "to": 66,
+   "why": "Bus stop"
+  },
+  {
+   "from": 52,
+   "to": 112,
+   "why": "Bus stop"
+  },
+  {
+   "from": 168,
+   "to": 228,
+   "why": "Bus stop"
+  },
+  {
+   "from": 416,
+   "to": 476,
+   "why": "Bus stop"
+  },
+  {
+   "from": 554,
+   "to": 614,
+   "why": "Bus stop"
+  },
+  {
+   "from": 713,
+   "to": 773,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1142,
+   "to": 1202,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1154,
+   "to": 1214,
+   "why": "Bus stop"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   null
+  ],
+  "3": [
+   1.0,
+   null
+  ],
+  "6": [
+   1.015,
+   null
+  ],
+  "7": [
+   1.045,
+   null
+  ],
+  "8": [
+   1.144,
+   null
+  ],
+  "9": [
+   1.265,
+   null
+  ],
+  "10": [
+   1.348,
+   null
+  ],
+  "11": [
+   1.462,
+   null
+  ],
+  "12": [
+   1.492,
+   null
+  ],
+  "14": [
+   1.25,
+   null
+  ],
+  "16": [
+   1.242,
+   null
+  ],
+  "17": [
+   1.364,
+   null
+  ],
+  "18": [
+   1.508,
+   null
+  ],
+  "19": [
+   1.561,
+   null
+  ],
+  "20": [
+   1.402,
+   null
+  ],
+  "21": [
+   1.159,
+   null
+  ],
+  "22": [
+   1.0,
+   null
+  ]
+ },
+ "fix": {
+  "type": "lanes-markings",
+  "title": "Merge markings and a no-stopping zone at the flyover landings"
+ },
+ "causes": [
+  "merge",
+  "signal"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

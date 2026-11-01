@@ -1,0 +1,209 @@
+{
+ "id": "chaderghat",
+ "name": "Chaderghat \u2013 Malakpet",
+ "place": "Chaderghat bridge towards Malakpet",
+ "length": 462,
+ "spotS": 128,
+ "toward": [
+  "Santosh Nagar",
+  "back from Santosh Nagar"
+ ],
+ "heading": [
+  "southbound",
+  null
+ ],
+ "model": {
+  "length": 462,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 463,
+    "w": 3,
+    "e": 2
+   }
+  ],
+  "busStops": [],
+  "sideRoads": [
+   {
+    "s": 224,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 224,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 229,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 229,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 248,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 248,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 248,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 248,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 322,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 322,
+    "cw": 1,
+    "weight": 0.5
+   }
+  ],
+  "signals": [
+   {
+    "s": 128,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Chaderghat \u2013 Malakpet (assumed)"
+   }
+  ],
+  "kerbFriction": [
+   {
+    "from": 8,
+    "to": 248,
+    "cw": 0,
+    "speed": 14,
+    "cause": "autos"
+   },
+   {
+    "from": 8,
+    "to": 248,
+    "cw": 1,
+    "speed": 14,
+    "cause": "autos"
+   }
+  ]
+ },
+ "medians": [],
+ "openings": [],
+ "fixedOpenings": [
+  224
+ ],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 402,
+   "to": 463,
+   "why": "Corridor end"
+  },
+  {
+   "from": 68,
+   "to": 188,
+   "why": "Chaderghat \u2013 Malakpet (assumed)"
+  },
+  {
+   "from": 0,
+   "to": 463,
+   "why": "No median here: U-turns at side roads"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   null
+  ],
+  "3": [
+   1.0,
+   null
+  ],
+  "6": [
+   1.018,
+   null
+  ],
+  "7": [
+   1.018,
+   null
+  ],
+  "8": [
+   1.053,
+   null
+  ],
+  "9": [
+   1.07,
+   null
+  ],
+  "10": [
+   1.07,
+   null
+  ],
+  "11": [
+   1.088,
+   null
+  ],
+  "12": [
+   1.123,
+   null
+  ],
+  "14": [
+   1.14,
+   null
+  ],
+  "16": [
+   1.246,
+   null
+  ],
+  "17": [
+   1.333,
+   null
+  ],
+  "18": [
+   1.456,
+   null
+  ],
+  "19": [
+   1.439,
+   null
+  ],
+  "20": [
+   1.281,
+   null
+  ],
+  "21": [
+   1.14,
+   null
+  ],
+  "22": [
+   1.0,
+   null
+  ]
+ },
+ "fix": {
+  "type": "lanes-markings",
+  "title": "Lane markings and no-stopping on the bridge approaches"
+ },
+ "causes": [
+  "merge",
+  "bus-stop-in-lane"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

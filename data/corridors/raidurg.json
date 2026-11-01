@@ -1,0 +1,451 @@
+{
+ "id": "raidurg",
+ "name": "Raidurg Metro",
+ "place": "HITEC City road at Raidurg station",
+ "length": 1598,
+ "spotS": 784,
+ "toward": [
+  "Kukatpally",
+  "Financial District"
+ ],
+ "heading": [
+  "northbound",
+  "southbound"
+ ],
+ "model": {
+  "length": 1598,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 525,
+    "w": 3,
+    "e": 3
+   },
+   {
+    "from": 525,
+    "to": 1599,
+    "w": 4,
+    "e": 4
+   }
+  ],
+  "busStops": [
+   {
+    "s": 700,
+    "cw": 0,
+    "name": "Mindspace",
+    "major": true
+   },
+   {
+    "s": 833,
+    "cw": 1,
+    "name": "Bus stop",
+    "major": true
+   },
+   {
+    "s": 1235,
+    "cw": 1,
+    "name": "Opp. Cyber Gateway Bus Stop",
+    "major": false
+   },
+   {
+    "s": 1363,
+    "cw": 0,
+    "name": "Cyber Gateway",
+    "major": false
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 30,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 83,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 89,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 105,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 111,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 157,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 165,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 201,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 211,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 279,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 472,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 472,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 474,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 474,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 524,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 524,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 543,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 647,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 678,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 689,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 689,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 700,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 702,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 729,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 756,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 764,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 786,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 923,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 933,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 947,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 963,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 964,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1009,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1023,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1043,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1141,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1171,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1193,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1193,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1193,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1205,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1306,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1316,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1335,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1352,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1411,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1501,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1576,
+    "cw": 1,
+    "weight": 1
+   }
+  ],
+  "signals": [
+   {
+    "s": 784,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Raidurg Metro (assumed)"
+   }
+  ],
+  "kerbFriction": [
+   {
+    "from": 604,
+    "to": 964,
+    "cw": 0,
+    "speed": 18,
+    "cause": "parking"
+   },
+   {
+    "from": 604,
+    "to": 964,
+    "cw": 1,
+    "speed": 18,
+    "cause": "parking"
+   }
+  ]
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 1599
+  }
+ ],
+ "openings": [
+  542
+ ],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1538,
+   "to": 1599,
+   "why": "Corridor end"
+  },
+  {
+   "from": 724,
+   "to": 844,
+   "why": "Raidurg Metro (assumed)"
+  },
+  {
+   "from": 670,
+   "to": 730,
+   "why": "Bus stop"
+  },
+  {
+   "from": 803,
+   "to": 863,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1205,
+   "to": 1265,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1333,
+   "to": 1393,
+   "why": "Bus stop"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.03,
+   1.026
+  ],
+  "7": [
+   1.078,
+   1.09
+  ],
+  "8": [
+   1.301,
+   1.308
+  ],
+  "9": [
+   1.392,
+   1.391
+  ],
+  "10": [
+   1.416,
+   1.423
+  ],
+  "11": [
+   1.512,
+   1.519
+  ],
+  "12": [
+   1.596,
+   1.59
+  ],
+  "14": [
+   1.554,
+   1.558
+  ],
+  "16": [
+   1.958,
+   1.827
+  ],
+  "17": [
+   2.44,
+   2.128
+  ],
+  "18": [
+   2.988,
+   2.276
+  ],
+  "19": [
+   2.88,
+   2.006
+  ],
+  "20": [
+   1.982,
+   1.538
+  ],
+  "21": [
+   1.319,
+   1.231
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "median-uturn",
+  "title": "Remove the lane drop and add a U-turn pocket near the substation"
+ },
+ "causes": [
+  "lane-drop",
+  "u-turn-detour",
+  "encroachment"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

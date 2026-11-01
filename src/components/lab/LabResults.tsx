@@ -20,8 +20,9 @@ const min = (s: number) => `${(s / 60).toFixed(1)} min`;
 const per = (n: number) => `${Math.round(n).toLocaleString("en-IN")}/h`;
 
 export const ROWS: Row[] = [
-  { key: "w", label: "→ Tolichowki", icon: ClockIcon, get: (m) => m.thr[0], fmt: min, better: "lower" },
-  { key: "e", label: "→ Mehdipatnam", icon: ClockIcon, get: (m) => m.thr[1], fmt: min, better: "lower" },
+  // the two trip rows are labelled with the road's own destinations when shown
+  { key: "w", label: "→ direction 1", icon: ClockIcon, get: (m) => m.thr[0], fmt: min, better: "lower" },
+  { key: "e", label: "→ direction 2", icon: ClockIcon, get: (m) => m.thr[1], fmt: min, better: "lower" },
   { key: "bus", label: "Bus trip", icon: BusLaneIcon, get: (m) => m.bus, fmt: min, better: "lower" },
   { key: "slow", label: "Crawling / trip", icon: CrawlIcon, get: (m) => m.slow, fmt: (s) => `${Math.round(s)} s`, better: "lower" },
   { key: "fuel", label: "Fuel / trip", icon: FuelIcon, get: (m) => m.fuel, fmt: (l) => `${Math.round(l * 1000)} ml`, better: "lower" },
@@ -51,12 +52,12 @@ const TONE = {
   na: { bar: "#4a5560", chip: "bg-asphalt-3 text-chalk-2" },
 };
 
-export function Headline({ today, yours }: { today: Metrics; yours: Metrics }) {
+export function Headline({ today, yours, toward }: { today: Metrics; yours: Metrics; toward: [string, string] }) {
   const w = change(today.thr[0], yours.thr[0], "lower");
   const e = change(today.thr[1], yours.thr[1], "lower");
   const dirs = [
-    { name: "Tolichowki", c: w, closed: yours.thr[0] == null },
-    { name: "Mehdipatnam", c: e, closed: yours.thr[1] == null },
+    { name: toward[0], c: w, closed: yours.thr[0] == null },
+    { name: toward[1], c: e, closed: yours.thr[1] == null },
   ];
   const better = dirs.filter((d) => d.c.verdict === "better").map((d) => d.name);
   const worse = dirs.filter((d) => d.c.verdict === "worse").map((d) => d.name);
@@ -90,12 +91,30 @@ export function Headline({ today, yours }: { today: Metrics; yours: Metrics }) {
   );
 }
 
-export function LabResults({ today, yours, plan, progress, running }: { today: Metrics; yours: Metrics; plan?: Metrics | null; progress: number; running: boolean }) {
-  const rows = ROWS.filter((r) => !r.optional || (r.get(today) ?? 0) > 0 || (r.get(yours) ?? 0) > 0);
+export function LabResults({
+  today,
+  yours,
+  plan,
+  planLabel,
+  toward,
+  progress,
+  running,
+}: {
+  today: Metrics;
+  yours: Metrics;
+  plan?: Metrics | null;
+  planLabel?: string | null;
+  toward: [string, string];
+  progress: number;
+  running: boolean;
+}) {
+  const rows = ROWS.filter((r) => !r.optional || (r.get(today) ?? 0) > 0 || (r.get(yours) ?? 0) > 0).map((r) =>
+    r.key === "w" ? { ...r, label: `→ ${toward[0]}` } : r.key === "e" ? { ...r, label: `→ ${toward[1]}` } : r,
+  );
   const minutes = Math.round((progress * 40) / 5) * 5;
   return (
     <div>
-      <Headline today={today} yours={yours} />
+      <Headline today={today} yours={yours} toward={toward} />
       <p className="mt-2 text-[12.5px] text-chalk-2 num">
         {running ? `Measuring… ${minutes} of 40 min simulated` : `40 min of traffic, measured after a ${CHECKPOINT / 60}-min warm-up`} · same traffic and seed
       </p>
@@ -132,7 +151,7 @@ export function LabResults({ today, yours, plan, progress, running }: { today: M
                   <div className="absolute inset-x-0 top-[7px] h-[5px] rounded-full bg-white/[0.05]">
                     <motion.div className="h-full rounded-full" style={{ background: TONE[c.verdict].bar }} initial={false} animate={{ width: `${((y ?? 0) / max) * 100}%` }} transition={{ type: "spring", duration: 0.5, bounce: 0 }} />
                   </div>
-                  {p != null && <div className="absolute top-[5px] h-[9px] w-[2px] rounded-full bg-[#f0d860]" style={{ left: `calc(${(p / max) * 100}% - 1px)` }} title="RoadFix plan" />}
+                  {p != null && <div className="absolute top-[5px] h-[9px] w-[2px] rounded-full bg-[#f0d860]" style={{ left: `calc(${(p / max) * 100}% - 1px)` }} title={planLabel ?? "RoadFix plan"} />}
                 </div>
               </div>
               <span className={cn("min-w-[58px] rounded-full px-2 py-0.5 text-center text-[12px] font-semibold num", TONE[c.verdict].chip)}>
@@ -151,7 +170,7 @@ export function LabResults({ today, yours, plan, progress, running }: { today: M
         </span>
         {plan && (
           <span className="flex items-center gap-1.5">
-            <span className="h-[9px] w-[2px] rounded-full bg-[#f0d860]" /> RoadFix plan
+            <span className="h-[9px] w-[2px] rounded-full bg-[#f0d860]" /> {planLabel ?? "RoadFix plan"}
           </span>
         )}
         <span>Within ±3%: same</span>

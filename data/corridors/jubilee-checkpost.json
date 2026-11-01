@@ -1,0 +1,546 @@
+{
+ "id": "jubilee-checkpost",
+ "name": "Jubilee Hills Check Post",
+ "place": "Road No. 36 / 45 junction",
+ "length": 1598,
+ "spotS": 792,
+ "toward": [
+  "Shaikpet",
+  "Erragadda"
+ ],
+ "heading": [
+  "south-westbound",
+  "north-eastbound"
+ ],
+ "model": {
+  "length": 1598,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 1599,
+    "w": 2,
+    "e": 2
+   }
+  ],
+  "busStops": [
+   {
+    "s": 737,
+    "cw": 1,
+    "name": "Bus stop",
+    "major": true
+   },
+   {
+    "s": 833,
+    "cw": 0,
+    "name": "Bus stop",
+    "major": true
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 143,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 143,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 143,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 144,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 144,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 160,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 163,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 319,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 335,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 345,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 346,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 365,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 365,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 389,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 479,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 507,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 558,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 613,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 691,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 772,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 772,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 790,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 790,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 790,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 790,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 792,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 792,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 792,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 792,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 803,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 803,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 803,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 803,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 891,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 891,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 938,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 938,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 959,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 959,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1058,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1058,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1103,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1103,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1191,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1191,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1282,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1282,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1298,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1298,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1328,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1328,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1402,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 1402,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 1405,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 1405,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 1405,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 1405,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1410,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 1410,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1428,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1428,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1446,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1446,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1485,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1485,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1494,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1494,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1513,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1513,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1553,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1553,
+    "cw": 1,
+    "weight": 0.5
+   }
+  ],
+  "signals": [
+   {
+    "s": 772,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Jubilee Hills Check Post"
+   },
+   {
+    "s": 1402,
+    "cycle": 120,
+    "offset": 37,
+    "name": "Road Number 45 junction"
+   }
+  ],
+  "kerbFriction": []
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 775
+  }
+ ],
+ "openings": [
+  351
+ ],
+ "fixedOpenings": [
+  790,
+  891,
+  1058,
+  1191,
+  1282,
+  1402,
+  1494
+ ],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1538,
+   "to": 1599,
+   "why": "Corridor end"
+  },
+  {
+   "from": 712,
+   "to": 832,
+   "why": "Jubilee Hills Check Post"
+  },
+  {
+   "from": 1342,
+   "to": 1462,
+   "why": "Road Number 45 junction"
+  },
+  {
+   "from": 707,
+   "to": 767,
+   "why": "Bus stop"
+  },
+  {
+   "from": 803,
+   "to": 863,
+   "why": "Bus stop"
+  },
+  {
+   "from": 775,
+   "to": 1599,
+   "why": "No median here: U-turns at side roads"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.04,
+   1.017
+  ],
+  "7": [
+   1.145,
+   1.053
+  ],
+  "8": [
+   1.39,
+   1.152
+  ],
+  "9": [
+   1.49,
+   1.205
+  ],
+  "10": [
+   1.615,
+   1.252
+  ],
+  "11": [
+   1.745,
+   1.308
+  ],
+  "12": [
+   1.785,
+   1.334
+  ],
+  "14": [
+   1.645,
+   1.311
+  ],
+  "16": [
+   1.72,
+   1.391
+  ],
+  "17": [
+   1.78,
+   1.46
+  ],
+  "18": [
+   1.79,
+   1.523
+  ],
+  "19": [
+   1.66,
+   1.477
+  ],
+  "20": [
+   1.42,
+   1.305
+  ],
+  "21": [
+   1.195,
+   1.142
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "traffic-flow",
+  "title": "KBR one-way loop, with pelican crossings"
+ },
+ "causes": [
+  "signal",
+  "narrow-road"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

@@ -1,0 +1,412 @@
+{
+ "id": "koti",
+ "name": "Koti",
+ "place": "Koti \u2013 Abids",
+ "length": 1598,
+ "spotS": 798,
+ "toward": [
+  "Malakpet",
+  "Abids"
+ ],
+ "heading": [
+  "south-eastbound",
+  "north-westbound"
+ ],
+ "model": {
+  "length": 1598,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 1599,
+    "w": 3,
+    "e": 3
+   }
+  ],
+  "busStops": [
+   {
+    "s": 75,
+    "cw": 0,
+    "name": "Bank Street",
+    "major": false
+   },
+   {
+    "s": 799,
+    "cw": 0,
+    "name": "Koti Women's College",
+    "major": true
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 365,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 365,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 365,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 365,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 377,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 377,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 377,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 470,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 541,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 657,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 704,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 704,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 706,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 719,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 719,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 720,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 729,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 730,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 772,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 772,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 848,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 887,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 932,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 950,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 951,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1038,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1048,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1112,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1112,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1200,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1363,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1371,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1417,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 1437,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 1437,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 1438,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 1438,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 1450,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 1450,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 1452,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 1452,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 1486,
+    "cw": 1,
+    "weight": 2
+   }
+  ],
+  "signals": [
+   {
+    "s": 729,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Koti"
+   }
+  ],
+  "kerbFriction": [
+   {
+    "from": 678,
+    "to": 918,
+    "cw": 0,
+    "speed": 14,
+    "cause": "autos"
+   },
+   {
+    "from": 678,
+    "to": 918,
+    "cw": 1,
+    "speed": 14,
+    "cause": "autos"
+   },
+   {
+    "from": 618,
+    "to": 978,
+    "cw": 0,
+    "speed": 18,
+    "cause": "parking"
+   },
+   {
+    "from": 618,
+    "to": 978,
+    "cw": 1,
+    "speed": 18,
+    "cause": "parking"
+   }
+  ]
+ },
+ "medians": [
+  {
+   "from": 375,
+   "to": 1599
+  }
+ ],
+ "openings": [],
+ "fixedOpenings": [
+  365
+ ],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1538,
+   "to": 1599,
+   "why": "Corridor end"
+  },
+  {
+   "from": 669,
+   "to": 789,
+   "why": "Koti"
+  },
+  {
+   "from": 45,
+   "to": 105,
+   "why": "Bus stop"
+  },
+  {
+   "from": 769,
+   "to": 829,
+   "why": "Bus stop"
+  },
+  {
+   "from": 0,
+   "to": 375,
+   "why": "No median here: U-turns at side roads"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.025,
+   1.02
+  ],
+  "7": [
+   1.117,
+   1.085
+  ],
+  "8": [
+   1.325,
+   1.271
+  ],
+  "9": [
+   1.367,
+   1.398
+  ],
+  "10": [
+   1.375,
+   1.527
+  ],
+  "11": [
+   1.467,
+   1.702
+  ],
+  "12": [
+   1.567,
+   1.824
+  ],
+  "14": [
+   1.642,
+   1.841
+  ],
+  "16": [
+   1.929,
+   1.985
+  ],
+  "17": [
+   2.2,
+   2.024
+  ],
+  "18": [
+   2.529,
+   1.978
+  ],
+  "19": [
+   2.479,
+   1.768
+  ],
+  "20": [
+   1.812,
+   1.488
+  ],
+  "21": [
+   1.308,
+   1.227
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "bus-stops",
+  "title": "Bus bays and kerbside loading windows"
+ },
+ "causes": [
+  "bus-stop-in-lane",
+  "pedestrians",
+  "parking"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

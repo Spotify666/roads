@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, type ComponentType } from "react";
+import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { AnimatedBackground } from "@/components/ui/animated-background";
 import { flowColor, hourLabel } from "@/lib/flow";
 import { cn } from "@/lib/utils";
-import { TODAY_DESIGN, designCost, planDesign, sameDesign, type Calibration, type Design, type Metrics } from "@/sim/scenario";
-import { TODAY_OPENINGS } from "@/sim/pilot";
-import { CorridorEditor, bestNewOpening, type EditMode } from "./CorridorEditor";
+import { DEFAULT_GREEN, bestNewOpening, designCost, editableSignals, greenOf, sameDesign, todayDesign, type Corridor, type Design } from "@/sim/scenario";
+import { CorridorEditor, type EditMode } from "./CorridorEditor";
 import { LabResults } from "./LabResults";
 import { LiveSim } from "./LiveSim";
 import { useLabRunner } from "./useLabRunner";
@@ -27,9 +27,9 @@ import {
 } from "./icons";
 
 interface Props {
-  cal: Calibration;
-  tomtom: Record<string, number>; // worst-direction slowdown per hour, for the hour chips
-  baseline: { hours: Record<string, { today: Metrics[]; plan: Metrics[] }>; planOpenings: number[]; reverseShare: number };
+  corridor: Corridor;
+  /** every road the Lab can load, for the picker */
+  roads: { id: string; name: string }[];
 }
 
 type Toggle = { key: keyof Design; label: string; icon: ComponentType<{ size?: number }> };
@@ -42,15 +42,14 @@ const TOGGLES: Toggle[] = [
   { key: "enforcement", label: "Stop wrong-side", icon: ShieldIcon },
 ];
 
-function countChanges(d: Design) {
+function countChanges(d: Design, today: number[]) {
   let n = 0;
   const near = (s: number, l: number[]) => l.some((x) => Math.abs(x - s) < 15);
-  n += d.openings.filter((o) => !near(o.s, TODAY_OPENINGS) || o.pocket).length;
-  n += TODAY_OPENINGS.filter((s) => !near(s, d.openings.map((o) => o.s))).length;
+  n += d.openings.filter((o) => !near(o.s, today) || o.pocket).length;
+  n += today.filter((s) => !near(s, d.openings.map((o) => o.s))).length;
   for (const t of TOGGLES) if (d[t.key]) n++;
   if (d.oneWay !== null) n++;
-  if (Math.abs(d.greenNanal - TODAY_DESIGN.greenNanal) > 0.005) n++;
-  if (Math.abs(d.greenRethibowli - TODAY_DESIGN.greenRethibowli) > 0.005) n++;
+  n += Object.values(d.greens).filter((g) => Math.abs(g - DEFAULT_GREEN) > 0.005).length;
   if (d.traffic !== 1) n++;
   return n;
 }
@@ -96,18 +95,29 @@ function Slider({
   );
 }
 
-export function Lab({ cal, tomtom, baseline }: Props) {
-  const hours = useMemo(() => Object.keys(baseline.hours).map(Number).sort((a, b) => a - b), [baseline]);
-  const plan = useMemo(() => planDesign(baseline.planOpenings), [baseline]);
-  const [hour, setHour] = useState(18);
-  const [design, setDesign] = useState<Design>(TODAY_DESIGN);
+export function Lab({ corridor: c, roads }: Props) {
+  const router = useRouter();
+  const hours = useMemo(() => Object.keys(c.baseline).map(Number).sort((a, b) => a - b), [c]);
+  const today = useMemo(() => todayDesign(c), [c]);
+  const plan = c.plan;
+  // the worse direction's TomTom slowdown at each hour colours the hour chips
+  const tomtom = useMemo(() => Object.fromEntries(Object.entries(c.cal).map(([h, v]) => [h, Math.max(v.target[0], v.target[1] ?? 0)])), [c]);
+  const [hour, setHour] = useState(() => (c.baseline["18"] ? 18 : hours[hours.length - 1]));
+  const [design, setDesign] = useState<Design>(today);
   const [mode, setMode] = useState<EditMode>("uturn");
-  const { state, run } = useLabRunner();
+  const { state, run, reset } = useLabRunner();
   const resultsRef = useRef<HTMLElement>(null);
+  // a new road starts from its own today, with no results carried over
+  useEffect(() => {
+    setDesign(todayDesign(c));
+    reset();
+  }, [c, reset]);
 
   const set = <K extends keyof Design>(k: K, v: Design[K]) => setDesign((d) => ({ ...d, [k]: v }));
-  const cost = designCost(design);
-  const changes = countChanges(design);
+  const cost = designCost(design, c);
+  const changes = countChanges(design, c.openings);
+  const signals = editableSignals(c);
+  const lanesVary = new Set(c.model.lanes.map((l) => `${l.w}/${l.e}`)).size > 1;
   const pockets = design.openings.filter((o) => o.pocket).length;
 
   const key = JSON.stringify(design);
@@ -118,21 +128,22 @@ export function Lab({ cal, tomtom, baseline }: Props) {
   useEffect(() => {
     if (first && window.innerWidth < 1024) resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [first]);
-  const base = baseline.hours[String(hour)];
-  const showPlan = state.hour != null && design.traffic === 1 ? baseline.hours[String(state.hour)]?.plan[i] : null;
+  const base = c.baseline[String(hour)];
+  const showPlan = state.hour != null && design.traffic === 1 ? c.baseline[String(state.hour)]?.plan?.[i] : null;
+  const unchanged = sameDesign(design, today);
 
   const start = () => {
-    // with nothing changed there is nothing to compare, so test the plan
-    const d = sameDesign(design, TODAY_DESIGN) ? plan : design;
+    // with nothing changed there is nothing to compare, so test the plan where there is one
+    const d = unchanged && plan ? plan : design;
     if (d !== design) setDesign(d);
-    run(d, hour, cal, baseline.reverseShare, d.traffic === 1 ? base.today : null);
+    run(d, hour, c, d.traffic === 1 ? base.today : null);
   };
 
   const presets: { id: string; label: string; d: Design }[] = [
-    { id: "today", label: "Today", d: TODAY_DESIGN },
-    { id: "plan", label: "RoadFix plan", d: plan },
-    { id: "plan-signal", label: "Plan + Nanal Nagar signal", d: { ...plan, greenNanal: 0.6 } },
-    { id: "oneway", label: "One-way trial", d: { ...TODAY_DESIGN, oneWay: 0 } },
+    { id: "today", label: "Today", d: today },
+    ...(plan ? [{ id: "plan", label: c.planLabel ?? "RoadFix plan", d: plan }] : []),
+    ...(c.pilot && plan && signals[1] ? [{ id: "plan-signal", label: `Plan + ${signals[1].name} signal`, d: { ...plan, greens: { [signals[1].name!]: 0.6 } } }] : []),
+    { id: "oneway", label: "One-way trial", d: { ...today, oneWay: 0 } },
   ];
   const activePreset = presets.find((p) => sameDesign(p.d, design))?.id;
 
@@ -140,6 +151,24 @@ export function Lab({ cal, tomtom, baseline }: Props) {
     <div className="grid gap-x-10 gap-y-8 lg:grid-cols-[minmax(0,1fr)_420px]">
       {/* live view: sticks beside the tools on wide screens */}
       <div className="min-w-0 lg:sticky lg:top-[72px] lg:self-start">
+        <label className="mb-3 flex h-12 items-center gap-2 rounded-2xl bg-asphalt-2 pr-2 pl-4 ring-1 ring-white/[0.06] focus-within:ring-sign-bright">
+          <span className="text-[12.5px] font-medium text-chalk-2">Road</span>
+          <select
+            value={c.id}
+            onChange={(e) => router.push(`/pilot?spot=${e.target.value}`)}
+            className="h-full min-w-0 flex-1 cursor-pointer appearance-none bg-transparent text-[15.5px] font-semibold text-chalk outline-none"
+            aria-label="Road to simulate"
+          >
+            {roads.map((r) => (
+              <option key={r.id} value={r.id} className="bg-asphalt-2 text-chalk">
+                {r.name}
+              </option>
+            ))}
+          </select>
+          <svg width="16" height="16" viewBox="0 0 16 16" className="pointer-events-none shrink-0 text-chalk-2" aria-hidden="true">
+            <path d="m4 6 4 4 4-4" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </label>
         <div className="-mx-4 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:px-0">
           <div className="flex w-max gap-1 rounded-full bg-asphalt-2 p-1" role="radiogroup" aria-label="Hour of a weekday">
             <AnimatedBackground defaultValue={String(hour)} className="rounded-full bg-asphalt-4" transition={{ type: "spring", bounce: 0.15, duration: 0.3 }} onValueChange={(v) => v && setHour(Number(v))}>
@@ -152,8 +181,20 @@ export function Lab({ cal, tomtom, baseline }: Props) {
             </AnimatedBackground>
           </div>
         </div>
-        <div className="mt-5">
-          <LiveSim design={design} hour={hour} cal={cal} reverseShare={baseline.reverseShare} baseOpenings={TODAY_OPENINGS} />
+        {c.cal[String(hour)] && (
+          // how close the simulated today is to TomTom at this hour, in each direction
+          <p className="mt-2.5 flex flex-wrap gap-x-3 gap-y-1 text-[12px] text-chalk-2 num">
+            {([0, 1] as const).map((d) =>
+              c.cal[String(hour)].target[d] != null ? (
+                <span key={d}>
+                  → {c.toward[d]}: TomTom {c.cal[String(hour)].target[d]!.toFixed(2)}× · model {(c.cal[String(hour)].got[d] ?? 0).toFixed(2)}×
+                </span>
+              ) : null,
+            )}
+          </p>
+        )}
+        <div className="mt-4">
+          <LiveSim key={c.id} design={design} hour={hour} corridor={c} />
         </div>
       </div>
 
@@ -208,7 +249,7 @@ export function Lab({ cal, tomtom, baseline }: Props) {
             <button
               type="button"
               onClick={() => {
-                const s = bestNewOpening(design.openings.map((o) => o.s));
+                const s = bestNewOpening(c, design.openings.map((o) => o.s));
                 if (s != null) set("openings", [...design.openings, { s, pocket: true }]);
               }}
               className="h-9 rounded-full bg-asphalt-3 px-3 text-[13px] font-medium text-chalk transition-transform duration-150 active:scale-[0.96]"
@@ -218,7 +259,7 @@ export function Lab({ cal, tomtom, baseline }: Props) {
           </div>
           <p className="mt-2 text-[12px] text-chalk-2">{mode === "uturn" ? "Tap road: add · tap U-turn: remove · drag: move" : "Tap a U-turn: pocket on or off"}</p>
           <div className="mt-2">
-            <CorridorEditor design={design} onChange={setDesign} baseOpenings={TODAY_OPENINGS} mode={mode} />
+            <CorridorEditor design={design} onChange={setDesign} corridor={c} mode={mode} />
           </div>
           <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-[11.5px] text-chalk-2">
             <span className="flex items-center gap-1">
@@ -246,8 +287,8 @@ export function Lab({ cal, tomtom, baseline }: Props) {
               {(
                 [
                   [null, "Two-way"],
-                  [0, "← Tolichowki"],
-                  [1, "Mehdipatnam →"],
+                  [0, `→ ${c.toward[0]}`],
+                  [1, `→ ${c.toward[1]}`],
                 ] as const
               ).map(([v, l]) => (
                 <button
@@ -256,7 +297,10 @@ export function Lab({ cal, tomtom, baseline }: Props) {
                   role="radio"
                   aria-checked={design.oneWay === v}
                   onClick={() => set("oneWay", v)}
-                  className={cn("h-9 rounded-lg font-medium transition-colors duration-150", design.oneWay === v ? (v === null ? "bg-asphalt-4 text-chalk" : "bg-sign text-white") : "text-chalk-2")}
+                  className={cn(
+                    "h-9 truncate rounded-lg px-1 font-medium transition-colors duration-150",
+                    design.oneWay === v ? (v === null ? "bg-asphalt-4 text-chalk" : "bg-sign text-white") : "text-chalk-2",
+                  )}
                 >
                   {l}
                 </button>
@@ -268,19 +312,27 @@ export function Lab({ cal, tomtom, baseline }: Props) {
             {TOGGLES.map((t) => {
               const on = Boolean(design[t.key]);
               const Icon = t.icon;
+              // a change the road has nothing to apply to stays visible but off, with the reason
+              const none = t.key === "busBays" && !c.bayStops.length ? "No stop near the spot" : t.key === "fullLanes" && !lanesVary ? "Lanes already even" : null;
+              const label = t.key === "fullLanes" && !c.pilot ? "Even lanes" : t.label;
               return (
                 <button
                   key={t.key}
                   type="button"
                   aria-pressed={on}
+                  disabled={!!none && !on}
+                  title={none ?? undefined}
                   onClick={() => set(t.key, !on as never)}
                   className={cn(
-                    "flex h-12 items-center gap-2.5 rounded-xl px-3 text-left text-[13px] font-medium transition-[background-color,color,transform] duration-150 ease-[var(--ease-out-strong)] active:scale-[0.97]",
+                    "flex h-12 items-center gap-2.5 rounded-xl px-3 text-left text-[13px] font-medium transition-[background-color,color,transform] duration-150 ease-[var(--ease-out-strong)] active:scale-[0.97] disabled:opacity-45 disabled:active:scale-100",
                     on ? "bg-sign text-white" : "bg-asphalt-3 text-chalk-2 hover:text-chalk",
                   )}
                 >
                   <Icon size={19} />
-                  <span className="leading-tight">{t.label}</span>
+                  <span className="leading-tight">
+                    {label}
+                    {none && <span className="block text-[11px] font-normal">{none}</span>}
+                  </span>
                 </button>
               );
             })}
@@ -308,8 +360,20 @@ export function Lab({ cal, tomtom, baseline }: Props) {
           </div>
 
           <div className="mt-5 space-y-4">
-            <Slider icon={SignalIcon} label="Nanal Nagar green" value={design.greenNanal} min={0.3} max={0.7} step={0.05} base={TODAY_DESIGN.greenNanal} fmt={(v) => `${Math.round(v * 100)}%`} onChange={(v) => set("greenNanal", v)} />
-            <Slider icon={SignalIcon} label="Rethibowli green" value={design.greenRethibowli} min={0.3} max={0.7} step={0.05} base={TODAY_DESIGN.greenRethibowli} fmt={(v) => `${Math.round(v * 100)}%`} onChange={(v) => set("greenRethibowli", v)} />
+            {signals.map((sg) => (
+              <Slider
+                key={sg.name}
+                icon={SignalIcon}
+                label={`${sg.name} green`}
+                value={greenOf(design, sg.name!)}
+                min={0.3}
+                max={0.7}
+                step={0.05}
+                base={DEFAULT_GREEN}
+                fmt={(v) => `${Math.round(v * 100)}%`}
+                onChange={(v) => set("greens", { ...design.greens, [sg.name!]: v })}
+              />
+            ))}
             <Slider icon={TrafficIcon} label="Traffic" value={design.traffic} min={0.7} max={1.3} step={0.05} base={1} fmt={(v) => (Math.abs(v - 1) < 0.01 ? "today" : `${v > 1 ? "+" : "−"}${Math.round(Math.abs(v - 1) * 100)}%`)} onChange={(v) => set("traffic", v)} />
           </div>
 
@@ -317,7 +381,7 @@ export function Lab({ cal, tomtom, baseline }: Props) {
             <button
               type="button"
               onClick={start}
-              disabled={state.status === "running"}
+              disabled={state.status === "running" || (unchanged && !plan)}
               className="relative flex h-13 w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-sign text-[15.5px] font-semibold text-white shadow-[0_8px_24px_#2d6cdf55] transition-transform duration-150 ease-[var(--ease-out-strong)] active:scale-[0.98] disabled:cursor-progress"
             >
               {state.status === "running" && (
@@ -327,8 +391,10 @@ export function Lab({ cal, tomtom, baseline }: Props) {
                 <BeakerIcon size={19} />
                 {state.status === "running"
                   ? `Testing… ${Math.round(state.progress * 100)}%`
-                  : sameDesign(design, TODAY_DESIGN)
-                    ? `Test the RoadFix plan at ${hourLabel(hour)}`
+                  : unchanged && plan
+                    ? `Test ${c.pilot ? "the RoadFix plan" : "the suggested fix"} at ${hourLabel(hour)}`
+                    : unchanged
+                      ? "Change something to test it"
                     : fresh
                       ? "Test again"
                       : `Test at ${hourLabel(hour)}`}
@@ -353,7 +419,7 @@ export function Lab({ cal, tomtom, baseline }: Props) {
                 <h2 className="text-[17px] font-semibold">Result at {hourLabel(state.hour!)}</h2>
                 {!fresh && state.status === "done" && <span className="rounded-full bg-[#3a3020] px-2.5 py-1 text-[12px] font-medium text-[#f5c97a]">Design changed: test again</span>}
               </div>
-              <LabResults today={state.today[i]} yours={state.design[i]} plan={showPlan} progress={state.progress} running={state.status === "running"} />
+              <LabResults today={state.today[i]} yours={state.design[i]} plan={showPlan} planLabel={c.planLabel} toward={c.toward} progress={state.progress} running={state.status === "running"} />
               <div className="mt-4 flex flex-wrap gap-1.5 text-[12px]">
                 {cost.items.map((c) => (
                   <span key={c.label} className="rounded-full bg-asphalt-3 px-2.5 py-1 text-chalk-2 num">
@@ -361,7 +427,7 @@ export function Lab({ cal, tomtom, baseline }: Props) {
                   </span>
                 ))}
                 {design.fullLanes && <span className="rounded-full bg-[#3a3020] px-2.5 py-1 text-[#f5c97a]">Widening needs land: not costed</span>}
-                {(design.greenNanal !== TODAY_DESIGN.greenNanal || design.greenRethibowli !== TODAY_DESIGN.greenRethibowli) && (
+                {Object.values(design.greens).some((g) => Math.abs(g - DEFAULT_GREEN) > 0.005) && (
                   <span className="rounded-full bg-[#3a3020] px-2.5 py-1 text-[#f5c97a]">Side-street waits not modelled</span>
                 )}
                 {design.oneWay !== null && <span className="rounded-full bg-[#3a3020] px-2.5 py-1 text-[#f5c97a]">Other roads not modelled</span>}

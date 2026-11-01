@@ -1,0 +1,280 @@
+{
+ "id": "kukatpally-y",
+ "name": "Kukatpally Y Junction",
+ "place": "Moosapet Y junction",
+ "length": 1223,
+ "spotS": 427,
+ "toward": [
+  "Sanathnagar",
+  "Miyapur"
+ ],
+ "heading": [
+  "south-eastbound",
+  "north-westbound"
+ ],
+ "model": {
+  "length": 1223,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 1224,
+    "w": 3,
+    "e": 3
+   }
+  ],
+  "busStops": [],
+  "sideRoads": [
+   {
+    "s": 71,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 233,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 330,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 341,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 368,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 440,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 465,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 484,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 557,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 567,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 585,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 590,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 604,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 641,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 643,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 689,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 700,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 808,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 930,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 950,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 997,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 997,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1055,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1055,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1157,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1157,
+    "cw": 1,
+    "weight": 0.5
+   }
+  ],
+  "signals": [
+   {
+    "s": 427,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Kukatpally Y Junction (assumed)"
+   }
+  ],
+  "kerbFriction": []
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 1000
+  }
+ ],
+ "openings": [
+  66,
+  642
+ ],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1163,
+   "to": 1224,
+   "why": "Corridor end"
+  },
+  {
+   "from": 367,
+   "to": 487,
+   "why": "Kukatpally Y Junction (assumed)"
+  },
+  {
+   "from": 1000,
+   "to": 1224,
+   "why": "No median here: U-turns at side roads"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.009,
+   1.022
+  ],
+  "7": [
+   1.037,
+   1.094
+  ],
+  "8": [
+   1.083,
+   1.384
+  ],
+  "9": [
+   1.148,
+   1.652
+  ],
+  "10": [
+   1.185,
+   1.855
+  ],
+  "11": [
+   1.213,
+   2.109
+  ],
+  "12": [
+   1.269,
+   2.239
+  ],
+  "14": [
+   1.231,
+   1.928
+  ],
+  "16": [
+   1.204,
+   1.862
+  ],
+  "17": [
+   1.259,
+   2.022
+  ],
+  "18": [
+   1.324,
+   2.152
+  ],
+  "19": [
+   1.333,
+   2.116
+  ],
+  "20": [
+   1.278,
+   1.797
+  ],
+  "21": [
+   1.157,
+   1.333
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "lanes-markings",
+  "title": "Channelised merge for the Balanagar arm"
+ },
+ "causes": [
+  "merge",
+  "heavy-vehicles"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

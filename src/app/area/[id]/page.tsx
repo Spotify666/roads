@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const d = a.dirs[0];
   return {
     title: `${a.name}: when it jams and the fix`,
-    description: `${a.name}, Hyderabad. ${d ? `Worst on weekdays at ${hourLabel(d.peak.hour)} (${d.peak.ratio.toFixed(1)}× free-flow time). ` : ""}Fix: ${a.fix.title}.`,
+    description: `${a.name}, Hyderabad. ${d ? `Worst on weekdays at ${hourLabel(d.peak.hour)}${d.toward ? ` towards ${d.toward}` : ""} (${d.peak.ratio.toFixed(1)}× free-flow time). ` : ""}Fix: ${a.fix.title}.`,
   };
 }
 
@@ -168,11 +168,12 @@ export default async function AreaPage({ params }: { params: Promise<{ id: strin
                 ))}
               </ul>
               <div className="mt-5 flex flex-wrap gap-2">
-                {a.pilot && (
-                  <Link href="/pilot" className="flex h-11 items-center rounded-full bg-sign px-5 text-[14.5px] font-semibold text-white transition-transform duration-150 active:scale-[0.97]">
-                    Test it in the Lab
-                  </Link>
-                )}
+                <Link
+                  href={`/pilot?spot=${a.id}`}
+                  className="flex h-11 items-center rounded-full bg-sign px-5 text-[14.5px] font-semibold text-white transition-transform duration-150 active:scale-[0.97]"
+                >
+                  Test it in the Lab
+                </Link>
                 <Link
                   href={`/report/${a.id}`}
                   className="flex h-11 items-center rounded-full bg-asphalt-3 px-5 text-[14.5px] font-semibold text-chalk transition-transform duration-150 active:scale-[0.97]"

@@ -1,0 +1,635 @@
+{
+ "id": "lakdikapul",
+ "name": "Lakdikapul",
+ "place": "Lakdikapul Road",
+ "length": 1972,
+ "spotS": 1161,
+ "toward": [
+  "Masab Tank",
+  "back from Masab Tank"
+ ],
+ "heading": [
+  "south-westbound",
+  null
+ ],
+ "model": {
+  "length": 1972,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 675,
+    "w": 1,
+    "e": 1
+   },
+   {
+    "from": 675,
+    "to": 1475,
+    "w": 4,
+    "e": 2
+   },
+   {
+    "from": 1475,
+    "to": 1973,
+    "w": 3,
+    "e": 3
+   }
+  ],
+  "busStops": [
+   {
+    "s": 1738,
+    "cw": 0,
+    "name": "A.C. Guards",
+    "major": false
+   },
+   {
+    "s": 1851,
+    "cw": 1,
+    "name": "Mahavir Hospital",
+    "major": false
+   },
+   {
+    "s": 1897,
+    "cw": 0,
+    "name": "Airport bus stop",
+    "major": false
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 134,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 134,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 156,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 156,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 164,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 164,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 198,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 198,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 228,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 228,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 228,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 228,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 252,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 252,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 269,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 269,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 320,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 320,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 320,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 320,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 320,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 320,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 825,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 825,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 825,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 825,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 827,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 827,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 853,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 853,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 974,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 974,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 996,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 996,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 996,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 996,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 997,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 997,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1049,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 1049,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 1049,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 1049,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 1052,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 1052,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 1072,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 1072,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 1090,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1090,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1091,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1091,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 1091,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1091,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1091,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 1091,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1119,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 1119,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1119,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 1119,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1298,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1298,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1349,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1349,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1368,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1368,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1381,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1381,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1439,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 1439,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 1475,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 1527,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1560,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1591,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1619,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1666,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1692,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1702,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1780,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1793,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1795,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1799,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 1800,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1823,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1832,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1864,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1927,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1934,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1955,
+    "cw": 1,
+    "weight": 1
+   }
+  ],
+  "signals": [
+   {
+    "s": 1161,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Lakdikapul (assumed)"
+   }
+  ],
+  "kerbFriction": []
+ },
+ "medians": [
+  {
+   "from": 1450,
+   "to": 1973
+  }
+ ],
+ "openings": [
+  1800
+ ],
+ "fixedOpenings": [
+  134,
+  825,
+  974,
+  1298
+ ],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1912,
+   "to": 1973,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1101,
+   "to": 1221,
+   "why": "Lakdikapul (assumed)"
+  },
+  {
+   "from": 1708,
+   "to": 1768,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1821,
+   "to": 1881,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1867,
+   "to": 1927,
+   "why": "Bus stop"
+  },
+  {
+   "from": 0,
+   "to": 1450,
+   "why": "No median here: U-turns at side roads"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   null
+  ],
+  "3": [
+   1.0,
+   null
+  ],
+  "6": [
+   1.018,
+   null
+  ],
+  "7": [
+   1.038,
+   null
+  ],
+  "8": [
+   1.117,
+   null
+  ],
+  "9": [
+   1.17,
+   null
+  ],
+  "10": [
+   1.219,
+   null
+  ],
+  "11": [
+   1.289,
+   null
+  ],
+  "12": [
+   1.345,
+   null
+  ],
+  "14": [
+   1.348,
+   null
+  ],
+  "16": [
+   1.415,
+   null
+  ],
+  "17": [
+   1.488,
+   null
+  ],
+  "18": [
+   1.535,
+   null
+  ],
+  "19": [
+   1.462,
+   null
+  ],
+  "20": [
+   1.316,
+   null
+  ],
+  "21": [
+   1.155,
+   null
+  ],
+  "22": [
+   1.0,
+   null
+  ]
+ },
+ "fix": {
+  "type": "junctions",
+  "title": "Box-junction markings and peak signal plans"
+ },
+ "causes": [
+  "signal",
+  "rain-waterlogging"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

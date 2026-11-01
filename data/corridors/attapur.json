@@ -1,0 +1,406 @@
+{
+ "id": "attapur",
+ "name": "Attapur",
+ "place": "Under the PVNR Expressway pillars",
+ "length": 1599,
+ "spotS": 797,
+ "toward": [
+  "Aramghar",
+  "Mehdipatnam"
+ ],
+ "heading": [
+  "southbound",
+  "northbound"
+ ],
+ "model": {
+  "length": 1599,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 325,
+    "w": 3,
+    "e": 3
+   },
+   {
+    "from": 325,
+    "to": 650,
+    "w": 2,
+    "e": 3
+   },
+   {
+    "from": 650,
+    "to": 1600,
+    "w": 2,
+    "e": 2
+   }
+  ],
+  "busStops": [],
+  "sideRoads": [
+   {
+    "s": 25,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 35,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 35,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 44,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 65,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 95,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 331,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 372,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 397,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 407,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 412,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 445,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 491,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 529,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 535,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 551,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 596,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 624,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 643,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 668,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 668,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 668,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 831,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 831,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 912,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 962,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 962,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 963,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1011,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1026,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1045,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1052,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1071,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1140,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1187,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1253,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1282,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1300,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1392,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1411,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1495,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1495,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1495,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1517,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1517,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1517,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1517,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1537,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1539,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1577,
+    "cw": 1,
+    "weight": 0.5
+   }
+  ],
+  "signals": [
+   {
+    "s": 797,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Attapur (assumed)"
+   }
+  ],
+  "kerbFriction": []
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 1600
+  }
+ ],
+ "openings": [
+  963
+ ],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1539,
+   "to": 1600,
+   "why": "Corridor end"
+  },
+  {
+   "from": 737,
+   "to": 857,
+   "why": "Attapur (assumed)"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.012,
+   1.004
+  ],
+  "7": [
+   1.018,
+   1.028
+  ],
+  "8": [
+   1.048,
+   1.096
+  ],
+  "9": [
+   1.071,
+   1.139
+  ],
+  "10": [
+   1.083,
+   1.139
+  ],
+  "11": [
+   1.125,
+   1.171
+  ],
+  "12": [
+   1.155,
+   1.191
+  ],
+  "14": [
+   1.185,
+   1.199
+  ],
+  "16": [
+   1.268,
+   1.187
+  ],
+  "17": [
+   1.315,
+   1.235
+  ],
+  "18": [
+   1.363,
+   1.295
+  ],
+  "19": [
+   1.345,
+   1.303
+  ],
+  "20": [
+   1.262,
+   1.251
+  ],
+  "21": [
+   1.137,
+   1.139
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "median-uturn",
+  "title": "Re-space U-turn gaps between pillars"
+ },
+ "causes": [
+  "u-turn-detour",
+  "wrong-side"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

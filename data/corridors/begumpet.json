@@ -1,0 +1,421 @@
+{
+ "id": "begumpet",
+ "name": "Begumpet",
+ "place": "Begumpet U-turn under the flyover",
+ "length": 1599,
+ "spotS": 804,
+ "toward": [
+  "Ameerpet",
+  "Secunderabad"
+ ],
+ "heading": [
+  "westbound",
+  "eastbound"
+ ],
+ "model": {
+  "length": 1599,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 200,
+    "w": 2,
+    "e": 3
+   },
+   {
+    "from": 200,
+    "to": 1600,
+    "w": 3,
+    "e": 3
+   }
+  ],
+  "busStops": [
+   {
+    "s": 237,
+    "cw": 0,
+    "name": "Rasoolpura",
+    "major": false
+   },
+   {
+    "s": 517,
+    "cw": 1,
+    "name": "Prakash Nagar",
+    "major": false
+   },
+   {
+    "s": 612,
+    "cw": 0,
+    "name": "Prakash Nagar",
+    "major": true
+   },
+   {
+    "s": 1231,
+    "cw": 0,
+    "name": "Shoppers Stop",
+    "major": false
+   },
+   {
+    "s": 1245,
+    "cw": 1,
+    "name": "Shoppers Stop",
+    "major": false
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 194,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 197,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 211,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 447,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 466,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 487,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 513,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 537,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 590,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 634,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 645,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 668,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 680,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 682,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 735,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 736,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 736,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 798,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 827,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 886,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 916,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 953,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1055,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1059,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1086,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1105,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1125,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1137,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1148,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1196,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1199,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1244,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1306,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1350,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1351,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1355,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1398,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1424,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1449,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1524,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1529,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1530,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1561,
+    "cw": 0,
+    "weight": 0.5
+   }
+  ],
+  "signals": [
+   {
+    "s": 804,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Begumpet (assumed)"
+   }
+  ],
+  "kerbFriction": []
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 1600
+  }
+ ],
+ "openings": [
+  639
+ ],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1539,
+   "to": 1600,
+   "why": "Corridor end"
+  },
+  {
+   "from": 744,
+   "to": 864,
+   "why": "Begumpet (assumed)"
+  },
+  {
+   "from": 207,
+   "to": 267,
+   "why": "Bus stop"
+  },
+  {
+   "from": 487,
+   "to": 547,
+   "why": "Bus stop"
+  },
+  {
+   "from": 582,
+   "to": 642,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1201,
+   "to": 1261,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1215,
+   "to": 1275,
+   "why": "Bus stop"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.036,
+   1.028
+  ],
+  "7": [
+   1.1,
+   1.105
+  ],
+  "8": [
+   1.286,
+   1.286
+  ],
+  "9": [
+   1.514,
+   1.331
+  ],
+  "10": [
+   1.786,
+   1.335
+  ],
+  "11": [
+   2.021,
+   1.363
+  ],
+  "12": [
+   2.121,
+   1.351
+  ],
+  "14": [
+   1.886,
+   1.222
+  ],
+  "16": [
+   1.836,
+   1.456
+  ],
+  "17": [
+   1.793,
+   1.786
+  ],
+  "18": [
+   1.729,
+   2.161
+  ],
+  "19": [
+   1.571,
+   2.109
+  ],
+  "20": [
+   1.379,
+   1.581
+  ],
+  "21": [
+   1.179,
+   1.185
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "median-uturn",
+  "title": "Replace lane-eating barricades with a proper median pocket"
+ },
+ "causes": [
+  "u-turn-detour",
+  "barricades"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

@@ -1,0 +1,492 @@
+{
+ "id": "shaikpet",
+ "name": "Shaikpet",
+ "place": "U-turn under the Shaikpet flyover",
+ "length": 1598,
+ "spotS": 790,
+ "toward": [
+  "Gachibowli",
+  "back from Gachibowli"
+ ],
+ "heading": [
+  "north-westbound",
+  null
+ ],
+ "model": {
+  "length": 1598,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 1599,
+    "w": 3,
+    "e": 3
+   }
+  ],
+  "busStops": [
+   {
+    "s": 25,
+    "cw": 0,
+    "name": "Sheikpet Nala",
+    "major": false
+   },
+   {
+    "s": 663,
+    "cw": 1,
+    "name": "Narayanamma College",
+    "major": true
+   },
+   {
+    "s": 686,
+    "cw": 0,
+    "name": "Narayanamma College",
+    "major": true
+   },
+   {
+    "s": 1160,
+    "cw": 1,
+    "name": "Shaikpet Dargah",
+    "major": false
+   },
+   {
+    "s": 1221,
+    "cw": 0,
+    "name": "Shaikpet Dargah",
+    "major": false
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 47,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 47,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 67,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 70,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 109,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 112,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 147,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 240,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 268,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 269,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 291,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 300,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 324,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 328,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 373,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 374,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 376,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 413,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 451,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 479,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 490,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 512,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 534,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 542,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 563,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 592,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 601,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 603,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 606,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 641,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 654,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 756,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 768,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 775,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 802,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 803,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 803,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 843,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 848,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 881,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 919,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 952,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 987,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1026,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1107,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 1128,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1131,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1156,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1182,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1296,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1312,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1312,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 1312,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 1318,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 1318,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 1318,
+    "cw": 1,
+    "weight": 4
+   }
+  ],
+  "signals": [
+   {
+    "s": 790,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Shaikpet (assumed)"
+   },
+   {
+    "s": 1312,
+    "cycle": 120,
+    "offset": 37,
+    "name": "Narne Road junction"
+   }
+  ],
+  "kerbFriction": []
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 1599
+  }
+ ],
+ "openings": [
+  374
+ ],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1538,
+   "to": 1599,
+   "why": "Corridor end"
+  },
+  {
+   "from": 730,
+   "to": 850,
+   "why": "Shaikpet (assumed)"
+  },
+  {
+   "from": 1252,
+   "to": 1372,
+   "why": "Narne Road junction"
+  },
+  {
+   "from": -5,
+   "to": 55,
+   "why": "Bus stop"
+  },
+  {
+   "from": 633,
+   "to": 693,
+   "why": "Bus stop"
+  },
+  {
+   "from": 656,
+   "to": 716,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1130,
+   "to": 1190,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1191,
+   "to": 1251,
+   "why": "Bus stop"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   null
+  ],
+  "3": [
+   1.0,
+   null
+  ],
+  "6": [
+   1.019,
+   null
+  ],
+  "7": [
+   1.019,
+   null
+  ],
+  "8": [
+   1.046,
+   null
+  ],
+  "9": [
+   1.074,
+   null
+  ],
+  "10": [
+   1.083,
+   null
+  ],
+  "11": [
+   1.102,
+   null
+  ],
+  "12": [
+   1.102,
+   null
+  ],
+  "14": [
+   1.074,
+   null
+  ],
+  "16": [
+   1.074,
+   null
+  ],
+  "17": [
+   1.083,
+   null
+  ],
+  "18": [
+   1.102,
+   null
+  ],
+  "19": [
+   1.12,
+   null
+  ],
+  "20": [
+   1.102,
+   null
+  ],
+  "21": [
+   1.056,
+   null
+  ],
+  "22": [
+   1.0,
+   null
+  ]
+ },
+ "fix": {
+  "type": "median-uturn",
+  "title": "U-turn waiting pocket under the flyover"
+ },
+ "causes": [
+  "u-turn-detour",
+  "wrong-side",
+  "rain-waterlogging"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

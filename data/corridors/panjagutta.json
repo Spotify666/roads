@@ -1,0 +1,306 @@
+{
+ "id": "panjagutta",
+ "name": "Panjagutta",
+ "place": "Panjagutta flyover junction",
+ "length": 832,
+ "spotS": 36,
+ "toward": [
+  "Mehdipatnam",
+  "Ameerpet"
+ ],
+ "heading": [
+  "southbound",
+  "northbound"
+ ],
+ "model": {
+  "length": 832,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 275,
+    "w": 2,
+    "e": 3
+   },
+   {
+    "from": 275,
+    "to": 833,
+    "w": 3,
+    "e": 3
+   }
+  ],
+  "busStops": [
+   {
+    "s": 435,
+    "cw": 0,
+    "name": "Banjara Hills Vengalarao Park",
+    "major": false
+   },
+   {
+    "s": 503,
+    "cw": 1,
+    "name": "Banjara Hills Vengalarao Park",
+    "major": false
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 31,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 32,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 81,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 104,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 138,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 312,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 321,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 373,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 392,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 435,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 546,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 561,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 601,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 614,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 658,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 717,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 718,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 730,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 732,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 747,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 753,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 769,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 779,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 780,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 780,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 780,
+    "cw": 1,
+    "weight": 5
+   }
+  ],
+  "signals": [],
+  "kerbFriction": [
+   {
+    "from": 0,
+    "to": 156,
+    "cw": 0,
+    "speed": 14,
+    "cause": "autos"
+   },
+   {
+    "from": 0,
+    "to": 156,
+    "cw": 1,
+    "speed": 14,
+    "cause": "autos"
+   }
+  ]
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 833
+  }
+ ],
+ "openings": [
+  731
+ ],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 772,
+   "to": 833,
+   "why": "Corridor end"
+  },
+  {
+   "from": 405,
+   "to": 465,
+   "why": "Bus stop"
+  },
+  {
+   "from": 473,
+   "to": 533,
+   "why": "Bus stop"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.035,
+   1.022
+  ],
+  "7": [
+   1.071,
+   1.072
+  ],
+  "8": [
+   1.165,
+   1.196
+  ],
+  "9": [
+   1.282,
+   1.283
+  ],
+  "10": [
+   1.365,
+   1.341
+  ],
+  "11": [
+   1.447,
+   1.449
+  ],
+  "12": [
+   1.506,
+   1.551
+  ],
+  "14": [
+   1.506,
+   1.601
+  ],
+  "16": [
+   1.541,
+   1.703
+  ],
+  "17": [
+   1.588,
+   1.812
+  ],
+  "18": [
+   1.635,
+   1.957
+  ],
+  "19": [
+   1.565,
+   1.848
+  ],
+  "20": [
+   1.365,
+   1.493
+  ],
+  "21": [
+   1.188,
+   1.232
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "bus-stops",
+  "title": "Move bus stops 60\u201380 m away from the junction mouth"
+ },
+ "causes": [
+  "signal",
+  "bus-stop-in-lane"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

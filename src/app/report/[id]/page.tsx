@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { PrintButton } from "@/components/PrintButton";
-import { CAUSE_LABELS, FIX_TYPE_LABELS, flowColor, flowLabel, hourLabel, minutes } from "@/lib/flow";
+import { CAUSE_LABELS, FIX_TYPE_LABELS, flowColor, flowLabel, hourLabel, minutes, towards } from "@/lib/flow";
 import type { AreaDetail } from "@/lib/types";
 import areasData from "@/data/areas.json";
 
@@ -84,7 +84,10 @@ export default async function Report({ params }: { params: Promise<{ id: string 
         <tbody>
           {a.dirs.map((d) => (
             <tr key={d.tag}>
-              <td className="py-1 capitalize">{d.heading}</td>
+              <td className="py-1">
+                {towards(d)}
+                {d.toward && <span className="text-ink-2"> ({d.heading})</span>}
+              </td>
               <td className="py-1 num">{(d.lengthM / 1000).toFixed(1)} km</td>
               <td className="py-1 num">{minutes(d.freeFlowS)} min</td>
               <td className="py-1 num">

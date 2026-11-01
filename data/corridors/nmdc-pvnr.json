@@ -1,0 +1,480 @@
+{
+ "id": "nmdc-pvnr",
+ "name": "NMDC \u2192 PVNR Expressway entry",
+ "place": "Golconda Road at NMDC",
+ "length": 1597,
+ "spotS": 810,
+ "toward": [
+  "Mehdipatnam",
+  "Khairatabad"
+ ],
+ "heading": [
+  "south-westbound",
+  "north-eastbound"
+ ],
+ "model": {
+  "length": 1597,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 150,
+    "w": 3,
+    "e": 3
+   },
+   {
+    "from": 150,
+    "to": 600,
+    "w": 3,
+    "e": 2
+   },
+   {
+    "from": 600,
+    "to": 1350,
+    "w": 3,
+    "e": 3
+   },
+   {
+    "from": 1350,
+    "to": 1598,
+    "w": 2,
+    "e": 2
+   }
+  ],
+  "busStops": [
+   {
+    "s": 803,
+    "cw": 1,
+    "name": "NMDC",
+    "major": true
+   },
+   {
+    "s": 811,
+    "cw": 0,
+    "name": "NMDC",
+    "major": true
+   },
+   {
+    "s": 1301,
+    "cw": 1,
+    "name": "Sarojini Devi Eye Hospital",
+    "major": false
+   },
+   {
+    "s": 1428,
+    "cw": 0,
+    "name": "Sarojini Devi Eye Hospital",
+    "major": false
+   },
+   {
+    "s": 1488,
+    "cw": 0,
+    "name": "Sarojini Devi Eye Hospital",
+    "major": false
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 47,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 72,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 74,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 74,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 118,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 136,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 136,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 142,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 142,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 149,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 152,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 152,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 170,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 195,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 368,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 368,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 377,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 378,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 681,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 731,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 750,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 847,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 876,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 927,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 955,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 977,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 989,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 999,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1022,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1023,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1054,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1076,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1103,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1130,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1137,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1162,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1186,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1206,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1227,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1241,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1255,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1286,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1293,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1360,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1399,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1448,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1558,
+    "cw": 0,
+    "weight": 1
+   }
+  ],
+  "signals": [
+   {
+    "s": 166,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Road Number 1 junction"
+   },
+   {
+    "s": 810,
+    "cycle": 120,
+    "offset": 37,
+    "name": "NMDC \u2192 PVNR Expressway entry (assumed)"
+   }
+  ],
+  "kerbFriction": [
+   {
+    "from": 690,
+    "to": 930,
+    "cw": 0,
+    "speed": 14,
+    "cause": "autos"
+   },
+   {
+    "from": 690,
+    "to": 930,
+    "cw": 1,
+    "speed": 14,
+    "cause": "autos"
+   }
+  ]
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 1598
+  }
+ ],
+ "openings": [
+  73,
+  368
+ ],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1537,
+   "to": 1598,
+   "why": "Corridor end"
+  },
+  {
+   "from": 106,
+   "to": 226,
+   "why": "Road Number 1 junction"
+  },
+  {
+   "from": 750,
+   "to": 870,
+   "why": "NMDC \u2192 PVNR Expressway entry (assumed)"
+  },
+  {
+   "from": 773,
+   "to": 833,
+   "why": "Bus stop"
+  },
+  {
+   "from": 781,
+   "to": 841,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1271,
+   "to": 1331,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1398,
+   "to": 1458,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1458,
+   "to": 1518,
+   "why": "Bus stop"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.01,
+   1.027
+  ],
+  "7": [
+   1.038,
+   1.068
+  ],
+  "8": [
+   1.124,
+   1.333
+  ],
+  "9": [
+   1.157,
+   1.565
+  ],
+  "10": [
+   1.171,
+   1.687
+  ],
+  "11": [
+   1.243,
+   1.871
+  ],
+  "12": [
+   1.324,
+   1.925
+  ],
+  "14": [
+   1.405,
+   1.544
+  ],
+  "16": [
+   1.633,
+   1.673
+  ],
+  "17": [
+   1.881,
+   2.007
+  ],
+  "18": [
+   2.262,
+   2.347
+  ],
+  "19": [
+   2.31,
+   2.354
+  ],
+  "20": [
+   1.71,
+   1.864
+  ],
+  "21": [
+   1.248,
+   1.32
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "bus-stops",
+  "title": "Move the NMDC bus stop clear of the expressway ramp"
+ },
+ "causes": [
+  "merge",
+  "bus-stop-in-lane"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

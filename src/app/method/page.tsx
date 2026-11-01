@@ -341,6 +341,14 @@ export default function InfoPage() {
 
       <H2 id="lab">How the Simulation Lab tests a design</H2>
       <P>
+        Every spot on the map can be simulated. For each, the road TomTom measures through the spot, about 1.6 km, becomes a two-way corridor: lanes,
+        the median, signals, U-turn openings, bus stops and side roads come from OpenStreetMap along that route, and directions are named by where they
+        lead. Where OpenStreetMap has no signal at the spot, the junction is modelled as signal-controlled and labelled &quot;assumed&quot;; on stretches
+        without a median, vehicles turn back at side roads. Each corridor&apos;s traffic is then tuned, hour by hour, until its simulated today matches
+        TomTom&apos;s typical slowdown in each direction. Short roads near capacity are hard to match exactly, so the Lab shows, under the hour, TomTom&apos;s
+        slowdown beside the model&apos;s. Each spot&apos;s suggested fix is translated into the changes the model can test, where it can.
+      </P>
+      <P>
         Every test runs your design and today&apos;s layout through the same simulation with the same traffic and the same random seed, in your browser. Each
         run warms up for {LAB_RUN.warmup / 60} minutes so the road fills, then measures {LAB_RUN.measure / 60} minutes of traffic, the same length used to match
         TomTom, with results refreshed every {CHECKPOINT / 60} simulated minutes. Today&apos;s runs are computed in advance for every hour; with more or less

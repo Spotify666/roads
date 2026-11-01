@@ -1,0 +1,362 @@
+{
+ "id": "dilsukhnagar",
+ "name": "Dilsukhnagar",
+ "place": "Vijayawada Highway at Dilsukhnagar",
+ "length": 1599,
+ "spotS": 817,
+ "toward": [
+  "Malakpet",
+  "Kothapet"
+ ],
+ "heading": [
+  "westbound",
+  "eastbound"
+ ],
+ "model": {
+  "length": 1599,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 1600,
+    "w": 2,
+    "e": 2
+   }
+  ],
+  "busStops": [
+   {
+    "s": 89,
+    "cw": 0,
+    "name": "Chaitanyapuri",
+    "major": false
+   },
+   {
+    "s": 697,
+    "cw": 0,
+    "name": "Dilsukhnagar",
+    "major": true
+   },
+   {
+    "s": 741,
+    "cw": 0,
+    "name": "Bus stop",
+    "major": true
+   },
+   {
+    "s": 748,
+    "cw": 1,
+    "name": "Dilsukhnagar",
+    "major": true
+   },
+   {
+    "s": 818,
+    "cw": 0,
+    "name": "Dilsukhnagar",
+    "major": true
+   },
+   {
+    "s": 878,
+    "cw": 0,
+    "name": "Dilsukhnagar",
+    "major": true
+   },
+   {
+    "s": 1573,
+    "cw": 1,
+    "name": "Moosarambagh",
+    "major": false
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 640,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 640,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 655,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 655,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 690,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 690,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 710,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 806,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 906,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 917,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1025,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1036,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1044,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 1044,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1097,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1136,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1199,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1201,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 1237,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1309,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 1430,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1491,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 1495,
+    "cw": 1,
+    "weight": 2
+   }
+  ],
+  "signals": [
+   {
+    "s": 817,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Dilsukhnagar (assumed)"
+   }
+  ],
+  "kerbFriction": [
+   {
+    "from": 697,
+    "to": 937,
+    "cw": 0,
+    "speed": 14,
+    "cause": "autos"
+   },
+   {
+    "from": 697,
+    "to": 937,
+    "cw": 1,
+    "speed": 14,
+    "cause": "autos"
+   }
+  ]
+ },
+ "medians": [
+  {
+   "from": 650,
+   "to": 1600
+  }
+ ],
+ "openings": [
+  1044,
+  1200,
+  1493
+ ],
+ "fixedOpenings": [
+  640
+ ],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1539,
+   "to": 1600,
+   "why": "Corridor end"
+  },
+  {
+   "from": 757,
+   "to": 877,
+   "why": "Dilsukhnagar (assumed)"
+  },
+  {
+   "from": 59,
+   "to": 119,
+   "why": "Bus stop"
+  },
+  {
+   "from": 667,
+   "to": 727,
+   "why": "Bus stop"
+  },
+  {
+   "from": 711,
+   "to": 771,
+   "why": "Bus stop"
+  },
+  {
+   "from": 718,
+   "to": 778,
+   "why": "Bus stop"
+  },
+  {
+   "from": 788,
+   "to": 848,
+   "why": "Bus stop"
+  },
+  {
+   "from": 848,
+   "to": 908,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1543,
+   "to": 1603,
+   "why": "Bus stop"
+  },
+  {
+   "from": 0,
+   "to": 650,
+   "why": "No median here: U-turns at side roads"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.012,
+   1.024
+  ],
+  "7": [
+   1.073,
+   1.061
+  ],
+  "8": [
+   1.256,
+   1.2
+  ],
+  "9": [
+   1.396,
+   1.291
+  ],
+  "10": [
+   1.427,
+   1.297
+  ],
+  "11": [
+   1.518,
+   1.358
+  ],
+  "12": [
+   1.555,
+   1.418
+  ],
+  "14": [
+   1.415,
+   1.388
+  ],
+  "16": [
+   1.366,
+   1.394
+  ],
+  "17": [
+   1.488,
+   1.552
+  ],
+  "18": [
+   1.598,
+   1.727
+  ],
+  "19": [
+   1.634,
+   1.745
+  ],
+  "20": [
+   1.512,
+   1.533
+  ],
+  "21": [
+   1.25,
+   1.248
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "bus-stops",
+  "title": "Bus bays between pillars plus a private-bus boarding lot"
+ },
+ "causes": [
+  "private-buses",
+  "metro-pillars",
+  "bus-stop-in-lane"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

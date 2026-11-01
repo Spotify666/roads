@@ -2,26 +2,14 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Simulation } from "@/sim/engine";
-import { PILOT_MODEL } from "@/sim/pilot";
-import { TODAY_DESIGN, makeSim, type Calibration, type Design } from "@/sim/scenario";
+import { makeSim, todayDesign, type Corridor, type Design } from "@/sim/scenario";
+import { flipOf } from "./CorridorEditor";
 import { MARK, SimCanvas, VEHICLE_COLORS, type SimCanvasHandle } from "@/components/sim/SimCanvas";
 import { SlidingNumber } from "@/components/ui/sliding-number";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { ClockIcon, PauseIcon, PlayIcon, ResetIcon, UturnIcon, WrongIcon } from "./icons";
 
-const SPOTS = [
-  { s: 180, name: "Mehdipatnam" },
-  { s: 960, name: "Rethibowli" },
-  { s: 1450, name: "Nanal Nagar" },
-  { s: 2450, name: "Tolichowki" },
-];
-const LABELS = [
-  { s: 60, name: "Mehdipatnam" },
-  { s: 986, name: "Rethibowli" },
-  { s: 1371, name: "Nanal Nagar" },
-  { s: 2630, name: "Tolichowki" },
-];
 // metres of road in the street view: less on narrow screens so vehicles stay legible
 const spanFor = (width: number) => (width < 520 ? 230 : width < 900 ? 360 : 520);
 const SPEEDS = [1, 4, 10, 30];
@@ -55,8 +43,8 @@ function counters(sim: Simulation): Counters {
   return { speed: n ? (sum / n) * 3.6 : 0, waiting, wrong, done, avgTrip: done ? through.reduce((a, t) => a + t.time, 0) / done : 0 };
 }
 
-function prefilled(d: Design, hour: number, cal: Calibration, reverseShare: number) {
-  const sim = makeSim(d, hour, cal, reverseShare);
+function prefilled(d: Design, hour: number, c: Corridor) {
+  const sim = makeSim(d, hour, c);
   sim.warmup = 0;
   sim.run(200, 0.5); // fill the road so the view starts mid-flow
   sim.trips = [];
@@ -73,14 +61,18 @@ function Stat({ icon, value, unit, tone }: { icon: React.ReactNode; value: React
   );
 }
 
-export function LiveSim({ design, hour, cal, reverseShare, baseOpenings }: { design: Design; hour: number; cal: Calibration; reverseShare: number; baseOpenings: number[] }) {
+export function LiveSim({ design, hour, corridor: c }: { design: Design; hour: number; corridor: Corridor }) {
+  const L = c.length;
+  // jump-to buttons and strip labels: the road's named points, kept off the very ends
+  const spots = c.places.map((p) => ({ s: Math.min(L - 80, Math.max(80, p.s)), name: p.name }));
   const [playing, setPlaying] = useState(true);
   const [speed, setSpeed] = useState(4);
-  const [center, setCenter] = useState(1450);
+  // open on the spot itself, where the jam is
+  const [center, setCenter] = useState(() => Math.min(L - 120, Math.max(120, c.spotS ?? L / 2)));
   const [epoch, setEpoch] = useState(0);
   // phones show one road at a time; wide screens show both
   const [view, setView] = useState<"today" | "design">("design");
-  const todaySim = useMemo(() => prefilled(TODAY_DESIGN, hour, cal, reverseShare), [hour, cal, reverseShare, epoch]); // eslint-disable-line react-hooks/exhaustive-deps
+  const todaySim = useMemo(() => prefilled(todayDesign(c), hour, c), [hour, c, epoch]); // eslint-disable-line react-hooks/exhaustive-deps
   // rebuild the design run a moment after the last edit, not on every tap
   const [settled, setSettled] = useState(design);
   useEffect(() => {
@@ -89,7 +81,7 @@ export function LiveSim({ design, hour, cal, reverseShare, baseOpenings }: { des
   }, [design]);
   // an edit to the design brings its road into view on phones
   useEffect(() => setView("design"), [settled]);
-  const designSim = useMemo(() => prefilled(settled, hour, cal, reverseShare), [settled, hour, cal, reverseShare, epoch]); // eslint-disable-line react-hooks/exhaustive-deps
+  const designSim = useMemo(() => prefilled(settled, hour, c), [settled, hour, c, epoch]); // eslint-disable-line react-hooks/exhaustive-deps
   const sims = useRef({ today: todaySim, design: designSim });
   sims.current = { today: todaySim, design: designSim };
 
@@ -148,8 +140,8 @@ export function LiveSim({ design, hour, cal, reverseShare, baseOpenings }: { des
     return () => cancelAnimationFrame(raf);
   }, []);
 
-  const win: [number, number] = [Math.max(0, center - span / 2), Math.min(PILOT_MODEL.length, center + span / 2)];
-  const pick = useCallback((s: number) => setCenter(Math.round(Math.min(PILOT_MODEL.length - span / 2, Math.max(span / 2, s)))), [span]);
+  const win: [number, number] = [Math.max(0, center - span / 2), Math.min(L, center + span / 2)];
+  const pick = useCallback((s: number) => setCenter(Math.round(Math.min(L - span / 2, Math.max(span / 2, s)))), [span, L]);
 
   return (
     <div ref={host}>
@@ -187,7 +179,7 @@ export function LiveSim({ design, hour, cal, reverseShare, baseOpenings }: { des
           ))}
         </div>
         <div className="-mx-1 flex max-w-full gap-1 overflow-x-auto px-1 text-[13px] [scrollbar-width:none]" role="group" aria-label="Jump to">
-          {SPOTS.map((s) => (
+          {spots.map((s) => (
             <button
               key={s.name}
               type="button"
@@ -250,10 +242,13 @@ export function LiveSim({ design, hour, cal, reverseShare, baseOpenings }: { des
               ref={k === "today" ? todayRef : designRef}
               sim={k === "today" ? todaySim : designSim}
               window={win}
-              labels={LABELS}
+              labels={c.places}
+              toward={c.toward}
+              flip={flipOf(c)}
+              dividers={c.medians}
               title={k === "today" ? "Today" : "Your design"}
               onPickWindow={pick}
-              baseOpenings={baseOpenings}
+              baseOpenings={c.openings}
             />
           </div>
         );

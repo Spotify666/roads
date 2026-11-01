@@ -1,0 +1,390 @@
+{
+ "id": "chandrayangutta",
+ "name": "Chandrayangutta",
+ "place": "Chandrayangutta flyover",
+ "length": 1206,
+ "spotS": 600,
+ "toward": [
+  "Santosh Nagar",
+  "Aramghar"
+ ],
+ "heading": [
+  "eastbound",
+  "westbound"
+ ],
+ "model": {
+  "length": 1206,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 1207,
+    "w": 3,
+    "e": 3
+   }
+  ],
+  "busStops": [],
+  "sideRoads": [
+   {
+    "s": 19,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 19,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 34,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 80,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 168,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 202,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 260,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 260,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 275,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 275,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 281,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 281,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 295,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 295,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 317,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 358,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 390,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 408,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 417,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 427,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 462,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 508,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 546,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 604,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 659,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 659,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 681,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 733,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 754,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 757,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 768,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 769,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 778,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 812,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 847,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 864,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 887,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 901,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 955,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 995,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1000,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1064,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1179,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 1179,
+    "cw": 1,
+    "weight": 5
+   }
+  ],
+  "signals": [
+   {
+    "s": 243,
+    "cycle": 120,
+    "offset": 0,
+    "name": "MBNR Crossroads junction"
+   },
+   {
+    "s": 600,
+    "cycle": 120,
+    "offset": 37,
+    "name": "Chandrayangutta (assumed)"
+   }
+  ],
+  "kerbFriction": [
+   {
+    "from": 480,
+    "to": 720,
+    "cw": 0,
+    "speed": 14,
+    "cause": "autos"
+   },
+   {
+    "from": 480,
+    "to": 720,
+    "cw": 1,
+    "speed": 14,
+    "cause": "autos"
+   }
+  ]
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 1207
+  }
+ ],
+ "openings": [
+  768
+ ],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1146,
+   "to": 1207,
+   "why": "Corridor end"
+  },
+  {
+   "from": 183,
+   "to": 303,
+   "why": "MBNR Crossroads junction"
+  },
+  {
+   "from": 540,
+   "to": 660,
+   "why": "Chandrayangutta (assumed)"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.0,
+   1.012
+  ],
+  "7": [
+   1.01,
+   1.016
+  ],
+  "8": [
+   1.02,
+   1.028
+  ],
+  "9": [
+   1.031,
+   1.032
+  ],
+  "10": [
+   1.031,
+   1.032
+  ],
+  "11": [
+   1.041,
+   1.032
+  ],
+  "12": [
+   1.061,
+   1.032
+  ],
+  "14": [
+   1.031,
+   1.032
+  ],
+  "16": [
+   1.041,
+   1.056
+  ],
+  "17": [
+   1.061,
+   1.08
+  ],
+  "18": [
+   1.102,
+   1.12
+  ],
+  "19": [
+   1.133,
+   1.1
+  ],
+  "20": [
+   1.153,
+   1.064
+  ],
+  "21": [
+   1.082,
+   1.036
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "bus-stops",
+  "title": "Shared-auto bay clear of the flyover landing"
+ },
+ "causes": [
+  "merge",
+  "shared-autos"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

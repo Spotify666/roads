@@ -1,0 +1,553 @@
+{
+ "id": "chaitanyapuri",
+ "name": "Chaitanyapuri",
+ "place": "Vijayawada Highway at Chaitanyapuri metro",
+ "length": 1599,
+ "spotS": 823,
+ "toward": [
+  "LB Nagar",
+  "Dilsukhnagar"
+ ],
+ "heading": [
+  "eastbound",
+  "westbound"
+ ],
+ "model": {
+  "length": 1599,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 350,
+    "w": 2,
+    "e": 2
+   },
+   {
+    "from": 350,
+    "to": 700,
+    "w": 1,
+    "e": 2
+   },
+   {
+    "from": 700,
+    "to": 1275,
+    "w": 2,
+    "e": 2
+   },
+   {
+    "from": 1275,
+    "to": 1600,
+    "w": 1,
+    "e": 1
+   }
+  ],
+  "busStops": [
+   {
+    "s": 224,
+    "cw": 1,
+    "name": "Chaitanyapuri",
+    "major": false
+   },
+   {
+    "s": 501,
+    "cw": 0,
+    "name": "Chaitanyapuri Bus Stop",
+    "major": false
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 41,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 65,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 85,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 86,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 138,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 166,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 226,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 272,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 312,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 362,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 362,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 411,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 411,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 411,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 411,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 426,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 426,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 427,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 427,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 503,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 503,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 525,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 525,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 544,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 544,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 592,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 592,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 610,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 610,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 660,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 660,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 673,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 673,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 673,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 673,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 689,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 689,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 921,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1025,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1038,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1066,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1072,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1123,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1135,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1145,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1163,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1184,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1188,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1188,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1208,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1247,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1249,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1249,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1256,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 1256,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1257,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1257,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 1257,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1274,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1398,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1398,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1428,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1428,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1523,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1523,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1560,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1560,
+    "cw": 1,
+    "weight": 0.5
+   }
+  ],
+  "signals": [
+   {
+    "s": 823,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Chaitanyapuri (assumed)"
+   }
+  ],
+  "kerbFriction": [
+   {
+    "from": 703,
+    "to": 943,
+    "cw": 0,
+    "speed": 14,
+    "cause": "autos"
+   },
+   {
+    "from": 703,
+    "to": 943,
+    "cw": 1,
+    "speed": 14,
+    "cause": "autos"
+   }
+  ]
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 350
+  },
+  {
+   "from": 700,
+   "to": 1275
+  }
+ ],
+ "openings": [
+  86
+ ],
+ "fixedOpenings": [
+  362,
+  503,
+  660
+ ],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1539,
+   "to": 1600,
+   "why": "Corridor end"
+  },
+  {
+   "from": 763,
+   "to": 883,
+   "why": "Chaitanyapuri (assumed)"
+  },
+  {
+   "from": 194,
+   "to": 254,
+   "why": "Bus stop"
+  },
+  {
+   "from": 471,
+   "to": 531,
+   "why": "Bus stop"
+  },
+  {
+   "from": 350,
+   "to": 700,
+   "why": "No median here: U-turns at side roads"
+  },
+  {
+   "from": 1275,
+   "to": 1600,
+   "why": "No median here: U-turns at side roads"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.025,
+   1.018
+  ],
+  "7": [
+   1.114,
+   1.067
+  ],
+  "8": [
+   1.266,
+   1.219
+  ],
+  "9": [
+   1.323,
+   1.314
+  ],
+  "10": [
+   1.285,
+   1.329
+  ],
+  "11": [
+   1.329,
+   1.378
+  ],
+  "12": [
+   1.367,
+   1.403
+  ],
+  "14": [
+   1.361,
+   1.304
+  ],
+  "16": [
+   1.335,
+   1.307
+  ],
+  "17": [
+   1.481,
+   1.399
+  ],
+  "18": [
+   1.658,
+   1.473
+  ],
+  "19": [
+   1.677,
+   1.473
+  ],
+  "20": [
+   1.494,
+   1.36
+  ],
+  "21": [
+   1.228,
+   1.173
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "bus-stops",
+  "title": "Bus bay between metro pillars"
+ },
+ "causes": [
+  "metro-pillars",
+  "bus-stop-in-lane"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

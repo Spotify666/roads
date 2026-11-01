@@ -1,0 +1,418 @@
+{
+ "id": "jntu",
+ "name": "JNTU Junction",
+ "place": "Mumbai Highway at JNTU",
+ "length": 1601,
+ "spotS": 796,
+ "toward": [
+  "Kukatpally",
+  "Miyapur"
+ ],
+ "heading": [
+  "eastbound",
+  "westbound"
+ ],
+ "model": {
+  "length": 1601,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 925,
+    "w": 2,
+    "e": 2
+   },
+   {
+    "from": 925,
+    "to": 1150,
+    "w": 1,
+    "e": 3
+   },
+   {
+    "from": 1150,
+    "to": 1475,
+    "w": 3,
+    "e": 3
+   },
+   {
+    "from": 1475,
+    "to": 1602,
+    "w": 2,
+    "e": 2
+   }
+  ],
+  "busStops": [
+   {
+    "s": 1011,
+    "cw": 0,
+    "name": "Nizampet X road bus stop",
+    "major": true
+   },
+   {
+    "s": 1408,
+    "cw": 1,
+    "name": "Jntu Bus Stop",
+    "major": false
+   },
+   {
+    "s": 1448,
+    "cw": 1,
+    "name": "JNTU Bus Stop",
+    "major": false
+   },
+   {
+    "s": 1561,
+    "cw": 0,
+    "name": "JNTU bus stop",
+    "major": false
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 295,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 296,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 330,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 371,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 377,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 399,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 409,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 437,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 443,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 453,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 467,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 479,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 489,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 587,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 684,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 700,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 718,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 770,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 883,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 894,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 921,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 927,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 927,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 983,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 996,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1002,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1064,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1064,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1123,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1202,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1203,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1224,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1227,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1340,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1523,
+    "cw": 1,
+    "weight": 5
+   }
+  ],
+  "signals": [
+   {
+    "s": 796,
+    "cycle": 120,
+    "offset": 0,
+    "name": "JNTU Junction (assumed)"
+   }
+  ],
+  "kerbFriction": [
+   {
+    "from": 676,
+    "to": 916,
+    "cw": 0,
+    "speed": 14,
+    "cause": "autos"
+   },
+   {
+    "from": 676,
+    "to": 916,
+    "cw": 1,
+    "speed": 14,
+    "cause": "autos"
+   },
+   {
+    "from": 616,
+    "to": 976,
+    "cw": 0,
+    "speed": 18,
+    "cause": "parking"
+   },
+   {
+    "from": 616,
+    "to": 976,
+    "cw": 1,
+    "speed": 18,
+    "cause": "parking"
+   }
+  ]
+ },
+ "medians": [
+  {
+   "from": 275,
+   "to": 1602
+  }
+ ],
+ "openings": [
+  377,
+  1208
+ ],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1541,
+   "to": 1602,
+   "why": "Corridor end"
+  },
+  {
+   "from": 736,
+   "to": 856,
+   "why": "JNTU Junction (assumed)"
+  },
+  {
+   "from": 981,
+   "to": 1041,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1378,
+   "to": 1438,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1418,
+   "to": 1478,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1531,
+   "to": 1591,
+   "why": "Bus stop"
+  },
+  {
+   "from": 0,
+   "to": 275,
+   "why": "No median here: U-turns at side roads"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.005,
+   1.037
+  ],
+  "7": [
+   1.025,
+   1.11
+  ],
+  "8": [
+   1.109,
+   1.274
+  ],
+  "9": [
+   1.168,
+   1.274
+  ],
+  "10": [
+   1.178,
+   1.229
+  ],
+  "11": [
+   1.208,
+   1.232
+  ],
+  "12": [
+   1.208,
+   1.241
+  ],
+  "14": [
+   1.099,
+   1.21
+  ],
+  "16": [
+   1.158,
+   1.262
+  ],
+  "17": [
+   1.257,
+   1.375
+  ],
+  "18": [
+   1.396,
+   1.503
+  ],
+  "19": [
+   1.431,
+   1.534
+  ],
+  "20": [
+   1.287,
+   1.341
+  ],
+  "21": [
+   1.114,
+   1.152
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "bus-stops",
+  "title": "Regulated auto stand and pick-up bays"
+ },
+ "causes": [
+  "shared-autos",
+  "encroachment",
+  "school-zone"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

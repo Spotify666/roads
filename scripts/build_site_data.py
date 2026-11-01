@@ -116,6 +116,8 @@ def main():
     hs = load("hotspots.json")
     sources = load("sources.json")
     feats = load("osm_features.json")
+    dir_path = os.path.join(ROOT, "data", "directions.json")
+    names = json.load(open(dir_path)) if os.path.exists(dir_path) else {}
     cue_path = os.path.join(ROOT, "data", "road_cues_counts.json")
     cues = json.load(open(cue_path)) if os.path.exists(cue_path) else {}
     prof = load("profiles.json")
@@ -128,7 +130,10 @@ def main():
         dirs = []
         for tag, d in sorted(p.get("dirs", {}).items()):
             if "weekday" in d and "hours" in d["weekday"] and len(d["weekday"]["hours"]) == len(HOURS):
-                dirs.append(summarise_dir(h["id"], tag, d))
+                sd = summarise_dir(h["id"], tag, d)
+                # where the direction leads, in place names, beside the compass heading
+                sd.update(names.get(h["id"], {}).get("dirs", {}).get(tag, {}))
+                dirs.append(sd)
         worst = max(dirs, key=lambda d: d["peak"]["ratio"]) if dirs else None
         cites = sorted({r["src"] for r in h["reported"]} | {r["src"] for r in h["timeNotes"]})
         detail = {
@@ -156,6 +161,7 @@ def main():
             },
             "profile": None if not worst else {
                 "heading": worst["heading"],
+                "toward": worst.get("toward"),
                 "peak": worst["peak"], "am": worst["am"], "pm": worst["pm"],
                 "peakDelayPerKm": worst["peakDelayPerKm"],
                 "hours": [[x["hour"], x["ratio"]] for x in worst["hours"]],

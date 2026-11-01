@@ -1,0 +1,448 @@
+{
+ "id": "ameerpet",
+ "name": "Ameerpet",
+ "place": "Ameerpet metro interchange",
+ "length": 1599,
+ "spotS": 800,
+ "toward": [
+  "Sanath Nagar",
+  "Srinagar Colony"
+ ],
+ "heading": [
+  "north-westbound",
+  "south-eastbound"
+ ],
+ "model": {
+  "length": 1599,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 575,
+    "w": 2,
+    "e": 2
+   },
+   {
+    "from": 575,
+    "to": 950,
+    "w": 2,
+    "e": 3
+   },
+   {
+    "from": 950,
+    "to": 1600,
+    "w": 3,
+    "e": 3
+   }
+  ],
+  "busStops": [
+   {
+    "s": 299,
+    "cw": 0,
+    "name": "Bus stop",
+    "major": false
+   },
+   {
+    "s": 943,
+    "cw": 0,
+    "name": "Bus stop",
+    "major": true
+   },
+   {
+    "s": 1064,
+    "cw": 0,
+    "name": "S.R.Nagar Bus Stop",
+    "major": false
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 116,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 148,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 186,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 226,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 242,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 242,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 251,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 252,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 264,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 271,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 314,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 331,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 363,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 400,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 468,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 474,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 528,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 550,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 572,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 616,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 624,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 678,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 735,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 738,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 845,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 904,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 905,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 918,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 947,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 960,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 960,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 968,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 968,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 1042,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1077,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1079,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 1126,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1133,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1191,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1232,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1294,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1295,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1295,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1357,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1368,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1452,
+    "cw": 1,
+    "weight": 3
+   }
+  ],
+  "signals": [
+   {
+    "s": 800,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Ameerpet (assumed)"
+   },
+   {
+    "s": 960,
+    "cycle": 120,
+    "offset": 37,
+    "name": "Satyam Theatre road junction"
+   }
+  ],
+  "kerbFriction": [
+   {
+    "from": 680,
+    "to": 920,
+    "cw": 0,
+    "speed": 14,
+    "cause": "autos"
+   },
+   {
+    "from": 680,
+    "to": 920,
+    "cw": 1,
+    "speed": 14,
+    "cause": "autos"
+   }
+  ]
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 1600
+  }
+ ],
+ "openings": [
+  251,
+  905
+ ],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1539,
+   "to": 1600,
+   "why": "Corridor end"
+  },
+  {
+   "from": 740,
+   "to": 860,
+   "why": "Ameerpet (assumed)"
+  },
+  {
+   "from": 900,
+   "to": 1020,
+   "why": "Satyam Theatre road junction"
+  },
+  {
+   "from": 269,
+   "to": 329,
+   "why": "Bus stop"
+  },
+  {
+   "from": 913,
+   "to": 973,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1034,
+   "to": 1094,
+   "why": "Bus stop"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.066,
+   1.013
+  ],
+  "7": [
+   1.146,
+   1.038
+  ],
+  "8": [
+   1.293,
+   1.116
+  ],
+  "9": [
+   1.333,
+   1.189
+  ],
+  "10": [
+   1.318,
+   1.25
+  ],
+  "11": [
+   1.348,
+   1.326
+  ],
+  "12": [
+   1.394,
+   1.371
+  ],
+  "14": [
+   1.384,
+   1.328
+  ],
+  "16": [
+   1.51,
+   1.374
+  ],
+  "17": [
+   1.722,
+   1.432
+  ],
+  "18": [
+   2.02,
+   1.48
+  ],
+  "19": [
+   1.975,
+   1.437
+  ],
+  "20": [
+   1.545,
+   1.303
+  ],
+  "21": [
+   1.227,
+   1.144
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "pedestrians",
+  "title": "Metro drop-off bays and a pelican crossing"
+ },
+ "causes": [
+  "shared-autos",
+  "pedestrians",
+  "signal"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

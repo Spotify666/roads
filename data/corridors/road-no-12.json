@@ -1,0 +1,446 @@
+{
+ "id": "road-no-12",
+ "name": "Banjara Hills Road No. 12",
+ "place": "Virinchi Hospital junction",
+ "length": 1386,
+ "spotS": 801,
+ "toward": [
+  "Nampally",
+  "Panjagutta"
+ ],
+ "heading": [
+  "southbound",
+  "northbound"
+ ],
+ "model": {
+  "length": 1386,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 1387,
+    "w": 3,
+    "e": 3
+   }
+  ],
+  "busStops": [
+   {
+    "s": 823,
+    "cw": 1,
+    "name": "Pension Office Bus Stop",
+    "major": true
+   },
+   {
+    "s": 1252,
+    "cw": 0,
+    "name": "Masab Tank Bus Stop",
+    "major": false
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 58,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 130,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 135,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 168,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 199,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 228,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 254,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 262,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 277,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 331,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 336,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 374,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 390,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 533,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 601,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 625,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 702,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 703,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 727,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 733,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 741,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 749,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 749,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 749,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 762,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 781,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 781,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 786,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 791,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 791,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 797,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 828,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 849,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 904,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 914,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1048,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1048,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1049,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1056,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1056,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1056,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1126,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1173,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1249,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1295,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1314,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1353,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1358,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 1358,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 1360,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 1360,
+    "cw": 1,
+    "weight": 5
+   }
+  ],
+  "signals": [
+   {
+    "s": 801,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Banjara Hills Road No. 12 (assumed)"
+   },
+   {
+    "s": 1358,
+    "cycle": 120,
+    "offset": 37,
+    "name": "Masab Tank Flyover junction"
+   }
+  ],
+  "kerbFriction": [
+   {
+    "from": 621,
+    "to": 981,
+    "cw": 0,
+    "speed": 18,
+    "cause": "parking"
+   },
+   {
+    "from": 621,
+    "to": 981,
+    "cw": 1,
+    "speed": 18,
+    "cause": "parking"
+   }
+  ]
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 1387
+  }
+ ],
+ "openings": [],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1326,
+   "to": 1387,
+   "why": "Corridor end"
+  },
+  {
+   "from": 741,
+   "to": 861,
+   "why": "Banjara Hills Road No. 12 (assumed)"
+  },
+  {
+   "from": 1298,
+   "to": 1418,
+   "why": "Masab Tank Flyover junction"
+  },
+  {
+   "from": 793,
+   "to": 853,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1222,
+   "to": 1282,
+   "why": "Bus stop"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.016,
+   1.019
+  ],
+  "7": [
+   1.048,
+   1.056
+  ],
+  "8": [
+   1.164,
+   1.199
+  ],
+  "9": [
+   1.259,
+   1.356
+  ],
+  "10": [
+   1.349,
+   1.491
+  ],
+  "11": [
+   1.492,
+   1.652
+  ],
+  "12": [
+   1.64,
+   1.73
+  ],
+  "14": [
+   1.725,
+   1.652
+  ],
+  "16": [
+   1.968,
+   1.629
+  ],
+  "17": [
+   2.095,
+   1.689
+  ],
+  "18": [
+   2.19,
+   1.708
+  ],
+  "19": [
+   2.037,
+   1.652
+  ],
+  "20": [
+   1.598,
+   1.483
+  ],
+  "21": [
+   1.249,
+   1.247
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "parking",
+  "title": "No-parking near the hospital junction"
+ },
+ "causes": [
+  "parking",
+  "signal"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

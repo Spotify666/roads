@@ -1,0 +1,538 @@
+{
+ "id": "medicover",
+ "name": "Madhapur (Medicover stretch)",
+ "place": "HITEC City\u2013Kondapur Main Road",
+ "length": 1599,
+ "spotS": 798,
+ "toward": [
+  "Chandanagar",
+  "back from Chandanagar"
+ ],
+ "heading": [
+  "north-westbound",
+  null
+ ],
+ "model": {
+  "length": 1599,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 1350,
+    "w": 3,
+    "e": 3
+   },
+   {
+    "from": 1350,
+    "to": 1600,
+    "w": 2,
+    "e": 3
+   }
+  ],
+  "busStops": [
+   {
+    "s": 108,
+    "cw": 1,
+    "name": "Cyber Towers Bus Stop",
+    "major": false
+   },
+   {
+    "s": 356,
+    "cw": 0,
+    "name": "Bus stop",
+    "major": false
+   },
+   {
+    "s": 752,
+    "cw": 1,
+    "name": "Shilparamam bus bay",
+    "major": true
+   },
+   {
+    "s": 883,
+    "cw": 1,
+    "name": "hitex bus stop",
+    "major": true
+   },
+   {
+    "s": 1545,
+    "cw": 0,
+    "name": "Bus stop",
+    "major": false
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 181,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 184,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 217,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 230,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 230,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 231,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 231,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 257,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 257,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 257,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 257,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 278,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 414,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 449,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 465,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 477,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 497,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 511,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 551,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 601,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 606,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 625,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 756,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 885,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 885,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 918,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 925,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 925,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 932,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 939,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 939,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 963,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 971,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1026,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 1027,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1066,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1207,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1271,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1315,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 1323,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 1325,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 1325,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 1333,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1377,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1393,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1402,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1410,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1445,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1454,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1477,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1520,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1529,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1539,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 1559,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 1581,
+    "cw": 1,
+    "weight": 0.5
+   }
+  ],
+  "signals": [
+   {
+    "s": 232,
+    "cycle": 120,
+    "offset": 0,
+    "name": "HITEC City Road junction"
+   },
+   {
+    "s": 798,
+    "cycle": 120,
+    "offset": 37,
+    "name": "Madhapur (Medicover stretch) (assumed)"
+   },
+   {
+    "s": 1326,
+    "cycle": 120,
+    "offset": 74,
+    "name": "HITEC City\u2013Madhapur Road junction"
+   }
+  ],
+  "kerbFriction": [
+   {
+    "from": 678,
+    "to": 918,
+    "cw": 0,
+    "speed": 14,
+    "cause": "autos"
+   },
+   {
+    "from": 678,
+    "to": 918,
+    "cw": 1,
+    "speed": 14,
+    "cause": "autos"
+   },
+   {
+    "from": 618,
+    "to": 978,
+    "cw": 0,
+    "speed": 18,
+    "cause": "parking"
+   },
+   {
+    "from": 618,
+    "to": 978,
+    "cw": 1,
+    "speed": 18,
+    "cause": "parking"
+   }
+  ]
+ },
+ "medians": [
+  {
+   "from": 175,
+   "to": 1600
+  }
+ ],
+ "openings": [
+  604,
+  1027
+ ],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1539,
+   "to": 1600,
+   "why": "Corridor end"
+  },
+  {
+   "from": 172,
+   "to": 292,
+   "why": "HITEC City Road junction"
+  },
+  {
+   "from": 738,
+   "to": 858,
+   "why": "Madhapur (Medicover stretch) (assumed)"
+  },
+  {
+   "from": 1266,
+   "to": 1386,
+   "why": "HITEC City\u2013Madhapur Road junction"
+  },
+  {
+   "from": 78,
+   "to": 138,
+   "why": "Bus stop"
+  },
+  {
+   "from": 326,
+   "to": 386,
+   "why": "Bus stop"
+  },
+  {
+   "from": 722,
+   "to": 782,
+   "why": "Bus stop"
+  },
+  {
+   "from": 853,
+   "to": 913,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1515,
+   "to": 1575,
+   "why": "Bus stop"
+  },
+  {
+   "from": 0,
+   "to": 175,
+   "why": "No median here: U-turns at side roads"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   null
+  ],
+  "3": [
+   1.0,
+   null
+  ],
+  "6": [
+   1.019,
+   null
+  ],
+  "7": [
+   1.101,
+   null
+  ],
+  "8": [
+   1.237,
+   null
+  ],
+  "9": [
+   1.266,
+   null
+  ],
+  "10": [
+   1.29,
+   null
+  ],
+  "11": [
+   1.353,
+   null
+  ],
+  "12": [
+   1.401,
+   null
+  ],
+  "14": [
+   1.348,
+   null
+  ],
+  "16": [
+   1.406,
+   null
+  ],
+  "17": [
+   1.507,
+   null
+  ],
+  "18": [
+   1.633,
+   null
+  ],
+  "19": [
+   1.585,
+   null
+  ],
+  "20": [
+   1.353,
+   null
+  ],
+  "21": [
+   1.155,
+   null
+  ],
+  "22": [
+   1.0,
+   null
+  ]
+ },
+ "fix": {
+  "type": "parking",
+  "title": "Hospital drop-off bay and no-parking"
+ },
+ "causes": [
+  "parking",
+  "shared-autos"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

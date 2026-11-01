@@ -1,0 +1,272 @@
+{
+ "id": "nanal-nagar",
+ "name": "Nanal Nagar X Roads",
+ "place": "Mehdipatnam\u2013Tolichowki road",
+ "length": 1113,
+ "spotS": 321,
+ "toward": [
+  "Nampally",
+  "back from Nampally"
+ ],
+ "heading": [
+  "eastbound",
+  null
+ ],
+ "model": {
+  "length": 1113,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 400,
+    "w": 3,
+    "e": 3
+   },
+   {
+    "from": 400,
+    "to": 1114,
+    "w": 2,
+    "e": 2
+   }
+  ],
+  "busStops": [
+   {
+    "s": 310,
+    "cw": 0,
+    "name": "Rethibowli",
+    "major": true
+   },
+   {
+    "s": 319,
+    "cw": 1,
+    "name": "Rethibowli",
+    "major": true
+   },
+   {
+    "s": 801,
+    "cw": 1,
+    "name": "medipatnam bus stop",
+    "major": false
+   },
+   {
+    "s": 1097,
+    "cw": 1,
+    "name": "Mehdipatnam",
+    "major": false
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 22,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 67,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 67,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 67,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 81,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 128,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 289,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 312,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 315,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 412,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 415,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 417,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 511,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 708,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 961,
+    "cw": 1,
+    "weight": 2
+   }
+  ],
+  "signals": [
+   {
+    "s": 350,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Nanal Nagar X Roads"
+   }
+  ],
+  "kerbFriction": []
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 1114
+  }
+ ],
+ "openings": [
+  708,
+  961
+ ],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1053,
+   "to": 1114,
+   "why": "Corridor end"
+  },
+  {
+   "from": 290,
+   "to": 410,
+   "why": "Nanal Nagar X Roads"
+  },
+  {
+   "from": 280,
+   "to": 340,
+   "why": "Bus stop"
+  },
+  {
+   "from": 289,
+   "to": 349,
+   "why": "Bus stop"
+  },
+  {
+   "from": 771,
+   "to": 831,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1067,
+   "to": 1127,
+   "why": "Bus stop"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   null
+  ],
+  "3": [
+   1.0,
+   null
+  ],
+  "6": [
+   1.009,
+   null
+  ],
+  "7": [
+   1.027,
+   null
+  ],
+  "8": [
+   1.089,
+   null
+  ],
+  "9": [
+   1.134,
+   null
+  ],
+  "10": [
+   1.161,
+   null
+  ],
+  "11": [
+   1.214,
+   null
+  ],
+  "12": [
+   1.25,
+   null
+  ],
+  "14": [
+   1.241,
+   null
+  ],
+  "16": [
+   1.366,
+   null
+  ],
+  "17": [
+   1.446,
+   null
+  ],
+  "18": [
+   1.509,
+   null
+  ],
+  "19": [
+   1.429,
+   null
+  ],
+  "20": [
+   1.259,
+   null
+  ],
+  "21": [
+   1.125,
+   null
+  ],
+  "22": [
+   1.0,
+   null
+  ]
+ },
+ "fix": {
+  "type": "junctions",
+  "title": "Signal retiming with a protected right-turn phase"
+ },
+ "causes": [
+  "rat-running",
+  "works",
+  "signal"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

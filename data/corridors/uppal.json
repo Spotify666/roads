@@ -1,0 +1,272 @@
+{
+ "id": "uppal",
+ "name": "Uppal X Roads",
+ "place": "Inner Ring Road \u00d7 Warangal Highway",
+ "length": 951,
+ "spotS": 789,
+ "toward": [
+  "Santhi Nagar",
+  "Habsiguda"
+ ],
+ "heading": [
+  "south-eastbound",
+  "northbound"
+ ],
+ "model": {
+  "length": 951,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 300,
+    "w": 2,
+    "e": 3
+   },
+   {
+    "from": 300,
+    "to": 952,
+    "w": 3,
+    "e": 3
+   }
+  ],
+  "busStops": [
+   {
+    "s": 789,
+    "cw": 0,
+    "name": "Uppal Ring Road",
+    "major": true
+   },
+   {
+    "s": 842,
+    "cw": 1,
+    "name": "Uppal to secundrabad bustop",
+    "major": true
+   },
+   {
+    "s": 906,
+    "cw": 1,
+    "name": "Uppal 'X' Road",
+    "major": true
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 257,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 257,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 322,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 322,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 322,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 323,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 323,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 371,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 377,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 596,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 596,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 700,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 865,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 904,
+    "cw": 0,
+    "weight": 5
+   }
+  ],
+  "signals": [
+   {
+    "s": 333,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Habsiguda Main Road junction"
+   },
+   {
+    "s": 869,
+    "cycle": 120,
+    "offset": 37,
+    "name": "Uppal X Roads"
+   }
+  ],
+  "kerbFriction": []
+ },
+ "medians": [
+  {
+   "from": 300,
+   "to": 952
+  }
+ ],
+ "openings": [
+  596
+ ],
+ "fixedOpenings": [
+  257
+ ],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 891,
+   "to": 952,
+   "why": "Corridor end"
+  },
+  {
+   "from": 273,
+   "to": 393,
+   "why": "Habsiguda Main Road junction"
+  },
+  {
+   "from": 809,
+   "to": 929,
+   "why": "Uppal X Roads"
+  },
+  {
+   "from": 759,
+   "to": 819,
+   "why": "Bus stop"
+  },
+  {
+   "from": 812,
+   "to": 872,
+   "why": "Bus stop"
+  },
+  {
+   "from": 876,
+   "to": 936,
+   "why": "Bus stop"
+  },
+  {
+   "from": 0,
+   "to": 300,
+   "why": "No median here: U-turns at side roads"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.027,
+   1.021
+  ],
+  "7": [
+   1.17,
+   1.062
+  ],
+  "8": [
+   1.464,
+   1.226
+  ],
+  "9": [
+   1.5,
+   1.322
+  ],
+  "10": [
+   1.446,
+   1.342
+  ],
+  "11": [
+   1.473,
+   1.377
+  ],
+  "12": [
+   1.482,
+   1.37
+  ],
+  "14": [
+   1.393,
+   1.205
+  ],
+  "16": [
+   1.438,
+   1.267
+  ],
+  "17": [
+   1.58,
+   1.397
+  ],
+  "18": [
+   1.688,
+   1.5
+  ],
+  "19": [
+   1.688,
+   1.5
+  ],
+  "20": [
+   1.509,
+   1.349
+  ],
+  "21": [
+   1.241,
+   1.151
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "junctions",
+  "title": "Free left turn (already planned by MMC)"
+ },
+ "causes": [
+  "signal",
+  "merge"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

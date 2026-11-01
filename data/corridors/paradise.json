@@ -1,0 +1,377 @@
+{
+ "id": "paradise",
+ "name": "Paradise Junction",
+ "place": "Secunderabad, NH44",
+ "length": 856,
+ "spotS": 782,
+ "toward": [
+  "Bowenpally",
+  "Himayatnagar"
+ ],
+ "heading": [
+  "northbound",
+  "southbound"
+ ],
+ "model": {
+  "length": 856,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 857,
+    "w": 3,
+    "e": 3
+   }
+  ],
+  "busStops": [
+   {
+    "s": 495,
+    "cw": 1,
+    "name": "Paradise",
+    "major": false
+   },
+   {
+    "s": 603,
+    "cw": 1,
+    "name": "Paradise",
+    "major": true
+   },
+   {
+    "s": 752,
+    "cw": 0,
+    "name": "Paradise Bus Stop",
+    "major": true
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 27,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 27,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 29,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 80,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 81,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 116,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 158,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 192,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 192,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 235,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 301,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 339,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 373,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 535,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 566,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 608,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 622,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 649,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 649,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 651,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 651,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 657,
+    "cw": 0,
+    "weight": 4
+   },
+   {
+    "s": 657,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 660,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 660,
+    "cw": 1,
+    "weight": 4
+   },
+   {
+    "s": 713,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 715,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 803,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 803,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 804,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 804,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 825,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 825,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 826,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 826,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 826,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 838,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 838,
+    "cw": 1,
+    "weight": 5
+   }
+  ],
+  "signals": [
+   {
+    "s": 651,
+    "cycle": 120,
+    "offset": 0,
+    "name": "Sarojini Devi Road junction"
+   },
+   {
+    "s": 802,
+    "cycle": 120,
+    "offset": 37,
+    "name": "Paradise Junction"
+   }
+  ],
+  "kerbFriction": []
+ },
+ "medians": [
+  {
+   "from": 0,
+   "to": 857
+  }
+ ],
+ "openings": [],
+ "fixedOpenings": [],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 796,
+   "to": 857,
+   "why": "Corridor end"
+  },
+  {
+   "from": 591,
+   "to": 711,
+   "why": "Sarojini Devi Road junction"
+  },
+  {
+   "from": 742,
+   "to": 862,
+   "why": "Paradise Junction"
+  },
+  {
+   "from": 465,
+   "to": 525,
+   "why": "Bus stop"
+  },
+  {
+   "from": 573,
+   "to": 633,
+   "why": "Bus stop"
+  },
+  {
+   "from": 722,
+   "to": 782,
+   "why": "Bus stop"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.013,
+   1.018
+  ],
+  "7": [
+   1.058,
+   1.045
+  ],
+  "8": [
+   1.199,
+   1.118
+  ],
+  "9": [
+   1.308,
+   1.173
+  ],
+  "10": [
+   1.346,
+   1.273
+  ],
+  "11": [
+   1.455,
+   1.391
+  ],
+  "12": [
+   1.519,
+   1.518
+  ],
+  "14": [
+   1.397,
+   1.591
+  ],
+  "16": [
+   1.404,
+   1.736
+  ],
+  "17": [
+   1.596,
+   1.755
+  ],
+  "18": [
+   1.878,
+   1.709
+  ],
+  "19": [
+   1.929,
+   1.573
+  ],
+  "20": [
+   1.596,
+   1.364
+  ],
+  "21": [
+   1.237,
+   1.173
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "lanes-markings",
+  "title": "Work-zone lane plan with marshals and clear signs"
+ },
+ "causes": [
+  "works",
+  "signal"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

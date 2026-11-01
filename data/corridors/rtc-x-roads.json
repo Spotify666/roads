@@ -1,0 +1,475 @@
+{
+ "id": "rtc-x-roads",
+ "name": "RTC X Roads",
+ "place": "Chikkadpally",
+ "length": 1595,
+ "spotS": 806,
+ "toward": [
+  "Koti",
+  "Musheerabad"
+ ],
+ "heading": [
+  "southbound",
+  "northbound"
+ ],
+ "model": {
+  "length": 1595,
+  "lanes": [
+   {
+    "from": 0,
+    "to": 1596,
+    "w": 2,
+    "e": 2
+   }
+  ],
+  "busStops": [
+   {
+    "s": 1223,
+    "cw": 1,
+    "name": "Chikkadpally",
+    "major": false
+   },
+   {
+    "s": 1394,
+    "cw": 0,
+    "name": "Chikkadpally",
+    "major": false
+   }
+  ],
+  "sideRoads": [
+   {
+    "s": 324,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 324,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 324,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 324,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 324,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 324,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 329,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 329,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 329,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 398,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 398,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 403,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 460,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 518,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 538,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 545,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 549,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 568,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 630,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 656,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 688,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 693,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 711,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 739,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 772,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 811,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 816,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 832,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 834,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 853,
+    "cw": 0,
+    "weight": 5
+   },
+   {
+    "s": 856,
+    "cw": 1,
+    "weight": 5
+   },
+   {
+    "s": 860,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 869,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 909,
+    "cw": 1,
+    "weight": 0.5
+   },
+   {
+    "s": 933,
+    "cw": 0,
+    "weight": 0.5
+   },
+   {
+    "s": 952,
+    "cw": 0,
+    "weight": 2
+   },
+   {
+    "s": 952,
+    "cw": 1,
+    "weight": 2
+   },
+   {
+    "s": 1011,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1030,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1049,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1062,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1099,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1130,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1141,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1142,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1142,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1177,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1210,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1236,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1270,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1305,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1322,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1361,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1361,
+    "cw": 1,
+    "weight": 3
+   },
+   {
+    "s": 1362,
+    "cw": 0,
+    "weight": 3
+   },
+   {
+    "s": 1382,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1477,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1514,
+    "cw": 1,
+    "weight": 1
+   },
+   {
+    "s": 1526,
+    "cw": 0,
+    "weight": 1
+   },
+   {
+    "s": 1562,
+    "cw": 1,
+    "weight": 1
+   }
+  ],
+  "signals": [
+   {
+    "s": 832,
+    "cycle": 120,
+    "offset": 0,
+    "name": "RTC X Roads"
+   }
+  ],
+  "kerbFriction": []
+ },
+ "medians": [
+  {
+   "from": 325,
+   "to": 1596
+  }
+ ],
+ "openings": [
+  398,
+  952
+ ],
+ "fixedOpenings": [
+  324
+ ],
+ "blocked": [
+  {
+   "from": 0,
+   "to": 60,
+   "why": "Corridor end"
+  },
+  {
+   "from": 1535,
+   "to": 1596,
+   "why": "Corridor end"
+  },
+  {
+   "from": 772,
+   "to": 892,
+   "why": "RTC X Roads"
+  },
+  {
+   "from": 1193,
+   "to": 1253,
+   "why": "Bus stop"
+  },
+  {
+   "from": 1364,
+   "to": 1424,
+   "why": "Bus stop"
+  },
+  {
+   "from": 0,
+   "to": 325,
+   "why": "No median here: U-turns at side roads"
+  }
+ ],
+ "targets": {
+  "0": [
+   1.0,
+   1.0
+  ],
+  "3": [
+   1.0,
+   1.0
+  ],
+  "6": [
+   1.01,
+   1.008
+  ],
+  "7": [
+   1.031,
+   1.025
+  ],
+  "8": [
+   1.073,
+   1.092
+  ],
+  "9": [
+   1.12,
+   1.154
+  ],
+  "10": [
+   1.125,
+   1.158
+  ],
+  "11": [
+   1.156,
+   1.2
+  ],
+  "12": [
+   1.193,
+   1.242
+  ],
+  "14": [
+   1.177,
+   1.242
+  ],
+  "16": [
+   1.188,
+   1.183
+  ],
+  "17": [
+   1.25,
+   1.254
+  ],
+  "18": [
+   1.318,
+   1.333
+  ],
+  "19": [
+   1.333,
+   1.379
+  ],
+  "20": [
+   1.292,
+   1.337
+  ],
+  "21": [
+   1.156,
+   1.192
+  ],
+  "22": [
+   1.0,
+   1.0
+  ]
+ },
+ "fix": {
+  "type": "junctions",
+  "title": "Adaptive signal plan and box-junction markings"
+ },
+ "causes": [
+  "signal",
+  "pedestrians"
+ ],
+ "source": "TomTom route geometry; OpenStreetMap contributors (ODbL), extracted 2026-11-01"
+}

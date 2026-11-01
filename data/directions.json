@@ -1,0 +1,491 @@
+{
+ "ikea": {
+  "here": "Madhapur",
+  "dirs": {
+   "ab": {
+    "toward": "Raidurg",
+    "via": "CBI Colony"
+   },
+   "ba": {
+    "toward": "Gachibowli",
+    "via": "Serilingampally"
+   }
+  }
+ },
+ "raidurg": {
+  "here": "Madhapur",
+  "dirs": {
+   "ab": {
+    "toward": "Kukatpally",
+    "via": "HITEC City"
+   },
+   "ba": {
+    "toward": "Financial District",
+    "via": "Khajaguda"
+   }
+  }
+ },
+ "hitec-city": {
+  "here": "Madhapur",
+  "dirs": {
+   "ab": {
+    "toward": "Kukatpally",
+    "via": "Balaji Nagar"
+   },
+   "ba": {
+    "toward": "Financial District",
+    "via": "Vittal Rao Nagar"
+   }
+  }
+ },
+ "masab-tank": {
+  "here": "Masab Tank",
+  "dirs": {
+   "ba": {
+    "toward": "Attapur",
+    "via": "Gudimalkapur"
+   }
+  }
+ },
+ "agrasen": {
+  "here": "Banjara Hills",
+  "dirs": {
+   "ab": {
+    "toward": "Panjagutta",
+    "via": "Green Valley"
+   },
+   "ba": {
+    "toward": "Tolichowki",
+    "via": null
+   }
+  }
+ },
+ "koti": {
+  "here": "Gunfoundry",
+  "dirs": {
+   "ab": {
+    "toward": "Malakpet",
+    "via": "Dabeerpura"
+   },
+   "ba": {
+    "toward": "Abids",
+    "via": null
+   }
+  }
+ },
+ "mehdipatnam": {
+  "here": "Tolichowki",
+  "dirs": {
+   "ab": {
+    "toward": "Masab Tank",
+    "via": "Nampally"
+   }
+  }
+ },
+ "lb-nagar": {
+  "here": "LB Nagar",
+  "dirs": {
+   "ab": {
+    "toward": "Vanasthalipuram",
+    "via": null
+   },
+   "ba": {
+    "toward": "Saroornagar",
+    "via": "Saroor Nagar"
+   }
+  }
+ },
+ "nmdc-pvnr": {
+  "here": "Mallepally",
+  "dirs": {
+   "ab": {
+    "toward": "Mehdipatnam",
+    "via": null
+   },
+   "ba": {
+    "toward": "Khairatabad",
+    "via": "Saifabad"
+   }
+  }
+ },
+ "tarnaka": {
+  "here": "Sitaphalmandi",
+  "dirs": {
+   "ab": {
+    "toward": "Habsiguda",
+    "via": null
+   },
+   "ba": {
+    "toward": "Secunderabad",
+    "via": "Addagutta"
+   }
+  }
+ },
+ "kukatpally-y": {
+  "here": "Kukatpally",
+  "dirs": {
+   "ab": {
+    "toward": "Sanathnagar",
+    "via": "Idpl"
+   },
+   "ba": {
+    "toward": "Miyapur",
+    "via": "KPHB Colony"
+   }
+  }
+ },
+ "road-no-12": {
+  "here": "Banjara Hills",
+  "dirs": {
+   "ab": {
+    "toward": "Nampally",
+    "via": null
+   },
+   "ba": {
+    "toward": "Panjagutta",
+    "via": null
+   }
+  }
+ },
+ "habsiguda": {
+  "here": "Habsiguda",
+  "dirs": {
+   "ab": {
+    "toward": "Uppal",
+    "via": null
+   },
+   "ba": {
+    "toward": "Secunderabad",
+    "via": "Sitaphalmandi"
+   }
+  }
+ },
+ "begumpet": {
+  "here": "Begumpet",
+  "dirs": {
+   "ab": {
+    "toward": "Ameerpet",
+    "via": null
+   },
+   "ba": {
+    "toward": "Secunderabad",
+    "via": "Prakash Nagar"
+   }
+  }
+ },
+ "ameerpet": {
+  "here": "Somajiguda",
+  "dirs": {
+   "ab": {
+    "toward": "Sanath Nagar",
+    "via": null
+   },
+   "ba": {
+    "toward": "Srinagar Colony",
+    "via": null
+   }
+  }
+ },
+ "panjagutta": {
+  "here": "Banjara Hills",
+  "dirs": {
+   "ab": {
+    "toward": "Mehdipatnam",
+    "via": "Ministers Colony"
+   },
+   "ba": {
+    "toward": "Ameerpet",
+    "via": null
+   }
+  }
+ },
+ "paradise": {
+  "here": "Begumpet",
+  "dirs": {
+   "ab": {
+    "toward": "Bowenpally",
+    "via": "Gunrock Enclave"
+   },
+   "ba": {
+    "toward": "Himayatnagar",
+    "via": "Ramgopalpet"
+   }
+  }
+ },
+ "financial-district": {
+  "here": "Gachibowli",
+  "dirs": {
+   "ab": {
+    "toward": "Nanakramguda",
+    "via": null
+   },
+   "ba": {
+    "toward": "Manikonda",
+    "via": "Khajaguda"
+   }
+  }
+ },
+ "aramghar": {
+  "here": "Rajendra Nagar",
+  "dirs": {
+   "ab": {
+    "toward": "Chandrayangutta",
+    "via": "Mailardevpally"
+   },
+   "ba": {
+    "toward": "Rajendranagar",
+    "via": "Budvel"
+   }
+  }
+ },
+ "khairatabad": {
+  "here": "Saifabad",
+  "dirs": {
+   "ab": {
+    "toward": "Masab Tank",
+    "via": "Nampally"
+   },
+   "ba": {
+    "toward": "Himayatnagar",
+    "via": "Kavadiguda"
+   }
+  }
+ },
+ "jubilee-checkpost": {
+  "here": "Jubilee Hills",
+  "dirs": {
+   "ab": {
+    "toward": "Shaikpet",
+    "via": "Navirman Nagar"
+   },
+   "ba": {
+    "toward": "Erragadda",
+    "via": "Vengal Rao Nagar"
+   }
+  }
+ },
+ "dilsukhnagar": {
+  "here": "Gaddiannaram",
+  "dirs": {
+   "ab": {
+    "toward": "Malakpet",
+    "via": null
+   },
+   "ba": {
+    "toward": "Kothapet",
+    "via": "Saroor Nagar"
+   }
+  }
+ },
+ "kphb": {
+  "here": "KPHB Colony",
+  "dirs": {
+   "ab": {
+    "toward": "Miyapur",
+    "via": "Satavahana Nagar"
+   },
+   "ba": {
+    "toward": "Balanagar",
+    "via": "Kukatpally"
+   }
+  }
+ },
+ "uppal": {
+  "here": "Uppal",
+  "dirs": {
+   "ab": {
+    "toward": "Santhi Nagar",
+    "via": null
+   },
+   "ba": {
+    "toward": "Habsiguda",
+    "via": "Jaya Raghavendra Nagar"
+   }
+  }
+ },
+ "chaitanyapuri": {
+  "here": "Chaitanyapuri",
+  "dirs": {
+   "ab": {
+    "toward": "LB Nagar",
+    "via": "RK Puram"
+   },
+   "ba": {
+    "toward": "Dilsukhnagar",
+    "via": "Saidabad"
+   }
+  }
+ },
+ "medicover": {
+  "here": "Kondapur",
+  "dirs": {
+   "ab": {
+    "toward": "Chandanagar",
+    "via": "Kothaguda"
+   }
+  }
+ },
+ "gachibowli": {
+  "here": "Serilingampally",
+  "dirs": {
+   "ab": {
+    "toward": "Kondapur",
+    "via": "Kothaguda"
+   }
+  }
+ },
+ "biodiversity": {
+  "here": "Madhapur",
+  "dirs": {
+   "ab": {
+    "toward": "Raidurg",
+    "via": "Khajaguda"
+   }
+  }
+ },
+ "lakdikapul": {
+  "here": "Nampally",
+  "dirs": {
+   "ab": {
+    "toward": "Masab Tank",
+    "via": null
+   }
+  }
+ },
+ "jntu": {
+  "here": "Satavahana Nagar",
+  "dirs": {
+   "ab": {
+    "toward": "Kukatpally",
+    "via": "KPHB Colony"
+   },
+   "ba": {
+    "toward": "Miyapur",
+    "via": null
+   }
+  }
+ },
+ "nanal-nagar": {
+  "here": "Tolichowki",
+  "dirs": {
+   "ab": {
+    "toward": "Nampally",
+    "via": "Mallepally"
+   }
+  }
+ },
+ "kothaguda": {
+  "here": "Kothaguda",
+  "dirs": {
+   "ab": {
+    "toward": "Miyapur",
+    "via": "Kondapur"
+   },
+   "ba": {
+    "toward": "Gachibowli",
+    "via": "Serilingampally"
+   }
+  }
+ },
+ "chaderghat": {
+  "here": "Dabeerpura",
+  "dirs": {
+   "ab": {
+    "toward": "Santosh Nagar",
+    "via": "Chawni"
+   }
+  }
+ },
+ "miyapur": {
+  "here": "Madhapur",
+  "dirs": {
+   "ab": {
+    "toward": "Chandanagar",
+    "via": "Prasanth Nagar"
+   },
+   "ba": {
+    "toward": "Kukatpally",
+    "via": "Satavahana Nagar"
+   }
+  }
+ },
+ "rtc-x-roads": {
+  "here": "Chikkadpally",
+  "dirs": {
+   "ab": {
+    "toward": "Koti",
+    "via": "Barkatpura"
+   },
+   "ba": {
+    "toward": "Musheerabad",
+    "via": "Boiguda"
+   }
+  }
+ },
+ "secunderabad": {
+  "here": "Marredpally",
+  "dirs": {
+   "ab": {
+    "toward": "Ramanthapur",
+    "via": "Boiguda"
+   },
+   "ba": {
+    "toward": "Bowenpally",
+    "via": "Gunrock Enclave"
+   }
+  }
+ },
+ "attapur": {
+  "here": "Attapur",
+  "dirs": {
+   "ab": {
+    "toward": "Aramghar",
+    "via": "Suleman Nagar"
+   },
+   "ba": {
+    "toward": "Mehdipatnam",
+    "via": "Gudimalkapur"
+   }
+  }
+ },
+ "tolichowki": {
+  "here": "Tolichowki",
+  "dirs": {
+   "ab": {
+    "toward": "Shaikpet",
+    "via": "Aziz Bagh"
+   }
+  }
+ },
+ "chandrayangutta": {
+  "here": "Jangammet",
+  "dirs": {
+   "ab": {
+    "toward": "Santosh Nagar",
+    "via": "Kanchanbagh"
+   },
+   "ba": {
+    "toward": "Aramghar",
+    "via": "Mailardevpally"
+   }
+  }
+ },
+ "shaikpet": {
+  "here": "Shaikpet",
+  "dirs": {
+   "ab": {
+    "toward": "Gachibowli",
+    "via": "Madhapur"
+   }
+  }
+ },
+ "suchitra": {
+  "here": "Alwal",
+  "dirs": {
+   "ab": {
+    "toward": "Moosapet",
+    "via": "Quthbullapur"
+   }
+  }
+ }
+}
